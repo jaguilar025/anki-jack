@@ -13,7 +13,7 @@ ENV VOICEVOX_URL=http://127.0.0.1:50021
 
 
 # Instala las dependencias
-RUN npm install
+RUN npm install --force
 
 # Construye la aplicación de Next.js
 RUN npm run build
