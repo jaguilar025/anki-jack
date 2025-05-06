@@ -14,7 +14,7 @@ services:
       - key: VOICEVOX_HOST
         value: http://voicevox_engine:50021
 
-  - type: service
+  - type: web
     name: voicevox_engine
     env: docker
     dockerContext: .
