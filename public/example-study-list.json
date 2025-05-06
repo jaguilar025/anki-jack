@@ -1,0 +1,88 @@
+{
+  "Animales": [
+    {
+      "japanese_advance": "犬",
+      "japanese_basic": "いぬ",
+      "spanish": "Perro"
+    },
+    {
+      "japanese_advance": "猫",
+      "japanese_basic": "ねこ",
+      "spanish": "Gato"
+    },
+    {
+      "japanese_advance": "鳥",
+      "japanese_basic": "とり",
+      "spanish": "Pájaro"
+    },
+    {
+      "japanese_advance": "魚",
+      "japanese_basic": "さかな",
+      "spanish": "Pez"
+    },
+    {
+      "japanese_advance": "馬",
+      "japanese_basic": "うま",
+      "spanish": "Caballo"
+    }
+  ],
+  "Colores": [
+    {
+      "japanese_advance": "赤",
+      "japanese_basic": "あか",
+      "spanish": "Rojo"
+    },
+    {
+      "japanese_advance": "青",
+      "japanese_basic": "あお",
+      "spanish": "Azul"
+    },
+    {
+      "japanese_advance": "黄色",
+      "japanese_basic": "きいろ",
+      "spanish": "Amarillo"
+    },
+    {
+      "japanese_advance": "緑",
+      "japanese_basic": "みどり",
+      "spanish": "Verde"
+    },
+    {
+      "japanese_advance": "黒",
+      "japanese_basic": "くろ",
+      "spanish": "Negro"
+    },
+    {
+      "japanese_advance": "白",
+      "japanese_basic": "しろ",
+      "spanish": "Blanco"
+    }
+  ],
+  "Tecnología": [
+    {
+      "japanese_advance": "コンピューター",
+      "japanese_basic": "コンピューター",
+      "spanish": "Computadora"
+    },
+    {
+      "japanese_advance": "スマートフォン",
+      "japanese_basic": "スマートフォン",
+      "spanish": "Smartphone"
+    },
+    {
+      "japanese_advance": "インターネット",
+      "japanese_basic": "インターネット",
+      "spanish": "Internet"
+    },
+    {
+      "japanese_advance": "アプリ",
+      "japanese_basic": "アプリ",
+      "spanish": "Aplicación"
+    },
+    {
+      "japanese_advance": "ウェブサイト",
+      "japanese_basic": "ウェブサイト",
+      "spanish": "Sitio web"
+    }
+  ]
+}
