@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: anki-jack
+    env: docker
+    plan: free
+    region: oregon
+    dockerfilePath: ./Dockerfile
+    buildFilter:
+      paths:
+        - docker-compose.yml
+        - Dockerfile
+    healthCheckPath: /
+    envVars:
+      - key: VOICEVOX_HOST
+        value: http://voicevox_engine:50021
+
+  - type: service
+    name: voicevox_engine
+    env: docker
+    dockerContext: .
+    dockerfilePath: ./Dockerfile.voicevox # si tienes uno separado, si no, ajusta
+    plan: free
+    autoDeploy: false
+    envVars: []
