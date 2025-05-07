@@ -211,6 +211,9 @@ export default function ConversationPage() {
       console.log("star playing:" + text);
       try {
         // 音声取得
+        console.log("version");
+        const version = await axios.get('/version');
+        console.log("version:", version);
         console.log("await start");
         const responseAudio = await axios.post('/api/audio', {
           text,
