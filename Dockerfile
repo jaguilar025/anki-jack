@@ -9,8 +9,7 @@ COPY . .
 
 
 ENV OPENAI_API_KEY=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
-ENV VOICEVOX_URL=https://voicevox-uvob.onrender.com
-
+ENV VOICEVOX_URL=http://8.17.147.154:10029
 
 # Instala las dependencias
 RUN npm install --force

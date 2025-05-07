@@ -12,7 +12,7 @@ services:
     healthCheckPath: /
     envVars:
       - key: VOICEVOX_HOST
-        value: http://voicevox_engine:50021
+        value: http://8.17.147.154:10029
 
   - type: web
     name: voicevox_engine
