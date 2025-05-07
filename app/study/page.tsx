@@ -141,12 +141,15 @@ export default function StudyPage() {
 
     // 音声再生
 const playAudio = async (text: string, speaker: string) => {
+  console.log("star playing:" + text);
   try {
     // 音声取得
+    console.log("await start");
     const responseAudio = await axios.post('/api/audio', {
       text,
       speaker,
     })
+    console.log("await end wit data:", responseAudio);
 
     // Base64形式で取得
     const base64Audio = responseAudio?.data?.response
@@ -161,7 +164,9 @@ const playAudio = async (text: string, speaker: string) => {
     // 音量[0-1]設定
     audio.volume = 1
     // 再生
+    console.log("star playing");
     audio.play()
+    console.log("end playing");
   } catch (e) {
     console.error(e)
   }
