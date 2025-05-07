@@ -58,6 +58,7 @@ export function MessageBubble({ message, character }: MessageBubbleProps) {
         console.log("end playing");
       } catch (e) {
         console.error(e)
+        speak(text)
       }
     }
 

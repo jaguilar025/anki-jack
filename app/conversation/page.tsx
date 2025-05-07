@@ -31,6 +31,7 @@ export default function ConversationPage() {
   const [isLoading, setIsLoading] = useState(false)
   const [conversationStarted, setConversationStarted] = useState(false)
   const messagesEndRef = useRef<HTMLDivElement>(null)
+  const { speak, isSpeaking } = useSpeech()
   const [character, setCharacter] = useState<CharacterStyleType>(
     {name:Characters[0].name,
       value: Characters[0].styles[0].id.toString(),
@@ -235,6 +236,7 @@ export default function ConversationPage() {
         console.log("end playing");
       } catch (e) {
         console.error(e)
+        speak(text);
       }
     }
 

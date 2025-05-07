@@ -128,6 +128,7 @@ export function StudyCard({ word, mode, onAnswer, showResult, isCorrect, onNext,
         console.log("end playing");
       } catch (e) {
         console.error(e)
+        speak(text);
       }
     }
 

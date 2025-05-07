@@ -13,16 +13,15 @@ import { motion } from "framer-motion"
 import { getUserProgress, updateUserProgress } from "@/lib/storage"
 import type { Word } from "@/lib/types"
 import { ScoreDisplay } from "@/components/score-display"
-import { useAudio } from "@/hooks/use-audio"
 
 import  Main  from '@/components/voicevox/main'
 import { CharacterStyleType } from '@/components/voicevox/types'
 import { Characters } from '@/components/voicevox/config'
+import { useSpeech } from "@/hooks/use-speech"
 
 export default function StudyPage() {
   const searchParams = useSearchParams()
   const router = useRouter()
-  //const { playCorrect, playIncorrect } = useAudio()
 
   const categoryParam = searchParams.get("category")
   const modeParam = searchParams.get("mode")
@@ -34,6 +33,7 @@ export default function StudyPage() {
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null)
   const [gameOver, setGameOver] = useState(false)
   const [words, setWords] = useState<Word[]>([])
+  const { speak, isSpeaking } = useSpeech()
   const [character, setCharacter] = useState<CharacterStyleType>(
       {name:Characters[0].name,
         value: Characters[0].styles[0].id.toString(),
@@ -169,6 +169,7 @@ const playAudio = async (text: string, speaker: string) => {
     console.log("end playing");
   } catch (e) {
     console.error(e)
+    speak(text);
   }
 }
 

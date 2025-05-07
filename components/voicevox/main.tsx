@@ -7,10 +7,12 @@ import { ArrowPathIcon } from '@heroicons/react/24/solid'
 import CharacterSelect from './character-select'
 import StyleSelect from './style-select';
 import { CharacterStyleSelectProps } from "./types";
+import { useSpeech } from "@/hooks/use-speech"
 
 // メインコンポーネント
 const Main = ({handlesetCharacter}: CharacterStyleSelectProps) => {
   const [character, setCharacter] = useState<CharacterType>(Characters[0])
+  const { speak, isSpeaking } = useSpeech()
 
     // 音声再生
     const playAudio = async (text: string, speaker: string) => {
@@ -42,6 +44,7 @@ const Main = ({handlesetCharacter}: CharacterStyleSelectProps) => {
         console.log("end playing");
       } catch (e) {
         console.error(e)
+        speak(text);
       }
     }
 
