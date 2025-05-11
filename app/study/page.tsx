@@ -1,93 +1,92 @@
-"use client"
+"use client";
 
-import axios from 'axios'
+import { useEffect, useState } from "react";
+import { useSearchParams, useRouter } from "next/navigation";
+import { StudyCard } from "@/components/study-card";
+import { ProgressBar } from "@/components/progress-bar";
+import { Button } from "@/components/ui/button";
+import { ArrowLeft } from "lucide-react";
+import { getAllCategories } from "@/lib/data";
+import { motion } from "framer-motion";
+import { getUserProgress, updateUserProgress } from "@/lib/storage";
+import type { Word } from "@/lib/types";
+import { ScoreDisplay } from "@/components/score-display";
 
-import { useEffect, useState } from "react"
-import { useSearchParams, useRouter } from "next/navigation"
-import { StudyCard } from "@/components/study-card"
-import { ProgressBar } from "@/components/progress-bar"
-import { Button } from "@/components/ui/button"
-import { ArrowLeft } from "lucide-react"
-import { getAllCategories } from "@/lib/data"
-import { motion } from "framer-motion"
-import { getUserProgress, updateUserProgress } from "@/lib/storage"
-import type { Word } from "@/lib/types"
-import { ScoreDisplay } from "@/components/score-display"
-
-import  Main  from '@/components/voicevox/main'
-import { CharacterStyleType } from '@/components/voicevox/types'
-import { Characters } from '@/components/voicevox/config'
-import { useSpeech } from "@/hooks/use-speech"
+import Main from "@/components/voicevox/main";
+import { CharacterStyleType } from "@/components/voicevox/types";
+import { Characters } from "@/components/voicevox/config";
+import { useAudio } from "@/hooks/use-audio";
 
 export default function StudyPage() {
-  const searchParams = useSearchParams()
-  const router = useRouter()
+  const searchParams = useSearchParams();
+  const router = useRouter();
 
-  const categoryParam = searchParams.get("category")
-  const modeParam = searchParams.get("mode")
+  const categoryParam = searchParams.get("category");
+  const modeParam = searchParams.get("mode");
 
-  const [currentIndex, setCurrentIndex] = useState(0)
-  const [score, setScore] = useState(0)
-  const [lives, setLives] = useState(3)
-  const [showResult, setShowResult] = useState(false)
-  const [isCorrect, setIsCorrect] = useState<boolean | null>(null)
-  const [gameOver, setGameOver] = useState(false)
-  const [words, setWords] = useState<Word[]>([])
-  const { speak, isSpeaking } = useSpeech()
-  const [character, setCharacter] = useState<CharacterStyleType>(
-      {name:Characters[0].name,
-        value: Characters[0].styles[0].id.toString(),
-        word: Characters[0].word
-      })
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [score, setScore] = useState(0);
+  const [lives, setLives] = useState(3);
+  const [showResult, setShowResult] = useState(false);
+  const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
+  const [gameOver, setGameOver] = useState(false);
+  const [words, setWords] = useState<Word[]>([]);
+  const [character, setCharacter] = useState<CharacterStyleType>({
+    name: Characters[0].name,
+    value: Characters[0].styles[0].id.toString(),
+    word: Characters[0].word,
+  });
+  const { playAudio, isVoiceVoxActive } = useAudio();
 
   useEffect(() => {
     if (!categoryParam || !modeParam) {
-      router.push("/")
-      return
+      router.push("/");
+      return;
     }
 
     // Obtener todas las categorías (predefinidas + personalizadas)
-    const allCategories = getAllCategories()
-    const categoryWords = allCategories[categoryParam]
+    const allCategories = getAllCategories();
+    const categoryWords = allCategories[categoryParam];
 
     if (!categoryWords) {
-      router.push("/")
-      return
+      router.push("/");
+      return;
     }
 
     // Shuffle words
-    const shuffled = [...categoryWords].sort(() => Math.random() - 0.5)
-    setWords(shuffled)
+    const shuffled = [...categoryWords].sort(() => Math.random() - 0.5);
+    setWords(shuffled);
 
     // Load progress
-    const progress = getUserProgress()
-    const categoryProgress = progress[categoryParam] || {}
-    const modeProgress = categoryProgress[modeParam] || { score: 0 }
+    const progress = getUserProgress();
+    const categoryProgress = progress[categoryParam] || {};
+    const modeProgress = categoryProgress[modeParam] || { score: 0 };
 
-    setScore(modeProgress.score || 0)
-  }, [categoryParam, modeParam, router])
+    setScore(modeProgress.score || 0);
+  }, [categoryParam, modeParam, router]);
 
   const handleAnswer = async (isAnswerCorrect: boolean) => {
-    setIsCorrect(isAnswerCorrect)
-    setShowResult(true)
+    setIsCorrect(isAnswerCorrect);
+    setShowResult(true);
 
     if (isAnswerCorrect) {
-      setScore((prev) => prev + 10)
+      setScore((prev) => prev + 10);
       const correct_messages = [
         "正解です！",
         "合っています！",
         "その通りです！",
         "まるです！",
         "よくできました！",
-        "完璧です！"
+        "完璧です！",
       ];
-      const correct_audio = correct_messages[Math.floor(Math.random() * correct_messages.length)];
-      await playAudio(correct_audio, character.value)
+      const correct_audio =
+        correct_messages[Math.floor(Math.random() * correct_messages.length)];
+      await playAudio(correct_audio, character.value);
       //playCorrect()
 
       // Save progress only on correct answers
       if (categoryParam && modeParam) {
-        updateUserProgress(categoryParam, modeParam, 10)
+        updateUserProgress(categoryParam, modeParam, 10);
       }
     } else {
       const incorrect_messages = [
@@ -95,98 +94,64 @@ export default function StudyPage() {
         "違います！",
         "間違いです！",
         "残念、不正解です。",
-        "それは間違っています！"
+        "それは間違っています！",
       ];
-      const incorrect_audio = incorrect_messages[Math.floor(Math.random() * incorrect_messages.length)];
-      await playAudio(incorrect_audio, character.value)
+      const incorrect_audio =
+        incorrect_messages[
+          Math.floor(Math.random() * incorrect_messages.length)
+        ];
+      await playAudio(incorrect_audio, character.value);
       //playIncorrect()
       // No reducimos vidas aquí, lo haremos cuando el usuario vea la respuesta
     }
-  }
+  };
 
   const handleSeeAnswer = () => {
     // Reducir vidas solo cuando el usuario ve la respuesta
-    setLives((prev) => prev - 1)
+    setLives((prev) => prev - 1);
 
     if (lives <= 1) {
-      setGameOver(true)
+      setGameOver(true);
     }
-  }
+  };
 
   const handleNext = () => {
     if (currentIndex < words.length - 1 && !gameOver) {
-      setCurrentIndex((prev) => prev + 1)
-      setShowResult(false)
-      setIsCorrect(null)
+      setCurrentIndex((prev) => prev + 1);
+      setShowResult(false);
+      setIsCorrect(null);
     } else {
-      setGameOver(true)
+      setGameOver(true);
     }
-  }
+  };
 
   const handleRestart = () => {
-    setCurrentIndex(0)
-    setLives(3)
-    setGameOver(false)
-    setShowResult(false)
-    setIsCorrect(null)
+    setCurrentIndex(0);
+    setLives(3);
+    setGameOver(false);
+    setShowResult(false);
+    setIsCorrect(null);
 
     // Shuffle words again
-    const shuffled = [...words].sort(() => Math.random() - 0.5)
-    setWords(shuffled)
-  }
+    const shuffled = [...words].sort(() => Math.random() - 0.5);
+    setWords(shuffled);
+  };
 
   const handleBackToDashboard = () => {
-    router.push("/")
-  }
-
-    // 音声再生
-const playAudio = async (text: string, speaker: string) => {
-  console.log("star playing:" + text);
-  try {
-    // 音声取得
-    console.log("version");
-        const { data: version } = await axios.get('/api/version');
-        console.log("version:", version);
-        console.log("await starting");
-    const responseAudio = await axios.post('/api/audio', {
-      text,
-      speaker,
-    })
-    console.log("await end wit data:", responseAudio);
-
-    // Base64形式で取得
-    const base64Audio = responseAudio?.data?.response
-    // Bufferに変換
-    const byteArray = Buffer.from(base64Audio, 'base64')
-    // Blobに変換
-    const audioBlob = new Blob([byteArray], { type: 'audio/x-wav' })
-    // URLに変換
-    const audioUrl = URL.createObjectURL(audioBlob)
-    // 音声作成
-    const audio = new Audio(audioUrl)
-    // 音量[0-1]設定
-    audio.volume = 1
-    // 再生
-    console.log("star playing");
-    audio.play()
-    console.log("end playing");
-  } catch (e) {
-    console.error(e)
-    speak(text);
-  }
-}
+    router.push("/");
+  };
 
   if (words.length === 0) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <p>Cargando...</p>
       </div>
-    )
+    );
   }
 
-  const currentWord = words[currentIndex]
-  const progress = (currentIndex / words.length) * 100
-  const mode = Number.parseInt(modeParam || "0")
+  const currentWord = words[currentIndex];
+  const progress = (currentIndex / words.length) * 100;
+  const mode = Number.parseInt(modeParam || "0");
 
   return (
     <div className="min-h-screen flex flex-col p-4 bg-gradient-to-br from-background to-background/90">
@@ -201,7 +166,7 @@ const playAudio = async (text: string, speaker: string) => {
       <ProgressBar progress={progress} />
 
       <div className="flex-1 flex flex-col items-center justify-center">
-      <Main handlesetCharacter={setCharacter}/>
+        <Main handlesetCharacter={setCharacter} />
         <motion.div
           key={currentIndex}
           initial={{ opacity: 0, x: 20 }}
@@ -236,5 +201,5 @@ const playAudio = async (text: string, speaker: string) => {
         </motion.div>
       </div>
     </div>
-  )
+  );
 }

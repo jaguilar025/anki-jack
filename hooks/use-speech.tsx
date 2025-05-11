@@ -3,7 +3,7 @@
 import { useState, useCallback, useEffect } from "react"
 
 export function useSpeech() {
-  const [isSpeaking, setIsSpeaking] = useState(false)
+  const [isLocalSpeaking, setIsSpeaking] = useState(false)
   const [isSupported, setIsSupported] = useState(false)
 
   useEffect(() => {
@@ -30,5 +30,5 @@ export function useSpeech() {
     [isSupported],
   )
 
-  return { speak, isSpeaking, isSupported }
+  return { speak, isLocalSpeaking, isSupported }
 }
