@@ -36,7 +36,7 @@ export function MessageBubble({ message, character }: MessageBubbleProps) {
         console.log("version");
         const { data: version } = await axios.get('/api/version');
         console.log("version:", version);
-        console.log("await start");
+        console.log("await starting");
         const responseAudio = await axios.post('/api/audio', {
           text,
           speaker,
