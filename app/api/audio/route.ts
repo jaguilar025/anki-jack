@@ -32,17 +32,3 @@ export async function POST(req: NextRequest) {
     return NextResponse.error()
   }
 }
-
-export async function GET(route: String) {
-  try {
-
-    const responseQuery = await axios.get(
-      `${process.env.VOICEVOX_URL}${route}`
-    )
-
-    return NextResponse.json({ responseQuery })
-  } catch (error) {
-    console.log('error', error)
-    return NextResponse.error()
-  }
-}

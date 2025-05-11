@@ -9,7 +9,7 @@ COPY . .
 
 
 ENV OPENAI_API_KEY=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
-ENV VOICEVOX_URL=http://8.17.147.154:10029
+ENV VOICEVOX_URL=http://206.168.80.7:20014
 
 # Instala las dependencias
 RUN npm install --force
@@ -22,3 +22,5 @@ EXPOSE 3000
 
 # Inicia la aplicación
 CMD ["npm", "start"]
+FROM voicevox/voicevox_engine:nvidia-ubuntu20.04-latest
+CMD ["gosu", "user", "/opt/python/bin/python3", "./run.py", "--voicelib_dir", "/opt/voicevox_core/", "--runtime_dir", "/opt/onnxruntime/lib", "--host", "0.0.0.0", "--use_gpu", "--allow_origin", "https://anki-jack.vercel.app,http://localhost:3000", "--cors_policy_mode", "all"]

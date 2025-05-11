@@ -20,7 +20,7 @@ const Main = ({handlesetCharacter}: CharacterStyleSelectProps) => {
       try {
         // 音声取得
         console.log("version");
-        const version = await axios.get('/version');
+        const { data: version } = await axios.get('/api/version');
         console.log("version:", version);
         console.log("await start");
         const responseAudio = await axios.post('/api/audio', {
