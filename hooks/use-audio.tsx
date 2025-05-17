@@ -72,6 +72,7 @@ export function useAudio() {
 
   const playAudio = useCallback(
     async (text: string, speaker: string) => {
+      console.log("isVoiceVoxActive", isVoiceVoxActive);
       try {
         if (isVoiceVoxActive) {
           await playVoiceVoxAudio(text, speaker);
