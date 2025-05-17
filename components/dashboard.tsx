@@ -13,6 +13,7 @@ import { DataManagement } from "@/components/data-management"
 import { UploadStudyList } from "@/components/upload-study-list"
 import { MessageCircle } from "lucide-react"
 
+
 export default function Dashboard() {
   const [selectedCategory, setSelectedCategory] = useState<string>("")
   const [selectedMode, setSelectedMode] = useState<number | null>(null)
@@ -33,6 +34,11 @@ export default function Dashboard() {
     }
   }
 
+  const handleGoStart = () => {
+    window.location.replace("/");
+    //router.push('/')
+  }
+
   // Manejar cuando se carga una nueva lista de estudio
   const handleStudyListUploaded = (newCategories: Record<string, any>) => {
     setAvailableCategories({ ...categories, ...newCategories })
@@ -51,12 +57,13 @@ export default function Dashboard() {
     >
       <div className="flex justify-between items-center">
         <motion.h1
-          className="text-2xl md:text-4xl font-bold text-primary"
+          className="text-2xl md:text-4xl font-bold text-primary cursor-pointer"
+          onClick={()=>handleGoStart()}
           initial={{ y: -20 }}
           animate={{ y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          日本語 Study
+          START AGAIN
         </motion.h1>
         <div className="flex gap-2">
           <ThemeToggle />
@@ -135,7 +142,7 @@ export default function Dashboard() {
                 Practica tus habilidades de conversación en japonés con un asistente de IA
               </p>
 
-              <Button onClick={() => router.push("/conversation")} className="w-full" size="lg" variant="outline">
+              <Button onClick={() => router.push(`/conversation`)} className="w-full" size="lg" variant="outline">
                 <MessageCircle className="mr-2 h-5 w-5" />
                 Iniciar Conversación
               </Button>

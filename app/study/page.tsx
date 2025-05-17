@@ -12,10 +12,15 @@ import { getUserProgress, updateUserProgress } from "@/lib/storage";
 import type { Word } from "@/lib/types";
 import { ScoreDisplay } from "@/components/score-display";
 
-import Main from "@/components/voicevox/main";
+//import Main from "@/components/voicevox/main";
 import { CharacterStyleType } from "@/components/voicevox/types";
 import { Characters } from "@/components/voicevox/config";
 import { useAudio } from "@/hooks/use-audio";
+
+import voices from "@/lib/voices.json";
+
+const items = voices;
+
 
 export default function StudyPage() {
   const searchParams = useSearchParams();
@@ -36,11 +41,24 @@ export default function StudyPage() {
     value: Characters[0].styles[0].id.toString(),
     word: Characters[0].word,
   });
-  const { playAudio, isVoiceVoxActive } = useAudio();
+
+  const { playAudio, stopAllAudio } = useAudio();
+
+
+  useEffect(() => {
+    const voiceID = localStorage.getItem('voiceID') || 1;
+      const character = items.filter(item=>+item.id_style_default === +voiceID)[0];
+      setCharacter({
+        name: character.title,
+        value: character.id_style_default.toString(),
+        word: character.word
+      });
+    }, [items]);
 
   useEffect(() => {
     if (!categoryParam || !modeParam) {
-      router.push("/");
+      stopAllAudio();
+      router.push("/main");
       return;
     }
 
@@ -49,7 +67,8 @@ export default function StudyPage() {
     const categoryWords = allCategories[categoryParam];
 
     if (!categoryWords) {
-      router.push("/");
+      stopAllAudio();
+      router.push("/main");
       return;
     }
 
@@ -81,7 +100,7 @@ export default function StudyPage() {
       ];
       const correct_audio =
         correct_messages[Math.floor(Math.random() * correct_messages.length)];
-      await playAudio(correct_audio, character.value);
+      await playAudio(correct_audio, character?.value.toString());
       //playCorrect()
 
       // Save progress only on correct answers
@@ -100,7 +119,7 @@ export default function StudyPage() {
         incorrect_messages[
           Math.floor(Math.random() * incorrect_messages.length)
         ];
-      await playAudio(incorrect_audio, character.value);
+      await playAudio(incorrect_audio, character?.value.toString());
       //playIncorrect()
       // No reducimos vidas aquí, lo haremos cuando el usuario vea la respuesta
     }
@@ -138,7 +157,8 @@ export default function StudyPage() {
   };
 
   const handleBackToDashboard = () => {
-    router.push("/");
+    stopAllAudio();
+    router.push("/main");
   };
 
   if (words.length === 0) {
@@ -166,7 +186,7 @@ export default function StudyPage() {
       <ProgressBar progress={progress} />
 
       <div className="flex-1 flex flex-col items-center justify-center">
-        <Main handlesetCharacter={setCharacter} />
+        {/*<Main handlesetCharacter={setCharacter} />*/}
         <motion.div
           key={currentIndex}
           initial={{ opacity: 0, x: 20 }}

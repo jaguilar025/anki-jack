@@ -17,8 +17,13 @@ import {
 import { motion } from "framer-motion";
 import { CharacterStyleType } from "@/components/voicevox/types";
 import { Characters } from "@/components/voicevox/config";
-import Main from "@/components/voicevox/main";
+//import Main from "@/components/voicevox/main";
 import { useAudio } from "@/hooks/use-audio";
+
+import voices from "@/lib/voices.json";
+
+const items = voices;
+
 
 type Message = {
   role: "user" | "assistant";
@@ -40,12 +45,23 @@ export default function ConversationPage() {
     word: Characters[0].word,
   });
 
-  const { playAudio, isVoiceVoxActive } = useAudio();
+  const { playAudio, stopAllAudio } = useAudio();
+
 
   // Scroll to bottom when messages change
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
+
+  useEffect(() => {
+    const voiceID = localStorage.getItem('voiceID') || 1;
+    const character = items.filter(item=>+item.id_style_default === +voiceID)[0];
+    setCharacter({
+      name: character.title,
+      value: character.id_style_default.toString(),
+      word: character.word
+    });
+  }, [items]);
 
   // Start conversation when level is selected
   const startConversation = async () => {
@@ -212,7 +228,10 @@ export default function ConversationPage() {
   return (
     <div className="flex flex-col h-screen bg-gradient-to-br from-background to-background/90">
       <header className="p-4 border-b flex items-center justify-between">
-        <Button variant="ghost" onClick={() => router.push("/")}>
+        <Button variant="ghost" onClick={() => {
+          stopAllAudio();
+          router.push("/main");
+          }}>
           <ArrowLeft className="mr-2 h-4 w-4" />
           Volver
         </Button>
@@ -248,7 +267,7 @@ export default function ConversationPage() {
                     <SelectItem value="advanced">Avanzado</SelectItem>
                   </SelectContent>
                 </Select>
-                <Main handlesetCharacter={setCharacter} />
+                {/*<Main handlesetCharacter={setCharacter} />*/}
               </div>
 
               <Button

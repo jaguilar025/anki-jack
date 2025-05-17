@@ -8,6 +8,7 @@ import StyleSelect from "./style-select";
 import { CharacterStyleSelectProps } from "./types";
 import { useAudio } from "@/hooks/use-audio";
 
+
 // メインコンポーネント
 const Main = ({ handlesetCharacter }: CharacterStyleSelectProps) => {
   const [character, setCharacter] = useState<CharacterType>(Characters[0]);
