@@ -43,17 +43,17 @@ export default function StudyPage() {
   });
 
   const { playAudio, stopAllAudio } = useAudio();
-  const voiceID = localStorage.getItem('voiceID') || 1;
 
 
   useEffect(() => {
+    const voiceID = localStorage.getItem('voiceID') || 1;
       const character = items.filter(item=>+item.id_style_default === +voiceID)[0];
       setCharacter({
         name: character.title,
         value: character.id_style_default.toString(),
         word: character.word
       });
-    }, [voiceID, items]);
+    }, [items]);
 
   useEffect(() => {
     if (!categoryParam || !modeParam) {
