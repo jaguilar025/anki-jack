@@ -4,7 +4,6 @@ import { useEffect, useRef, useState } from 'react';
 import { mat4, quat, vec2, vec3, vec4 } from 'gl-matrix';
 import { SquareArrowOutUpRight } from 'lucide-react';
 import { useAudio } from "@/hooks/use-audio";
-import { Characters } from "@/lib/characters";
 
 const discVertShaderSource = `#version 300 es
 
@@ -942,10 +941,12 @@ export default function InfiniteMenu({ items = [] }) {
   const [hasLoggedItem, setHasLoggedItem] = useState(false);
   const [hasLoggedItemFirstTime, setHasLoggedItemFirstTime] = useState(false);
 
-  const { playAudio, isVoiceVoxActive } = useAudio();
+  const { playAudio } = useAudio();
+
 
   const handleSelectedItem = async (item) => {
-    console.log('Active item on stop:', item);
+    //console.log('Active item on stop:', item);
+
     await playAudio(
         item.word,
         item.id_style_default.toString()

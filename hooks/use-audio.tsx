@@ -4,8 +4,10 @@ import { useEffect, useState, useCallback, useMemo } from "react";
 import { useSpeech } from "@/hooks/use-speech";
 import axios from "axios";
 
+let voiceVoxStatus = false;
+
 export function useAudio() {
-  const [isVoiceVoxActive, setVoiceVoxStatus] = useState<boolean>(false);
+  //const [isVoiceVoxActive, setVoiceVoxStatus] = useState<boolean>(false);
   const [isVoiceVoxSpeaking, setVoiceVoxSpeaking] = useState<boolean>(false);
 
   const { speak, isLocalSpeaking } = useSpeech();
@@ -21,10 +23,13 @@ export function useAudio() {
   const veryfyVoiceVoxStatus = async () => {
     try {
       const { data: version } = await axios.get("/api/version");
-      setVoiceVoxStatus(version === "latest");
+      //console.log("version is true:", version === "latest")
+      version === "latest" && (voiceVoxStatus = true);
+      //setVoiceVoxStatus(version === "latest");
     } catch (e) {
       console.error(e);
-      setVoiceVoxStatus(false);
+      voiceVoxStatus = false;
+      //setVoiceVoxStatus(false);
     }
   };
 
@@ -72,19 +77,23 @@ export function useAudio() {
 
   const playAudio = useCallback(
     async (text: string, speaker: string) => {
-      console.log("isVoiceVoxActive", isVoiceVoxActive);
+      //console.log("isVoiceVoxActive", voiceVoxStatus);
       try {
-        if (isVoiceVoxActive) {
+        if (voiceVoxStatus) {
+        
+        
+          //await axios.get("/api/version")
           await playVoiceVoxAudio(text, speaker);
         } else {
           speak(text);
         }
       } catch (e) {
         console.error("Error in playAudio:", e);
+        speak(text);
       }
     },
-    [isVoiceVoxActive, playVoiceVoxAudio, speak]
+    [voiceVoxStatus, playVoiceVoxAudio, speak]
   );
 
-  return { playAudio, isVoiceVoxActive, isSpeaking };
+  return { playAudio, voiceVoxStatus, isSpeaking, veryfyVoiceVoxStatus };
 }
