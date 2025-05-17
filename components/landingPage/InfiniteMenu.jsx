@@ -945,12 +945,11 @@ export default function InfiniteMenu({ items = [] }) {
 
 
   const handleSelectedItem = async (item) => {
-    //console.log('Active item on stop:', item);
-
     await playAudio(
         item.word,
         item.id_style_default.toString()
       );
+    localStorage.setItem('voiceID', item.id_style_default.toString());
   }
 
   useEffect(() => {

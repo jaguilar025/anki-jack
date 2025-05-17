@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useCallback, useMemo } from "react";
+import { useEffect, useState, useCallback, useMemo, useRef } from "react";
 import { useSpeech } from "@/hooks/use-speech";
 import axios from "axios";
 
@@ -9,11 +9,33 @@ let voiceVoxStatus = false;
 export function useAudio() {
   //const [isVoiceVoxActive, setVoiceVoxStatus] = useState<boolean>(false);
   const [isVoiceVoxSpeaking, setVoiceVoxSpeaking] = useState<boolean>(false);
+  const currentAudioRef = useRef<HTMLAudioElement | null>(null);
+  const audioUrlsRef = useRef<Set<string>>(new Set());
 
   const { speak, isLocalSpeaking } = useSpeech();
 
   useEffect(() => {
     veryfyVoiceVoxStatus();
+    // Limpieza al desmontar el componente
+    return () => {
+      stopAllAudio();
+    };
+  }, []);
+
+  const stopAllAudio = useCallback(() => {
+    if (currentAudioRef.current) {
+      currentAudioRef.current.pause();
+      currentAudioRef.current.currentTime = 0;
+      currentAudioRef.current = null;
+    }
+    
+    // Limpiar URLs de objetos creados
+    audioUrlsRef.current.forEach(url => {
+      URL.revokeObjectURL(url);
+    });
+    audioUrlsRef.current.clear();
+    
+    setVoiceVoxSpeaking(false);
   }, []);
 
   const isSpeaking = useMemo(() => {
@@ -35,6 +57,12 @@ export function useAudio() {
 
   const playVoiceVoxAudio = useCallback(
     async (text: string, speaker: string) => {
+    
+      // Detener cualquier audio previo
+    stopAllAudio();
+
+    try {
+
       const responseAudio = await axios.post("/api/audio", {
         text,
         speaker,
@@ -47,6 +75,10 @@ export function useAudio() {
       const audioBlob = new Blob([byteArray], { type: "audio/x-wav" });
       // URLに変換
       const audioUrl = URL.createObjectURL(audioBlob);
+
+      audioUrlsRef.current.add(audioUrl);
+
+
       // 音声作成
       const audio = new Audio(audioUrl);
       // 音量[0-1]設定
@@ -57,22 +89,30 @@ export function useAudio() {
 
       // Detectar cuando el audio termina
       audio.onended = () => {
-        setVoiceVoxSpeaking(false);
-        URL.revokeObjectURL(audioUrl); // Liberar recursos
-      };
+          setVoiceVoxSpeaking(false);
+          URL.revokeObjectURL(audioUrl);
+          audioUrlsRef.current.delete(audioUrl);
+          currentAudioRef.current = null;
+        };
 
       // Manejar errores de reproducción
       audio.onerror = () => {
         setVoiceVoxSpeaking(false);
-        URL.revokeObjectURL(audioUrl);
-        console.error("Error playing audio");
-      };
+          URL.revokeObjectURL(audioUrl);
+          audioUrlsRef.current.delete(audioUrl);
+          currentAudioRef.current = null;
+          console.error("Error playing audio");
+        };
 
       // 再生
       await audio.play();
       return audio;
+    } catch (error) {
+      console.error("Error in playVoiceVoxAudio:", error);
+      throw error;
+    }
     },
-    []
+    [stopAllAudio]
   );
 
   const playAudio = useCallback(
@@ -95,5 +135,5 @@ export function useAudio() {
     [voiceVoxStatus, playVoiceVoxAudio, speak]
   );
 
-  return { playAudio, voiceVoxStatus, isSpeaking, veryfyVoiceVoxStatus };
+  return { playAudio, stopAllAudio, voiceVoxStatus, isSpeaking, veryfyVoiceVoxStatus };
 }
