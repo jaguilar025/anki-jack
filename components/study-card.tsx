@@ -59,6 +59,30 @@ export function StudyCard({
     }
   }, [word, showResult, mode]);
 
+  function validateAnswer(answer: String, correctWord: String) {
+    // Normaliza ambas cadenas: elimina acentos/símbolos y convierte a minúsculas
+    const normalize = (str: String) => {
+      return str
+        .normalize("NFD") // Separa caracteres y diacríticos (ej. "é" -> "e" + ´)
+        .replace(/[\u0300-\u036f]/g, "") // Elimina diacríticos
+        .toLowerCase()
+        .trim();
+    };
+  
+    const normalizedAnswer = normalize(answer);
+    const normalizedCorrect = normalize(correctWord);
+  
+    // Valida que:
+    // 1. El answer no esté vacío.
+    // 2. Si el correctWord tiene más de 3 caracteres, el answer debe tener al menos 3.
+    // 3. El normalizedCorrect incluya normalizedAnswer.
+    return (
+      normalizedAnswer !== "" &&
+      (normalizedCorrect.length <= 3 || normalizedAnswer.length >= 3) &&
+      normalizedCorrect.includes(normalizedAnswer)
+    );
+  }
+
   // Modificar la función handleSubmit para que no reinicie el estado cuando la respuesta es incorrecta
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -86,6 +110,9 @@ export function StudyCard({
         isAnswerCorrect =
           answer.trim().toLowerCase() === word.japanese_advance.toLowerCase() ||
           answer.trim().toLowerCase() === word.japanese_basic.toLowerCase();
+        break;
+      case 3: // Translation inverted
+        isAnswerCorrect = validateAnswer(answer, word.spanish)
         break;
     }
 
@@ -171,6 +198,39 @@ export function StudyCard({
             </p>
           </div>
         );
+      case 3: // Translation inverted
+      return (
+        <div className="flex flex-col items-center gap-4">
+          <div className="flex items-center gap-2 mb-2">
+            <Switch
+              id="show-kana"
+              checked={showKana}
+              onCheckedChange={setShowKana}
+            />
+            <Label htmlFor="show-kana">Mostrar kana</Label>
+          </div>
+
+          <div className="text-center">
+            <h3 className="japanese-text text-2xl font-bold mb-2">
+              {showKana ? word.japanese_basic : word.japanese_advance}
+            </h3>
+            <Button
+              type="button"
+              variant="ghost"
+              size="sm"
+              onClick={handlePlayAudio}
+              className="mt-2"
+            >
+              <Volume2
+                className={`h-4 w-4 mr-1 ${
+                  isSpeaking ? "text-primary animate-pulse" : ""
+                }`}
+              />
+              Escuchar
+            </Button>
+          </div>
+        </div>
+      );
     }
   };
 

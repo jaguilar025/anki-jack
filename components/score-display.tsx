@@ -20,7 +20,7 @@ export function ScoreDisplay({ score, lives }: ScoreDisplayProps) {
         Puntos: {score}
       </motion.div>
       <div className="flex">
-        {Array.from({ length: 3 }).map((_, i) => (
+        {Array.from({ length: lives }).map((_, i) => (
           <motion.div key={i} initial={{ opacity: 1 }} animate={{ opacity: i < lives ? 1 : 0.3 }} className="text-lg">
             ⭐
           </motion.div>
