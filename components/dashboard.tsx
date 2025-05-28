@@ -117,6 +117,13 @@ export default function Dashboard() {
                   isSelected={selectedMode === 2}
                   onClick={() => setSelectedMode(2)}
                 />
+                <ModeCard
+                  title="Traducción"
+                  description="Traduce del japonés al español"
+                  icon="😌"
+                  isSelected={selectedMode === 3}
+                  onClick={() => setSelectedMode(3)}
+                />
               </div>
             </div>
 
