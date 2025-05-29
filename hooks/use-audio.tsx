@@ -120,8 +120,6 @@ export function useAudio() {
       //console.log("isVoiceVoxActive", voiceVoxStatus);
       try {
         if (voiceVoxStatus) {
-        
-        
           //await axios.get("/api/version")
           await playVoiceVoxAudio(text, speaker);
         } else {

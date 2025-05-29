@@ -23,6 +23,7 @@ export interface CharacterStyleType {
     name: string;
     value: string;
     word?: string; // Opcional, para mantener compatibilidad con la frase que se reproduce
+    styles: Style[];
   }
 
 
