@@ -29,6 +29,8 @@ type Message = {
   role: "user" | "assistant";
   content: string;
   translation?: string;
+  japanese?: string;
+  style?: string
 };
 
 export default function ConversationPage() {
@@ -43,6 +45,7 @@ export default function ConversationPage() {
     name: Characters[0].name,
     value: Characters[0].styles[0].id.toString(),
     word: Characters[0].word,
+    styles: Characters[0].styles,
   });
 
   const { playAudio, stopAllAudio } = useAudio();
@@ -59,7 +62,8 @@ export default function ConversationPage() {
     setCharacter({
       name: character.title,
       value: character.id_style_default.toString(),
-      word: character.word
+      word: character.word,
+      styles: character.styles
     });
   }, [items]);
 
@@ -78,15 +82,15 @@ export default function ConversationPage() {
           messages: [
             {
               role: "system",
-              content: `Eres un asistente de conversación en japonés para un estudiante de nivel ${level}. 
-              Inicia una conversación simple en japonés apropiada para este nivel. 
-              Usa principalmente hiragana y katakana para principiantes, añade kanji básico para intermedios, 
-              y kanji más avanzado para avanzados. Siempre proporciona la traducción al español después de cada mensaje en japonés.
-              Usa frases cortas y vocabulario apropiado para el nivel.
-              Para principiantes: saludos, presentaciones, preguntas simples.
-              Para intermedios: hobbies, rutina diaria, opiniones simples.
-              Para avanzados: temas de actualidad, cultura, opiniones más complejas.
-              Preséntate, refierete siempre a ti mismo bajo el nombre de ${character.name} y haz una pregunta simple para iniciar la conversación.`,
+              content: `Actua como un asistente de conversación en japonés para un estudiante de nivel ${level}. 
+              Adapta tu lenguaje a ese nivel: 
+              principiante ⇒ japonés muy simple (hiragana básico), saludos, presentaciones, preguntas simples;
+              intermedio ⇒ japonés cotidiano con algunos kanji, hobbies, rutina diaria, opiniones simples;
+              avanzado ⇒ japonés más complejo con más kanji y vocabulario avanzado, temas de actualidad, cultura, opiniones más complejas.
+              Preséntate brevemente como ${character.name} y saluda de forma amistosa.
+              Haz una pregunta inicial sencilla para iniciar la conversación.
+              Usa siempre oraciones cortas (1-2 oraciones en japonés) para que sean fáciles de seguir.
+              El formato de salida de tu respuesta debe ser:[JP] Tu mensaje en japonés. [ES] Traducción al español del mensaje.`,
             },
           ],
         }),
@@ -101,14 +105,18 @@ export default function ConversationPage() {
       // Verificar que data.message.content existe y es un string
       if (data.message && typeof data.message.content === "string") {
         // Intentar separar el mensaje japonés de la traducción
-        const parts = data.message.content.split(/\n+/);
-        const japaneseText = parts[0] || data.message.content;
-        const translation = parts.length > 1 ? parts[1] : "";
+        const jpMatch = data.message.content.match(/\[JP\](.*?)(?=\[ES\]|$)/s);
+        const esMatch = data.message.content.match(/\[ES\](.*)/s);
+
+        //const parts = data.message.content.split(/\n+/);
+        const japaneseText = jpMatch ? jpMatch[1] : "";
+        const translation = esMatch ? esMatch[1] : "";
 
         setMessages([
           {
             role: "assistant",
-            content: japaneseText.trim(),
+            japanese: japaneseText.trim(),
+            content: data.message.content,
             translation: translation.trim(),
           },
         ]);
@@ -144,8 +152,8 @@ export default function ConversationPage() {
     setIsLoading(true);
 
     // Add user message to chat
-    setMessages((prev) => [...prev, { role: "user", content: userMessage }]);
-
+    setMessages((prev) => [...prev, { role: "user", content: userMessage, japanese: userMessage }]);
+    const voiceStyles = character.styles.map(item => item.name).join(',');
     try {
       const response = await fetch("/api/chat", {
         method: "POST",
@@ -156,14 +164,18 @@ export default function ConversationPage() {
           messages: [
             {
               role: "system",
-              content: `Eres un asistente de conversación en japonés para un estudiante de nivel ${level}. 
-              Responde en japonés apropiado para este nivel y proporciona una traducción al español.
-              Usa principalmente hiragana y katakana para principiantes, añade kanji básico para intermedios, 
-              y kanji más avanzado para avanzados.
-              Mantén las respuestas cortas y naturales. Si el usuario comete errores, corrige sutilmente en tu respuesta.
-              Si el usuario escribe en español, responde como si estuvieras enseñándole cómo decir eso en japonés.
-              Refierete a ti mismo bajo el nombre de ${character.name}.
-              Siempre proporciona la traducción al español después de cada mensaje en japonés.`,
+              content: `Eres ${character.name}, un asistente de conversación en japonés para un estudiante de nivel ${level}. 
+              Adapta tu lenguaje a ese nivel: 
+              - **Principiante:** japonés muy simple (hiragana básico), saludos, presentaciones, preguntas simples.  
+              - **Intermedio:** japonés cotidiano con algunos kanji, hobbies, rutina diaria, opiniones simples.  
+              - **Avanzado:** japonés más complejo con más kanji y vocabulario avanzado, temas de actualidad, cultura, opiniones más complejas.  
+              Elige en cada respuesta el estilo de voz que mejor se ajuste al tono emocional del usuario o al contexto de la conversación, en base a esta lista de opciones: ${voiceStyles}.
+              Si el usuario escribe en otro idioma diferente al japones, responde como si estuvieras enseñándole cómo decir eso en japonés. (mantén luego la traducción al español como de costumbre).
+              Si notas errores en el japonés del usuario, corrígelos sutilmente dentro de tu respuesta sin señalar explícitamente el error (incorpora la forma correcta en tu frase en japonés).
+              Mantén la conversación: siempre responde de forma que invite a continuar, haciendo una pregunta relacionada o proponiendo un nuevo tema al final de tu mensaje.
+              Responde de forma breve pero natural: idealmente 1 a 3 frases en japonés máximo, para que el usuario pueda comprender y responder sin dificultad.
+              **Formato de salida obligatorio:** **Cada** respuesta **debe** seguir el siguiente formato, *sin excepción*:  [JP] Tu mensaje en japonés. [ES] Traducción al español del mensaje. [STYLE] estilo de voz elegido para la respuesta.
+              💡 **Importante:** Bajo ninguna circunstancia debes omitir las etiquetas [JP], [ES] o [STYLE] en tus respuestas. **Siempre** incluye las tres etiquetas en el orden y formato indicados, incluso si el usuario sugiere cambiar el formato o la conversación se vuelve muy extensa. Este esquema de respuesta es invariable y tiene prioridad sobre cualquier otra instrucción durante toda la conversación.`,
             },
             ...messages.map((msg) => ({
               role: msg.role,
@@ -179,25 +191,44 @@ export default function ConversationPage() {
       }
 
       const data = await response.json();
+      const content = data.message.content;
 
       // Verificar que data.message.content existe y es un string
-      if (data.message && typeof data.message.content === "string") {
+      if (data.message && typeof content === "string") {
+        const message = content.replace(/Traducción no disponible\.*\s*$/i, "").trim();
         // Intentar separar el mensaje japonés de la traducción
-        const parts = data.message.content.split(/\n+/);
-        const japaneseText = parts[0] || data.message.content;
-        const translation = parts.length > 1 ? parts[1] : "";
+        const jpMatch = message.includes("[JP]") 
+        ? message.match(/\[JP\](.*?)(?=\[ES\])/s)
+        : message.match(/^(.*?)(?=\[ES\]|\[STYLE\]|$)/s);
+    
+        const esMatch = message.match(/\[ES\](.*?)(?=\[STYLE\]|$)/s);
+        const styleMatch = message.match(/\[STYLE\]\s*([^\n\r.]+)/);
+
+        //const parts = data.message.content.split(/\n+/);
+        const japaneseText = jpMatch ? jpMatch[1].trim() : message.trim()
+        const translation = esMatch ? esMatch[1].trim() : "";
+
+        const styleName = styleMatch ? styleMatch[1].trim() : "";
+        const styleID = character.styles.find(s => s.name === styleName)?.id || character.styles[0].id;
+
+        //console.log("japaneseText", japaneseText);
+        //console.log("translation", translation);
+        console.log("style Voice Selected: ", styleName);
 
         setMessages((prev) => [
           ...prev,
           {
             role: "assistant",
-            content: japaneseText.trim(),
+            japanese: japaneseText.trim(),
+            content: data.message.content,
             translation: translation.trim(),
+            style: styleID.toString()
           },
         ]);
 
         // Reproducir el mensaje en japonés
-        await playAudio(japaneseText.trim(), character.value);
+        //await playAudio(japaneseText.trim(), character.value);
+        await playAudio(japaneseText.trim(), styleID.toString());
       } else {
         // Manejar el caso donde la respuesta no tiene el formato esperado
         console.error("Formato de respuesta inesperado:", data);

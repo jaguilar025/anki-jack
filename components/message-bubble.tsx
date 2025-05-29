@@ -10,6 +10,8 @@ type Message = {
   role: "user" | "assistant";
   content: string;
   translation?: string;
+  japanese: string;
+  style?: string;
 };
 
 interface MessageBubbleProps {
@@ -24,7 +26,7 @@ export function MessageBubble({ message, character }: MessageBubbleProps) {
   const isAssistant = message.role === "assistant";
 
   const handleSpeak = async () => {
-    await playAudio(message.content, character.value);
+    await playAudio(message.japanese, message.style || character.value);
   };
 
   return (
@@ -39,7 +41,7 @@ export function MessageBubble({ message, character }: MessageBubbleProps) {
         <div className="flex flex-col gap-2">
           <div className="flex items-start gap-2">
             <p className="japanese-text text-sm md:text-base">
-              {message.content}
+              {message.japanese}
             </p>
 
             {isAssistant && (
