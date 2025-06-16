@@ -41,6 +41,10 @@ export default function Dashboard() {
     window.location.replace("/");
     //router.push('/')
   }
+  const handleGoDrawLens = () => {
+    router.push(`/draw-kanji`)
+  }
+  
 
   // Manejar cuando se carga una nueva lista de estudio
   const handleStudyListUploaded = (newCategories: Record<string, any>) => {
@@ -133,6 +137,13 @@ export default function Dashboard() {
                   icon="📷"
                   isSelected={selectedMode === 3}
                   onClick={() => handleGoLens()}
+                />
+                <ModeCard
+                  title="Kanji Lens"
+                  description="Dibuja kanjis"
+                  icon="✏️"
+                  isSelected={selectedMode === 3}
+                  onClick={() => handleGoDrawLens()}
                 />
               </div>
             </div>
