@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "def": "NODE_ENV=development node server.js"
   },
   "dependencies": {
     "@ai-sdk/openai": "latest",
@@ -53,11 +54,11 @@
     "gsap": "^3.13.0",
     "input-otp": "1.4.1",
     "lucide-react": "^0.454.0",
-    "next": "15.2.4",
+    "next": "^15.2.4",
     "next-themes": "latest",
-    "react": "^19",
+    "react": "^19.1.0",
     "react-day-picker": "^9.7.0",
-    "react-dom": "^19",
+    "react-dom": "^19.1.0",
     "react-hook-form": "^7.54.1",
     "react-resizable-panels": "^2.1.7",
     "react-select": "^5.10.1",

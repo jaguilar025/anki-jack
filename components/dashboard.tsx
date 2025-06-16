@@ -33,6 +33,9 @@ export default function Dashboard() {
       router.push(`/study?category=${selectedCategory}&mode=${selectedMode}`)
     }
   }
+  const handleGoLens = () => {
+    router.push(`/dict-lens`)
+  }
 
   const handleGoStart = () => {
     window.location.replace("/");
@@ -123,6 +126,13 @@ export default function Dashboard() {
                   icon="😌"
                   isSelected={selectedMode === 3}
                   onClick={() => setSelectedMode(3)}
+                />
+                <ModeCard
+                  title="Kanji Lens"
+                  description="Captura kanjis"
+                  icon="📷"
+                  isSelected={selectedMode === 3}
+                  onClick={() => handleGoLens()}
                 />
               </div>
             </div>
