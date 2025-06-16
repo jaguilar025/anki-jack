@@ -32,6 +32,8 @@ export async function POST(request) {
       maxTokens: 10,
     });
 
+    console.log("extractedKanji", extractedKanji);
+
     const trimmedKanji = extractedKanji?.trim();
 
     if (!trimmedKanji || trimmedKanji === "NOT_FOUND") {
