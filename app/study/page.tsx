@@ -146,7 +146,7 @@ export default function StudyPage() {
 
   const handleRestart = () => {
     setCurrentIndex(0);
-    setLives(10);
+    setLives(25);
     setGameOver(false);
     setShowResult(false);
     setIsCorrect(null);
