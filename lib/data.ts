@@ -2654,647 +2654,936 @@ export const categories: Category = {
   ],
 
   "Marugoto 7": [
-  { "japanese_advance": "まち", "japanese_basic": "まち", "spanish": "ciudad, pueblo" },
-  { "japanese_advance": "のりもの", "japanese_basic": "のりもの", "spanish": "vehículo" },
-  { "japanese_advance": "自転車", "japanese_basic": "じてんしゃ", "spanish": "bicicleta" },
-  { "japanese_advance": "バイク", "japanese_basic": "バイク", "spanish": "motocicleta" },
-  { "japanese_advance": "車", "japanese_basic": "くるま", "spanish": "auto" },
-  { "japanese_advance": "タクシー", "japanese_basic": "タクシー", "spanish": "taxi" },
-  { "japanese_advance": "バス", "japanese_basic": "バス", "spanish": "autobús" },
-  { "japanese_advance": "電車", "japanese_basic": "でんしゃ", "spanish": "tren" },
-  { "japanese_advance": "地下鉄", "japanese_basic": "ちかてつ", "spanish": "metro" },
-  { "japanese_advance": "モノレール", "japanese_basic": "モノレール", "spanish": "monorriel" },
-  { "japanese_advance": "新幹線", "japanese_basic": "しんかんせん", "spanish": "tren bala" },
-  { "japanese_advance": "飛行機", "japanese_basic": "ひこうき", "spanish": "avión" },
-  { "japanese_advance": "船", "japanese_basic": "ふね", "spanish": "barco" },
-  { "japanese_advance": "歩いて", "japanese_basic": "あるいて", "spanish": "a pie" },
-  { "japanese_advance": "救急車", "japanese_basic": "きゅうきゅうしゃ", "spanish": "ambulancia" },
-  { "japanese_advance": "パトカー", "japanese_basic": "パトカー", "spanish": "patrulla" },
-  { "japanese_advance": "〜に乗ります", "japanese_basic": "〜にのります", "spanish": "subir a" },
-  { "japanese_advance": "〜を降ります", "japanese_basic": "〜をおります", "spanish": "bajar de" },
-  { "japanese_advance": "〜で行きます", "japanese_basic": "〜でいきます", "spanish": "ir en" },
-  { "japanese_advance": "曲がります", "japanese_basic": "まがります", "spanish": "girar" },
-  { "japanese_advance": "止まります", "japanese_basic": "とまります", "spanish": "detenerse" },
-  { "japanese_advance": "歩きます", "japanese_basic": "あるきます", "spanish": "caminar" },
-  { "japanese_advance": "交通", "japanese_basic": "こうつう", "spanish": "tráfico" },
-  { "japanese_advance": "乗り場", "japanese_basic": "のりば", "spanish": "parada" },
-  { "japanese_advance": "駅", "japanese_basic": "えき", "spanish": "estación" },
-  { "japanese_advance": "空港", "japanese_basic": "くうこう", "spanish": "aeropuerto" },
-  { "japanese_advance": "入口", "japanese_basic": "いりぐち", "spanish": "entrada" },
-  { "japanese_advance": "出口", "japanese_basic": "でぐち", "spanish": "salida" },
-  { "japanese_advance": "北口", "japanese_basic": "きたぐち", "spanish": "salida norte" },
-  { "japanese_advance": "南口", "japanese_basic": "みなみぐち", "spanish": "salida sur" },
-  { "japanese_advance": "西口", "japanese_basic": "にしぐち", "spanish": "salida oeste" },
-  { "japanese_advance": "東口", "japanese_basic": "ひがしぐち", "spanish": "salida este" },
-  { "japanese_advance": "左", "japanese_basic": "ひだり", "spanish": "izquierda" },
-  { "japanese_advance": "右", "japanese_basic": "みぎ", "spanish": "derecha" },
-  { "japanese_advance": "まっすぐ", "japanese_basic": "まっすぐ", "spanish": "recto" },
-  { "japanese_advance": "駐車場", "japanese_basic": "ちゅうしゃじょう", "spanish": "estacionamiento" },
-  { "japanese_advance": "通り", "japanese_basic": "とおり", "spanish": "calle" },
-  { "japanese_advance": "信号", "japanese_basic": "しんごう", "spanish": "semáforo" },
-  { "japanese_advance": "道", "japanese_basic": "みち", "spanish": "camino" },
-  { "japanese_advance": "切符", "japanese_basic": "きっぷ", "spanish": "boleto" },
-  { "japanese_advance": "荷物", "japanese_basic": "にもつ", "spanish": "equipaje" },
-  { "japanese_advance": "地図", "japanese_basic": "ちず", "spanish": "mapa" },
-  { "japanese_advance": "運転手", "japanese_basic": "うんてんしゅ", "spanish": "conductor" },
-  { "japanese_advance": "駅員", "japanese_basic": "えきいん", "spanish": "empleado de estación" },
-  { "japanese_advance": "警察官", "japanese_basic": "けいさつかん", "spanish": "policía" },
-  { "japanese_advance": "近い", "japanese_basic": "ちかい", "spanish": "cerca" },
-  { "japanese_advance": "遠い", "japanese_basic": "とおい", "spanish": "lejos" },
-  { "japanese_advance": "速い", "japanese_basic": "はやい", "spanish": "rápido" },
-  { "japanese_advance": "遅い", "japanese_basic": "おそい", "spanish": "lento" },
-  { "japanese_advance": "便利（な）", "japanese_basic": "べんり（な）", "spanish": "conveniente" },
-  { "japanese_advance": "不便（な）", "japanese_basic": "ふべん（な）", "spanish": "inconveniente" },
-  { "japanese_advance": "安い", "japanese_basic": "やすい", "spanish": "barato" },
-  { "japanese_advance": "高い", "japanese_basic": "たかい", "spanish": "caro, alto" },
-  { "japanese_advance": "楽（な）", "japanese_basic": "らく（な）", "spanish": "fácil, cómodo" },
-  { "japanese_advance": "疲れます", "japanese_basic": "つかれます", "spanish": "cansarse" },
-  { "japanese_advance": "建物", "japanese_basic": "たてもの", "spanish": "edificio" },
-  { "japanese_advance": "場所", "japanese_basic": "ばしょ", "spanish": "lugar" },
-  { "japanese_advance": "お寺", "japanese_basic": "おてら", "spanish": "templo" },
-  { "japanese_advance": "神社", "japanese_basic": "じんじゃ", "spanish": "santuario" },
-  { "japanese_advance": "教会", "japanese_basic": "きょうかい", "spanish": "iglesia" },
-  { "japanese_advance": "モスク", "japanese_basic": "モスク", "spanish": "mezquita" },
-  { "japanese_advance": "学校", "japanese_basic": "がっこう", "spanish": "escuela" },
-  { "japanese_advance": "会社", "japanese_basic": "かいしゃ", "spanish": "empresa" },
-  { "japanese_advance": "工場", "japanese_basic": "こうじょう", "spanish": "fábrica" },
-  { "japanese_advance": "銀行", "japanese_basic": "ぎんこう", "spanish": "banco" },
-  { "japanese_advance": "郵便局", "japanese_basic": "ゆうびんきょく", "spanish": "oficina postal" },
-  { "japanese_advance": "交番", "japanese_basic": "こうばん", "spanish": "caseta policial" },
-  { "japanese_advance": "病院", "japanese_basic": "びょういん", "spanish": "hospital" },
-  { "japanese_advance": "ホテル", "japanese_basic": "ホテル", "spanish": "hotel" },
-  { "japanese_advance": "喫茶店", "japanese_basic": "きっさてん", "spanish": "cafetería" },
-  { "japanese_advance": "レストラン", "japanese_basic": "レストラン", "spanish": "restaurante" },
-  { "japanese_advance": "公園", "japanese_basic": "こうえん", "spanish": "parque" },
-  { "japanese_advance": "動物園", "japanese_basic": "どうぶつえん", "spanish": "zoológico" },
-  { "japanese_advance": "映画館", "japanese_basic": "えいがかん", "spanish": "cine" },
-  { "japanese_advance": "図書館", "japanese_basic": "としょかん", "spanish": "biblioteca" },
-  { "japanese_advance": "博物館", "japanese_basic": "はくぶつかん", "spanish": "museo" },
-  { "japanese_advance": "美術館", "japanese_basic": "びじゅつかん", "spanish": "museo de arte" },
-  { "japanese_advance": "大使館", "japanese_basic": "たいしかん", "spanish": "embajada" },
-  { "japanese_advance": "商店街", "japanese_basic": "しょうてんがい", "spanish": "zona comercial" },
-  { "japanese_advance": "コンビニ", "japanese_basic": "コンビニ", "spanish": "tienda de conveniencia" },
-  { "japanese_advance": "ショッピングセンター", "japanese_basic": "ショッピングセンター", "spanish": "centro comercial" },
-  { "japanese_advance": "デパート", "japanese_basic": "デパート", "spanish": "almacén" },
-  { "japanese_advance": "ビル", "japanese_basic": "ビル", "spanish": "edificio" },
-  { "japanese_advance": "営業時間", "japanese_basic": "えいぎょうじかん", "spanish": "horario laboral" },
-  { "japanese_advance": "祝日", "japanese_basic": "しゅくじつ", "spanish": "festivo" },
-  { "japanese_advance": "平日", "japanese_basic": "へいじつ", "spanish": "día hábil" },
-  { "japanese_advance": "定休日", "japanese_basic": "ていきゅうび", "spanish": "día de descanso" },
-  { "japanese_advance": "新しい", "japanese_basic": "あたらしい", "spanish": "nuevo" },
-  { "japanese_advance": "古い", "japanese_basic": "ふるい", "spanish": "viejo" },
-  { "japanese_advance": "大きい", "japanese_basic": "おおきい", "spanish": "grande" },
-  { "japanese_advance": "小さい", "japanese_basic": "ちいさい", "spanish": "pequeño" },
-  { "japanese_advance": "高い", "japanese_basic": "たかい", "spanish": "alto, caro" },
-  { "japanese_advance": "低い", "japanese_basic": "ひくい", "spanish": "bajo" },
-  { "japanese_advance": "安全（な）", "japanese_basic": "あんぜん（な）", "spanish": "seguro" },
-  { "japanese_advance": "危ない", "japanese_basic": "あぶない", "spanish": "peligroso" },
-  { "japanese_advance": "危険（な）", "japanese_basic": "きけん（な）", "spanish": "riesgoso" },
-  { "japanese_advance": "静か（な）", "japanese_basic": "しずか（な）", "spanish": "tranquilo" },
-  { "japanese_advance": "にぎやか（な）", "japanese_basic": "にぎやか（な）", "spanish": "animado" },
-  { "japanese_advance": "有名（な）", "japanese_basic": "ゆうめい（な）", "spanish": "famoso" },
-  { "japanese_advance": "混んでいます", "japanese_basic": "こんでいます", "spanish": "lleno, concurrido" }
-]
-,
-
+    {
+      japanese_advance: "まち",
+      japanese_basic: "まち",
+      spanish: "ciudad, pueblo",
+    },
+    {
+      japanese_advance: "のりもの",
+      japanese_basic: "のりもの",
+      spanish: "vehículo",
+    },
+    {
+      japanese_advance: "自転車",
+      japanese_basic: "じてんしゃ",
+      spanish: "bicicleta",
+    },
+    {
+      japanese_advance: "バイク",
+      japanese_basic: "バイク",
+      spanish: "motocicleta",
+    },
+    { japanese_advance: "車", japanese_basic: "くるま", spanish: "auto" },
+    {
+      japanese_advance: "タクシー",
+      japanese_basic: "タクシー",
+      spanish: "taxi",
+    },
+    { japanese_advance: "バス", japanese_basic: "バス", spanish: "autobús" },
+    { japanese_advance: "電車", japanese_basic: "でんしゃ", spanish: "tren" },
+    {
+      japanese_advance: "地下鉄",
+      japanese_basic: "ちかてつ",
+      spanish: "metro",
+    },
+    {
+      japanese_advance: "モノレール",
+      japanese_basic: "モノレール",
+      spanish: "monorriel",
+    },
+    {
+      japanese_advance: "新幹線",
+      japanese_basic: "しんかんせん",
+      spanish: "tren bala",
+    },
+    {
+      japanese_advance: "飛行機",
+      japanese_basic: "ひこうき",
+      spanish: "avión",
+    },
+    { japanese_advance: "船", japanese_basic: "ふね", spanish: "barco" },
+    {
+      japanese_advance: "歩いて",
+      japanese_basic: "あるいて",
+      spanish: "a pie",
+    },
+    {
+      japanese_advance: "救急車",
+      japanese_basic: "きゅうきゅうしゃ",
+      spanish: "ambulancia",
+    },
+    {
+      japanese_advance: "パトカー",
+      japanese_basic: "パトカー",
+      spanish: "patrulla",
+    },
+    {
+      japanese_advance: "〜に乗ります",
+      japanese_basic: "〜にのります",
+      spanish: "subir a",
+    },
+    {
+      japanese_advance: "〜を降ります",
+      japanese_basic: "〜をおります",
+      spanish: "bajar de",
+    },
+    {
+      japanese_advance: "〜で行きます",
+      japanese_basic: "〜でいきます",
+      spanish: "ir en",
+    },
+    {
+      japanese_advance: "曲がります",
+      japanese_basic: "まがります",
+      spanish: "girar",
+    },
+    {
+      japanese_advance: "止まります",
+      japanese_basic: "とまります",
+      spanish: "detenerse",
+    },
+    {
+      japanese_advance: "歩きます",
+      japanese_basic: "あるきます",
+      spanish: "caminar",
+    },
+    {
+      japanese_advance: "交通",
+      japanese_basic: "こうつう",
+      spanish: "tráfico",
+    },
+    { japanese_advance: "乗り場", japanese_basic: "のりば", spanish: "parada" },
+    { japanese_advance: "駅", japanese_basic: "えき", spanish: "estación" },
+    {
+      japanese_advance: "空港",
+      japanese_basic: "くうこう",
+      spanish: "aeropuerto",
+    },
+    {
+      japanese_advance: "入口",
+      japanese_basic: "いりぐち",
+      spanish: "entrada",
+    },
+    { japanese_advance: "出口", japanese_basic: "でぐち", spanish: "salida" },
+    {
+      japanese_advance: "北口",
+      japanese_basic: "きたぐち",
+      spanish: "salida norte",
+    },
+    {
+      japanese_advance: "南口",
+      japanese_basic: "みなみぐち",
+      spanish: "salida sur",
+    },
+    {
+      japanese_advance: "西口",
+      japanese_basic: "にしぐち",
+      spanish: "salida oeste",
+    },
+    {
+      japanese_advance: "東口",
+      japanese_basic: "ひがしぐち",
+      spanish: "salida este",
+    },
+    { japanese_advance: "左", japanese_basic: "ひだり", spanish: "izquierda" },
+    { japanese_advance: "右", japanese_basic: "みぎ", spanish: "derecha" },
+    {
+      japanese_advance: "まっすぐ",
+      japanese_basic: "まっすぐ",
+      spanish: "recto",
+    },
+    {
+      japanese_advance: "駐車場",
+      japanese_basic: "ちゅうしゃじょう",
+      spanish: "estacionamiento",
+    },
+    { japanese_advance: "通り", japanese_basic: "とおり", spanish: "calle" },
+    {
+      japanese_advance: "信号",
+      japanese_basic: "しんごう",
+      spanish: "semáforo",
+    },
+    { japanese_advance: "道", japanese_basic: "みち", spanish: "camino" },
+    { japanese_advance: "切符", japanese_basic: "きっぷ", spanish: "boleto" },
+    { japanese_advance: "荷物", japanese_basic: "にもつ", spanish: "equipaje" },
+    { japanese_advance: "地図", japanese_basic: "ちず", spanish: "mapa" },
+    {
+      japanese_advance: "運転手",
+      japanese_basic: "うんてんしゅ",
+      spanish: "conductor",
+    },
+    {
+      japanese_advance: "駅員",
+      japanese_basic: "えきいん",
+      spanish: "empleado de estación",
+    },
+    {
+      japanese_advance: "警察官",
+      japanese_basic: "けいさつかん",
+      spanish: "policía",
+    },
+    { japanese_advance: "近い", japanese_basic: "ちかい", spanish: "cerca" },
+    { japanese_advance: "遠い", japanese_basic: "とおい", spanish: "lejos" },
+    { japanese_advance: "速い", japanese_basic: "はやい", spanish: "rápido" },
+    { japanese_advance: "遅い", japanese_basic: "おそい", spanish: "lento" },
+    {
+      japanese_advance: "便利（な）",
+      japanese_basic: "べんり（な）",
+      spanish: "conveniente",
+    },
+    {
+      japanese_advance: "不便（な）",
+      japanese_basic: "ふべん（な）",
+      spanish: "inconveniente",
+    },
+    { japanese_advance: "安い", japanese_basic: "やすい", spanish: "barato" },
+    {
+      japanese_advance: "高い",
+      japanese_basic: "たかい",
+      spanish: "caro, alto",
+    },
+    {
+      japanese_advance: "楽（な）",
+      japanese_basic: "らく（な）",
+      spanish: "fácil, cómodo",
+    },
+    {
+      japanese_advance: "疲れます",
+      japanese_basic: "つかれます",
+      spanish: "cansarse",
+    },
+    {
+      japanese_advance: "建物",
+      japanese_basic: "たてもの",
+      spanish: "edificio",
+    },
+    { japanese_advance: "場所", japanese_basic: "ばしょ", spanish: "lugar" },
+    { japanese_advance: "お寺", japanese_basic: "おてら", spanish: "templo" },
+    {
+      japanese_advance: "神社",
+      japanese_basic: "じんじゃ",
+      spanish: "santuario",
+    },
+    {
+      japanese_advance: "教会",
+      japanese_basic: "きょうかい",
+      spanish: "iglesia",
+    },
+    {
+      japanese_advance: "モスク",
+      japanese_basic: "モスク",
+      spanish: "mezquita",
+    },
+    {
+      japanese_advance: "学校",
+      japanese_basic: "がっこう",
+      spanish: "escuela",
+    },
+    {
+      japanese_advance: "会社",
+      japanese_basic: "かいしゃ",
+      spanish: "empresa",
+    },
+    {
+      japanese_advance: "工場",
+      japanese_basic: "こうじょう",
+      spanish: "fábrica",
+    },
+    { japanese_advance: "銀行", japanese_basic: "ぎんこう", spanish: "banco" },
+    {
+      japanese_advance: "郵便局",
+      japanese_basic: "ゆうびんきょく",
+      spanish: "oficina postal",
+    },
+    {
+      japanese_advance: "交番",
+      japanese_basic: "こうばん",
+      spanish: "caseta policial",
+    },
+    {
+      japanese_advance: "病院",
+      japanese_basic: "びょういん",
+      spanish: "hospital",
+    },
+    { japanese_advance: "ホテル", japanese_basic: "ホテル", spanish: "hotel" },
+    {
+      japanese_advance: "喫茶店",
+      japanese_basic: "きっさてん",
+      spanish: "cafetería",
+    },
+    {
+      japanese_advance: "レストラン",
+      japanese_basic: "レストラン",
+      spanish: "restaurante",
+    },
+    { japanese_advance: "公園", japanese_basic: "こうえん", spanish: "parque" },
+    {
+      japanese_advance: "動物園",
+      japanese_basic: "どうぶつえん",
+      spanish: "zoológico",
+    },
+    {
+      japanese_advance: "映画館",
+      japanese_basic: "えいがかん",
+      spanish: "cine",
+    },
+    {
+      japanese_advance: "図書館",
+      japanese_basic: "としょかん",
+      spanish: "biblioteca",
+    },
+    {
+      japanese_advance: "博物館",
+      japanese_basic: "はくぶつかん",
+      spanish: "museo",
+    },
+    {
+      japanese_advance: "美術館",
+      japanese_basic: "びじゅつかん",
+      spanish: "museo de arte",
+    },
+    {
+      japanese_advance: "大使館",
+      japanese_basic: "たいしかん",
+      spanish: "embajada",
+    },
+    {
+      japanese_advance: "商店街",
+      japanese_basic: "しょうてんがい",
+      spanish: "zona comercial",
+    },
+    {
+      japanese_advance: "コンビニ",
+      japanese_basic: "コンビニ",
+      spanish: "tienda de conveniencia",
+    },
+    {
+      japanese_advance: "ショッピングセンター",
+      japanese_basic: "ショッピングセンター",
+      spanish: "centro comercial",
+    },
+    {
+      japanese_advance: "デパート",
+      japanese_basic: "デパート",
+      spanish: "almacén",
+    },
+    { japanese_advance: "ビル", japanese_basic: "ビル", spanish: "edificio" },
+    {
+      japanese_advance: "営業時間",
+      japanese_basic: "えいぎょうじかん",
+      spanish: "horario laboral",
+    },
+    {
+      japanese_advance: "祝日",
+      japanese_basic: "しゅくじつ",
+      spanish: "festivo",
+    },
+    {
+      japanese_advance: "平日",
+      japanese_basic: "へいじつ",
+      spanish: "día hábil",
+    },
+    {
+      japanese_advance: "定休日",
+      japanese_basic: "ていきゅうび",
+      spanish: "día de descanso",
+    },
+    {
+      japanese_advance: "新しい",
+      japanese_basic: "あたらしい",
+      spanish: "nuevo",
+    },
+    { japanese_advance: "古い", japanese_basic: "ふるい", spanish: "viejo" },
+    {
+      japanese_advance: "大きい",
+      japanese_basic: "おおきい",
+      spanish: "grande",
+    },
+    {
+      japanese_advance: "小さい",
+      japanese_basic: "ちいさい",
+      spanish: "pequeño",
+    },
+    {
+      japanese_advance: "高い",
+      japanese_basic: "たかい",
+      spanish: "alto, caro",
+    },
+    { japanese_advance: "低い", japanese_basic: "ひくい", spanish: "bajo" },
+    {
+      japanese_advance: "安全（な）",
+      japanese_basic: "あんぜん（な）",
+      spanish: "seguro",
+    },
+    {
+      japanese_advance: "危ない",
+      japanese_basic: "あぶない",
+      spanish: "peligroso",
+    },
+    {
+      japanese_advance: "危険（な）",
+      japanese_basic: "きけん（な）",
+      spanish: "riesgoso",
+    },
+    {
+      japanese_advance: "静か（な）",
+      japanese_basic: "しずか（な）",
+      spanish: "tranquilo",
+    },
+    {
+      japanese_advance: "にぎやか（な）",
+      japanese_basic: "にぎやか（な）",
+      spanish: "animado",
+    },
+    {
+      japanese_advance: "有名（な）",
+      japanese_basic: "ゆうめい（な）",
+      spanish: "famoso",
+    },
+    {
+      japanese_advance: "混んでいます",
+      japanese_basic: "こんでいます",
+      spanish: "lleno, concurrido",
+    },
+  ],
   "Marugoto 8": [
-  {
-    "japanese_advance": "買い物",
-    "japanese_basic": "かいもの",
-    "spanish": "compras"
-  },
-  {
-    "japanese_advance": "プレゼント・おみやげ",
-    "japanese_basic": "プレゼント・おみやげ",
-    "spanish": "regalo, recuerdo"
-  },
-  {
-    "japanese_advance": "絵はがき",
-    "japanese_basic": "えはがき",
-    "spanish": "postal"
-  },
-  {
-    "japanese_advance": "かさ",
-    "japanese_basic": "かさ",
-    "spanish": "paraguas"
-  },
-  {
-    "japanese_advance": "カメラ",
-    "japanese_basic": "カメラ",
-    "spanish": "cámara"
-  },
-  {
-    "japanese_advance": "さいふ",
-    "japanese_basic": "さいふ",
-    "spanish": "cartera"
-  },
-  {
-    "japanese_advance": "ざっし",
-    "japanese_basic": "ざっし",
-    "spanish": "revista"
-  },
-  {
-    "japanese_advance": "しゅりけん",
-    "japanese_basic": "しゅりけん",
-    "spanish": "estrella ninja"
-  },
-  {
-    "japanese_advance": "ティーカップ",
-    "japanese_basic": "ティーカップ",
-    "spanish": "taza de té"
-  },
-  {
-    "japanese_advance": "電子辞書",
-    "japanese_basic": "でんしじしょ",
-    "spanish": "diccionario electrónico"
-  },
-  {
-    "japanese_advance": "はし",
-    "japanese_basic": "はし",
-    "spanish": "palillos"
-  },
-  {
-    "japanese_advance": "はしおき",
-    "japanese_basic": "はしおき",
-    "spanish": "descansapalillos"
-  },
-  {
-    "japanese_advance": "花",
-    "japanese_basic": "はな",
-    "spanish": "flor"
-  },
-  {
-    "japanese_advance": "ハンカチ",
-    "japanese_basic": "ハンカチ",
-    "spanish": "pañuelo"
-  },
-  {
-    "japanese_advance": "ビデオカメラ",
-    "japanese_basic": "ビデオカメラ",
-    "spanish": "videocámara"
-  },
-  {
-    "japanese_advance": "ペン",
-    "japanese_basic": "ペン",
-    "spanish": "pluma"
-  },
-  {
-    "japanese_advance": "耳かき",
-    "japanese_basic": "みみかき",
-    "spanish": "limpiador de oídos"
-  },
-  {
-    "japanese_advance": "おもちゃ",
-    "japanese_basic": "おもちゃ",
-    "spanish": "juguete"
-  },
-  {
-    "japanese_advance": "切手",
-    "japanese_basic": "きって",
-    "spanish": "estampilla"
-  },
-  {
-    "japanese_advance": "ぬいぐるみ",
-    "japanese_basic": "ぬいぐるみ",
-    "spanish": "peluche"
-  },
-  {
-    "japanese_advance": "ゲーム",
-    "japanese_basic": "ゲーム",
-    "spanish": "juego"
-  },
-  {
-    "japanese_advance": "〜をあげます",
-    "japanese_basic": "〜をあげます",
-    "spanish": "dar (algo)"
-  },
-  {
-    "japanese_advance": "〜をもらいます",
-    "japanese_basic": "〜をもらいます",
-    "spanish": "recibir (algo)"
-  },
-  {
-    "japanese_advance": "おしゃれ（な）",
-    "japanese_basic": "おしゃれ（な）",
-    "spanish": "a la moda"
-  },
-  {
-    "japanese_advance": "かっこいい",
-    "japanese_basic": "かっこいい",
-    "spanish": "cool"
-  },
-  {
-    "japanese_advance": "かわいい",
-    "japanese_basic": "かわいい",
-    "spanish": "lindo"
-  },
-  {
-    "japanese_advance": "すごい",
-    "japanese_basic": "すごい",
-    "spanish": "increíble"
-  },
-  {
-    "japanese_advance": "すてき（な）",
-    "japanese_basic": "すてき（な）",
-    "spanish": "encantador"
-  },
-  {
-    "japanese_advance": "まあまあ（な）",
-    "japanese_basic": "まあまあ（な）",
-    "spanish": "más o menos"
-  },
-  {
-    "japanese_advance": "おもしろい",
-    "japanese_basic": "おもしろい",
-    "spanish": "interesante"
-  },
-  {
-    "japanese_advance": "日本的（な）",
-    "japanese_basic": "にほんてき（な）",
-    "spanish": "japonés"
-  },
-  {
-    "japanese_advance": "めずらしい",
-    "japanese_basic": "めずらしい",
-    "spanish": "raro"
-  },
-  {
-    "japanese_advance": "大きい",
-    "japanese_basic": "おおきい",
-    "spanish": "grande"
-  },
-  {
-    "japanese_advance": "小さい",
-    "japanese_basic": "ちいさい",
-    "spanish": "pequeño"
-  },
-  {
-    "japanese_advance": "重い",
-    "japanese_basic": "おもい",
-    "spanish": "pesado"
-  },
-  {
-    "japanese_advance": "軽い",
-    "japanese_basic": "かるい",
-    "spanish": "ligero"
-  },
-  {
-    "japanese_advance": "長い",
-    "japanese_basic": "ながい",
-    "spanish": "largo"
-  },
-  {
-    "japanese_advance": "短い",
-    "japanese_basic": "みじかい",
-    "spanish": "corto"
-  },
-  {
-    "japanese_advance": "太い",
-    "japanese_basic": "ふとい",
-    "spanish": "grueso"
-  },
-  {
-    "japanese_advance": "細い",
-    "japanese_basic": "ほそい",
-    "spanish": "delgado"
-  },
-  {
-    "japanese_advance": "ゆるい",
-    "japanese_basic": "ゆるい",
-    "spanish": "flojo"
-  },
-  {
-    "japanese_advance": "きつい",
-    "japanese_basic": "きつい",
-    "spanish": "apretado"
-  },
-  {
-    "japanese_advance": "服",
-    "japanese_basic": "ふく",
-    "spanish": "ropa"
-  },
-  {
-    "japanese_advance": "着物",
-    "japanese_basic": "きもの",
-    "spanish": "kimono"
-  },
-  {
-    "japanese_advance": "浴衣",
-    "japanese_basic": "ゆかた",
-    "spanish": "kimono de verano"
-  },
-  {
-    "japanese_advance": "コート",
-    "japanese_basic": "コート",
-    "spanish": "abrigo"
-  },
-  {
-    "japanese_advance": "ジャケット",
-    "japanese_basic": "ジャケット",
-    "spanish": "chaqueta"
-  },
-  {
-    "japanese_advance": "スーツ",
-    "japanese_basic": "スーツ",
-    "spanish": "traje"
-  },
-  {
-    "japanese_advance": "ワンピース",
-    "japanese_basic": "ワンピース",
-    "spanish": "vestido"
-  },
-  {
-    "japanese_advance": "シャツ",
-    "japanese_basic": "シャツ",
-    "spanish": "camisa"
-  },
-  {
-    "japanese_advance": "Tシャツ",
-    "japanese_basic": "Tシャツ",
-    "spanish": "playera"
-  },
-  {
-    "japanese_advance": "セーター",
-    "japanese_basic": "セーター",
-    "spanish": "suéter"
-  },
-  {
-    "japanese_advance": "スカート",
-    "japanese_basic": "スカート",
-    "spanish": "falda"
-  },
-  {
-    "japanese_advance": "ジーンズ",
-    "japanese_basic": "ジーンズ",
-    "spanish": "pantalones"
-  },
-  {
-    "japanese_advance": "パジャマ",
-    "japanese_basic": "パジャマ",
-    "spanish": "pijama"
-  },
-  {
-    "japanese_advance": "下着",
-    "japanese_basic": "したぎ",
-    "spanish": "ropa interior"
-  },
-  {
-    "japanese_advance": "くつ",
-    "japanese_basic": "くつ",
-    "spanish": "zapatos"
-  },
-  {
-    "japanese_advance": "くつした",
-    "japanese_basic": "くつした",
-    "spanish": "calcetines"
-  },
-  {
-    "japanese_advance": "アクセサリー",
-    "japanese_basic": "アクセサリー",
-    "spanish": "accesorios"
-  },
-  {
-    "japanese_advance": "腕時計",
-    "japanese_basic": "うでどけい",
-    "spanish": "reloj"
-  },
-  {
-    "japanese_advance": "ネックレス",
-    "japanese_basic": "ネックレス",
-    "spanish": "collar"
-  },
-  {
-    "japanese_advance": "ピアス",
-    "japanese_basic": "ピアス",
-    "spanish": "aretes"
-  },
-  {
-    "japanese_advance": "指輪",
-    "japanese_basic": "ゆびわ",
-    "spanish": "anillo"
-  },
-  {
-    "japanese_advance": "スカーフ",
-    "japanese_basic": "スカーフ",
-    "spanish": "bufanda"
-  },
-  {
-    "japanese_advance": "マフラー",
-    "japanese_basic": "マフラー",
-    "spanish": "bufanda"
-  },
-  {
-    "japanese_advance": "手袋",
-    "japanese_basic": "てぶくろ",
-    "spanish": "guantes"
-  },
-  {
-    "japanese_advance": "ネクタイ",
-    "japanese_basic": "ネクタイ",
-    "spanish": "corbata"
-  },
-  {
-    "japanese_advance": "ベルト",
-    "japanese_basic": "ベルト",
-    "spanish": "cinturón"
-  },
-  {
-    "japanese_advance": "リボン",
-    "japanese_basic": "リボン",
-    "spanish": "listón"
-  },
-  {
-    "japanese_advance": "めがね",
-    "japanese_basic": "めがね",
-    "spanish": "gafas"
-  },
-  {
-    "japanese_advance": "ぼうし",
-    "japanese_basic": "ぼうし",
-    "spanish": "sombrero"
-  },
-  {
-    "japanese_advance": "〜をかけます",
-    "japanese_basic": "〜をかけます",
-    "spanish": "ponerse (gafas)"
-  },
-  {
-    "japanese_advance": "〜をかぶります",
-    "japanese_basic": "〜をかぶります",
-    "spanish": "ponerse (sombrero)"
-  },
-  {
-    "japanese_advance": "バッグ",
-    "japanese_basic": "バッグ",
-    "spanish": "bolsa"
-  },
-  {
-    "japanese_advance": "かばん",
-    "japanese_basic": "かばん",
-    "spanish": "maletín"
-  },
-  {
-    "japanese_advance": "〜を着ます",
-    "japanese_basic": "〜をきます",
-    "spanish": "ponerse (ropa)"
-  },
-  {
-    "japanese_advance": "〜をはきます",
-    "japanese_basic": "〜をはきます",
-    "spanish": "ponerse (pantalón, zapatos)"
-  },
-  {
-    "japanese_advance": "〜をぬぎます",
-    "japanese_basic": "〜をぬぎます",
-    "spanish": "quitarse"
-  },
-  {
-    "japanese_advance": "いろ",
-    "japanese_basic": "いろ",
-    "spanish": "color"
-  },
-  {
-    "japanese_advance": "青（い）",
-    "japanese_basic": "あお（い）",
-    "spanish": "azul"
-  },
-  {
-    "japanese_advance": "赤（い）",
-    "japanese_basic": "あか（い）",
-    "spanish": "rojo"
-  },
-  {
-    "japanese_advance": "オレンジ（の）",
-    "japanese_basic": "オレンジ（の）",
-    "spanish": "naranja"
-  },
-  {
-    "japanese_advance": "黄色（い）",
-    "japanese_basic": "きいろ（い）",
-    "spanish": "amarillo"
-  },
-  {
-    "japanese_advance": "グレー（の）",
-    "japanese_basic": "グレー（の）",
-    "spanish": "gris"
-  },
-  {
-    "japanese_advance": "黒（い）",
-    "japanese_basic": "くろ（い）",
-    "spanish": "negro"
-  },
-  {
-    "japanese_advance": "茶色（い）",
-    "japanese_basic": "ちゃいろ（い）",
-    "spanish": "marrón"
-  },
-  {
-    "japanese_advance": "白（い）",
-    "japanese_basic": "しろ（い）",
-    "spanish": "blanco"
-  },
-  {
-    "japanese_advance": "ピンク（の）",
-    "japanese_basic": "ピンク（の）",
-    "spanish": "rosa"
-  },
-  {
-    "japanese_advance": "緑（の）",
-    "japanese_basic": "みどり（の）",
-    "spanish": "verde"
-  },
-  {
-    "japanese_advance": "金色（の）",
-    "japanese_basic": "きんいろ（の）",
-    "spanish": "dorado"
-  },
-  {
-    "japanese_advance": "銀色（の）",
-    "japanese_basic": "ぎんいろ（の）",
-    "spanish": "plateado"
-  },
-  {
-    "japanese_advance": "水色（の）",
-    "japanese_basic": "みずいろ（の）",
-    "spanish": "celeste"
-  },
-  {
-    "japanese_advance": "サイズ",
-    "japanese_basic": "サイズ",
-    "spanish": "talla"
-  },
-  {
-    "japanese_advance": "円",
-    "japanese_basic": "えん",
-    "spanish": "yen"
-  },
-  {
-    "japanese_advance": "お金",
-    "japanese_basic": "おかね",
-    "spanish": "dinero"
-  },
-  {
-    "japanese_advance": "無料",
-    "japanese_basic": "むりょう",
-    "spanish": "gratis"
-  },
-  {
-    "japanese_advance": "カード",
-    "japanese_basic": "カード",
-    "spanish": "tarjeta"
-  },
-  {
-    "japanese_advance": "サイン（をします）",
-    "japanese_basic": "サイン（をします）",
-    "spanish": "firmar"
-  },
-  {
-    "japanese_advance": "おつり",
-    "japanese_basic": "おつり",
-    "spanish": "cambio"
-  },
-  {
-    "japanese_advance": "レシート",
-    "japanese_basic": "レシート",
-    "spanish": "recibo"
-  },
-  {
-    "japanese_advance": "売り場",
-    "japanese_basic": "うりば",
-    "spanish": "sección de ventas"
-  },
-  {
-    "japanese_advance": "お客さん",
-    "japanese_basic": "おきゃくさん",
-    "spanish": "cliente"
-  },
-  {
-    "japanese_advance": "店員",
-    "japanese_basic": "てんいん",
-    "spanish": "dependiente"
-  },
-  {
-    "japanese_advance": "いくらですか",
-    "japanese_basic": "いくらですか",
-    "spanish": "¿cuánto cuesta?"
-  },
-  {
-    "japanese_advance": "〜をください",
-    "japanese_basic": "〜をください",
-    "spanish": "deme (por favor)"
-  },
-  {
-    "japanese_advance": "〜がほしいです",
-    "japanese_basic": "〜がほしいです",
-    "spanish": "quiero (algo)"
-  },
-  {
-    "japanese_advance": "払います",
-    "japanese_basic": "はらいます",
-    "spanish": "pagar"
-  }
-]
-,
+    {
+      japanese_advance: "買い物",
+      japanese_basic: "かいもの",
+      spanish: "compras",
+    },
+    {
+      japanese_advance: "プレゼント・おみやげ",
+      japanese_basic: "プレゼント・おみやげ",
+      spanish: "regalo, recuerdo",
+    },
+    {
+      japanese_advance: "絵はがき",
+      japanese_basic: "えはがき",
+      spanish: "postal",
+    },
+    {
+      japanese_advance: "かさ",
+      japanese_basic: "かさ",
+      spanish: "paraguas",
+    },
+    {
+      japanese_advance: "カメラ",
+      japanese_basic: "カメラ",
+      spanish: "cámara",
+    },
+    {
+      japanese_advance: "さいふ",
+      japanese_basic: "さいふ",
+      spanish: "cartera",
+    },
+    {
+      japanese_advance: "ざっし",
+      japanese_basic: "ざっし",
+      spanish: "revista",
+    },
+    {
+      japanese_advance: "しゅりけん",
+      japanese_basic: "しゅりけん",
+      spanish: "estrella ninja",
+    },
+    {
+      japanese_advance: "ティーカップ",
+      japanese_basic: "ティーカップ",
+      spanish: "taza de té",
+    },
+    {
+      japanese_advance: "電子辞書",
+      japanese_basic: "でんしじしょ",
+      spanish: "diccionario electrónico",
+    },
+    {
+      japanese_advance: "はし",
+      japanese_basic: "はし",
+      spanish: "palillos",
+    },
+    {
+      japanese_advance: "はしおき",
+      japanese_basic: "はしおき",
+      spanish: "descansapalillos",
+    },
+    {
+      japanese_advance: "花",
+      japanese_basic: "はな",
+      spanish: "flor",
+    },
+    {
+      japanese_advance: "ハンカチ",
+      japanese_basic: "ハンカチ",
+      spanish: "pañuelo",
+    },
+    {
+      japanese_advance: "ビデオカメラ",
+      japanese_basic: "ビデオカメラ",
+      spanish: "videocámara",
+    },
+    {
+      japanese_advance: "ペン",
+      japanese_basic: "ペン",
+      spanish: "pluma",
+    },
+    {
+      japanese_advance: "耳かき",
+      japanese_basic: "みみかき",
+      spanish: "limpiador de oídos",
+    },
+    {
+      japanese_advance: "おもちゃ",
+      japanese_basic: "おもちゃ",
+      spanish: "juguete",
+    },
+    {
+      japanese_advance: "切手",
+      japanese_basic: "きって",
+      spanish: "estampilla",
+    },
+    {
+      japanese_advance: "ぬいぐるみ",
+      japanese_basic: "ぬいぐるみ",
+      spanish: "peluche",
+    },
+    {
+      japanese_advance: "ゲーム",
+      japanese_basic: "ゲーム",
+      spanish: "juego",
+    },
+    {
+      japanese_advance: "〜をあげます",
+      japanese_basic: "〜をあげます",
+      spanish: "dar (algo)",
+    },
+    {
+      japanese_advance: "〜をもらいます",
+      japanese_basic: "〜をもらいます",
+      spanish: "recibir (algo)",
+    },
+    {
+      japanese_advance: "おしゃれ（な）",
+      japanese_basic: "おしゃれ（な）",
+      spanish: "a la moda",
+    },
+    {
+      japanese_advance: "かっこいい",
+      japanese_basic: "かっこいい",
+      spanish: "cool",
+    },
+    {
+      japanese_advance: "かわいい",
+      japanese_basic: "かわいい",
+      spanish: "lindo",
+    },
+    {
+      japanese_advance: "すごい",
+      japanese_basic: "すごい",
+      spanish: "increíble",
+    },
+    {
+      japanese_advance: "すてき（な）",
+      japanese_basic: "すてき（な）",
+      spanish: "encantador",
+    },
+    {
+      japanese_advance: "まあまあ（な）",
+      japanese_basic: "まあまあ（な）",
+      spanish: "más o menos",
+    },
+    {
+      japanese_advance: "おもしろい",
+      japanese_basic: "おもしろい",
+      spanish: "interesante",
+    },
+    {
+      japanese_advance: "日本的（な）",
+      japanese_basic: "にほんてき（な）",
+      spanish: "japonés",
+    },
+    {
+      japanese_advance: "めずらしい",
+      japanese_basic: "めずらしい",
+      spanish: "raro",
+    },
+    {
+      japanese_advance: "大きい",
+      japanese_basic: "おおきい",
+      spanish: "grande",
+    },
+    {
+      japanese_advance: "小さい",
+      japanese_basic: "ちいさい",
+      spanish: "pequeño",
+    },
+    {
+      japanese_advance: "重い",
+      japanese_basic: "おもい",
+      spanish: "pesado",
+    },
+    {
+      japanese_advance: "軽い",
+      japanese_basic: "かるい",
+      spanish: "ligero",
+    },
+    {
+      japanese_advance: "長い",
+      japanese_basic: "ながい",
+      spanish: "largo",
+    },
+    {
+      japanese_advance: "短い",
+      japanese_basic: "みじかい",
+      spanish: "corto",
+    },
+    {
+      japanese_advance: "太い",
+      japanese_basic: "ふとい",
+      spanish: "grueso",
+    },
+    {
+      japanese_advance: "細い",
+      japanese_basic: "ほそい",
+      spanish: "delgado",
+    },
+    {
+      japanese_advance: "ゆるい",
+      japanese_basic: "ゆるい",
+      spanish: "flojo",
+    },
+    {
+      japanese_advance: "きつい",
+      japanese_basic: "きつい",
+      spanish: "apretado",
+    },
+    {
+      japanese_advance: "服",
+      japanese_basic: "ふく",
+      spanish: "ropa",
+    },
+    {
+      japanese_advance: "着物",
+      japanese_basic: "きもの",
+      spanish: "kimono",
+    },
+    {
+      japanese_advance: "浴衣",
+      japanese_basic: "ゆかた",
+      spanish: "kimono de verano",
+    },
+    {
+      japanese_advance: "コート",
+      japanese_basic: "コート",
+      spanish: "abrigo",
+    },
+    {
+      japanese_advance: "ジャケット",
+      japanese_basic: "ジャケット",
+      spanish: "chaqueta",
+    },
+    {
+      japanese_advance: "スーツ",
+      japanese_basic: "スーツ",
+      spanish: "traje",
+    },
+    {
+      japanese_advance: "ワンピース",
+      japanese_basic: "ワンピース",
+      spanish: "vestido",
+    },
+    {
+      japanese_advance: "シャツ",
+      japanese_basic: "シャツ",
+      spanish: "camisa",
+    },
+    {
+      japanese_advance: "Tシャツ",
+      japanese_basic: "Tシャツ",
+      spanish: "playera",
+    },
+    {
+      japanese_advance: "セーター",
+      japanese_basic: "セーター",
+      spanish: "suéter",
+    },
+    {
+      japanese_advance: "スカート",
+      japanese_basic: "スカート",
+      spanish: "falda",
+    },
+    {
+      japanese_advance: "ジーンズ",
+      japanese_basic: "ジーンズ",
+      spanish: "pantalones",
+    },
+    {
+      japanese_advance: "パジャマ",
+      japanese_basic: "パジャマ",
+      spanish: "pijama",
+    },
+    {
+      japanese_advance: "下着",
+      japanese_basic: "したぎ",
+      spanish: "ropa interior",
+    },
+    {
+      japanese_advance: "くつ",
+      japanese_basic: "くつ",
+      spanish: "zapatos",
+    },
+    {
+      japanese_advance: "くつした",
+      japanese_basic: "くつした",
+      spanish: "calcetines",
+    },
+    {
+      japanese_advance: "アクセサリー",
+      japanese_basic: "アクセサリー",
+      spanish: "accesorios",
+    },
+    {
+      japanese_advance: "腕時計",
+      japanese_basic: "うでどけい",
+      spanish: "reloj",
+    },
+    {
+      japanese_advance: "ネックレス",
+      japanese_basic: "ネックレス",
+      spanish: "collar",
+    },
+    {
+      japanese_advance: "ピアス",
+      japanese_basic: "ピアス",
+      spanish: "aretes",
+    },
+    {
+      japanese_advance: "指輪",
+      japanese_basic: "ゆびわ",
+      spanish: "anillo",
+    },
+    {
+      japanese_advance: "スカーフ",
+      japanese_basic: "スカーフ",
+      spanish: "bufanda",
+    },
+    {
+      japanese_advance: "マフラー",
+      japanese_basic: "マフラー",
+      spanish: "bufanda",
+    },
+    {
+      japanese_advance: "手袋",
+      japanese_basic: "てぶくろ",
+      spanish: "guantes",
+    },
+    {
+      japanese_advance: "ネクタイ",
+      japanese_basic: "ネクタイ",
+      spanish: "corbata",
+    },
+    {
+      japanese_advance: "ベルト",
+      japanese_basic: "ベルト",
+      spanish: "cinturón",
+    },
+    {
+      japanese_advance: "リボン",
+      japanese_basic: "リボン",
+      spanish: "listón",
+    },
+    {
+      japanese_advance: "めがね",
+      japanese_basic: "めがね",
+      spanish: "gafas",
+    },
+    {
+      japanese_advance: "ぼうし",
+      japanese_basic: "ぼうし",
+      spanish: "sombrero",
+    },
+    {
+      japanese_advance: "〜をかけます",
+      japanese_basic: "〜をかけます",
+      spanish: "ponerse (gafas)",
+    },
+    {
+      japanese_advance: "〜をかぶります",
+      japanese_basic: "〜をかぶります",
+      spanish: "ponerse (sombrero)",
+    },
+    {
+      japanese_advance: "バッグ",
+      japanese_basic: "バッグ",
+      spanish: "bolsa",
+    },
+    {
+      japanese_advance: "かばん",
+      japanese_basic: "かばん",
+      spanish: "maletín",
+    },
+    {
+      japanese_advance: "〜を着ます",
+      japanese_basic: "〜をきます",
+      spanish: "ponerse (ropa)",
+    },
+    {
+      japanese_advance: "〜をはきます",
+      japanese_basic: "〜をはきます",
+      spanish: "ponerse (pantalón, zapatos)",
+    },
+    {
+      japanese_advance: "〜をぬぎます",
+      japanese_basic: "〜をぬぎます",
+      spanish: "quitarse",
+    },
+    {
+      japanese_advance: "いろ",
+      japanese_basic: "いろ",
+      spanish: "color",
+    },
+    {
+      japanese_advance: "青（い）",
+      japanese_basic: "あお（い）",
+      spanish: "azul",
+    },
+    {
+      japanese_advance: "赤（い）",
+      japanese_basic: "あか（い）",
+      spanish: "rojo",
+    },
+    {
+      japanese_advance: "オレンジ（の）",
+      japanese_basic: "オレンジ（の）",
+      spanish: "naranja",
+    },
+    {
+      japanese_advance: "黄色（い）",
+      japanese_basic: "きいろ（い）",
+      spanish: "amarillo",
+    },
+    {
+      japanese_advance: "グレー（の）",
+      japanese_basic: "グレー（の）",
+      spanish: "gris",
+    },
+    {
+      japanese_advance: "黒（い）",
+      japanese_basic: "くろ（い）",
+      spanish: "negro",
+    },
+    {
+      japanese_advance: "茶色（い）",
+      japanese_basic: "ちゃいろ（い）",
+      spanish: "marrón",
+    },
+    {
+      japanese_advance: "白（い）",
+      japanese_basic: "しろ（い）",
+      spanish: "blanco",
+    },
+    {
+      japanese_advance: "ピンク（の）",
+      japanese_basic: "ピンク（の）",
+      spanish: "rosa",
+    },
+    {
+      japanese_advance: "緑（の）",
+      japanese_basic: "みどり（の）",
+      spanish: "verde",
+    },
+    {
+      japanese_advance: "金色（の）",
+      japanese_basic: "きんいろ（の）",
+      spanish: "dorado",
+    },
+    {
+      japanese_advance: "銀色（の）",
+      japanese_basic: "ぎんいろ（の）",
+      spanish: "plateado",
+    },
+    {
+      japanese_advance: "水色（の）",
+      japanese_basic: "みずいろ（の）",
+      spanish: "celeste",
+    },
+    {
+      japanese_advance: "サイズ",
+      japanese_basic: "サイズ",
+      spanish: "talla",
+    },
+    {
+      japanese_advance: "円",
+      japanese_basic: "えん",
+      spanish: "yen",
+    },
+    {
+      japanese_advance: "お金",
+      japanese_basic: "おかね",
+      spanish: "dinero",
+    },
+    {
+      japanese_advance: "無料",
+      japanese_basic: "むりょう",
+      spanish: "gratis",
+    },
+    {
+      japanese_advance: "カード",
+      japanese_basic: "カード",
+      spanish: "tarjeta",
+    },
+    {
+      japanese_advance: "サイン（をします）",
+      japanese_basic: "サイン（をします）",
+      spanish: "firmar",
+    },
+    {
+      japanese_advance: "おつり",
+      japanese_basic: "おつり",
+      spanish: "cambio",
+    },
+    {
+      japanese_advance: "レシート",
+      japanese_basic: "レシート",
+      spanish: "recibo",
+    },
+    {
+      japanese_advance: "売り場",
+      japanese_basic: "うりば",
+      spanish: "sección de ventas",
+    },
+    {
+      japanese_advance: "お客さん",
+      japanese_basic: "おきゃくさん",
+      spanish: "cliente",
+    },
+    {
+      japanese_advance: "店員",
+      japanese_basic: "てんいん",
+      spanish: "dependiente",
+    },
+    {
+      japanese_advance: "いくらですか",
+      japanese_basic: "いくらですか",
+      spanish: "¿cuánto cuesta?",
+    },
+    {
+      japanese_advance: "〜をください",
+      japanese_basic: "〜をください",
+      spanish: "deme (por favor)",
+    },
+    {
+      japanese_advance: "〜がほしいです",
+      japanese_basic: "〜がほしいです",
+      spanish: "quiero (algo)",
+    },
+    {
+      japanese_advance: "払います",
+      japanese_basic: "はらいます",
+      spanish: "pagar",
+    },
+  ],
   "Marugoto 9": [
     {
       japanese_advance: "浴びます",
