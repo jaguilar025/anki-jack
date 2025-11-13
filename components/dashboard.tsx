@@ -135,14 +135,14 @@ export default function Dashboard() {
                   title="Kanji Lens"
                   description="Captura kanjis"
                   icon="📷"
-                  isSelected={selectedMode === 3}
+                  isSelected={false}
                   onClick={() => handleGoLens()}
                 />
                 <ModeCard
                   title="Kanji Lens"
                   description="Dibuja kanjis"
                   icon="✏️"
-                  isSelected={selectedMode === 3}
+                  isSelected={false}
                   onClick={() => handleGoDrawLens()}
                 />
               </div>
