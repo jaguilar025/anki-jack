@@ -31,7 +31,7 @@ export default function StudyPage() {
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [score, setScore] = useState(0);
-  const [lives, setLives] = useState(10);
+  const [lives, setLives] = useState(25);
   const [showResult, setShowResult] = useState(false);
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
   const [gameOver, setGameOver] = useState(false);

@@ -59,6 +59,8 @@ export function StudyCard({
     }
   }, [word, showResult, mode]);
 
+
+
   function validateAnswer(answer: String, correctWord: String) {
     // Normaliza ambas cadenas: elimina acentos/símbolos y convierte a minúsculas
     const normalize = (str: String) => {
@@ -119,6 +121,25 @@ export function StudyCard({
     onAnswer(isAnswerCorrect);
   };
 
+  useEffect(() => {
+  const handleKeyDown = (e: KeyboardEvent) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+
+      // Si estamos en la etapa del "Siguiente", que llame a onNext
+      if (showResult && (isCorrect || showAnswer)) {
+        onNext();
+      } else {
+        // Si aún no se mostró el resultado, comprobar la respuesta
+        handleSubmit(e as unknown as React.FormEvent);
+      }
+    }
+  };
+
+  document.addEventListener("keydown", handleKeyDown);
+  return () => document.removeEventListener("keydown", handleKeyDown);
+}, [showResult, isCorrect, showAnswer, handleSubmit, onNext]);
+
   // Modificar la función handleShowAnswer para llamar a onSeeAnswer
   const handleShowAnswer = () => {
     setShowAnswer(true);
@@ -168,7 +189,7 @@ export function StudyCard({
             </div>
 
             <div className="text-center">
-              <h3 className="japanese-text text-2xl font-bold mb-2">
+              <h3 className="japanese-text text-[40px] font-normal mb-2">
                 {showKana ? word.japanese_basic : word.japanese_advance}
               </h3>
               <Button
@@ -211,7 +232,7 @@ export function StudyCard({
           </div>
 
           <div className="text-center">
-            <h3 className="japanese-text text-2xl font-bold mb-2">
+            <h3 className="japanese-text text-[40px] font-normal mb-2">
               {showKana ? word.japanese_basic : word.japanese_advance}
             </h3>
             <Button
