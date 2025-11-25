@@ -3629,51 +3629,8 @@ export const categories: Category = {
       spanish: "pagar",
     },
   ],
-  Calendario: [
-    {
-      japanese_advance: "カレンダー",
-      japanese_basic: "カレンダー",
-      spanish: "calendario",
-    },
-    { japanese_advance: "〜年", japanese_basic: "〜ねん", spanish: "año" },
-    { japanese_advance: "〜月", japanese_basic: "〜がつ", spanish: "mes" },
-    { japanese_advance: "〜日", japanese_basic: "〜にち", spanish: "día" },
-    {
-      japanese_advance: "日曜日",
-      japanese_basic: "にちようび",
-      spanish: "domingo",
-    },
-    {
-      japanese_advance: "月曜日",
-      japanese_basic: "げつようび",
-      spanish: "lunes",
-    },
-    {
-      japanese_advance: "火曜日",
-      japanese_basic: "かようび",
-      spanish: "martes",
-    },
-    {
-      japanese_advance: "水曜日",
-      japanese_basic: "すいようび",
-      spanish: "miércoles",
-    },
-    {
-      japanese_advance: "木曜日",
-      japanese_basic: "もくようび",
-      spanish: "jueves",
-    },
-    {
-      japanese_advance: "金曜日",
-      japanese_basic: "きんようび",
-      spanish: "viernes",
-    },
-    {
-      japanese_advance: "土曜日",
-      japanese_basic: "どようび",
-      spanish: "sábado",
-    },
-    {
+  Mes: [
+        {
       japanese_advance: "一日",
       japanese_basic: "ついたち",
       spanish: "1 día del mes",
@@ -3827,6 +3784,51 @@ export const categories: Category = {
       japanese_advance: "三十一日",
       japanese_basic: "さんじゅういちにち",
       spanish: "31 día del mes",
+    }
+  ],
+  Calendario: [
+    {
+      japanese_advance: "カレンダー",
+      japanese_basic: "カレンダー",
+      spanish: "calendario",
+    },
+    { japanese_advance: "〜年", japanese_basic: "〜ねん", spanish: "año" },
+    { japanese_advance: "〜月", japanese_basic: "〜がつ", spanish: "mes" },
+    { japanese_advance: "〜日", japanese_basic: "〜にち", spanish: "día" },
+    {
+      japanese_advance: "日曜日",
+      japanese_basic: "にちようび",
+      spanish: "domingo",
+    },
+    {
+      japanese_advance: "月曜日",
+      japanese_basic: "げつようび",
+      spanish: "lunes",
+    },
+    {
+      japanese_advance: "火曜日",
+      japanese_basic: "かようび",
+      spanish: "martes",
+    },
+    {
+      japanese_advance: "水曜日",
+      japanese_basic: "すいようび",
+      spanish: "miércoles",
+    },
+    {
+      japanese_advance: "木曜日",
+      japanese_basic: "もくようび",
+      spanish: "jueves",
+    },
+    {
+      japanese_advance: "金曜日",
+      japanese_basic: "きんようび",
+      spanish: "viernes",
+    },
+    {
+      japanese_advance: "土曜日",
+      japanese_basic: "どようび",
+      spanish: "sábado",
     },
     {
       japanese_advance: "日",
