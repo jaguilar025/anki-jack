@@ -1,7 +1,8 @@
 export type Word = {
   japanese_advance: string // Kanji + kana
   japanese_basic: string // Solo kana
-  spanish: string
+  spanish?: string
+  english?: string
 }
 
 export type Category = {

@@ -2,6 +2,295 @@ import type { Category } from "./types";
 
 // Categorías predefinidas
 export const categories: Category = {
+  "JLRC 1": [
+    { japanese_advance: "私", japanese_basic: "わたし", english: "I, me" },
+    {
+      japanese_advance: "会社",
+      japanese_basic: "かいしゃ",
+      english: "company",
+    },
+    { japanese_advance: "あなた", japanese_basic: "あなた", english: "you" },
+    {
+      japanese_advance: "オフィス",
+      japanese_basic: "オフィス",
+      english: "office",
+    },
+    {
+      japanese_advance: "社員",
+      japanese_basic: "しゃいん",
+      english: "company employee",
+    },
+    {
+      japanese_advance: "学校",
+      japanese_basic: "がっこう",
+      english: "school",
+    },
+    {
+      japanese_advance: "大学",
+      japanese_basic: "だいがく",
+      english: "university",
+    },
+    {
+      japanese_advance: "社長",
+      japanese_basic: "しゃちょう",
+      english: "company president",
+    },
+    { japanese_advance: "内 / 家", japanese_basic: "うち", english: "house" },
+    {
+      japanese_advance: "部長",
+      japanese_basic: "ぶちょう",
+      english: "department head",
+    },
+    { japanese_advance: "部屋", japanese_basic: "へや", english: "room" },
+    {
+      japanese_advance: "課長",
+      japanese_basic: "かちょう",
+      english: "section head / supervisor",
+    },
+    {
+      japanese_advance: "駐車場",
+      japanese_basic: "ちゅうしゃじょう",
+      english: "parking lot",
+    },
+    { japanese_advance: "男", japanese_basic: "おとこ", english: "male" },
+    {
+      japanese_advance: "お手洗い",
+      japanese_basic: "おてあらい",
+      english: "washroom",
+    },
+    { japanese_advance: "女", japanese_basic: "おんな", english: "female" },
+    {
+      japanese_advance: "先生",
+      japanese_basic: "せんせい",
+      english: "teacher",
+    },
+    {
+      japanese_advance: "コンピュータ",
+      japanese_basic: "コンピュータ",
+      english: "computer",
+    },
+    {
+      japanese_advance: "学生",
+      japanese_basic: "がくせい",
+      english: "student",
+    },
+    {
+      japanese_advance: "パソコン",
+      japanese_basic: "パソコン",
+      english: "personal computer",
+    },
+    {
+      japanese_advance: "日本人",
+      japanese_basic: "にほんじん",
+      english: "Japanese person",
+    },
+    {
+      japanese_advance: "カメラ",
+      japanese_basic: "カメラ",
+      english: "camera",
+    },
+    {
+      japanese_advance: "アメリカ人",
+      japanese_basic: "アメリカじん",
+      english: "American person",
+    },
+    {
+      japanese_advance: "ノート",
+      japanese_basic: "ノート",
+      english: "notebook",
+    },
+    {
+      japanese_advance: "フィリピン人",
+      japanese_basic: "フィリピンじん",
+      english: "Filipino person",
+    },
+    {
+      japanese_advance: "スリッパ",
+      japanese_basic: "スリッパ",
+      english: "slippers",
+    },
+    {
+      japanese_advance: "皆 / 皆さん",
+      japanese_basic: "みんな / みなさん",
+      english: "everyone",
+    },
+    { japanese_advance: "車", japanese_basic: "くるま", english: "car" },
+    {
+      japanese_advance: "友達",
+      japanese_basic: "ともだち",
+      english: "friend",
+    },
+    { japanese_advance: "本", japanese_basic: "ほん", english: "book" },
+    {
+      japanese_advance: "人",
+      japanese_basic: "ひと",
+      english: "person (informal)",
+    },
+    {
+      japanese_advance: "方",
+      japanese_basic: "かた",
+      english: "person (formal)",
+    },
+    { japanese_advance: "国", japanese_basic: "くに", english: "country" },
+    { japanese_advance: "家族", japanese_basic: "かぞく", english: "family" },
+    {
+      japanese_advance: "言葉",
+      japanese_basic: "ことば",
+      english: "language, word",
+    },
+    {
+      japanese_advance: "エンジニア",
+      japanese_basic: "エンジニア",
+      english: "engineer",
+    },
+    {
+      japanese_advance: "研修生",
+      japanese_basic: "けんしゅうせい",
+      english: "trainee",
+    },
+    {
+      japanese_advance: "〜さん",
+      japanese_basic: "〜さん",
+      english: "Mr./Miss/Mrs. (honorific)",
+    },
+    {
+      japanese_advance: "〜先生",
+      japanese_basic: "〜せんせい",
+      english: "teacher/doctor (honorific)",
+    },
+    { japanese_advance: "名前", japanese_basic: "なまえ", english: "name" },
+  ],
+  "JLRC 2": [
+    {
+      japanese_advance: "病院",
+      japanese_basic: "びょういん",
+      english: "hospital",
+    },
+    { japanese_advance: "鞄", japanese_basic: "かばん", english: "bag" },
+    {
+      japanese_advance: "工場",
+      japanese_basic: "こうじょう",
+      english: "factory",
+    },
+    {
+      japanese_advance: "携帯（電話）",
+      japanese_basic: "けいたい（でんわ）",
+      english: "cell phone",
+    },
+    { japanese_advance: "銀行", japanese_basic: "ぎんこう", english: "bank" },
+    { japanese_advance: "電話", japanese_basic: "でんわ", english: "phone" },
+    {
+      japanese_advance: "大使館",
+      japanese_basic: "たいしかん",
+      english: "embassy",
+    },
+    { japanese_advance: "鍵", japanese_basic: "かぎ", english: "key" },
+    {
+      japanese_advance: "図書館",
+      japanese_basic: "としょかん",
+      english: "library",
+    },
+    {
+      japanese_advance: "眼鏡",
+      japanese_basic: "めがね",
+      english: "eyeglasses",
+    },
+    { japanese_advance: "モール", japanese_basic: "モール", english: "mall" },
+    {
+      japanese_advance: "時計",
+      japanese_basic: "とけい",
+      english: "watch / clock",
+    },
+    {
+      japanese_advance: "映画館",
+      japanese_basic: "えいがかん",
+      english: "movie house",
+    },
+    {
+      japanese_advance: "テーブル",
+      japanese_basic: "テーブル",
+      english: "table",
+    },
+    {
+      japanese_advance: "喫茶店 / カフェ",
+      japanese_basic: "きっさてん / カフェ",
+      english: "coffee shop / café",
+    },
+    { japanese_advance: "机", japanese_basic: "つくえ", english: "desk" },
+    {
+      japanese_advance: "本屋",
+      japanese_basic: "ほんや",
+      english: "bookstore",
+    },
+    {
+      japanese_advance: "引き出し",
+      japanese_basic: "ひきだし",
+      english: "drawer",
+    },
+    {
+      japanese_advance: "レストラン",
+      japanese_basic: "レストラン",
+      english: "restaurant",
+    },
+    {
+      japanese_advance: "テレビ",
+      japanese_basic: "テレビ",
+      english: "television",
+    },
+    {
+      japanese_advance: "デパート",
+      japanese_basic: "デパート",
+      english: "department store",
+    },
+    { japanese_advance: "椅子", japanese_basic: "いす", english: "chair" },
+    {
+      japanese_advance: "スーパー",
+      japanese_basic: "スーパー",
+      english: "supermarket",
+    },
+    { japanese_advance: "木", japanese_basic: "き", english: "tree" },
+    { japanese_advance: "ビル", japanese_basic: "ビル", english: "building" },
+    {
+      japanese_advance: "会議室",
+      japanese_basic: "かいぎしつ",
+      english: "conference room",
+    },
+    { japanese_advance: "クラス", japanese_basic: "クラス", english: "class" },
+    {
+      japanese_advance: "教室",
+      japanese_basic: "きょうしつ",
+      english: "classroom",
+    },
+    { japanese_advance: "寮", japanese_basic: "りょう", english: "dormitory" },
+    {
+      japanese_advance: "アパート",
+      japanese_basic: "アパート",
+      english: "apartment",
+    },
+    {
+      japanese_advance: "駅",
+      japanese_basic: "えき",
+      english: "train station",
+    },
+    {
+      japanese_advance: "外国人",
+      japanese_basic: "がいこくじん",
+      english: "foreigner",
+    },
+    {
+      japanese_advance: "両親",
+      japanese_basic: "りょうしん",
+      english: "parents",
+    },
+    {
+      japanese_advance: "子供 / 子",
+      japanese_basic: "こども / こ",
+      english: "children / child",
+    },
+    { japanese_advance: "犬", japanese_basic: "いぬ", english: "dog" },
+    { japanese_advance: "猫", japanese_basic: "ねこ", english: "cat" },
+  ],
+
   "Marugoto 1": [
     {
       japanese_advance: "学生",
@@ -3630,7 +3919,7 @@ export const categories: Category = {
     },
   ],
   Mes: [
-        {
+    {
       japanese_advance: "一日",
       japanese_basic: "ついたち",
       spanish: "1 día del mes",
@@ -3784,7 +4073,7 @@ export const categories: Category = {
       japanese_advance: "三十一日",
       japanese_basic: "さんじゅういちにち",
       spanish: "31 día del mes",
-    }
+    },
   ],
   Calendario: [
     {
