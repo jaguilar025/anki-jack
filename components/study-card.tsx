@@ -114,7 +114,7 @@ export function StudyCard({
           answer.trim().toLowerCase() === word.japanese_basic.toLowerCase();
         break;
       case 3: // Translation inverted
-        isAnswerCorrect = validateAnswer(answer, word.spanish)
+        isAnswerCorrect = validateAnswer(answer, word.spanish ?? word.english)
         break;
     }
 
@@ -213,7 +213,7 @@ export function StudyCard({
       case 2: // Translation
         return (
           <div className="text-center">
-            <h3 className="text-xl font-bold mb-4">{word.spanish}</h3>
+            <h3 className="text-xl font-bold mb-4">{word.spanish ?? word.english}</h3>
             <p className="text-sm text-muted-foreground">
               Escribe la traducción en japonés
             </p>
@@ -301,7 +301,7 @@ export function StudyCard({
                       )}
                     </div>
                     <p className="text-sm text-muted-foreground">
-                      {word.spanish}
+                      {word.spanish ?? word.english}
                     </p>
                   </>
                 )}

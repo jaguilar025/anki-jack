@@ -44,7 +44,7 @@ export function UploadStudyList({ onUpload }: UploadStudyListProps) {
 
           // Verificar que cada palabra tiene la estructura correcta
           for (const word of data[category]) {
-            if (!word.japanese_advance || !word.japanese_basic || !word.spanish) {
+            if (!word.japanese_advance || !word.japanese_basic || (!word.spanish || !word.english)) {
               throw new Error(`Una palabra en la categoría "${category}" no tiene la estructura correcta`)
             }
           }
