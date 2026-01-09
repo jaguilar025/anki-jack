@@ -2,7 +2,7 @@ import type { Category } from "./types";
 
 // Categorías predefinidas
 export const categories: Category = {
-  "JLRC 1": [
+  "JLRC 1 - General Vocabulary": [
     { japanese_advance: "私", japanese_basic: "わたし", english: "I, me" },
     {
       japanese_advance: "会社",
@@ -160,7 +160,187 @@ export const categories: Category = {
     },
     { japanese_advance: "名前", japanese_basic: "なまえ", english: "name" },
   ],
-  "JLRC 2": [
+  "JLRC 1 - Family": [
+    {
+      japanese_advance: "家族",
+      japanese_basic: "かぞく",
+      english: "one’s family",
+    },
+    {
+      japanese_advance: "ご家族",
+      japanese_basic: "ごかぞく",
+      english: "another person’s family",
+    },
+    { japanese_advance: "父", japanese_basic: "ちち", english: "my father" },
+    {
+      japanese_advance: "お父さん",
+      japanese_basic: "おとうさん",
+      english: "your father",
+    },
+    { japanese_advance: "母", japanese_basic: "はは", english: "my mother" },
+    {
+      japanese_advance: "お母さん",
+      japanese_basic: "おかあさん",
+      english: "your mother",
+    },
+    {
+      japanese_advance: "兄",
+      japanese_basic: "あに",
+      english: "my older brother",
+    },
+    {
+      japanese_advance: "お兄さん",
+      japanese_basic: "おにいさん",
+      english: "your older brother",
+    },
+    {
+      japanese_advance: "姉",
+      japanese_basic: "あね",
+      english: "my older sister",
+    },
+    {
+      japanese_advance: "お姉さん",
+      japanese_basic: "おねえさん",
+      english: "your older sister",
+    },
+    {
+      japanese_advance: "弟",
+      japanese_basic: "おとうと",
+      english: "my younger brother",
+    },
+    {
+      japanese_advance: "お弟さん",
+      japanese_basic: "おとうとさん",
+      english: "your younger brother",
+    },
+    {
+      japanese_advance: "妹",
+      japanese_basic: "いもうと",
+      english: "my younger sister",
+    },
+    {
+      japanese_advance: "お妹さん",
+      japanese_basic: "いもうとさん",
+      english: "your younger sister",
+    },
+    {
+      japanese_advance: "祖父",
+      japanese_basic: "そふ",
+      english: "my grandfather",
+    },
+    {
+      japanese_advance: "お祖父さん",
+      japanese_basic: "おじいさん",
+      english: "your grandfather",
+    },
+    {
+      japanese_advance: "祖母",
+      japanese_basic: "そぼ",
+      english: "my grandmother",
+    },
+    {
+      japanese_advance: "お祖母さん",
+      japanese_basic: "おばあさん",
+      english: "your grandmother",
+    },
+    {
+      japanese_advance: "主人 / 夫",
+      japanese_basic: "しゅじん / おっと",
+      english: "my husband",
+    },
+    {
+      japanese_advance: "ご主人",
+      japanese_basic: "ごしゅじん",
+      english: "your husband",
+    },
+    {
+      japanese_advance: "家内 / 妻",
+      japanese_basic: "かない / つま",
+      english: "my wife",
+    },
+    {
+      japanese_advance: "奥さん",
+      japanese_basic: "おくさん",
+      english: "your wife",
+    },
+  ],
+  "JLRC 1 - Demostratives & Interrogatives": [
+    {
+      japanese_advance: "この",
+      japanese_basic: "この",
+      english: "this (noun)",
+    },
+    {
+      japanese_advance: "これ",
+      japanese_basic: "これ",
+      english: "this (object)",
+    },
+    { japanese_advance: "ここ", japanese_basic: "ここ", english: "here" },
+    {
+      japanese_advance: "こちら",
+      japanese_basic: "こちら",
+      english: "this way",
+    },
+    {
+      japanese_advance: "その",
+      japanese_basic: "その",
+      english: "that (noun)",
+    },
+    {
+      japanese_advance: "それ",
+      japanese_basic: "それ",
+      english: "that (object)",
+    },
+    { japanese_advance: "そこ", japanese_basic: "そこ", english: "there" },
+    {
+      japanese_advance: "そちら",
+      japanese_basic: "そちら",
+      english: "that way",
+    },
+    {
+      japanese_advance: "あの",
+      japanese_basic: "あの",
+      english: "that (noun) (over there)",
+    },
+    {
+      japanese_advance: "あれ",
+      japanese_basic: "あれ",
+      english: "that (object) (over there)",
+    },
+    {
+      japanese_advance: "あそこ",
+      japanese_basic: "あそこ",
+      english: "there (over there)",
+    },
+    {
+      japanese_advance: "あちら",
+      japanese_basic: "あちら",
+      english: "that way (over there)",
+    },
+    {
+      japanese_advance: "どの",
+      japanese_basic: "どの",
+      english: "which (noun)",
+    },
+    {
+      japanese_advance: "どれ",
+      japanese_basic: "どれ",
+      english: "which (object)",
+    },
+    { japanese_advance: "どこ", japanese_basic: "どこ", english: "where" },
+    {
+      japanese_advance: "どちら",
+      japanese_basic: "どちら",
+      english: "which way",
+    },
+    { "japanese_advance": "どなた", "japanese_basic": "どなた", "english": "who (formal)" },
+  { "japanese_advance": "だれ", "japanese_basic": "だれ", "english": "who (informal)" },
+  { "japanese_advance": "どなたの", "japanese_basic": "どなたの", "english": "whose (formal)" },
+  { "japanese_advance": "だれの", "japanese_basic": "だれの", "english": "whose (informal)" },
+  { "japanese_advance": "何", "japanese_basic": "なん / なに", "english": "what" },
+  { "japanese_advance": "何の", "japanese_basic": "なんの / なにの", "english": "what kind of" }
+  ],
+  "JLRC 2 - General Vocabulary": [
     {
       japanese_advance: "病院",
       japanese_basic: "びょういん",
@@ -288,7 +468,7 @@ export const categories: Category = {
       english: "children / child",
     },
     { japanese_advance: "犬", japanese_basic: "いぬ", english: "dog" },
-    { japanese_advance: "猫", japanese_basic: "ねこ", english: "cat" }
+    { japanese_advance: "猫", japanese_basic: "ねこ", english: "cat" },
   ],
 
   "JLRC 2 - Locatives": [
