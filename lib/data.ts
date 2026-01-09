@@ -333,12 +333,32 @@ export const categories: Category = {
       japanese_basic: "どちら",
       english: "which way",
     },
-    { "japanese_advance": "どなた", "japanese_basic": "どなた", "english": "who (formal)" },
-  { "japanese_advance": "だれ", "japanese_basic": "だれ", "english": "who (informal)" },
-  { "japanese_advance": "どなたの", "japanese_basic": "どなたの", "english": "whose (formal)" },
-  { "japanese_advance": "だれの", "japanese_basic": "だれの", "english": "whose (informal)" },
-  { "japanese_advance": "何", "japanese_basic": "なん / なに", "english": "what" },
-  { "japanese_advance": "何の", "japanese_basic": "なんの / なにの", "english": "what kind of" }
+    {
+      japanese_advance: "どなた",
+      japanese_basic: "どなた",
+      english: "who (formal)",
+    },
+    {
+      japanese_advance: "だれ",
+      japanese_basic: "だれ",
+      english: "who (informal)",
+    },
+    {
+      japanese_advance: "どなたの",
+      japanese_basic: "どなたの",
+      english: "whose (formal)",
+    },
+    {
+      japanese_advance: "だれの",
+      japanese_basic: "だれの",
+      english: "whose (informal)",
+    },
+    { japanese_advance: "何", japanese_basic: "なん / なに", english: "what" },
+    {
+      japanese_advance: "何の",
+      japanese_basic: "なんの / なにの",
+      english: "what kind of",
+    },
   ],
   "JLRC 2 - General Vocabulary": [
     {
@@ -498,6 +518,85 @@ export const categories: Category = {
     { japanese_advance: "西", japanese_basic: "にし", english: "west" },
     { japanese_advance: "右", japanese_basic: "みぎ", english: "right" },
     { japanese_advance: "東", japanese_basic: "ひがし", english: "east" },
+  ],
+  "JLRC 3 - General Vocabulary": [
+    { japanese_advance: "値段", japanese_basic: "ねだん", english: "price" },
+    { japanese_advance: "手紙", japanese_basic: "てがみ", english: "letter" },
+    { japanese_advance: "家賃", japanese_basic: "やちん", english: "rent" },
+    { japanese_advance: "切符", japanese_basic: "きっぷ", english: "ticket" },
+    { japanese_advance: "お金", japanese_basic: "おかね", english: "money" },
+    {
+      japanese_advance: "切手",
+      japanese_basic: "きって",
+      english: "postal stamp",
+    },
+    { japanese_advance: "円", japanese_basic: "えん", english: "yen" },
+    {
+      japanese_advance: "教科書",
+      japanese_basic: "きょうかしょ",
+      english: "textbook",
+    },
+    { japanese_advance: "ペソ", japanese_basic: "ペソ", english: "peso" },
+    { japanese_advance: "ドル", japanese_basic: "ドル", english: "dollar" },
+    { japanese_advance: "傘", japanese_basic: "かさ", english: "umbrella" },
+    {
+      japanese_advance: "全部",
+      japanese_basic: "ぜんぶ",
+      english: "all / total",
+    },
+    { japanese_advance: "瓶", japanese_basic: "びん", english: "bottle" },
+    {
+      japanese_advance: "いくら",
+      japanese_basic: "いくら",
+      english: "how much?",
+    },
+    { japanese_advance: "みかん", japanese_basic: "みかん", english: "orange" },
+    {
+      japanese_advance: "ぐらい",
+      japanese_basic: "ぐらい",
+      english: "about ~",
+    },
+    { japanese_advance: "りんご", japanese_basic: "りんご", english: "apple" },
+    {
+      japanese_advance: "二十歳",
+      japanese_basic: "はたち",
+      english: "20 years old",
+    },
+    {
+      japanese_advance: "兄弟",
+      japanese_basic: "きょうだい",
+      english: "siblings",
+    },
+    {
+      japanese_advance: "いくつ",
+      japanese_basic: "いくつ",
+      english: "how old? / how many? (formal)",
+    },
+    { japanese_advance: "ページ", japanese_basic: "ページ", english: "page" },
+    {
+      japanese_advance: "零",
+      japanese_basic: "れい",
+      english: "zero, example",
+    },
+    { japanese_advance: "丸", japanese_basic: "まる", english: "zero, circle" },
+    { japanese_advance: "番号", japanese_basic: "ばんごう", english: "number" },
+    {
+      japanese_advance: "携帯番号",
+      japanese_basic: "けいたいばんごう",
+      english: "cell phone number",
+    },
+    {
+      japanese_advance: "電話番号",
+      japanese_basic: "でんわばんごう",
+      english: "phone number",
+    },
+    { japanese_advance: "鉛筆", japanese_basic: "えんぴつ", english: "pencil" },
+    {
+      japanese_advance: "ボールペン",
+      japanese_basic: "ボールペン",
+      english: "ball pen",
+    },
+    { japanese_advance: "ペン", japanese_basic: "ペン", english: "pen" },
   ],
 
   "Marugoto 1": [
