@@ -288,7 +288,10 @@ export const categories: Category = {
       english: "children / child",
     },
     { japanese_advance: "犬", japanese_basic: "いぬ", english: "dog" },
-    { japanese_advance: "猫", japanese_basic: "ねこ", english: "cat" },
+    { japanese_advance: "猫", japanese_basic: "ねこ", english: "cat" }
+  ],
+
+  "JLRC 2 - Locatives": [
     { japanese_advance: "上", japanese_basic: "うえ", english: "top / above" },
     { japanese_advance: "近く", japanese_basic: "ちかく", english: "near" },
     {
