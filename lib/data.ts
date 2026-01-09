@@ -264,7 +264,7 @@ export const categories: Category = {
       english: "your wife",
     },
   ],
-  "JLRC 1 - Demostratives & Interrogatives": [
+  "JLRC 1 - Demostratives and Interrogatives": [
     {
       japanese_advance: "この",
       japanese_basic: "この",
