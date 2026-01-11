@@ -5,6 +5,7 @@ import { useSpeech } from "@/hooks/use-speech";
 import axios from "axios";
 
 let voiceVoxStatus = false;
+let elevanLabsStatus = false;
 
 export function useAudio() {
   //const [isVoiceVoxActive, setVoiceVoxStatus] = useState<boolean>(false);
@@ -15,7 +16,8 @@ export function useAudio() {
   const { speak, isLocalSpeaking } = useSpeech();
 
   useEffect(() => {
-    veryfyVoiceVoxStatus();
+    //veryfyVoiceVoxStatus();
+    veryfyElevenLabsStatus();
     // Limpieza al desmontar el componente
     return () => {
       stopAllAudio();
@@ -54,6 +56,19 @@ export function useAudio() {
       //setVoiceVoxStatus(false);
     }
   };
+
+  const veryfyElevenLabsStatus = async () => {
+    try {
+      const { data } = await axios.get("/api/tts_version");
+      console.log("status:", data.ok)
+      data.ok && (elevanLabsStatus = true);
+      //setVoiceVoxStatus(version === "latest");
+    } catch (e) {
+      console.error(e);
+      elevanLabsStatus = false;
+      //setVoiceVoxStatus(false);
+    }
+  }
 
   const playVoiceVoxAudio = useCallback(
     async (text: string, speaker: string) => {
@@ -115,13 +130,77 @@ export function useAudio() {
     [stopAllAudio]
   );
 
+  const playElevenLabsAudio = useCallback(
+  async (text: string, speaker?: string) => {
+    // Detener cualquier audio previo
+    stopAllAudio();
+    console.log("{text, speaker}",{text, speaker})
+
+    try {
+      // Llamada a la nueva ruta TTS
+      const responseAudio = await axios.post("/api/tts", {
+        text,
+        voice: speaker, // opcional, si no se pasa se usa la voz por defecto en el backend
+      }, {
+        responseType: 'arraybuffer', // <-- importante para recibir audio binario
+      });
+      console.log("responseAudio",responseAudio)
+
+      const base64Audio = responseAudio?.data;
+      if (!base64Audio) throw new Error("No audio received from ElevenLabs");
+
+      // Convertir base64 a ArrayBuffer
+      const byteArray = Buffer.from(base64Audio, "base64");
+
+      // Crear Blob con tipo audio/mpeg
+      const audioBlob = new Blob([byteArray], { type: "audio/mpeg" });
+
+      // Crear URL temporal
+      const audioUrl = URL.createObjectURL(audioBlob);
+      audioUrlsRef.current.add(audioUrl);
+
+      // Crear objeto Audio
+      const audio = new Audio(audioUrl);
+      audio.volume = 1;
+
+      // Detectar cuando comienza a reproducirse
+      audio.onplay = () => setVoiceVoxSpeaking(true);
+
+      // Detectar cuando termina
+      audio.onended = () => {
+        setVoiceVoxSpeaking(false);
+        URL.revokeObjectURL(audioUrl);
+        audioUrlsRef.current.delete(audioUrl);
+        currentAudioRef.current = null;
+      };
+
+      // Manejar errores de reproducción
+      audio.onerror = () => {
+        setVoiceVoxSpeaking(false);
+        URL.revokeObjectURL(audioUrl);
+        audioUrlsRef.current.delete(audioUrl);
+        currentAudioRef.current = null;
+        console.error("Error playing ElevenLabs audio");
+      };
+
+      // Reproducir
+      await audio.play();
+      return audio;
+    } catch (error) {
+      console.error("Error in playElevenLabsAudio:", error);
+      throw error;
+    }
+  },
+  [stopAllAudio]
+);
+
   const playAudio = useCallback(
     async (text: string, speaker: string) => {
       //console.log("isVoiceVoxActive", voiceVoxStatus);
       try {
-        if (voiceVoxStatus) {
-          //await axios.get("/api/version")
-          await playVoiceVoxAudio(text, speaker);
+        if (voiceVoxStatus || elevanLabsStatus) {
+          //await playVoiceVoxAudio(text, speaker);
+          await playElevenLabsAudio(text, speaker);
         } else {
           speak(text);
         }
@@ -130,8 +209,8 @@ export function useAudio() {
         speak(text);
       }
     },
-    [voiceVoxStatus, playVoiceVoxAudio, speak]
+    [voiceVoxStatus, playVoiceVoxAudio, playElevenLabsAudio, speak]
   );
 
-  return { playAudio, stopAllAudio, voiceVoxStatus, isSpeaking, veryfyVoiceVoxStatus };
+  return { playAudio, stopAllAudio, voiceVoxStatus, elevanLabsStatus, isSpeaking, veryfyVoiceVoxStatus, veryfyElevenLabsStatus };
 }

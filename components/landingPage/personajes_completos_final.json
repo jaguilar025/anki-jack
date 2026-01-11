@@ -438,11 +438,11 @@
     "description": "Aierutan"
   },
   {
-    "id": 29,
-    "image": "/assets/characters/manbetsu_hanamaru.png",
-    "link": "/main?char=manbetsu_hanamaru",
-    "title": "満別花丸",
-    "description": "Manbetsu Hanamaru"
+    "id": 34,
+    "image": "/assets/characters/gackt.png",
+    "link": "/main?char=gackt",
+    "title": "GACKT",
+    "description": "Gackt"
   },
   {
     "id": 30,
@@ -471,5 +471,12 @@
     "link": "/main?char=chubu_tsurugi",
     "title": "中部つるぎ",
     "description": "Chubu Tsurugi"
+  },
+  {
+    "id": 29,
+    "image": "/assets/characters/manbetsu_hanamaru.png",
+    "link": "/main?char=manbetsu_hanamaru",
+    "title": "満別花丸",
+    "description": "Manbetsu Hanamaru"
   }
 ]
