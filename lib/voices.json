@@ -901,7 +901,7 @@
       "supported_features": {
         "permitted_synthesis_morphing": "ALL"
       },
-      "id_style_default": 69
+      "id_style_default": "GR4dBIFsYe57TxyrHKXz"
     },
     {
       "id": 30,
@@ -1021,5 +1021,26 @@
         "permitted_synthesis_morphing": "SELF_ONLY"
       },
       "id_style_default": 94
+    },
+    {
+      "id": 34,
+      "image": "/assets/characters/gackt.png",
+      "link": "/main?char=gackt",
+      "title": "GACKT",
+      "description": "Gackt",
+      "speaker_uuid": "4614a7de-9829-465d-9791-97eb8a5f9b86",
+      "styles": [
+        {
+          "name": "ノーマル",
+          "id": "62GNHIPpFAeClnwVryd8",
+          "type": "talk"
+        }
+      ],
+      "version": "0.15.7",
+      "word": "ガクトです",
+      "supported_features": {
+        "permitted_synthesis_morphing": "SELF_ONLY"
+      },
+      "id_style_default": "62GNHIPpFAeClnwVryd8"
     }
   ]

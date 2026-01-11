@@ -958,6 +958,7 @@ export default function InfiniteMenu({ items = [] }) {
 
     const handleActiveItem = (index) => {
       const itemIndex = index % items.length;
+      //console.log("itemIndex",itemIndex)
       setActiveItem(items[itemIndex]);
     };
 
