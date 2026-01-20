@@ -598,6 +598,263 @@ export const categories: Category = {
     },
     { japanese_advance: "ペン", japanese_basic: "ペン", english: "pen" },
   ],
+  "JLRC 4 - General Vocabulary": [
+    {
+      japanese_advance: "クラス",
+      japanese_basic: "クラス",
+      english: "class (en)",
+    },
+    {
+      japanese_advance: "授業",
+      japanese_basic: "じゅぎょう",
+      english: "class (jp)",
+    },
+    {
+      japanese_advance: "会議",
+      japanese_basic: "かいぎ",
+      english: "meeting (jp)",
+    },
+    {
+      japanese_advance: "ミーティング",
+      japanese_basic: "ミーティング",
+      english: "meeting (en)",
+    },
+    { japanese_advance: "仕事", japanese_basic: "しごと", english: "work" },
+    {
+      japanese_advance: "締め切り",
+      japanese_basic: "しめきり",
+      english: "deadline",
+    },
+    {
+      japanese_advance: "休み",
+      japanese_basic: "やすみ",
+      english: "vacation, holiday",
+    },
+    {
+      japanese_advance: "休憩",
+      japanese_basic: "きゅうけい",
+      english: "break, rest",
+    },
+    {
+      japanese_advance: "クリスマス",
+      japanese_basic: "クリスマス",
+      english: "Christmas",
+    },
+    {
+      japanese_advance: "スポーツ大会",
+      japanese_basic: "スポーツたいかい",
+      english: "sports festival",
+    },
+    {
+      japanese_advance: "誕生日",
+      japanese_basic: "たんじょうび",
+      english: "birthday",
+    },
+    {
+      japanese_advance: "予定",
+      japanese_basic: "よてい",
+      english: "schedule, plan",
+    },
+    {
+      japanese_advance: "プロジェクト",
+      japanese_basic: "プロジェクト",
+      english: "project",
+    },
+    {
+      japanese_advance: "パーティー",
+      japanese_basic: "パーティー",
+      english: "party",
+    },
+    {
+      japanese_advance: "試合",
+      japanese_basic: "しあい",
+      english: "game, match",
+    },
+    {
+      japanese_advance: "試験",
+      japanese_basic: "しけん",
+      english: "examination",
+    },
+    { japanese_advance: "季節", japanese_basic: "きせつ", english: "season" },
+    { japanese_advance: "春", japanese_basic: "はる", english: "spring" },
+    { japanese_advance: "夏", japanese_basic: "なつ", english: "summer" },
+    { japanese_advance: "秋", japanese_basic: "あき", english: "autumn, fall" },
+    { japanese_advance: "冬", japanese_basic: "ふゆ", english: "winter" },
+    {
+      japanese_advance: "梅雨",
+      japanese_basic: "つゆ",
+      english: "rainy season",
+    },
+    {
+      japanese_advance: "夏休み",
+      japanese_basic: "なつやすみ",
+      english: "summer vacation",
+    },
+    {
+      japanese_advance: "週末",
+      japanese_basic: "しゅうまつ",
+      english: "weekend",
+    },
+    {
+      japanese_advance: "平日",
+      japanese_basic: "へいじつ",
+      english: "weekday",
+    },
+    {
+      japanese_advance: "午前",
+      japanese_basic: "ごぜん",
+      english: "morning, a.m.",
+    },
+    {
+      japanese_advance: "午後",
+      japanese_basic: "ごご",
+      english: "afternoon, p.m.",
+    },
+    { japanese_advance: "時間", japanese_basic: "じかん", english: "time" },
+    { japanese_advance: "いつ", japanese_basic: "いつ", english: "when" },
+    { japanese_advance: "今", japanese_basic: "いま", english: "now" },
+    { japanese_advance: "まず", japanese_basic: "まず", english: "first" },
+    {
+      japanese_advance: "はじめに",
+      japanese_basic: "はじめに",
+      english: "first, at the beginning",
+    },
+    { japanese_advance: "次", japanese_basic: "つぎ", english: "next" },
+    { japanese_advance: "朝", japanese_basic: "あさ", english: "morning" },
+    {
+      japanese_advance: "昼",
+      japanese_basic: "ひる",
+      english: "noon, daytime",
+    },
+    {
+      japanese_advance: "夜・晩",
+      japanese_basic: "よる・ばん",
+      english: "night",
+    },
+  ],
+  "JLRC 5 - General Vocabulary": [
+    {
+      japanese_advance: "留学生",
+      japanese_basic: "りゅうがくせい",
+      english: "student studying abroad",
+    },
+    {
+      japanese_advance: "往復",
+      japanese_basic: "おうふく",
+      english: "round trip",
+    },
+    { japanese_advance: "生徒", japanese_basic: "せいと", english: "student" },
+    {
+      japanese_advance: "片道",
+      japanese_basic: "かたみち",
+      english: "one way",
+    },
+    { japanese_advance: "時間", japanese_basic: "じかん", english: "time" },
+    {
+      japanese_advance: "一ヶ月",
+      japanese_basic: "ひとつき",
+      english: "one month",
+    },
+    {
+      japanese_advance: "クラスメイト",
+      japanese_basic: "クラスメイト",
+      english: "classmate",
+    },
+    {
+      japanese_advance: "メンバー",
+      japanese_basic: "メンバー",
+      english: "member",
+    },
+    {
+      japanese_advance: "乗り物",
+      japanese_basic: "のりもの",
+      english: "vehicles",
+    },
+    {
+      japanese_advance: "オートバイ・バイク",
+      japanese_basic: "オートバイ・バイク",
+      english: "motorcycle",
+    },
+    {
+      japanese_advance: "グループ",
+      japanese_basic: "グループ",
+      english: "group",
+    },
+    {
+      japanese_advance: "自転車",
+      japanese_basic: "じてんしゃ",
+      english: "bicycle",
+    },
+    {
+      japanese_advance: "宿題",
+      japanese_basic: "しゅくだい",
+      english: "homework",
+    },
+    {
+      japanese_advance: "自動車・車",
+      japanese_basic: "じどうしゃ・くるま",
+      english: "car",
+    },
+    {
+      japanese_advance: "問題",
+      japanese_basic: "もんだい",
+      english: "problem",
+    },
+    {
+      japanese_advance: "タクシー",
+      japanese_basic: "タクシー",
+      english: "taxi",
+    },
+    { japanese_advance: "バス", japanese_basic: "バス", english: "bus" },
+    {
+      japanese_advance: "トレーニング",
+      japanese_basic: "トレーニング",
+      english: "training",
+    },
+    { japanese_advance: "ゼミ", japanese_basic: "ゼミ", english: "seminar" },
+    { japanese_advance: "電車", japanese_basic: "でんしゃ", english: "train" },
+    {
+      japanese_advance: "アルバイト",
+      japanese_basic: "アルバイト",
+      english: "part-time job",
+    },
+    {
+      japanese_advance: "地下鉄",
+      japanese_basic: "ちかてつ",
+      english: "subway",
+    },
+    {
+      japanese_advance: "残業",
+      japanese_basic: "ざんぎょう",
+      english: "overtime",
+    },
+    {
+      japanese_advance: "新幹線",
+      japanese_basic: "しんかんせん",
+      english: "Shinkansen",
+    },
+    { japanese_advance: "船", japanese_basic: "ふね", english: "ship / boat" },
+    {
+      japanese_advance: "会話",
+      japanese_basic: "かいわ",
+      english: "conversation",
+    },
+    {
+      japanese_advance: "飛行機",
+      japanese_basic: "ひこうき",
+      english: "airplane",
+    },
+    {
+      japanese_advance: "文法",
+      japanese_basic: "ぶんぽう",
+      english: "grammar",
+    },
+    {
+      japanese_advance: "歩いて",
+      japanese_basic: "あるいて",
+      english: "on foot, by walking",
+    },
+  ],
 
   "Marugoto 1": [
     {
