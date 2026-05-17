@@ -199,8 +199,8 @@ export function useAudio() {
       //console.log("isVoiceVoxActive", voiceVoxStatus);
       try {
         if (voiceVoxStatus || elevanLabsStatus) {
-          //await playVoiceVoxAudio(text, speaker);
-          await playElevenLabsAudio(text, speaker);
+          await playVoiceVoxAudio(text, speaker);
+          //await playElevenLabsAudio(text, speaker);
         } else {
           speak(text);
         }

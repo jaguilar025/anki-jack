@@ -1,34 +1,29 @@
 import { NextRequest, NextResponse } from 'next/server'
 import axios from 'axios'
 
+const HEADERS = {
+  'ngrok-skip-browser-warning': 'true',
+  'Authorization': `Bearer ${process.env.VOICEVOX_TOKEN}`
+}
+
 export async function POST(req: NextRequest) {
   try {
-    // テキストとキャラクターを取得
     const { text, speaker } = await req.json()
 
-    // 音声合成用のクエリ作成
-    const responseQuery = await axios.post(
-      `${process.env.VOICEVOX_URL}/audio_query?speaker=${speaker}&text=${text}`
-    )
-
-    // クエリを取得
-    const query = responseQuery.data
-
-    // 音声を合成
     const responseSynthesis = await axios.post(
-      `${process.env.VOICEVOX_URL}/synthesis?speaker=${speaker}`,
-      query,
+      `${process.env.VOICEVOX_URL}/tts`,
+      { text, speaker },
       {
         responseType: 'arraybuffer',
+        headers: { ...HEADERS, 'Content-Type': 'application/json' }
       }
     )
 
-    // base64形式に変換
     const base64Data = Buffer.from(responseSynthesis.data, 'binary').toString('base64')
-
     return NextResponse.json({ response: base64Data })
+
   } catch (error) {
     console.log('error', error)
-    return NextResponse.error()
+    return NextResponse.json({ error: 'Error al sintetizar voz' }, { status: 500 })
   }
 }

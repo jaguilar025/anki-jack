@@ -46,14 +46,15 @@ export default function StudyPage() {
 
 
   useEffect(() => {
-    const voiceID = localStorage.getItem('voiceID') || 1;
-      const character = items.filter(item=>item.id_style_default === voiceID)[0];
-      setCharacter({
-        name: character.title,
-        value: character.id_style_default.toString(),
-        word: character.word
-      });
-    }, [items]);
+    const voiceID = Number(localStorage.getItem('voiceID')) || 1;
+    const character = items.find(item => item.id_style_default === voiceID);
+    if (!character) return;
+    setCharacter({
+      name: character.title,
+      value: character.id_style_default.toString(),
+      word: character.word
+    });
+  }, []);
 
   useEffect(() => {
     if (!categoryParam || !modeParam) {
