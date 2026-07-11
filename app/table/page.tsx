@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
@@ -16,7 +16,7 @@ import {
 } from "@/components/ui/table";
 import type { Word } from "@/lib/types";
 
-export default function TablePage() {
+function TableContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
 
@@ -93,5 +93,19 @@ export default function TablePage() {
         </motion.div>
       </div>
     </div>
+  );
+}
+
+export default function TablePage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen flex items-center justify-center">
+          <p>Cargando...</p>
+        </div>
+      }
+    >
+      <TableContent />
+    </Suspense>
   );
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { StudyCard } from "@/components/study-card";
 import { ProgressBar } from "@/components/progress-bar";
@@ -49,7 +49,7 @@ function parseStudyConfig(
   }
 }
 
-export default function StudyPage() {
+function StudyContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
 
@@ -314,5 +314,19 @@ export default function StudyPage() {
         </motion.div>
       </div>
     </div>
+  );
+}
+
+export default function StudyPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen flex items-center justify-center">
+          <p>Cargando...</p>
+        </div>
+      }
+    >
+      <StudyContent />
+    </Suspense>
   );
 }
