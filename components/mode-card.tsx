@@ -9,16 +9,25 @@ interface ModeCardProps {
   icon: string
   isSelected: boolean
   onClick: () => void
+  disabled?: boolean
 }
 
-export function ModeCard({ title, description, icon, isSelected, onClick }: ModeCardProps) {
+export function ModeCard({ title, description, icon, isSelected, onClick, disabled = false }: ModeCardProps) {
   return (
-    <motion.div whileHover={{ y: -5 }} whileTap={{ scale: 0.98 }}>
+    <motion.div
+      whileHover={disabled ? undefined : { y: -5 }}
+      whileTap={disabled ? undefined : { scale: 0.98 }}
+    >
       <Card
-        className={`cursor-pointer card-hover-effect transition-all ${
-          isSelected ? "border-primary border-2 bg-primary/10" : "border-border bg-card hover:border-primary/50"
+        className={`transition-all ${
+          disabled
+            ? "cursor-not-allowed opacity-50 border-border bg-card"
+            : `cursor-pointer card-hover-effect ${
+                isSelected ? "border-primary border-2 bg-primary/10" : "border-border bg-card hover:border-primary/50"
+              }`
         }`}
-        onClick={onClick}
+        onClick={disabled ? undefined : onClick}
+        aria-disabled={disabled}
       >
         <CardContent className="p-4 flex flex-col items-center text-center gap-2">
           <div className="text-3xl mb-2">{icon}</div>
