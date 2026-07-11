@@ -57,6 +57,11 @@ export default function Dashboard() {
     })
     router.push(`/study?${params.toString()}`)
   }
+  const handleConsultTable = () => {
+    if (!selectedCategory) return
+    router.push(`/table?category=${encodeURIComponent(selectedCategory)}`)
+  }
+
   const handleGoLens = () => {
     router.push(`/dict-lens`)
   }
@@ -178,14 +183,26 @@ export default function Dashboard() {
                 />
               </div>
 
-              <Button
-                onClick={handleStart}
-                disabled={!selectedCategory || selectedShow.length === 0}
-                className="w-full"
-                size="lg"
-              >
-                Iniciar Estudio
-              </Button>
+              <div className="flex gap-3">
+                <Button
+                  onClick={handleConsultTable}
+                  disabled={!selectedCategory}
+                  variant="secondary"
+                  className="flex-1"
+                  size="lg"
+                >
+                  Consult
+                </Button>
+                <Button
+                  onClick={handleStart}
+                  disabled={!selectedCategory || selectedShow.length === 0}
+                  className="flex-1"
+                  size="lg"
+                >
+                  Study
+                </Button>
+                
+              </div>
             </div>
           </div>
         </CardContent>
@@ -220,9 +237,8 @@ export default function Dashboard() {
         </CardContent>
       </Card>
 
-      <div className="text-center text-sm text-muted-foreground">
-        <p>Progreso guardado automáticamente en tu dispositivo</p>
-        <p>Copyright © All rights reserved | ELNEA</p>
+      <div className="text-center text-sm text-muted-foreground mb-16">
+        <p>Copyright © All rights reserved | ELNEA 2026</p>
       </div>
     </motion.div>
   )
