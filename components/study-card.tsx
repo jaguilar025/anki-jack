@@ -9,16 +9,17 @@ import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
 import { motion, AnimatePresence } from "framer-motion";
 import { Volume2 } from "lucide-react";
-import type { Word } from "@/lib/types";
+import type { StudyConfig, Word } from "@/lib/types";
 import { CharacterType } from "@/components/voicevox/types";
 import { useAudio } from "@/hooks/use-audio";
 
 // Actualizar la interfaz de props para incluir onSeeAnswer
 interface StudyCardProps {
   word: Word;
-  mode: number;
+  config: StudyConfig;
   onAnswer: (isCorrect: boolean) => void;
   onSeeAnswer?: () => void;
+  onSkip?: () => void;
   showResult: boolean;
   isCorrect: boolean | null;
   onNext: () => void;
@@ -27,12 +28,13 @@ interface StudyCardProps {
 
 export function StudyCard({
   word,
-  mode,
+  config,
   onAnswer,
   showResult,
   isCorrect,
   onNext,
   onSeeAnswer,
+  onSkip,
   character,
 }: StudyCardProps) {
   const [answer, setAnswer] = useState("");
@@ -41,6 +43,11 @@ export function StudyCard({
   const [showAnswer, setShowAnswer] = useState(false);
   const [showResultInternal, setShowResultInternal] = useState(showResult);
   const { playAudio, isVoiceVoxActive, isSpeaking } = useAudio();
+
+  const showAudio = config.show.includes("audio");
+  const showJapanese = config.show.includes("japanese");
+  const showEnglish = config.show.includes("english");
+  const answerInJapanese = config.answer === "japanese";
 
   useEffect(() => {
     // Focus input when card is shown
@@ -52,12 +59,7 @@ export function StudyCard({
     if (!showResult) {
       setAnswer("");
     }
-
-    // Auto-speak for audio mode
-    if (mode === 0 && !showResult) {
-      //handlePlayAudio()
-    }
-  }, [word, showResult, mode]);
+  }, [word, showResult]);
 
 
 
@@ -101,21 +103,14 @@ export function StudyCard({
 
     let isAnswerCorrect = false;
 
-    switch (mode) {
-      case 0: // Audio + Writing
-      case 1: // Visual + Audio
-        isAnswerCorrect =
-          answer.trim().toLowerCase() === word.japanese_advance.toLowerCase() ||
-          answer.trim().toLowerCase() === word.japanese_basic.toLowerCase();
-        break;
-      case 2: // Translation
-        isAnswerCorrect =
-          answer.trim().toLowerCase() === word.japanese_advance.toLowerCase() ||
-          answer.trim().toLowerCase() === word.japanese_basic.toLowerCase();
-        break;
-      case 3: // Translation inverted
-        isAnswerCorrect = validateAnswer(answer, word.spanish ?? word.english)
-        break;
+    if (answerInJapanese) {
+      // Se valida contra el japonés (kanji/kana)
+      isAnswerCorrect =
+        answer.trim().toLowerCase() === word.japanese_advance.toLowerCase() ||
+        answer.trim().toLowerCase() === word.japanese_basic.toLowerCase();
+    } else {
+      // Se valida contra la traducción (español/inglés)
+      isAnswerCorrect = validateAnswer(answer, word.spanish ?? word.english ?? "");
     }
 
     onAnswer(isAnswerCorrect);
@@ -153,32 +148,26 @@ export function StudyCard({
   };
 
   const renderContent = () => {
-    switch (mode) {
-      case 0: // Audio + Writing
-        return (
-          <div className="flex flex-col items-center gap-4">
-            <Button
-              type="button"
-              variant="outline"
-              size="icon"
-              className="h-16 w-16 rounded-full"
-              onClick={handlePlayAudio}
-            >
-              <Volume2
-                className={`h-8 w-8 ${
-                  isSpeaking ? "text-primary animate-pulse" : ""
-                }`}
-              />
-            </Button>
-            <p className="text-sm text-muted-foreground">
-              Escucha y escribe la palabra en japonés
-            </p>
-          </div>
-        );
+    return (
+      <div className="flex flex-col items-center gap-4">
+        {/* Pista: audio */}
+        {showAudio && (
+          <Button
+            type="button"
+            variant="outline"
+            size="icon"
+            className="h-16 w-16 rounded-full"
+            onClick={handlePlayAudio}
+          >
+            <Volume2
+              className={`h-8 w-8 ${isSpeaking ? "text-primary animate-pulse" : ""}`}
+            />
+          </Button>
+        )}
 
-      case 1: // Visual + Audio
-        return (
-          <div className="flex flex-col items-center gap-4">
+        {/* Pista: texto en japonés (con toggle de kana) */}
+        {showJapanese && (
+          <div className="flex flex-col items-center gap-2">
             <div className="flex items-center gap-2 mb-2">
               <Switch
                 id="show-kana"
@@ -187,78 +176,38 @@ export function StudyCard({
               />
               <Label htmlFor="show-kana">Mostrar kana</Label>
             </div>
-
-            <div className="text-center">
-              <h3 className="japanese-text text-[40px] font-normal mb-2">
-                {showKana ? word.japanese_basic : word.japanese_advance}
-              </h3>
-              <Button
-                type="button"
-                variant="ghost"
-                size="sm"
-                onClick={handlePlayAudio}
-                className="mt-2"
-              >
-                <Volume2
-                  className={`h-4 w-4 mr-1 ${
-                    isSpeaking ? "text-primary animate-pulse" : ""
-                  }`}
-                />
-                Escuchar
-              </Button>
-            </div>
-          </div>
-        );
-
-      case 2: // Translation
-        return (
-          <div className="text-center">
-            <h3 className="text-xl font-bold mb-4">{word.spanish ?? word.english}</h3>
-            <p className="text-sm text-muted-foreground">
-              Escribe la traducción en japonés
-            </p>
-          </div>
-        );
-      case 3: // Translation inverted
-      return (
-        <div className="flex flex-col items-center gap-4">
-          <div className="flex items-center gap-2 mb-2">
-            <Switch
-              id="show-kana"
-              checked={showKana}
-              onCheckedChange={setShowKana}
-            />
-            <Label htmlFor="show-kana">Mostrar kana</Label>
-          </div>
-
-          <div className="text-center">
-            <h3 className="japanese-text text-[40px] font-normal mb-2">
+            <h3 className="japanese-text text-[40px] font-normal">
               {showKana ? word.japanese_basic : word.japanese_advance}
             </h3>
-            <Button
-              type="button"
-              variant="ghost"
-              size="sm"
-              onClick={handlePlayAudio}
-              className="mt-2"
-            >
-              <Volume2
-                className={`h-4 w-4 mr-1 ${
-                  isSpeaking ? "text-primary animate-pulse" : ""
-                }`}
-              />
-              Escuchar
-            </Button>
           </div>
-        </div>
-      );
-    }
+        )}
+
+        {/* Pista: traducción (español/inglés) */}
+        {showEnglish && (
+          <h3 className="text-xl font-bold">{word.spanish ?? word.english}</h3>
+        )}
+
+      </div>
+    );
   };
 
   return (
     <Card className="w-full">
       <form onSubmit={handleSubmit}>
         <CardContent className="p-6 space-y-6">
+          {/* Saltar: marca la pregunta como incorrecta y avanza */}
+          {onSkip && !(showResult && (isCorrect || showAnswer)) && (
+            <div className="flex justify-end">
+              <button
+                type="button"
+                onClick={onSkip}
+                className="text-sm text-muted-foreground underline-offset-4 transition-colors hover:text-foreground hover:underline"
+              >
+                Saltar →
+              </button>
+            </div>
+          )}
+
           {renderContent()}
 
           {/* Cambiar la parte del input para que tenga un borde rojo cuando la respuesta es incorrecta
@@ -281,7 +230,7 @@ export function StudyCard({
 
           {/* Modificar la parte que muestra el resultado para eliminar el icono de tache */}
           <AnimatePresence>
-            {showResult && (
+            {showResult && (isCorrect || showAnswer) && (
               <motion.div
                 initial={{ opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: "auto" }}

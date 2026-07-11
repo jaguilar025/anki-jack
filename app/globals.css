@@ -137,3 +137,12 @@
   transform: translateY(-5px);
   box-shadow: 0 10px 25px rgba(139, 92, 246, 0.3);
 }
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
