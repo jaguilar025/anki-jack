@@ -64,7 +64,7 @@ function TableContent() {
             {categoryParam}
           </h1>
 
-          <div className="rounded-lg border border-border bg-card overflow-hidden text-[16px]">
+          <div className="rounded-lg border border-border bg-card overflow-hidden">
             <Table className="table-fixed w-full">
               <TableHeader>
                 <TableRow>
@@ -76,13 +76,13 @@ function TableContent() {
               <TableBody>
                 {words.map((word, i) => (
                   <TableRow key={`${word.japanese_basic}-${i}`}>
-                    <TableCell className="japanese-text break-words text-[16px]">
+                    <TableCell className="japanese-text break-words">
                       {word.japanese_basic}
                     </TableCell>
-                    <TableCell className="japanese-text break-words text-[16px]">
+                    <TableCell className="japanese-text break-words">
                       {word.japanese_advance}
                     </TableCell>
-                    <TableCell className="break-words text-[16px]">
+                    <TableCell className="break-words">
                       {word.spanish ?? word.english}
                     </TableCell>
                   </TableRow>
