@@ -2,6 +2,278 @@ import type { Category } from "./types";
 
 // Categorías predefinidas
 export const categories: Category = {
+  "Kanjis ISI": [
+  {
+    "japanese_advance": "医者",
+    "japanese_basic": "いしゃ",
+    "english": "doctor"
+  },
+  {
+  "japanese_advance": "歯医者",
+  "japanese_basic": "はいしゃ",
+  "english": "dentist"
+},
+  {
+    "japanese_advance": "薬",
+    "japanese_basic": "くすり",
+    "english": "medicine; drug"
+  },
+  {
+    "japanese_advance": "かぜ薬",
+    "japanese_basic": "かぜぐすり",
+    "english": "cold medicine"
+  },
+  {
+    "japanese_advance": "薬屋",
+    "japanese_basic": "くすりや",
+    "english": "pharmacy; drugstore"
+  },
+  {
+    "japanese_advance": "病気",
+    "japanese_basic": "びょうき",
+    "english": "illness; disease"
+  },
+  {
+    "japanese_advance": "病院",
+    "japanese_basic": "びょういん",
+    "english": "hospital"
+  },
+  {
+    "japanese_advance": "入院",
+    "japanese_basic": "にゅういん",
+    "english": "hospitalization; hospital admission"
+  },
+  {
+    "japanese_advance": "医院",
+    "japanese_basic": "いいん",
+    "english": "clinic"
+  },
+  {
+    "japanese_advance": "大学院",
+    "japanese_basic": "だいがくいん",
+    "english": "graduate school"
+  },
+  {
+    "japanese_advance": "病院内",
+    "japanese_basic": "びょういんない",
+    "english": "inside a hospital"
+  },
+  {
+    "japanese_advance": "校内",
+    "japanese_basic": "こうない",
+    "english": "inside the school; on school grounds"
+  },
+  {
+    "japanese_advance": "国内",
+    "japanese_basic": "こくない",
+    "english": "domestic; within the country"
+  },
+  {
+    "japanese_advance": "内科",
+    "japanese_basic": "ないか",
+    "english": "internal medicine department"
+  },
+  {
+    "japanese_advance": "外科",
+    "japanese_basic": "げか",
+    "english": "surgery department"
+  },
+  {
+    "japanese_advance": "目",
+    "japanese_basic": "め",
+    "english": "eye"
+  },
+  {
+    "japanese_advance": "目薬",
+    "japanese_basic": "めぐすり",
+    "english": "eye drops"
+  },
+  {
+    "japanese_advance": "2つ目",
+    "japanese_basic": "ふたつめ",
+    "english": "second; second one"
+  },
+  {
+    "japanese_advance": "耳",
+    "japanese_basic": "みみ",
+    "english": "ear"
+  },
+  {
+    "japanese_advance": "体",
+    "japanese_basic": "からだ",
+    "english": "body"
+  },
+  {
+    "japanese_advance": "色",
+    "japanese_basic": "いろ",
+    "english": "color"
+  },
+  {
+    "japanese_advance": "茶色い",
+    "japanese_basic": "ちゃいろい",
+    "english": "brown"
+  },
+  {
+    "japanese_advance": "顔色",
+    "japanese_basic": "かおいろ",
+    "english": "complexion; facial color"
+  },
+  {
+    "japanese_advance": "黄色",
+    "japanese_basic": "きいろ",
+    "english": "yellow (color)"
+  },
+  {
+    "japanese_advance": "黄色い",
+    "japanese_basic": "きいろい",
+    "english": "yellow"
+  },
+  {
+    "japanese_advance": "赤",
+    "japanese_basic": "あか",
+    "english": "red (color)"
+  },
+  {
+    "japanese_advance": "赤い",
+    "japanese_basic": "あかい",
+    "english": "red"
+  },
+  {
+    "japanese_advance": "赤ちゃん",
+    "japanese_basic": "あかちゃん",
+    "english": "baby"
+  },
+  {
+    "japanese_advance": "日本語",
+    "japanese_basic": "にほんご",
+    "english": "Japanese language"
+  },
+  {
+    "japanese_advance": "外国語",
+    "japanese_basic": "がいこくご",
+    "english": "foreign language"
+  },
+  {
+    "japanese_advance": "一語",
+    "japanese_basic": "いちご",
+    "english": "one word"
+  },
+  {
+    "japanese_advance": "英語",
+    "japanese_basic": "えいご",
+    "english": "English language"
+  },
+  {
+    "japanese_advance": "話します",
+    "japanese_basic": "はなします",
+    "english": "to speak; to talk"
+  },
+  {
+    "japanese_advance": "話",
+    "japanese_basic": "はなし",
+    "english": "story; conversation; talk"
+  },
+  {
+    "japanese_advance": "電話",
+    "japanese_basic": "でんわ",
+    "english": "telephone; phone call"
+  },
+  {
+    "japanese_advance": "会話",
+    "japanese_basic": "かいわ",
+    "english": "conversation"
+  },
+  {
+    "japanese_advance": "歌",
+    "japanese_basic": "うた",
+    "english": "song"
+  },
+  {
+    "japanese_advance": "歌います",
+    "japanese_basic": "うたいます",
+    "english": "to sing"
+  },
+  {
+    "japanese_advance": "歌手",
+    "japanese_basic": "かしゅ",
+    "english": "singer"
+  },
+  {
+    "japanese_advance": "料理",
+    "japanese_basic": "りょうり",
+    "english": "cooking; cuisine; dish"
+  },
+  {
+    "japanese_advance": "料金",
+    "japanese_basic": "りょうきん",
+    "english": "fee; charge"
+  },
+  {
+    "japanese_advance": "無料",
+    "japanese_basic": "むりょう",
+    "english": "free of charge"
+  },
+  {
+    "japanese_advance": "理由",
+    "japanese_basic": "りゆう",
+    "english": "reason"
+  },
+  {
+    "japanese_advance": "作ります",
+    "japanese_basic": "つくります",
+    "english": "to make; to create"
+  },
+  {
+    "japanese_advance": "作文",
+    "japanese_basic": "さくぶん",
+    "english": "composition; essay"
+  },
+  {
+    "japanese_advance": "持ちます",
+    "japanese_basic": "もちます",
+    "english": "to hold; to carry; to have"
+  },
+  {
+    "japanese_advance": "お金持ち",
+    "japanese_basic": "おかねもち",
+    "english": "rich person; wealthy"
+  },
+  {
+    "japanese_advance": "気持ち",
+    "japanese_basic": "きもち",
+    "english": "feeling; emotion"
+  },
+  {
+    "japanese_advance": "足",
+    "japanese_basic": "あし",
+    "english": "leg; foot"
+  },
+  {
+    "japanese_advance": "足ります",
+    "japanese_basic": "たります",
+    "english": "to be enough; to suffice"
+  },
+  {
+    "japanese_advance": "速い",
+    "japanese_basic": "はやい",
+    "english": "fast; quick"
+  },
+  {
+    "japanese_advance": "力",
+    "japanese_basic": "ちから",
+    "english": "strength; power"
+  },
+  {
+    "japanese_advance": "力持ち",
+    "japanese_basic": "ちからもち",
+    "english": "strong person"
+  },
+  {
+    "japanese_advance": "元気",
+    "japanese_basic": "げんき",
+    "english": "healthy; energetic; well"
+  }
+],
   "JLRC N4 SAKURA 1": [
     { "japanese_advance": "僕", "japanese_basic": "ぼく", "english": "I" },
     { "japanese_advance": "君", "japanese_basic": "きみ", "english": "you" },
