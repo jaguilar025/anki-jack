@@ -27,6 +27,18 @@ export default defineConfig([
   ...pluginVue.configs['flat/essential'],
 
   {
+    name: 'app/server-node-globals',
+    files: ['server/**/*.js', '*.config.js'],
+    languageOptions: { globals: { ...globals.node } },
+  },
+
+  {
+    // shadcn-vue genera nombres de una palabra (Button, Table…) y algunas vistas/componentes también
+    name: 'app/component-names',
+    rules: { 'vue/multi-word-component-names': 'off' },
+  },
+
+  {
     ...pluginPlaywright.configs['flat/recommended'],
     files: ['e2e/**/*.{test,spec}.{js,ts,jsx,tsx}'],
   },

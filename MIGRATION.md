@@ -12,7 +12,7 @@ Si eres un agente: lee **solo** este archivo y los archivos de origen que te asi
 - Props con `defineProps({ x: { type: String, required: true } })`. Eventos con `defineEmits([...])`.
 - **Mantén el mismo aspecto y comportamiento.** Copia las clases de Tailwind tal cual (`className` → `class`). No rediseñes, no "mejores" ni añadas funcionalidades.
 - Mantén los textos de la interfaz y los comentarios en español, como en el original.
-- Fuente: Noto Serif global (ya está configurada). Ignora `font-['Press_Start_2P']`, `Inter`, `Roboto` y `Noto Sans JP`: elimina esas clases.
+- Fuente: Noto Serif + Noto Serif JP global (ya está configurada). Ignora `font-['Press_Start_2P']`, `Inter`, `Roboto` y `Noto Sans JP`: elimina esas clases.
 - Componentes en `PascalCase.vue`. Composables `useXxx.js` en `src/composables/`.
 
 ## Equivalencias React → Vue
@@ -135,3 +135,27 @@ Router, `App.vue`, tema, `main.css` (colores neón, utilidades glow, typewriter,
 `npm run build`, `npm run lint`, `npx vitest run` y la revisión de la diferencia completa.
 
 Archivos descartados (sin uso en Next): ver `docs/ARCHIVOS_DESCARTADOS.md`.
+
+## Contratos de los componentes ya migrados (fases 3 a 5)
+
+Úsalos tal cual. **No modifiques estos archivos.** Si un contrato no te sirve, déjalo anotado como TODO.
+
+| Componente / composable | Contrato |
+|---|---|
+| `ModeCard.vue` | props `title`, `description`, `icon` (String), `isSelected`, `disabled` (Boolean). Emite `click` |
+| `ScoreDisplay.vue` | props `score`, `lives` (Number) |
+| `ProgressBar.vue` | prop `progress` (Number, 0 a 100) |
+| `MessageBubble.vue` | props `message { role, content, translation?, japanese, style? }` y `character { value }`. Usa `useAudio` internamente |
+| `ThemeToggle.vue` | sin props |
+| `KanjiInfo.vue` | prop `kanjiResult` (Object). Emite `new-search` |
+| `voicevox/VoicevoxMain.vue` | sin props. Emite `set-character({ name, value, word })` (antes `setCharacter`) |
+| `voicevox/CharacterSelect.vue` | prop `playAudio` (Function). Emite `set-character` |
+| `voicevox/StyleSelect.vue` | props `character`, `playAudio`. Emite `set-style` |
+| `CategoryWheel.vue` | prop `options` (string[]). `v-model` con la opción seleccionada (antes `value` y `onChange`) |
+| `UploadStudyList.vue` | sin props. Guarda en la store. Emite `upload(categories)` |
+| `DataManagement.vue` | sin props ni emits (usa las stores) |
+| `ChatInterface.vue` | props `messages`, `isLoading`, `character`. `v-model` con el texto del input (antes `input` y `setInput`). Emite `send` (antes `sendMessage`). **Ya no recibe `messagesEndRef`**: el padre usa `<ChatInterface ref="chat">` y llama a `chat.value.scrollToBottom()` |
+| `DrawingCanvas.vue` | prop `disabled`. Emite `image-capture(dataUrl)` (antes `onImageCapture`) |
+| `useAudio()` | `{ playAudio(text, speaker), stopAllAudio, voiceVoxStatus, elevanLabsStatus, isSpeaking, veryfyVoiceVoxStatus, veryfyElevenLabsStatus }` (los estados son refs) |
+| `useSpeech()` | `{ speak, isLocalSpeaking, isSupported }` |
+| Backend | `/api/{chat,process-kanji,tts,tts_version,audio,version}`, con las mismas peticiones y respuestas que en Next |

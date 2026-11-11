@@ -1,6 +1,11 @@
-<!-- TODO(migración): portar desde anki-jack/app/main/page.tsx -->
+<script setup>
+import Dashboard from '@/components/Dashboard.vue'
+</script>
+
 <template>
-  <main class="min-h-screen flex items-center justify-center p-4">
-    <p class="text-muted-foreground">MainView — pendiente de migrar</p>
+  <main class="min-h-screen flex flex-col items-center justify-center p-4 bg-gradient-to-br from-background to-background/90">
+    <div class="w-full max-w-4xl">
+      <Dashboard />
+    </div>
   </main>
 </template>

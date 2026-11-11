@@ -15,8 +15,8 @@ export const useProgressStore = defineStore('progress', () => {
 
   function updateProgress(category, mode, points) {
     const next = { ...progress.value }
-    next[category] = { ...(next[category] ?? {}) }
-    next[category][mode] = { score: 0, ...(next[category][mode] ?? {}) }
+    next[category] = { ...next[category] }
+    next[category][mode] = { score: 0, ...next[category][mode] }
     next[category][mode].score += points
     progress.value = next
   }
