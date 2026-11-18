@@ -8,6 +8,7 @@ import { Label } from '@/components/ui/label'
 import { motion, AnimatePresence } from 'motion-v'
 import { Volume2 } from '@lucide/vue'
 import { useAudio } from '@/composables/useAudio'
+import { moveFocus, isNavFocused } from '@/lib/focusNav'
 
 /**
  * word: { japanese_basic, japanese_advance, spanish?, english? }
@@ -27,6 +28,7 @@ const emit = defineEmits(['answer', 'see-answer', 'skip', 'next'])
 const answer = ref('')
 const showKana = ref(false)
 const inputRef = ref(null)
+const cardRef = ref(null)
 const showAnswer = ref(false)
 const { playAudio, isSpeaking } = useAudio()
 
@@ -97,8 +99,45 @@ function handleSubmit() {
   emit('answer', isAnswerCorrect)
 }
 
+const cardEl = () => cardRef.value?.$el
+const inputEl = () => inputRef.value?.$el
+
+// Ctrl solo (pulsado y soltado sin otra tecla) reproduce el audio.
+// Así no interfiere con atajos como Ctrl+C / Ctrl+V.
+let ctrlAlone = false
+
 function handleKeyDown(e) {
+  // No interceptar teclas mientras el IME está componiendo (escritura en japonés).
+  if (e.isComposing || e.keyCode === 229) return
+
+  if (e.key === 'Control') {
+    if (!e.repeat) ctrlAlone = true
+    return
+  }
+  ctrlAlone = false
+
+  // Arriba/abajo: mover el foco entre las opciones de la tarjeta.
+  if (e.key === 'ArrowUp' || e.key === 'ArrowDown') {
+    e.preventDefault()
+    moveFocus(cardEl(), e.key === 'ArrowDown' ? 1 : -1)
+    return
+  }
+
+  // Izquierda/derecha: también navegan, salvo en el input (ahí mueven el cursor).
+  if (
+    (e.key === 'ArrowLeft' || e.key === 'ArrowRight') &&
+    document.activeElement !== inputEl() &&
+    isNavFocused(cardEl())
+  ) {
+    e.preventDefault()
+    moveFocus(cardEl(), e.key === 'ArrowRight' ? 1 : -1)
+    return
+  }
+
   if (e.key === 'Enter') {
+    // Si el foco está en un botón o switch de la tarjeta, Enter lo activa de forma nativa.
+    if (document.activeElement !== inputEl() && isNavFocused(cardEl())) return
+
     e.preventDefault()
 
     // Si estamos en la etapa del "Siguiente", emite next
@@ -111,8 +150,25 @@ function handleKeyDown(e) {
   }
 }
 
-onMounted(() => document.addEventListener('keydown', handleKeyDown))
-onUnmounted(() => document.removeEventListener('keydown', handleKeyDown))
+function handleKeyUp(e) {
+  if (e.key === 'Control' && ctrlAlone && showAudio()) handlePlayAudio()
+  ctrlAlone = false
+}
+
+function resetCtrl() {
+  ctrlAlone = false
+}
+
+onMounted(() => {
+  document.addEventListener('keydown', handleKeyDown)
+  document.addEventListener('keyup', handleKeyUp)
+  window.addEventListener('blur', resetCtrl)
+})
+onUnmounted(() => {
+  document.removeEventListener('keydown', handleKeyDown)
+  document.removeEventListener('keyup', handleKeyUp)
+  window.removeEventListener('blur', resetCtrl)
+})
 
 function handleShowAnswer() {
   showAnswer.value = true
@@ -125,13 +181,14 @@ async function handlePlayAudio() {
 </script>
 
 <template>
-  <Card class="w-full">
+  <Card ref="cardRef" class="w-full">
     <form @submit.prevent="handleSubmit">
       <CardContent class="p-6 space-y-6">
         <!-- Saltar: marca la pregunta como incorrecta y avanza -->
         <div v-if="!(showResult && (isCorrect || showAnswer))" class="flex justify-end">
           <button
             type="button"
+            data-nav
             class="text-sm text-muted-foreground underline-offset-4 transition-colors hover:text-foreground hover:underline"
             @click="emit('skip')"
           >
@@ -147,6 +204,8 @@ async function handlePlayAudio() {
             variant="outline"
             size="icon"
             class="h-16 w-16 rounded-full"
+            data-nav
+            title="Reproducir audio (Ctrl)"
             @click="handlePlayAudio"
           >
             <Volume2 :class="['h-8 w-8', isSpeaking ? 'text-primary animate-pulse' : '']" />
@@ -155,7 +214,7 @@ async function handlePlayAudio() {
           <!-- Pista: texto en japonés (con toggle de kana) -->
           <div v-if="showJapanese()" class="flex flex-col items-center gap-2">
             <div class="flex items-center gap-2 mb-2">
-              <Switch id="show-kana" v-model="showKana" />
+              <Switch id="show-kana" v-model="showKana" data-nav />
               <Label for="show-kana">Mostrar kana</Label>
             </div>
             <h3 class="japanese-text text-[40px] font-normal">
@@ -171,6 +230,7 @@ async function handlePlayAudio() {
         <div class="space-y-2">
           <Input
             ref="inputRef"
+            data-nav
             v-model="answer"
             type="text"
             placeholder="Escribe tu respuesta..."
@@ -205,12 +265,18 @@ async function handlePlayAudio() {
 
       <CardFooter class="flex justify-center p-6 pt-0">
         <template v-if="showResult && !isCorrect && !showAnswer">
-          <Button type="submit" class="flex-1">Comprobar</Button>
-          <Button type="button" variant="outline" class="flex-1" @click="handleShowAnswer">
+          <Button type="submit" class="flex-1" data-nav>Comprobar</Button>
+          <Button
+            type="button"
+            variant="outline"
+            class="flex-1"
+            data-nav
+            @click="handleShowAnswer"
+          >
             Ver respuesta
           </Button>
         </template>
-        <Button v-else type="submit" class="w-full">
+        <Button v-else type="submit" class="w-full" data-nav>
           {{ showResult ? 'Siguiente' : 'Comprobar' }}
         </Button>
       </CardFooter>

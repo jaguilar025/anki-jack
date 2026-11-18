@@ -190,3 +190,10 @@
     display: none;
   }
 }
+
+/* Indicador de foco para la navegación con teclado (flechas) en /study.
+   Fuera de @layer para que gane a la utilidad `outline-none` de los componentes. */
+[data-nav]:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+}

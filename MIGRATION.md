@@ -1,4 +1,4 @@
-# Guía de migración anki-jack (Next/React/TS) → repite (Vue 3/JS)
+# Guía de migración anki-jack (Next/React/TS) → Vue 3/JS
 
 Origen: `/home/jorge/Documents/WEB/anki-jack` (solo lectura, **no modificar**)
 Destino: `/home/jorge/Documents/WEB/repite`

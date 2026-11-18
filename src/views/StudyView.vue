@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, watch } from 'vue'
+import { ref, computed, watch, nextTick, onMounted, onUnmounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import StudyCard from '@/components/StudyCard.vue'
 import { Button } from '@/components/ui/button'
@@ -9,6 +9,7 @@ import { Characters } from '@/data/voicevox-characters'
 import { useAudio } from '@/composables/useAudio'
 import { useCategoriesStore } from '@/stores/categories'
 import { useVoiceStore } from '@/stores/voice'
+import { moveFocus, focusFirst } from '@/lib/focusNav'
 
 // Construye la configuración de práctica desde los parámetros de la URL.
 // Admite el formato nuevo (show/answer) y hace fallback al antiguo `mode`.
@@ -231,6 +232,26 @@ function handleReviewFailed() {
   startRound(failedWords.value, reviewRound.value + 1)
 }
 
+// Pantalla final: foco automático en la primera opción y navegación con flechas.
+const gameOverRef = ref(null)
+
+watch(gameOver, async (over) => {
+  if (!over) return
+  await nextTick()
+  focusFirst(gameOverRef.value)
+})
+
+function handleGameOverKeyDown(e) {
+  if (!gameOver.value) return
+  const delta = { ArrowDown: 1, ArrowRight: 1, ArrowUp: -1, ArrowLeft: -1 }[e.key]
+  if (!delta) return
+  e.preventDefault()
+  moveFocus(gameOverRef.value, delta)
+}
+
+onMounted(() => document.addEventListener('keydown', handleGameOverKeyDown))
+onUnmounted(() => document.removeEventListener('keydown', handleGameOverKeyDown))
+
 function handleBackToDashboard() {
   stopAllAudio()
   router.push('/main')
@@ -285,6 +306,7 @@ const timeRunningOut = computed(() => timeLeftMs.value <= 5000)
       >
         <div
           v-if="gameOver"
+          ref="gameOverRef"
           class="text-center space-y-6 p-8 bg-card rounded-lg border border-border"
         >
           <h2 class="text-xl font-bold">
@@ -298,16 +320,19 @@ const timeRunningOut = computed(() => timeLeftMs.value <= 5000)
             ¡Ya no te quedan palabras falladas!
           </p>
           <div class="flex flex-col gap-4">
-            <Button v-if="failedWords.length > 0" @click="handleReviewFailed">
+            <Button v-if="failedWords.length > 0" data-nav @click="handleReviewFailed">
               Repasar fallidas ({{ failedWords.length }})
             </Button>
             <Button
               :variant="failedWords.length > 0 ? 'secondary' : 'default'"
+              data-nav
               @click="handleRestart"
             >
               Reiniciar todo
             </Button>
-            <Button variant="outline" @click="handleBackToDashboard">Volver al inicio</Button>
+            <Button variant="outline" data-nav @click="handleBackToDashboard">
+              Volver al inicio
+            </Button>
           </div>
         </div>
         <StudyCard

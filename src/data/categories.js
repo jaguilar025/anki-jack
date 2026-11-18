@@ -2,7 +2,319 @@
 // personalizadas vive ahora en src/stores/categories.js
 // Categorías predefinidas
 export const categories = {
-    "Kanjis ISI": [
+    "Kanjis ISI 3 & 4": [
+  {
+    "japanese_advance": "黒",
+    "japanese_basic": "くろ",
+    "english": "black (color)"
+  },
+  {
+    "japanese_advance": "黒い",
+    "japanese_basic": "くろい",
+    "english": "black"
+  },
+  {
+    "japanese_advance": "黒板",
+    "japanese_basic": "こくばん",
+    "english": "blackboard"
+  },
+  {
+    "japanese_advance": "白",
+    "japanese_basic": "しろ",
+    "english": "white (color)"
+  },
+  {
+    "japanese_advance": "白い",
+    "japanese_basic": "しろい",
+    "english": "white"
+  },
+  {
+    "japanese_advance": "白鳥",
+    "japanese_basic": "はくちょう",
+    "english": "swan"
+  },
+  {
+    "japanese_advance": "長い",
+    "japanese_basic": "ながい",
+    "english": "long"
+  },
+  {
+    "japanese_advance": "校長",
+    "japanese_basic": "こうちょう",
+    "english": "principal; school headmaster"
+  },
+  {
+    "japanese_advance": "社長",
+    "japanese_basic": "しゃちょう",
+    "english": "company president; CEO"
+  },
+  {
+    "japanese_advance": "長所",
+    "japanese_basic": "ちょうしょ",
+    "english": "strength; strong point; advantage"
+  },
+  {
+    "japanese_advance": "短い",
+    "japanese_basic": "みじかい",
+    "english": "short"
+  },
+  {
+    "japanese_advance": "短所",
+    "japanese_basic": "たんしょ",
+    "english": "weakness; shortcoming"
+  },
+  {
+    "japanese_advance": "妻",
+    "japanese_basic": "つま",
+    "english": "wife"
+  },
+  {
+    "japanese_advance": "夫妻",
+    "japanese_basic": "ふさい",
+    "english": "husband and wife; married couple"
+  },
+  {
+    "japanese_advance": "若い",
+    "japanese_basic": "わかい",
+    "english": "young"
+  },
+  {
+    "japanese_advance": "若者",
+    "japanese_basic": "わかもの",
+    "english": "young person; youth"
+  },
+  {
+    "japanese_advance": "彼女",
+    "japanese_basic": "かのじょ",
+    "english": "she; girlfriend"
+  },
+  {
+    "japanese_advance": "子供",
+    "japanese_basic": "こども",
+    "english": "child; children"
+  },
+  {
+    "japanese_advance": "女の子",
+    "japanese_basic": "おんなのこ",
+    "english": "girl"
+  },
+  {
+    "japanese_advance": "男子トイレ",
+    "japanese_basic": "だんしトイレ",
+    "english": "men's restroom"
+  },
+  {
+    "japanese_advance": "様子",
+    "japanese_basic": "ようす",
+    "english": "appearance; state; situation"
+  },
+  {
+    "japanese_advance": "親",
+    "japanese_basic": "おや",
+    "english": "parent"
+  },
+  {
+    "japanese_advance": "両親",
+    "japanese_basic": "りょうしん",
+    "english": "parents"
+  },
+  {
+    "japanese_advance": "親切",
+    "japanese_basic": "しんせつ",
+    "english": "kind; considerate"
+  },
+  {
+    "japanese_advance": "親しい",
+    "japanese_basic": "したしい",
+    "english": "close; intimate; familiar"
+  },
+  {
+    "japanese_advance": "主人",
+    "japanese_basic": "しゅじん",
+    "english": "husband; master; owner"
+  },
+  {
+    "japanese_advance": "持ち主",
+    "japanese_basic": "もちぬし",
+    "english": "owner; possessor"
+  },
+  {
+    "japanese_advance": "主に",
+    "japanese_basic": "おもに",
+    "english": "mainly; primarily"
+  },
+  {
+    "japanese_advance": "夫",
+    "japanese_basic": "おっと",
+    "english": "husband"
+  },
+  {
+    "japanese_advance": "夫人",
+    "japanese_basic": "ふじん",
+    "english": "wife; Mrs.; lady"
+  },
+  {
+    "japanese_advance": "男",
+    "japanese_basic": "おとこ",
+    "english": "man; male"
+  },
+  {
+    "japanese_advance": "男性",
+    "japanese_basic": "だんせい",
+    "english": "man; male"
+  },
+  {
+    "japanese_advance": "長男",
+    "japanese_basic": "ちょうなん",
+    "english": "eldest son"
+  },
+  {
+    "japanese_advance": "女",
+    "japanese_basic": "おんな",
+    "english": "woman; female"
+  },
+  {
+    "japanese_advance": "女性",
+    "japanese_basic": "じょせい",
+    "english": "woman; female"
+  },
+  {
+    "japanese_advance": "図",
+    "japanese_basic": "ず",
+    "english": "figure; diagram; drawing"
+  },
+  {
+    "japanese_advance": "地図",
+    "japanese_basic": "ちず",
+    "english": "map"
+  },
+  {
+    "japanese_advance": "図書館",
+    "japanese_basic": "としょかん",
+    "english": "library"
+  },
+  {
+    "japanese_advance": "貸します",
+    "japanese_basic": "かします",
+    "english": "to lend"
+  },
+  {
+    "japanese_advance": "賃貸",
+    "japanese_basic": "ちんたい",
+    "english": "rental; leasing"
+  },
+  {
+    "japanese_advance": "借ります",
+    "japanese_basic": "かります",
+    "english": "to borrow; to rent"
+  },
+  {
+    "japanese_advance": "借金",
+    "japanese_basic": "しゃっきん",
+    "english": "debt; loan"
+  },
+  {
+    "japanese_advance": "返します",
+    "japanese_basic": "かえします",
+    "english": "to return; to give back"
+  },
+  {
+    "japanese_advance": "返事",
+    "japanese_basic": "へんじ",
+    "english": "reply; response"
+  },
+  {
+    "japanese_advance": "声",
+    "japanese_basic": "こえ",
+    "english": "voice"
+  },
+  {
+    "japanese_advance": "大声",
+    "japanese_basic": "おおごえ",
+    "english": "loud voice; shouting"
+  },
+  {
+    "japanese_advance": "歌声",
+    "japanese_basic": "うたごえ",
+    "english": "singing voice"
+  },
+  {
+    "japanese_advance": "声優",
+    "japanese_basic": "せいゆう",
+    "english": "voice actor"
+  },
+  {
+    "japanese_advance": "映画館",
+    "japanese_basic": "えいがかん",
+    "english": "movie theater; cinema"
+  },
+  {
+    "japanese_advance": "旅館",
+    "japanese_basic": "りょかん",
+    "english": "traditional Japanese inn"
+  },
+  {
+    "japanese_advance": "教えます",
+    "japanese_basic": "おしえます",
+    "english": "to teach; to tell"
+  },
+  {
+    "japanese_advance": "教師",
+    "japanese_basic": "きょうし",
+    "english": "teacher; instructor"
+  },
+  {
+    "japanese_advance": "教わります",
+    "japanese_basic": "おそわります",
+    "english": "to be taught; to learn from someone"
+  },
+  {
+    "japanese_advance": "教室",
+    "japanese_basic": "きょうしつ",
+    "english": "classroom"
+  },
+  {
+    "japanese_advance": "自習室",
+    "japanese_basic": "じしゅうしつ",
+    "english": "study room"
+  },
+  {
+    "japanese_advance": "書きます",
+    "japanese_basic": "かきます",
+    "english": "to write"
+  },
+  {
+    "japanese_advance": "辞書",
+    "japanese_basic": "じしょ",
+    "english": "dictionary"
+  },
+  {
+    "japanese_advance": "写します",
+    "japanese_basic": "うつします",
+    "english": "to copy; to photograph"
+  },
+  {
+    "japanese_advance": "写ります",
+    "japanese_basic": "うつります",
+    "english": "to be photographed; to appear in a photo"
+  },
+  {
+    "japanese_advance": "写真",
+    "japanese_basic": "しゃしん",
+    "english": "photograph; picture"
+  },
+  {
+    "japanese_advance": "真ん中",
+    "japanese_basic": "まんなか",
+    "english": "middle; center"
+  },
+  {
+    "japanese_advance": "真っ白",
+    "japanese_basic": "まっしろ",
+    "english": "pure white; completely white"
+  }
+],
+    "Kanjis ISI 1 & 2": [
         {
             "japanese_advance": "医者",
             "japanese_basic": "いしゃ",

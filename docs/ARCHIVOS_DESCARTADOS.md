@@ -1,6 +1,6 @@
 # Archivos descartados en la migración Next → Vue
 
-Durante la migración de **anki-jack** (Next.js) a **repite** (Vue) estos archivos no se trasladaron porque ningún otro archivo los importaba. Los originales siguen en el repositorio de anki-jack: rama `feature/vue-migration`, último commit antes de migrar `d7e05ed`. Para recuperar uno:
+Durante la migración de **anki-jack** (Next.js) a Vue, estos archivos no se trasladaron porque ningún otro archivo los importaba. Los originales siguen en el repositorio de anki-jack: rama `feature/vue-migration`, último commit antes de migrar `d7e05ed`. Para recuperar uno:
 
 ```bash
 cd ~/Documents/WEB/anki-jack && git show d7e05ed:<ruta>
