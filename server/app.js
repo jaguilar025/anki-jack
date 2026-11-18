@@ -3,6 +3,7 @@ import { bodyLimit } from 'hono/body-limit'
 
 import audio from './routes/audio.js'
 import chat from './routes/chat.js'
+import openaiTts from './routes/openai-tts.js'
 import processKanji from './routes/process-kanji.js'
 import tts from './routes/tts.js'
 import ttsVersion from './routes/tts-version.js'
@@ -17,6 +18,7 @@ const api = new Hono().basePath('/api')
 api.use('*', bodyLimit({ maxSize: 25 * 1024 * 1024 }))
 api.route('/audio', audio)
 api.route('/chat', chat)
+api.route('/openai-tts', openaiTts)
 api.route('/process-kanji', processKanji)
 api.route('/tts', tts)
 api.route('/tts_version', ttsVersion)
