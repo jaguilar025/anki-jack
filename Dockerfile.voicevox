@@ -1,2 +1,0 @@
-# Dockerfile.voicevox
-FROM voicevox/voicevox_engine:nvidia-ubuntu20.04-latest
