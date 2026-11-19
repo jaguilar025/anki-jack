@@ -12,7 +12,7 @@ import { moveFocus, isNavFocused } from '@/lib/focusNav'
 
 /**
  * word: { japanese_basic, japanese_advance, spanish?, english? }
- * config: { show: ('audio'|'japanese'|'english')[], answer: 'japanese'|'english' }
+ * config: { show: ('audio'|'japanese'|'english')[], answer: 'japanese'|'english', autoPlay?: boolean }
  * character: { value } (id del estilo de voz)
  */
 const props = defineProps({
@@ -46,6 +46,15 @@ watch(
       await nextTick()
       inputRef.value?.$el?.focus()
     }
+  },
+  { immediate: true },
+)
+
+// Audio automático: reproduce la palabra en cuanto se carga cada tarjeta
+watch(
+  () => props.word,
+  (word) => {
+    if (word && props.config.autoPlay && showAudio()) handlePlayAudio()
   },
   { immediate: true },
 )
