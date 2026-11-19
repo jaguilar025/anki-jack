@@ -1,6 +1,12 @@
 import { ref, computed, onMounted, onUnmounted, getCurrentInstance } from 'vue'
 import axios from 'axios'
 import { useSpeech } from '@/composables/useSpeech'
+import { getCachedAudio, putCachedAudio } from '@/lib/audioCache'
+
+// Voz y estilo de OpenAI TTS (deben existir en server/routes/openai-tts.js).
+// Forman parte de la clave del caché: si cambian, se generan audios nuevos.
+const OPENAI_TTS_VOICE = 'marin'
+const OPENAI_TTS_STYLE = 'pirate-v1'
 
 // Estado compartido a nivel de módulo (igual que en el original)
 const voiceVoxStatus = ref(false)
@@ -139,16 +145,40 @@ export function useAudio() {
     }
   }
 
+  // Respaldo con voz japonesa generada en el servidor (OpenAI TTS).
+  // Primero busca el audio en el caché del navegador; si no está, lo genera y lo guarda.
+  const playOpenAIAudio = async (text) => {
+    stopAllAudio()
+    const key = { provider: 'openai', voice: OPENAI_TTS_VOICE, style: OPENAI_TTS_STYLE, text }
+
+    let data = await getCachedAudio(key)
+    if (!data) {
+      const response = await axios.post(
+        '/api/openai-tts',
+        { text, voice: OPENAI_TTS_VOICE, style: OPENAI_TTS_STYLE },
+        { responseType: 'arraybuffer' },
+      )
+      data = response.data
+      await putCachedAudio(key, data)
+    }
+    return await playBytes(new Uint8Array(data), 'audio/mpeg', 'Error playing OpenAI audio')
+  }
+
+  // Orden: VoiceVox → OpenAI TTS → voz del navegador
   const playAudio = async (text, speaker) => {
-    try {
-      if (voiceVoxStatus.value || elevanLabsStatus.value) {
+    if (voiceVoxStatus.value || elevanLabsStatus.value) {
+      try {
         await playVoiceVoxAudio(text, speaker)
         // await _playElevenLabsAudio(text, speaker)
-      } else {
-        speak(text)
+        return
+      } catch (e) {
+        console.error('Error in playAudio (VoiceVox):', e)
       }
+    }
+    try {
+      await playOpenAIAudio(text)
     } catch (e) {
-      console.error('Error in playAudio:', e)
+      console.error('Error in playAudio (OpenAI TTS):', e)
       speak(text)
     }
   }

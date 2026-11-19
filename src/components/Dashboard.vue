@@ -13,6 +13,7 @@ import ModeCard from '@/components/ModeCard.vue'
 import CategoryWheel from '@/components/CategoryWheel.vue'
 import ThemeToggle from '@/components/ThemeToggle.vue'
 import DataManagement from '@/components/DataManagement.vue'
+import ClearAudioCache from '@/components/ClearAudioCache.vue'
 import UploadStudyList from '@/components/UploadStudyList.vue'
 import { useCategoriesStore } from '@/stores/categories'
 
@@ -89,6 +90,7 @@ const handleStudyListUploaded = () => {
       </motion.div>
       <div class="flex gap-2">
         <ThemeToggle />
+        <ClearAudioCache />
         <DataManagement />
         <UploadStudyList @upload="handleStudyListUploaded" />
       </div>
