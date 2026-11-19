@@ -48,7 +48,11 @@ const getParam = (key) => {
 }
 
 const categoryParam = computed(() => getParam('category'))
-const config = computed(() => parseStudyConfig(getParam('show'), getParam('answer'), getParam('mode')))
+const config = computed(() => {
+  const base = parseStudyConfig(getParam('show'), getParam('answer'), getParam('mode'))
+  // ?autoplay=1: reproducir el audio de cada tarjeta al cargarla (solo si se muestra el audio)
+  return { ...base, autoPlay: getParam('autoplay') === '1' && base.show.includes('audio') }
+})
 
 // Duración del temporizador por pregunta (segundos). Configurable vía ?time=.
 const timeParam = computed(() => Number(getParam('time')))
@@ -187,6 +191,8 @@ function handleSeeAnswer() {
 // Avanza a la siguiente pregunta (o termina). Las preguntas no acertadas
 // (incorrecta, ver respuesta, saltar o tiempo agotado) se registran como falladas.
 function goNext() {
+  // Corta el audio de feedback para que no se mezcle con el de la siguiente tarjeta
+  stopAllAudio()
   if (!(showResult.value && isCorrect.value) && currentWord.value) {
     failedWords.value.push(currentWord.value)
   }

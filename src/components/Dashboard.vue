@@ -1,6 +1,7 @@
 <script setup>
 import { ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
+import { useLocalStorage } from '@vueuse/core'
 import { motion } from 'motion-v'
 import { RotateCcw } from '@lucide/vue'
 import { Card, CardContent } from '@/components/ui/card'
@@ -26,6 +27,8 @@ const selectedCategory = ref('')
 const showOptions = ref({ audio: true, japanese: true, english: false })
 const answerOption = ref('english')
 const timerSeconds = ref(45)
+// Reproducir el audio de cada tarjeta al cargarla. Se recuerda entre sesiones.
+const autoAudio = useLocalStorage('anki-jack-auto-audio', false)
 
 const showItems = [
   { key: 'audio', label: 'Audio' },
@@ -53,6 +56,7 @@ const handleStart = () => {
       show: selectedShow.value.join(','),
       answer: answerOption.value,
       time: String(timerSeconds.value > 0 ? timerSeconds.value : 45),
+      ...(showOptions.value.audio && autoAudio.value ? { autoplay: '1' } : {}),
     },
   })
 }
@@ -114,6 +118,10 @@ const handleStudyListUploaded = () => {
                     @update:model-value="toggleShow(item.key)"
                   />
                   <Label :for="`show-${item.key}`" class="cursor-pointer">{{ item.label }}</Label>
+                  <template v-if="item.key === 'audio' && showOptions.audio">
+                    <Checkbox id="show-auto-audio" v-model="autoAudio" class="ml-6" />
+                    <Label for="show-auto-audio" class="cursor-pointer">Audio automático</Label>
+                  </template>
                 </div>
               </div>
             </div>
