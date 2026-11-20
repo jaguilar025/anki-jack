@@ -180,7 +180,7 @@ const handleStudyListUploaded = () => {
             description="conversación con un asistente de IA"
             icon="💬"
             :is-selected="false"
-            @click="router.push('/conversation')"
+            @click="router.push('/avatar-chat')"
           />
           <ModeCard
             title="Kanji Lens"

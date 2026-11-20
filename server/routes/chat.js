@@ -12,9 +12,18 @@ app.post('/', async (c) => {
       return c.json({ error: 'Se requieren mensajes para la conversación' }, 400)
     }
 
+    // AI SDK v7 no admite mensajes `system` dentro de `messages`: van en `instructions`
+    const instructions = messages
+      .filter((m) => m.role === 'system')
+      .map((m) => m.content)
+      .join('\n\n')
+    const conversation = messages.filter((m) => m.role !== 'system')
+
     const result = await generateText({
       model: openai('gpt-4o-mini'),
-      messages,
+      ...(instructions && { instructions }),
+      // Al iniciar la conversación solo llega el mensaje de sistema
+      ...(conversation.length ? { messages: conversation } : { prompt: 'Comienza la conversación.' }),
     })
 
     // Si la respuesta no contiene traducción (salto de línea), añadir una nota

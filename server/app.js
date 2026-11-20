@@ -2,6 +2,7 @@ import { Hono } from 'hono'
 import { bodyLimit } from 'hono/body-limit'
 
 import audio from './routes/audio.js'
+import avatarDownload from './routes/avatar-download.js'
 import chat from './routes/chat.js'
 import openaiTts from './routes/openai-tts.js'
 import processKanji from './routes/process-kanji.js'
@@ -17,6 +18,7 @@ const api = new Hono().basePath('/api')
 // La imagen va en base64 dentro del JSON
 api.use('*', bodyLimit({ maxSize: 25 * 1024 * 1024 }))
 api.route('/audio', audio)
+api.route('/avatar-download', avatarDownload)
 api.route('/chat', chat)
 api.route('/openai-tts', openaiTts)
 api.route('/process-kanji', processKanji)
