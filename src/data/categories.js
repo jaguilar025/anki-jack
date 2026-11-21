@@ -2,6 +2,4669 @@
 // personalizadas vive ahora en src/stores/categories.js
 // Categorías predefinidas
 export const categories = {
+      "ISI VOCAB 02": [
+  {
+    "japanese_advance": "恥ずかしい",
+    "japanese_basic": "はずかしい",
+    "english": "embarrassing"
+  },
+  {
+    "japanese_advance": "次",
+    "japanese_basic": "つぎ",
+    "english": "next"
+  },
+  {
+    "japanese_advance": "うれしい",
+    "japanese_basic": "うれしい",
+    "english": "happy, glad"
+  },
+  {
+    "japanese_advance": "画面",
+    "japanese_basic": "がめん",
+    "english": "screen"
+  },
+  {
+    "japanese_advance": "腕時計",
+    "japanese_basic": "うでどけい",
+    "english": "wristwatch"
+  },
+  {
+    "japanese_advance": "セーター",
+    "japanese_basic": "セーター",
+    "english": "sweater"
+  },
+  {
+    "japanese_advance": "スーツケース",
+    "japanese_basic": "スーツケース",
+    "english": "suitcase"
+  },
+  {
+    "japanese_advance": "コート",
+    "japanese_basic": "コート",
+    "english": "coat"
+  },
+  {
+    "japanese_advance": "棚",
+    "japanese_basic": "たな",
+    "english": "shelf"
+  },
+  {
+    "japanese_advance": "指輪",
+    "japanese_basic": "ゆびわ",
+    "english": "ring"
+  },
+  {
+    "japanese_advance": "サイズ",
+    "japanese_basic": "サイズ",
+    "english": "size"
+  },
+  {
+    "japanese_advance": "数字",
+    "japanese_basic": "すうじ",
+    "english": "number"
+  },
+  {
+    "japanese_advance": "ヒール",
+    "japanese_basic": "ヒール",
+    "english": "(high) heels"
+  },
+  {
+    "japanese_advance": "ボタン",
+    "japanese_basic": "ボタン",
+    "english": "button"
+  },
+  {
+    "japanese_advance": "ジーンズ",
+    "japanese_basic": "ジーンズ",
+    "english": "jeans"
+  },
+  {
+    "japanese_advance": "売り場",
+    "japanese_basic": "うりば",
+    "english": "sales section"
+  },
+  {
+    "japanese_advance": "動く",
+    "japanese_basic": "うごく",
+    "english": "move"
+  },
+  {
+    "japanese_advance": "説明・する",
+    "japanese_basic": "せつめい・する",
+    "english": "explain"
+  },
+  {
+    "japanese_advance": "配達・する",
+    "japanese_basic": "はいたつ・する",
+    "english": "deliver"
+  },
+  {
+    "japanese_advance": "重い",
+    "japanese_basic": "おもい",
+    "english": "heavy (weight)"
+  },
+  {
+    "japanese_advance": "軽い",
+    "japanese_basic": "かるい",
+    "english": "light (weight)"
+  },
+  {
+    "japanese_advance": "ちょうどいい",
+    "japanese_basic": "ちょうどいい",
+    "english": "perfect"
+  },
+  {
+    "japanese_advance": "丈夫（な）",
+    "japanese_basic": "じょうぶ（な）",
+    "english": "sturdy"
+  },
+  {
+    "japanese_advance": "もっと",
+    "japanese_basic": "もっと",
+    "english": "more"
+  },
+  {
+    "japanese_advance": "もっと大きいかばんがほしいです。",
+    "japanese_basic": "もっとおおきいかばんがほしいです。",
+    "english": "\"I want a larger bag\""
+  },
+  {
+    "japanese_advance": "ちょっと",
+    "japanese_basic": "ちょっと",
+    "english": "a little"
+  },
+  {
+    "japanese_advance": "いかがですか",
+    "japanese_basic": "いかがですか",
+    "english": "\"How is it?\""
+  },
+  {
+    "japanese_advance": "かしこまりました",
+    "japanese_basic": "かしこまりました",
+    "english": "\"I understand\" (humble language)"
+  },
+  {
+    "japanese_advance": "壁",
+    "japanese_basic": "かべ",
+    "english": "wall"
+  },
+  {
+    "japanese_advance": "カレンダー",
+    "japanese_basic": "カレンダー",
+    "english": "calendar"
+  },
+  {
+    "japanese_advance": "世界地図",
+    "japanese_basic": "せかいちず",
+    "english": "world map"
+  },
+  {
+    "japanese_advance": "最新",
+    "japanese_basic": "さいしん",
+    "english": "latest, newest"
+  },
+  {
+    "japanese_advance": "飲み放題",
+    "japanese_basic": "のみほうだい",
+    "english": "unlimited drinks"
+  },
+  {
+    "japanese_advance": "期間限定",
+    "japanese_basic": "きかんげんてい",
+    "english": "limited period"
+  },
+  {
+    "japanese_advance": "セット",
+    "japanese_basic": "セット",
+    "english": "set"
+  },
+  {
+    "japanese_advance": "フロアガイド",
+    "japanese_basic": "フロアガイド",
+    "english": "floor guide"
+  },
+  {
+    "japanese_advance": "意味",
+    "japanese_basic": "いみ",
+    "english": "meaning"
+  },
+  {
+    "japanese_advance": "営業中",
+    "japanese_basic": "えいぎょうちゅう",
+    "english": "open (for business)"
+  },
+  {
+    "japanese_advance": "大盛り",
+    "japanese_basic": "おおもり",
+    "english": "extra-large helping"
+  },
+  {
+    "japanese_advance": "おかわり",
+    "japanese_basic": "おかわり",
+    "english": "refill, second helping"
+  },
+  {
+    "japanese_advance": "送料",
+    "japanese_basic": "そうりょう",
+    "english": "shipping charges"
+  },
+  {
+    "japanese_advance": "タイムサービス",
+    "japanese_basic": "タイムサービス",
+    "english": "limited time offer"
+  },
+  {
+    "japanese_advance": "定休日",
+    "japanese_basic": "ていきゅうび",
+    "english": "regular holiday"
+  },
+  {
+    "japanese_advance": "本日",
+    "japanese_basic": "ほんじつ",
+    "english": "today"
+  },
+  {
+    "japanese_advance": "半額",
+    "japanese_basic": "はんがく",
+    "english": "half-price"
+  },
+  {
+    "japanese_advance": "レディースデー",
+    "japanese_basic": "レディースデー",
+    "english": "Lady's Day"
+  },
+  {
+    "japanese_advance": "量",
+    "japanese_basic": "りょう",
+    "english": "amount"
+  },
+  {
+    "japanese_advance": "親子丼",
+    "japanese_basic": "おやこどん",
+    "english": "oyako-don (bowl of rice topped with boiled chicken and eggs)"
+  },
+  {
+    "japanese_advance": "牛丼",
+    "japanese_basic": "ぎゅうどん",
+    "english": "gyu-don (bowl of rice topped with seasoned beef)"
+  },
+  {
+    "japanese_advance": "サンドイッチ",
+    "japanese_basic": "サンドイッチ",
+    "english": "Sandwich"
+  },
+  {
+    "japanese_advance": "ソース",
+    "japanese_basic": "ソース",
+    "english": "Sauce"
+  },
+  {
+    "japanese_advance": "とんかつにソースをかける。",
+    "japanese_basic": "とんかつにソースをかける。",
+    "english": "\"put sauce on pork cutlet\""
+  },
+  {
+    "japanese_advance": "～券（例：割引券）",
+    "japanese_basic": "～けん（れい：わりびきけん）",
+    "english": "ticket (example: discount ticket, coupon)"
+  },
+  {
+    "japanese_advance": "かける",
+    "japanese_basic": "かける",
+    "english": "hang, attach"
+  },
+  {
+    "japanese_advance": "カレンダーをかける。",
+    "japanese_basic": "カレンダーをかける。",
+    "english": "hang up a calendar"
+  },
+  {
+    "japanese_advance": "貼る",
+    "japanese_basic": "はる",
+    "english": "affix"
+  },
+  {
+    "japanese_advance": "かける",
+    "japanese_basic": "かける",
+    "english": "put on (something)"
+  },
+  {
+    "japanese_advance": "ソースをかける。",
+    "japanese_basic": "ソースをかける。",
+    "english": "put on sauce"
+  },
+  {
+    "japanese_advance": "注文・する",
+    "japanese_basic": "ちゅうもん・する",
+    "english": "order"
+  },
+  {
+    "japanese_advance": "割引・する",
+    "japanese_basic": "わりびき・する",
+    "english": "discount"
+  },
+  {
+    "japanese_advance": "両替・する",
+    "japanese_basic": "りょうがえ・する",
+    "english": "exchange for small money"
+  },
+  {
+    "japanese_advance": "得（な）",
+    "japanese_basic": "とく（な）",
+    "english": "good at (something)"
+  },
+  {
+    "japanese_advance": "特別（な）",
+    "japanese_basic": "とくべつ（な）",
+    "english": "Special"
+  },
+  {
+    "japanese_advance": "どういう",
+    "japanese_basic": "どういう",
+    "english": "what kind of"
+  },
+  {
+    "japanese_advance": "もう",
+    "japanese_basic": "もう",
+    "english": "another"
+  },
+  {
+    "japanese_advance": "もう一杯",
+    "japanese_basic": "もういっぱい",
+    "english": "another drink"
+  },
+  {
+    "japanese_advance": "大変",
+    "japanese_basic": "たいへん",
+    "english": "very"
+  },
+  {
+    "japanese_advance": "デザート",
+    "japanese_basic": "デザート",
+    "english": "dessert"
+  }
+],
+    "ISI VOCAB 03": [
+  {
+    "japanese_advance": "笑顔",
+    "japanese_basic": "えがお",
+    "english": "smile"
+  },
+  {
+    "japanese_advance": "悲しい",
+    "japanese_basic": "かなしい",
+    "english": "sad"
+  },
+  {
+    "japanese_advance": "給料",
+    "japanese_basic": "きゅうりょう",
+    "english": "salary"
+  },
+  {
+    "japanese_advance": "サークル",
+    "japanese_basic": "サークル",
+    "english": "club, group"
+  },
+  {
+    "japanese_advance": "説明会",
+    "japanese_basic": "せつめいかい",
+    "english": "explanatory meeting"
+  },
+  {
+    "japanese_advance": "専門学校",
+    "japanese_basic": "せんもんがっこう",
+    "english": "vocational school"
+  },
+  {
+    "japanese_advance": "見学会",
+    "japanese_basic": "けんがくかい",
+    "english": "observation tour"
+  },
+  {
+    "japanese_advance": "学部",
+    "japanese_basic": "がくぶ",
+    "english": "academic department"
+  },
+  {
+    "japanese_advance": "経済",
+    "japanese_basic": "けいざい",
+    "english": "economics, economy"
+  },
+  {
+    "japanese_advance": "法律",
+    "japanese_basic": "ほうりつ",
+    "english": "law"
+  },
+  {
+    "japanese_advance": "カナダ",
+    "japanese_basic": "カナダ",
+    "english": "Canada"
+  },
+  {
+    "japanese_advance": "聴解",
+    "japanese_basic": "ちょうかい",
+    "english": "listening comprehension"
+  },
+  {
+    "japanese_advance": "アクセサリー",
+    "japanese_basic": "アクセサリー",
+    "english": "jewelry"
+  },
+  {
+    "japanese_advance": "一生懸命",
+    "japanese_basic": "いっしょうけんめい",
+    "english": "(do) one's very best"
+  },
+  {
+    "japanese_advance": "答え",
+    "japanese_basic": "こたえ",
+    "english": "answer, response"
+  },
+  {
+    "japanese_advance": "試験",
+    "japanese_basic": "しけん",
+    "english": "examination"
+  },
+  {
+    "japanese_advance": "将来",
+    "japanese_basic": "しょうらい",
+    "english": "future"
+  },
+  {
+    "japanese_advance": "ビジネス",
+    "japanese_basic": "ビジネス",
+    "english": "business"
+  },
+  {
+    "japanese_advance": "日本語能力試験",
+    "japanese_basic": "にほんごのうりょくしけん",
+    "english": "Japanese Language Proficiency Test"
+  },
+  {
+    "japanese_advance": "間違い",
+    "japanese_basic": "まちがい",
+    "english": "mistake"
+  },
+  {
+    "japanese_advance": "寮",
+    "japanese_basic": "りょう",
+    "english": "dormitory"
+  },
+  {
+    "japanese_advance": "目標",
+    "japanese_basic": "もくひょう",
+    "english": "goal, target"
+  },
+  {
+    "japanese_advance": "～料（例：授業料）",
+    "japanese_basic": "～りょう（れい：じゅぎょうりょう）",
+    "english": "charges, fees (example: tuition)"
+  },
+  {
+    "japanese_advance": "翻訳・する",
+    "japanese_basic": "ほんやく・する",
+    "english": "translate"
+  },
+  {
+    "japanese_advance": "調べる",
+    "japanese_basic": "しらべる",
+    "english": "examine"
+  },
+  {
+    "japanese_advance": "見学・する",
+    "japanese_basic": "けんがく・する",
+    "english": "tour, observe"
+  },
+  {
+    "japanese_advance": "相談・する",
+    "japanese_basic": "そうだん・する",
+    "english": "consult with, ask someone's advice"
+  },
+  {
+    "japanese_advance": "貯金・する",
+    "japanese_basic": "ちょきん・する",
+    "english": "save up money"
+  },
+  {
+    "japanese_advance": "留学・する",
+    "japanese_basic": "りゅうがく・する",
+    "english": "study abroad"
+  },
+  {
+    "japanese_advance": "開く",
+    "japanese_basic": "ひらく",
+    "english": "open"
+  },
+  {
+    "japanese_advance": "自分の店を開く。",
+    "japanese_basic": "じぶんのみせをひらく。",
+    "english": "open your own store"
+  },
+  {
+    "japanese_advance": "続ける",
+    "japanese_basic": "つづける",
+    "english": "continue"
+  },
+  {
+    "japanese_advance": "やめる",
+    "japanese_basic": "やめる",
+    "english": "stop"
+  },
+  {
+    "japanese_advance": "受ける",
+    "japanese_basic": "うける",
+    "english": "receive"
+  },
+  {
+    "japanese_advance": "案内・する",
+    "japanese_basic": "あんない・する",
+    "english": "guide"
+  },
+  {
+    "japanese_advance": "進学・する",
+    "japanese_basic": "しんがく・する",
+    "english": "proceed to higher education"
+  },
+  {
+    "japanese_advance": "通学・する",
+    "japanese_basic": "つうがく・する",
+    "english": "commute to school"
+  },
+  {
+    "japanese_advance": "選ぶ",
+    "japanese_basic": "えらぶ",
+    "english": "select, choose"
+  },
+  {
+    "japanese_advance": "迷う",
+    "japanese_basic": "まよう",
+    "english": "waver, hesitate"
+  },
+  {
+    "japanese_advance": "国へ帰るかどうか迷っている。",
+    "japanese_basic": "くにへかえるかどうかまよっている。",
+    "english": "\"wavering whether to return to my country or not\""
+  },
+  {
+    "japanese_advance": "考える",
+    "japanese_basic": "かんがえる",
+    "english": "think about"
+  },
+  {
+    "japanese_advance": "決める",
+    "japanese_basic": "きめる",
+    "english": "decide"
+  },
+  {
+    "japanese_advance": "合格・する",
+    "japanese_basic": "ごうかく・する",
+    "english": "pass (an examination)"
+  },
+  {
+    "japanese_advance": "専攻・する",
+    "japanese_basic": "せんこう・する",
+    "english": "specialize in, major in"
+  },
+  {
+    "japanese_advance": "悩む",
+    "japanese_basic": "なやむ",
+    "english": "be troubled over, be worried about"
+  },
+  {
+    "japanese_advance": "就職・する",
+    "japanese_basic": "しゅうしょく・する",
+    "english": "find a job"
+  },
+  {
+    "japanese_advance": "確認・する",
+    "japanese_basic": "かくにん・する",
+    "english": "confirm, check"
+  },
+  {
+    "japanese_advance": "正しい",
+    "japanese_basic": "ただしい",
+    "english": "correct"
+  },
+  {
+    "japanese_advance": "建築家",
+    "japanese_basic": "けんちくか",
+    "english": "architect"
+  },
+  {
+    "japanese_advance": "デザイナー",
+    "japanese_basic": "デザイナー",
+    "english": "designer"
+  },
+  {
+    "japanese_advance": "夢",
+    "japanese_basic": "ゆめ",
+    "english": "dream"
+  },
+  {
+    "japanese_advance": "スーツ",
+    "japanese_basic": "スーツ",
+    "english": "business suit"
+  },
+  {
+    "japanese_advance": "願書",
+    "japanese_basic": "がんしょ",
+    "english": "application"
+  },
+  {
+    "japanese_advance": "事務室",
+    "japanese_basic": "じむしつ",
+    "english": "office"
+  },
+  {
+    "japanese_advance": "書類",
+    "japanese_basic": "しょるい",
+    "english": "documents"
+  },
+  {
+    "japanese_advance": "～中（例：今日中）",
+    "japanese_basic": "～じゅう（れい：きょうじゅう）",
+    "english": "during (a period) (example: during today)"
+  },
+  {
+    "japanese_advance": "経営・する",
+    "japanese_basic": "けいえい・する",
+    "english": "manage (a business)"
+  },
+  {
+    "japanese_advance": "体験・する",
+    "japanese_basic": "たいけん・する",
+    "english": "experience"
+  },
+  {
+    "japanese_advance": "頑張る",
+    "japanese_basic": "がんばる",
+    "english": "do one's best"
+  },
+  {
+    "japanese_advance": "スピーチ・する",
+    "japanese_basic": "スピーチ・する",
+    "english": "give a speech"
+  },
+  {
+    "japanese_advance": "受験・する",
+    "japanese_basic": "じゅけん・する",
+    "english": "take an examination"
+  },
+  {
+    "japanese_advance": "復習・する",
+    "japanese_basic": "ふくしゅう・する",
+    "english": "review (a lesson)"
+  },
+  {
+    "japanese_advance": "予習・する",
+    "japanese_basic": "よしゅう・する",
+    "english": "prepare for (a lesson)"
+  },
+  {
+    "japanese_advance": "デッサン・する",
+    "japanese_basic": "デッサン・する",
+    "english": "produce a drawing"
+  },
+  {
+    "japanese_advance": "通訳",
+    "japanese_basic": "つうやく",
+    "english": "interpreting"
+  },
+  {
+    "japanese_advance": "パティシエ",
+    "japanese_basic": "パティシエ",
+    "english": "pastry baker (from the French word pâtissier)"
+  }
+],
+    "ISI VOCAB 04": [
+  {
+    "japanese_advance": "味",
+    "japanese_basic": "あじ",
+    "english": "taste, flavor"
+  },
+  {
+    "japanese_advance": "タコ",
+    "japanese_basic": "タコ",
+    "english": "octopus"
+  },
+  {
+    "japanese_advance": "たこ焼き",
+    "japanese_basic": "たこやき",
+    "english": "takoyaki (fried octopus dumpling balls)"
+  },
+  {
+    "japanese_advance": "におい",
+    "japanese_basic": "におい",
+    "english": "smell"
+  },
+  {
+    "japanese_advance": "～がする",
+    "japanese_basic": "～がする",
+    "english": "make a (noise, smell)"
+  },
+  {
+    "japanese_advance": "通る",
+    "japanese_basic": "とおる",
+    "english": "pass through"
+  },
+  {
+    "japanese_advance": "似る",
+    "japanese_basic": "にる",
+    "english": "be similar to"
+  },
+  {
+    "japanese_advance": "丸い",
+    "japanese_basic": "まるい",
+    "english": "round"
+  },
+  {
+    "japanese_advance": "小さな",
+    "japanese_basic": "ちいさな",
+    "english": "small"
+  },
+  {
+    "japanese_advance": "美容院",
+    "japanese_basic": "びよういん",
+    "english": "beauty salon"
+  },
+  {
+    "japanese_advance": "空港",
+    "japanese_basic": "くうこう",
+    "english": "airport"
+  },
+  {
+    "japanese_advance": "歯科",
+    "japanese_basic": "しか",
+    "english": "dentist"
+  },
+  {
+    "japanese_advance": "市民",
+    "japanese_basic": "しみん",
+    "english": "citizen"
+  },
+  {
+    "japanese_advance": "三味線",
+    "japanese_basic": "しゃみせん",
+    "english": "shamisen (three-stringed Japanese musical instrument)"
+  },
+  {
+    "japanese_advance": "種類",
+    "japanese_basic": "しゅるい",
+    "english": "type"
+  },
+  {
+    "japanese_advance": "水道",
+    "japanese_basic": "すいどう",
+    "english": "water service"
+  },
+  {
+    "japanese_advance": "てんぷら",
+    "japanese_basic": "てんぷら",
+    "english": "tempura (battered and deep-fried vegetables and seafood)"
+  },
+  {
+    "japanese_advance": "不動産",
+    "japanese_basic": "ふどうさん",
+    "english": "real estate"
+  },
+  {
+    "japanese_advance": "交流会",
+    "japanese_basic": "こうりゅうかい",
+    "english": "(cultural) exchange meeting"
+  },
+  {
+    "japanese_advance": "小学校",
+    "japanese_basic": "しょうがっこう",
+    "english": "elementary school"
+  },
+  {
+    "japanese_advance": "市役所",
+    "japanese_basic": "しやくしょ",
+    "english": "city hall"
+  },
+  {
+    "japanese_advance": "情報",
+    "japanese_basic": "じょうほう",
+    "english": "information"
+  },
+  {
+    "japanese_advance": "タオル",
+    "japanese_basic": "タオル",
+    "english": "towel"
+  },
+  {
+    "japanese_advance": "茶道",
+    "japanese_basic": "さどう",
+    "english": "sado (traditional Japanese tea ceremony)"
+  },
+  {
+    "japanese_advance": "センター",
+    "japanese_basic": "センター",
+    "english": "center"
+  },
+  {
+    "japanese_advance": "～場（例：サッカー場）",
+    "japanese_basic": "～じょう（れい：サッカーじょう）",
+    "english": "place, location (example: soccer field)"
+  },
+  {
+    "japanese_advance": "～口（例：西口）",
+    "japanese_basic": "～くち（れい：にしぐち）",
+    "english": "entrance, exit (example: west exit)"
+  },
+  {
+    "japanese_advance": "かかる",
+    "japanese_basic": "かかる",
+    "english": "take"
+  },
+  {
+    "japanese_advance": "質問・する",
+    "japanese_basic": "しつもん・する",
+    "english": "ask a question"
+  },
+  {
+    "japanese_advance": "カット・する",
+    "japanese_basic": "カット・する",
+    "english": "cut"
+  },
+  {
+    "japanese_advance": "紹介・する",
+    "japanese_basic": "しょうかい・する",
+    "english": "introduce"
+  },
+  {
+    "japanese_advance": "修理・する",
+    "japanese_basic": "しゅうり・する",
+    "english": "repair"
+  },
+  {
+    "japanese_advance": "知らせる",
+    "japanese_basic": "しらせる",
+    "english": "notify, inform"
+  },
+  {
+    "japanese_advance": "止まる",
+    "japanese_basic": "とまる",
+    "english": "stop"
+  },
+  {
+    "japanese_advance": "水が止まる。",
+    "japanese_basic": "みずがとまる。",
+    "english": "the water has stopped running"
+  },
+  {
+    "japanese_advance": "出る",
+    "japanese_basic": "でる",
+    "english": "operate"
+  },
+  {
+    "japanese_advance": "バスが出る。",
+    "japanese_basic": "バスがでる。",
+    "english": "(They) run a bus service."
+  },
+  {
+    "japanese_advance": "着く",
+    "japanese_basic": "つく",
+    "english": "arrive"
+  },
+  {
+    "japanese_advance": "利用・する",
+    "japanese_basic": "りよう・する",
+    "english": "use"
+  },
+  {
+    "japanese_advance": "必要（な）",
+    "japanese_basic": "ひつよう（な）",
+    "english": "needed, necessary"
+  },
+  {
+    "japanese_advance": "大使館",
+    "japanese_basic": "たいしかん",
+    "english": "embassy"
+  },
+  {
+    "japanese_advance": "メートル",
+    "japanese_basic": "メートル",
+    "english": "meter (units of measurement)"
+  },
+  {
+    "japanese_advance": "次",
+    "japanese_basic": "つぎ",
+    "english": "next"
+  },
+  {
+    "japanese_advance": "坂",
+    "japanese_basic": "さか",
+    "english": "hill, slope"
+  },
+  {
+    "japanese_advance": "～階建て（例：４階建て）",
+    "japanese_basic": "～かいだて（れい：よんかいだて）",
+    "english": "building with ~ floors (example: 4-floor building)"
+  },
+  {
+    "japanese_advance": "～番線（例：３番線）",
+    "japanese_basic": "～ばんせん（れい：さんばんせん）",
+    "english": "number ~ train/subway line (example: number 3 line)"
+  },
+  {
+    "japanese_advance": "～行き（例：新宿行き）",
+    "japanese_basic": "～ゆき（れい：しんじゅくゆき）",
+    "english": "destination (example: train/subway heading to Shinjuku)"
+  },
+  {
+    "japanese_advance": "上る",
+    "japanese_basic": "のぼる",
+    "english": "move upward"
+  },
+  {
+    "japanese_advance": "下りる",
+    "japanese_basic": "おりる",
+    "english": "move downward"
+  },
+  {
+    "japanese_advance": "駐車・する",
+    "japanese_basic": "ちゅうしゃ・する",
+    "english": "park (a vehicle)"
+  },
+  {
+    "japanese_advance": "中学校",
+    "japanese_basic": "ちゅうがっこう",
+    "english": "middle school, junior high school"
+  }
+],
+    "ISI VOCAB 05": [
+  {
+    "japanese_advance": "池",
+    "japanese_basic": "いけ",
+    "english": "pond"
+  },
+  {
+    "japanese_advance": "階段",
+    "japanese_basic": "かいだん",
+    "english": "stairs"
+  },
+  {
+    "japanese_advance": "切符",
+    "japanese_basic": "きっぷ",
+    "english": "ticket"
+  },
+  {
+    "japanese_advance": "線路",
+    "japanese_basic": "せんろ",
+    "english": "(train, subway) line"
+  },
+  {
+    "japanese_advance": "定期券",
+    "japanese_basic": "ていきけん",
+    "english": "commuter pass"
+  },
+  {
+    "japanese_advance": "ケース",
+    "japanese_basic": "ケース",
+    "english": "case"
+  },
+  {
+    "japanese_advance": "忘れ物",
+    "japanese_basic": "わすれもの",
+    "english": "lost items, lost-and-found"
+  },
+  {
+    "japanese_advance": "鍵",
+    "japanese_basic": "かぎ",
+    "english": "key"
+  },
+  {
+    "japanese_advance": "辺",
+    "japanese_basic": "へん",
+    "english": "area"
+  },
+  {
+    "japanese_advance": "途中",
+    "japanese_basic": "とちゅう",
+    "english": "in the middle of (doing something)"
+  },
+  {
+    "japanese_advance": "カード",
+    "japanese_basic": "カード",
+    "english": "card"
+  },
+  {
+    "japanese_advance": "銀行のカード",
+    "japanese_basic": "ぎんこうのカード",
+    "english": "bank card"
+  },
+  {
+    "japanese_advance": "革",
+    "japanese_basic": "かわ",
+    "english": "leather"
+  },
+  {
+    "japanese_advance": "教科書",
+    "japanese_basic": "きょうかしょ",
+    "english": "textbook"
+  },
+  {
+    "japanese_advance": "警官",
+    "japanese_basic": "けいかん",
+    "english": "policeman"
+  },
+  {
+    "japanese_advance": "ハート",
+    "japanese_basic": "ハート",
+    "english": "heart"
+  },
+  {
+    "japanese_advance": "ピンク",
+    "japanese_basic": "ピンク",
+    "english": "pink"
+  },
+  {
+    "japanese_advance": "星",
+    "japanese_basic": "ほし",
+    "english": "star"
+  },
+  {
+    "japanese_advance": "緑",
+    "japanese_basic": "みどり",
+    "english": "green"
+  },
+  {
+    "japanese_advance": "横長",
+    "japanese_basic": "よこなが",
+    "english": "long from side to side"
+  },
+  {
+    "japanese_advance": "色",
+    "japanese_basic": "いろ",
+    "english": "color"
+  },
+  {
+    "japanese_advance": "大きさ",
+    "japanese_basic": "おおきさ",
+    "english": "size"
+  },
+  {
+    "japanese_advance": "形",
+    "japanese_basic": "かたち",
+    "english": "shape"
+  },
+  {
+    "japanese_advance": "預かる",
+    "japanese_basic": "あずかる",
+    "english": "leave (something, someone) in someone's care, check in (baggage)"
+  },
+  {
+    "japanese_advance": "落とす",
+    "japanese_basic": "おとす",
+    "english": "drop"
+  },
+  {
+    "japanese_advance": "なくなる",
+    "japanese_basic": "なくなる",
+    "english": "lose (something)"
+  },
+  {
+    "japanese_advance": "自転車がなくなった。",
+    "japanese_basic": "じてんしゃがなくなった。",
+    "english": "\"I lost my bicycle.\""
+  },
+  {
+    "japanese_advance": "乗り過ごす",
+    "japanese_basic": "のりすごす",
+    "english": "miss one's stop"
+  },
+  {
+    "japanese_advance": "間違える",
+    "japanese_basic": "まちがえる",
+    "english": "make a mistake"
+  },
+  {
+    "japanese_advance": "迷う",
+    "japanese_basic": "まよう",
+    "english": "lose (one's way)"
+  },
+  {
+    "japanese_advance": "道に迷う。",
+    "japanese_basic": "みちにまよう。",
+    "english": "get lost"
+  },
+  {
+    "japanese_advance": "転ぶ",
+    "japanese_basic": "ころぶ",
+    "english": "fall down"
+  },
+  {
+    "japanese_advance": "心配・する",
+    "japanese_basic": "しんぱい・する",
+    "english": "worry"
+  },
+  {
+    "japanese_advance": "気がつく",
+    "japanese_basic": "きがつく",
+    "english": "notice, realize"
+  },
+  {
+    "japanese_advance": "付く",
+    "japanese_basic": "つく",
+    "english": "attach"
+  },
+  {
+    "japanese_advance": "ポケットが付いています。",
+    "japanese_basic": "ポケットがついています。",
+    "english": "\"A pocket is attached.\""
+  },
+  {
+    "japanese_advance": "見つかる",
+    "japanese_basic": "みつかる",
+    "english": "find"
+  },
+  {
+    "japanese_advance": "出る",
+    "japanese_basic": "でる",
+    "english": "go out, leave"
+  },
+  {
+    "japanese_advance": "駅を出ます。",
+    "japanese_basic": "えきをでます。",
+    "english": "leave a station"
+  },
+  {
+    "japanese_advance": "乗り換える",
+    "japanese_basic": "のりかえる",
+    "english": "change (trains, planes)"
+  },
+  {
+    "japanese_advance": "連絡・する",
+    "japanese_basic": "れんらく・する",
+    "english": "contact"
+  },
+  {
+    "japanese_advance": "困る",
+    "japanese_basic": "こまる",
+    "english": "be in trouble"
+  },
+  {
+    "japanese_advance": "さっき",
+    "japanese_basic": "さっき",
+    "english": "a moment ago"
+  },
+  {
+    "japanese_advance": "しばらく",
+    "japanese_basic": "しばらく",
+    "english": "in a little while"
+  },
+  {
+    "japanese_advance": "全部で",
+    "japanese_basic": "ぜんぶで",
+    "english": "altogether"
+  },
+  {
+    "japanese_advance": "急に",
+    "japanese_basic": "きゅうに",
+    "english": "suddenly"
+  },
+  {
+    "japanese_advance": "確かに",
+    "japanese_basic": "たしかに",
+    "english": "I am certain that"
+  },
+  {
+    "japanese_advance": "それが……",
+    "japanese_basic": "それが……",
+    "english": "That is ...."
+  },
+  {
+    "japanese_advance": "どうしよう",
+    "japanese_basic": "どうしよう",
+    "english": "What should I do?"
+  },
+  {
+    "japanese_advance": "コインロッカー",
+    "japanese_basic": "コインロッカー",
+    "english": "coin locker"
+  },
+  {
+    "japanese_advance": "特急",
+    "japanese_basic": "とっきゅう",
+    "english": "limited express (train)"
+  },
+  {
+    "japanese_advance": "終点",
+    "japanese_basic": "しゅうてん",
+    "english": "final stop"
+  },
+  {
+    "japanese_advance": "終電",
+    "japanese_basic": "しゅうでん",
+    "english": "final train"
+  },
+  {
+    "japanese_advance": "タクシー",
+    "japanese_basic": "タクシー",
+    "english": "taxi"
+  },
+  {
+    "japanese_advance": "急行",
+    "japanese_basic": "きゅうこう",
+    "english": "express (train)"
+  },
+  {
+    "japanese_advance": "アナウンス・する",
+    "japanese_basic": "アナウンス・する",
+    "english": "announce"
+  },
+  {
+    "japanese_advance": "変える",
+    "japanese_basic": "かえる",
+    "english": "change"
+  },
+  {
+    "japanese_advance": "安心・する",
+    "japanese_basic": "あんしん・する",
+    "english": "relieve (someone's fears), give peace of mind"
+  },
+  {
+    "japanese_advance": "遅刻・する",
+    "japanese_basic": "ちこく・する",
+    "english": "be late"
+  },
+  {
+    "japanese_advance": "寝坊・する",
+    "japanese_basic": "ねぼう・する",
+    "english": "sleep late"
+  },
+  {
+    "japanese_advance": "戻る",
+    "japanese_basic": "もどる",
+    "english": "return"
+  },
+  {
+    "japanese_advance": "すぐ",
+    "japanese_basic": "すぐ",
+    "english": "immediately"
+  },
+  {
+    "japanese_advance": "びっくり",
+    "japanese_basic": "びっくり",
+    "english": "surprise"
+  },
+  {
+    "japanese_advance": "本当に",
+    "japanese_basic": "ほんとうに",
+    "english": "really, truly"
+  },
+  {
+    "japanese_advance": "もう少し",
+    "japanese_basic": "もうすこし",
+    "english": "a little more"
+  },
+  {
+    "japanese_advance": "ゆっくり",
+    "japanese_basic": "ゆっくり",
+    "english": "slowly"
+  },
+  {
+    "japanese_advance": "ゆっくり話してください。",
+    "japanese_basic": "ゆっくりはなしてください。",
+    "english": "\"Please speak slowly.\""
+  },
+  {
+    "japanese_advance": "白",
+    "japanese_basic": "しろ",
+    "english": "white"
+  },
+  {
+    "japanese_advance": "窓口",
+    "japanese_basic": "まどぐち",
+    "english": "(ticket) counter"
+  },
+  {
+    "japanese_advance": "～号車",
+    "japanese_basic": "～ごうしゃ",
+    "english": "number ~ train"
+  },
+  {
+    "japanese_advance": "～ずつ",
+    "japanese_basic": "～ずつ",
+    "english": "every ~"
+  }
+],
+    "ISI VOCAB 06": [
+  {
+    "japanese_advance": "自然",
+    "japanese_basic": "しぜん",
+    "english": "nature"
+  },
+  {
+    "japanese_advance": "ラベンダー畑",
+    "japanese_basic": "ラベンダーばたけ",
+    "english": "Lavender Farm"
+  },
+  {
+    "japanese_advance": "湿原",
+    "japanese_basic": "しつげん",
+    "english": "marsh"
+  },
+  {
+    "japanese_advance": "牧場",
+    "japanese_basic": "ぼくじょう",
+    "english": "ranch"
+  },
+  {
+    "japanese_advance": "ジャガイモ",
+    "japanese_basic": "ジャガイモ",
+    "english": "potato"
+  },
+  {
+    "japanese_advance": "トウモロコシ",
+    "japanese_basic": "トウモロコシ",
+    "english": "corn"
+  },
+  {
+    "japanese_advance": "ウニ",
+    "japanese_basic": "ウニ",
+    "english": "sea urchin"
+  },
+  {
+    "japanese_advance": "乗馬",
+    "japanese_basic": "じょうば",
+    "english": "horseback riding"
+  },
+  {
+    "japanese_advance": "カヌー",
+    "japanese_basic": "カヌー",
+    "english": "canoe"
+  },
+  {
+    "japanese_advance": "楽しむ",
+    "japanese_basic": "たのしむ",
+    "english": "enjoy"
+  },
+  {
+    "japanese_advance": "カニ",
+    "japanese_basic": "カニ",
+    "english": "crab"
+  },
+  {
+    "japanese_advance": "着物",
+    "japanese_basic": "きもの",
+    "english": "clothing"
+  },
+  {
+    "japanese_advance": "ショッピングセンター",
+    "japanese_basic": "ショッピングセンター",
+    "english": "shopping center, mall"
+  },
+  {
+    "japanese_advance": "水族館",
+    "japanese_basic": "すいぞくかん",
+    "english": "aquarium"
+  },
+  {
+    "japanese_advance": "スノーボード",
+    "japanese_basic": "スノーボード",
+    "english": "snowboard"
+  },
+  {
+    "japanese_advance": "船",
+    "japanese_basic": "ふね",
+    "english": "ship, boat"
+  },
+  {
+    "japanese_advance": "雰囲気",
+    "japanese_basic": "ふんいき",
+    "english": "atmosphere, mood"
+  },
+  {
+    "japanese_advance": "街",
+    "japanese_basic": "まち",
+    "english": "town"
+  },
+  {
+    "japanese_advance": "こっち",
+    "japanese_basic": "こっち",
+    "english": "this way (informal)"
+  },
+  {
+    "japanese_advance": "そっち",
+    "japanese_basic": "そっち",
+    "english": "that way (informal)"
+  },
+  {
+    "japanese_advance": "市内",
+    "japanese_basic": "しない",
+    "english": "within the city"
+  },
+  {
+    "japanese_advance": "最後",
+    "japanese_basic": "さいご",
+    "english": "last"
+  },
+  {
+    "japanese_advance": "旅館",
+    "japanese_basic": "りょかん",
+    "english": "Japanese-style inn"
+  },
+  {
+    "japanese_advance": "朝食",
+    "japanese_basic": "ちょうしょく",
+    "english": "breakfast"
+  },
+  {
+    "japanese_advance": "夕食",
+    "japanese_basic": "ゆうしょく",
+    "english": "dinner"
+  },
+  {
+    "japanese_advance": "観光地",
+    "japanese_basic": "かんこうち",
+    "english": "tourist spot"
+  },
+  {
+    "japanese_advance": "登山",
+    "japanese_basic": "とざん",
+    "english": "mountain climbing"
+  },
+  {
+    "japanese_advance": "虫",
+    "japanese_basic": "むし",
+    "english": "bugs, insects"
+  },
+  {
+    "japanese_advance": "宿泊",
+    "japanese_basic": "しゅくはく",
+    "english": "lodging"
+  },
+  {
+    "japanese_advance": "代金",
+    "japanese_basic": "だいきん",
+    "english": "charges, fees"
+  },
+  {
+    "japanese_advance": "内容",
+    "japanese_basic": "ないよう",
+    "english": "details"
+  },
+  {
+    "japanese_advance": "なし",
+    "japanese_basic": "なし",
+    "english": "none"
+  },
+  {
+    "japanese_advance": "値段",
+    "japanese_basic": "ねだん",
+    "english": "price"
+  },
+  {
+    "japanese_advance": "大人",
+    "japanese_basic": "おとな",
+    "english": "adult"
+  },
+  {
+    "japanese_advance": "～付き（例：朝食付き）",
+    "japanese_basic": "～つき（れい：ちょうしょくつき）",
+    "english": "~ included (example: breakfast included)"
+  },
+  {
+    "japanese_advance": "～泊～日（例：２泊３日）",
+    "japanese_basic": "～はく～にち（れい：にはくみっか）",
+    "english": "~ nights ~ days (example: 2 nights 3 days)"
+  },
+  {
+    "japanese_advance": "～費（例：交通費）",
+    "japanese_basic": "～ひ（れい：こうつうひ）",
+    "english": "~ fee (example: transportation fee)"
+  },
+  {
+    "japanese_advance": "待ち合わせる",
+    "japanese_basic": "まちあわせる",
+    "english": "meet with"
+  },
+  {
+    "japanese_advance": "ガイド・する",
+    "japanese_basic": "ガイド・する",
+    "english": "guide"
+  },
+  {
+    "japanese_advance": "観光・する",
+    "japanese_basic": "かんこう・する",
+    "english": "go sightseeing, tour"
+  },
+  {
+    "japanese_advance": "出発・する",
+    "japanese_basic": "しゅっぱつ・する",
+    "english": "leave, depart"
+  },
+  {
+    "japanese_advance": "キャンプ・する",
+    "japanese_basic": "キャンプ・する",
+    "english": "camp"
+  },
+  {
+    "japanese_advance": "珍しい",
+    "japanese_basic": "めずらしい",
+    "english": "unusual"
+  },
+  {
+    "japanese_advance": "伝統的（な）",
+    "japanese_basic": "でんとうてき（な）",
+    "english": "traditional"
+  },
+  {
+    "japanese_advance": "それに",
+    "japanese_basic": "それに",
+    "english": "also, in addition"
+  },
+  {
+    "japanese_advance": "どっち",
+    "japanese_basic": "どっち",
+    "english": "which"
+  },
+  {
+    "japanese_advance": "イルカ",
+    "japanese_basic": "イルカ",
+    "english": "dolphin"
+  },
+  {
+    "japanese_advance": "ショー",
+    "japanese_basic": "ショー",
+    "english": "show"
+  },
+  {
+    "japanese_advance": "手袋",
+    "japanese_basic": "てぶくろ",
+    "english": "gloves"
+  },
+  {
+    "japanese_advance": "マフラー",
+    "japanese_basic": "マフラー",
+    "english": "scarf"
+  },
+  {
+    "japanese_advance": "年末",
+    "japanese_basic": "ねんまつ",
+    "english": "end of year"
+  },
+  {
+    "japanese_advance": "ガイドブック",
+    "japanese_basic": "ガイドブック",
+    "english": "guidebook"
+  },
+  {
+    "japanese_advance": "パーク",
+    "japanese_basic": "パーク",
+    "english": "park"
+  },
+  {
+    "japanese_advance": "早割",
+    "japanese_basic": "はやわり",
+    "english": "discount for early purchase"
+  },
+  {
+    "japanese_advance": "～中（例：旅行中）",
+    "japanese_basic": "～ちゅう（れい：りょこうちゅう）",
+    "english": "during ~ (example: during travel)"
+  },
+  {
+    "japanese_advance": "取る",
+    "japanese_basic": "とる",
+    "english": "take"
+  },
+  {
+    "japanese_advance": "休みを取る。",
+    "japanese_basic": "やすみをとる。",
+    "english": "take a vacation"
+  },
+  {
+    "japanese_advance": "ぬれる",
+    "japanese_basic": "ぬれる",
+    "english": "get wet"
+  },
+  {
+    "japanese_advance": "用意・する",
+    "japanese_basic": "ようい・する",
+    "english": "prepare"
+  },
+  {
+    "japanese_advance": "伝える",
+    "japanese_basic": "つたえる",
+    "english": "tell (someone something)"
+  },
+  {
+    "japanese_advance": "コピー・する",
+    "japanese_basic": "コピー・する",
+    "english": "make a photocopy"
+  },
+  {
+    "japanese_advance": "お願いします",
+    "japanese_basic": "おねがいします",
+    "english": "\"Please (do it).\""
+  },
+  {
+    "japanese_advance": "あとで",
+    "japanese_basic": "あとで",
+    "english": "later"
+  }
+],
+    "ISI VOCAB 07": [
+  {
+    "japanese_advance": "相手",
+    "japanese_basic": "あいて",
+    "english": "the other person"
+  },
+  {
+    "japanese_advance": "習慣",
+    "japanese_basic": "しゅうかん",
+    "english": "custom, tradition, habit"
+  },
+  {
+    "japanese_advance": "違い",
+    "japanese_basic": "ちがい",
+    "english": "difference"
+  },
+  {
+    "japanese_advance": "驚く",
+    "japanese_basic": "おどろく",
+    "english": "surprise"
+  },
+  {
+    "japanese_advance": "失礼（な）",
+    "japanese_basic": "しつれい（な）",
+    "english": "rude, impolite"
+  },
+  {
+    "japanese_advance": "もう一度",
+    "japanese_basic": "もういちど",
+    "english": "one more time, again"
+  },
+  {
+    "japanese_advance": "会議",
+    "japanese_basic": "かいぎ",
+    "english": "conference, meeting"
+  },
+  {
+    "japanese_advance": "課長",
+    "japanese_basic": "かちょう",
+    "english": "section chief"
+  },
+  {
+    "japanese_advance": "社長",
+    "japanese_basic": "しゃちょう",
+    "english": "company president"
+  },
+  {
+    "japanese_advance": "ご存じ",
+    "japanese_basic": "ごぞんじ",
+    "english": "know (respectful language)"
+  },
+  {
+    "japanese_advance": "どなた",
+    "japanese_basic": "どなた",
+    "english": "who (polite)"
+  },
+  {
+    "japanese_advance": "ミステリー",
+    "japanese_basic": "ミステリー",
+    "english": "Mystery"
+  },
+  {
+    "japanese_advance": "出身",
+    "japanese_basic": "しゅっしん",
+    "english": "hometown, home country"
+  },
+  {
+    "japanese_advance": "ごろ",
+    "japanese_basic": "ごろ",
+    "english": "around, about"
+  },
+  {
+    "japanese_advance": "いらっしゃる",
+    "japanese_basic": "いらっしゃる",
+    "english": "come, go, be (respectful language)"
+  },
+  {
+    "japanese_advance": "おっしゃる",
+    "japanese_basic": "おっしゃる",
+    "english": "say (respectful language)"
+  },
+  {
+    "japanese_advance": "ご覧になる",
+    "japanese_basic": "ごらんになる",
+    "english": "look at, see (respectful language)"
+  },
+  {
+    "japanese_advance": "なさる",
+    "japanese_basic": "なさる",
+    "english": "do (respectful language)"
+  },
+  {
+    "japanese_advance": "召し上がる",
+    "japanese_basic": "めしあがる",
+    "english": "eat, drink (respectful language)"
+  },
+  {
+    "japanese_advance": "出席・する",
+    "japanese_basic": "しゅっせき・する",
+    "english": "attend"
+  },
+  {
+    "japanese_advance": "退院・する",
+    "japanese_basic": "たいいん・する",
+    "english": "leave the hospital, be discharged"
+  },
+  {
+    "japanese_advance": "このくらい",
+    "japanese_basic": "このくらい",
+    "english": "this much"
+  },
+  {
+    "japanese_advance": "皮",
+    "japanese_basic": "かわ",
+    "english": "skin, peel"
+  },
+  {
+    "japanese_advance": "キャベツ",
+    "japanese_basic": "キャベツ",
+    "english": "cabbage"
+  },
+  {
+    "japanese_advance": "ジャガイモ",
+    "japanese_basic": "ジャガイモ",
+    "english": "potato"
+  },
+  {
+    "japanese_advance": "大根",
+    "japanese_basic": "だいこん",
+    "english": "Japanese radish"
+  },
+  {
+    "japanese_advance": "タマネギ",
+    "japanese_basic": "タマネギ",
+    "english": "onion"
+  },
+  {
+    "japanese_advance": "ニンジン",
+    "japanese_basic": "ニンジン",
+    "english": "carrot"
+  },
+  {
+    "japanese_advance": "ネギ",
+    "japanese_basic": "ネギ",
+    "english": "green onion"
+  },
+  {
+    "japanese_advance": "半分",
+    "japanese_basic": "はんぶん",
+    "english": "half"
+  },
+  {
+    "japanese_advance": "カップ",
+    "japanese_basic": "カップ",
+    "english": "cup"
+  },
+  {
+    "japanese_advance": "クリーム",
+    "japanese_basic": "クリーム",
+    "english": "cream"
+  },
+  {
+    "japanese_advance": "ゼリー",
+    "japanese_basic": "ゼリー",
+    "english": "jello, gelatin"
+  },
+  {
+    "japanese_advance": "ソース",
+    "japanese_basic": "ソース",
+    "english": "sauce"
+  },
+  {
+    "japanese_advance": "パスタのソースを作る。",
+    "japanese_basic": "パスタのソースをつくる。",
+    "english": "make pasta sauce"
+  },
+  {
+    "japanese_advance": "パスタ",
+    "japanese_basic": "パスタ",
+    "english": "pasta"
+  },
+  {
+    "japanese_advance": "味",
+    "japanese_basic": "あじ",
+    "english": "taste, flavor"
+  },
+  {
+    "japanese_advance": "はちみつ",
+    "japanese_basic": "はちみつ",
+    "english": "honey"
+  },
+  {
+    "japanese_advance": "みそ汁",
+    "japanese_basic": "みそしる",
+    "english": "miso soup (traditional Japanese bean paste soup)"
+  },
+  {
+    "japanese_advance": "火",
+    "japanese_basic": "ひ",
+    "english": "heat"
+  },
+  {
+    "japanese_advance": "強火",
+    "japanese_basic": "つよび",
+    "english": "strong heat"
+  },
+  {
+    "japanese_advance": "弱火",
+    "japanese_basic": "よわび",
+    "english": "low heat"
+  },
+  {
+    "japanese_advance": "ルー",
+    "japanese_basic": "ルー",
+    "english": "roux, thickening agent for soup or sauce"
+  },
+  {
+    "japanese_advance": "グラム",
+    "japanese_basic": "グラム",
+    "english": "gram"
+  },
+  {
+    "japanese_advance": "できあがり",
+    "japanese_basic": "できあがり",
+    "english": "finished"
+  },
+  {
+    "japanese_advance": "むく",
+    "japanese_basic": "むく",
+    "english": "peel"
+  },
+  {
+    "japanese_advance": "焼く",
+    "japanese_basic": "やく",
+    "english": "fry, grill, toast, bake, roast"
+  },
+  {
+    "japanese_advance": "沸かす",
+    "japanese_basic": "わかす",
+    "english": "boil (water)"
+  },
+  {
+    "japanese_advance": "冷やす",
+    "japanese_basic": "ひやす",
+    "english": "cool"
+  },
+  {
+    "japanese_advance": "煮る",
+    "japanese_basic": "にる",
+    "english": "boil (food in water)"
+  },
+  {
+    "japanese_advance": "ゆでる",
+    "japanese_basic": "ゆでる",
+    "english": "boil (food, mostly vegetables or eggs, in water)"
+  },
+  {
+    "japanese_advance": "変わる",
+    "japanese_basic": "かわる",
+    "english": "change"
+  },
+  {
+    "japanese_advance": "沸騰・する",
+    "japanese_basic": "ふっとう・する",
+    "english": "bring to a boil"
+  },
+  {
+    "japanese_advance": "炒める",
+    "japanese_basic": "いためる",
+    "english": "fry"
+  },
+  {
+    "japanese_advance": "厚い",
+    "japanese_basic": "あつい",
+    "english": "thick, having wide thickness"
+  },
+  {
+    "japanese_advance": "薄い",
+    "japanese_basic": "うすい",
+    "english": "thin, weak"
+  },
+  {
+    "japanese_advance": "薄く切ります。",
+    "japanese_basic": "うすくきります。",
+    "english": "\"Cut thinly.\""
+  },
+  {
+    "japanese_advance": "この料理は味が薄いです。",
+    "japanese_basic": "このりょうりはあじがうすいです。",
+    "english": "\"This cooking has a weak flavor.\""
+  },
+  {
+    "japanese_advance": "濃い",
+    "japanese_basic": "こい",
+    "english": "dense, rich, thick"
+  },
+  {
+    "japanese_advance": "細かい",
+    "japanese_basic": "こまかい",
+    "english": "fine, small"
+  },
+  {
+    "japanese_advance": "細い",
+    "japanese_basic": "ほそい",
+    "english": "narrow"
+  },
+  {
+    "japanese_advance": "弱い",
+    "japanese_basic": "よわい",
+    "english": "weak"
+  },
+  {
+    "japanese_advance": "まず",
+    "japanese_basic": "まず",
+    "english": "at first (at beginning of a sentence)"
+  },
+  {
+    "japanese_advance": "次に",
+    "japanese_basic": "つぎに",
+    "english": "next"
+  },
+  {
+    "japanese_advance": "最後に",
+    "japanese_basic": "さいごに",
+    "english": "finally, lastly"
+  },
+  {
+    "japanese_advance": "調味料",
+    "japanese_basic": "ちょうみりょう",
+    "english": "seasonings"
+  },
+  {
+    "japanese_advance": "鍋",
+    "japanese_basic": "なべ",
+    "english": "pan"
+  },
+  {
+    "japanese_advance": "肉じゃが",
+    "japanese_basic": "にくじゃが",
+    "english": "(simmered) meat and potatoes"
+  },
+  {
+    "japanese_advance": "遠慮・する",
+    "japanese_basic": "えんりょ・する",
+    "english": "refrain from, hesitate"
+  },
+  {
+    "japanese_advance": "もちろん",
+    "japanese_basic": "もちろん",
+    "english": "of course"
+  },
+  {
+    "japanese_advance": "だいたい",
+    "japanese_basic": "だいたい",
+    "english": "mostly, most of the time"
+  },
+  {
+    "japanese_advance": "お邪魔します",
+    "japanese_basic": "おじゃまします",
+    "english": "excuse me for interrupting, excuse me for intruding"
+  },
+  {
+    "japanese_advance": "よくいらっしゃいました",
+    "japanese_basic": "よくいらっしゃいました",
+    "english": "thank you for coming"
+  }
+],
+    "ISI VOCAB 08": [
+  {
+    "japanese_advance": "明るい",
+    "japanese_basic": "あかるい",
+    "english": "bright"
+  },
+  {
+    "japanese_advance": "うれしい",
+    "japanese_basic": "うれしい",
+    "english": "happy"
+  },
+  {
+    "japanese_advance": "（お）団子",
+    "japanese_basic": "（お）だんご",
+    "english": "rice dumpling"
+  },
+  {
+    "japanese_advance": "肉じゃが",
+    "japanese_basic": "にくじゃが",
+    "english": "(simmered) meat and potatoes"
+  },
+  {
+    "japanese_advance": "湖",
+    "japanese_basic": "みずうみ",
+    "english": "lake"
+  },
+  {
+    "japanese_advance": "運転手",
+    "japanese_basic": "うんてんしゅ",
+    "english": "driver"
+  },
+  {
+    "japanese_advance": "駅員",
+    "japanese_basic": "えきいん",
+    "english": "station employee"
+  },
+  {
+    "japanese_advance": "お巡りさん",
+    "japanese_basic": "おまわりさん",
+    "english": "policeman"
+  },
+  {
+    "japanese_advance": "～さん（例：駅員さん）",
+    "japanese_basic": "～さん（れい：えきいんさん）",
+    "english": "Mr./ Mrs./Miss/ Ms., and added to certain professions as a term of respect (example: station employee)"
+  },
+  {
+    "japanese_advance": "送る",
+    "japanese_basic": "おくる",
+    "english": "send off, take (someone somewhere)"
+  },
+  {
+    "japanese_advance": "車でうちまで送ります。",
+    "japanese_basic": "くるまでうちまでおくります。",
+    "english": "take someone home by car"
+  },
+  {
+    "japanese_advance": "直す",
+    "japanese_basic": "なおす",
+    "english": "fix, correct, repair"
+  },
+  {
+    "japanese_advance": "譲る",
+    "japanese_basic": "ゆずる",
+    "english": "pass on, transfer to"
+  },
+  {
+    "japanese_advance": "連れて行く",
+    "japanese_basic": "つれていく",
+    "english": "take someone along"
+  },
+  {
+    "japanese_advance": "教える",
+    "japanese_basic": "おしえる",
+    "english": "teach, give information"
+  },
+  {
+    "japanese_advance": "駅への行き方を教えました。",
+    "japanese_basic": "えきへのいきかたをおしえました。",
+    "english": "\"I told someone how to go to the station.\""
+  },
+  {
+    "japanese_advance": "拾う",
+    "japanese_basic": "ひろう",
+    "english": "pick up"
+  },
+  {
+    "japanese_advance": "届ける",
+    "japanese_basic": "とどける",
+    "english": "send, deliver"
+  },
+  {
+    "japanese_advance": "迎えに来る",
+    "japanese_basic": "むかえにくる",
+    "english": "come get (someone)"
+  },
+  {
+    "japanese_advance": "捕る",
+    "japanese_basic": "とる",
+    "english": "catch"
+  },
+  {
+    "japanese_advance": "そんなに",
+    "japanese_basic": "そんなに",
+    "english": "like that, so much"
+  },
+  {
+    "japanese_advance": "花瓶",
+    "japanese_basic": "かびん",
+    "english": "flower vase"
+  },
+  {
+    "japanese_advance": "茶碗",
+    "japanese_basic": "ちゃわん",
+    "english": "china cup, china bowl"
+  },
+  {
+    "japanese_advance": "机",
+    "japanese_basic": "つくえ",
+    "english": "desk"
+  },
+  {
+    "japanese_advance": "本棚",
+    "japanese_basic": "ほんだな",
+    "english": "bookshelf"
+  },
+  {
+    "japanese_advance": "近所",
+    "japanese_basic": "きんじょ",
+    "english": "neighborhood"
+  },
+  {
+    "japanese_advance": "～先（例：アルバイト先）",
+    "japanese_basic": "～さき（れい：アルバイトさき）",
+    "english": "place where ～ (example: place where you work part-time)"
+  },
+  {
+    "japanese_advance": "教授",
+    "japanese_basic": "きょうじゅ",
+    "english": "professor"
+  },
+  {
+    "japanese_advance": "部長",
+    "japanese_basic": "ぶちょう",
+    "english": "department manager"
+  },
+  {
+    "japanese_advance": "資料",
+    "japanese_basic": "しりょう",
+    "english": "documents, information materials"
+  },
+  {
+    "japanese_advance": "いただく",
+    "japanese_basic": "いただく",
+    "english": "(gratefully) receive (humble language referring to oneself)"
+  },
+  {
+    "japanese_advance": "くださる",
+    "japanese_basic": "くださる",
+    "english": "(gratefully) receive from someone (respectful language referring to someone else)"
+  },
+  {
+    "japanese_advance": "どういたしまして",
+    "japanese_basic": "どういたしまして",
+    "english": "You're welcome"
+  },
+  {
+    "japanese_advance": "チヂミ",
+    "japanese_basic": "チヂミ",
+    "english": "chijimi (Korean-style pancake)"
+  },
+  {
+    "japanese_advance": "飾る",
+    "japanese_basic": "かざる",
+    "english": "decorate"
+  },
+  {
+    "japanese_advance": "乾杯",
+    "japanese_basic": "かんぱい",
+    "english": "\"Bottoms up!\", \"Cheers\""
+  }
+],
+    "ISI VOCAB 09": [
+  {
+    "japanese_advance": "大切さ",
+    "japanese_basic": "たいせつさ",
+    "english": "importance"
+  },
+  {
+    "japanese_advance": "恥ずかしい",
+    "japanese_basic": "はずかしい",
+    "english": "embarrassing"
+  },
+  {
+    "japanese_advance": "ですから",
+    "japanese_basic": "ですから",
+    "english": "therefore"
+  },
+  {
+    "japanese_advance": "裏",
+    "japanese_basic": "うら",
+    "english": "rear"
+  },
+  {
+    "japanese_advance": "紙",
+    "japanese_basic": "かみ",
+    "english": "paper"
+  },
+  {
+    "japanese_advance": "シフト",
+    "japanese_basic": "シフト",
+    "english": "shift"
+  },
+  {
+    "japanese_advance": "スタッフ",
+    "japanese_basic": "スタッフ",
+    "english": "staff"
+  },
+  {
+    "japanese_advance": "タイムカード",
+    "japanese_basic": "タイムカード",
+    "english": "time card"
+  },
+  {
+    "japanese_advance": "表",
+    "japanese_basic": "ひょう",
+    "english": "table, chart"
+  },
+  {
+    "japanese_advance": "ホール",
+    "japanese_basic": "ホール",
+    "english": "hall"
+  },
+  {
+    "japanese_advance": "毎月",
+    "japanese_basic": "まいつき",
+    "english": "every month"
+  },
+  {
+    "japanese_advance": "髪の毛",
+    "japanese_basic": "かみのけ",
+    "english": "hair"
+  },
+  {
+    "japanese_advance": "スニーカー",
+    "japanese_basic": "スニーカー",
+    "english": "sneakers"
+  },
+  {
+    "japanese_advance": "隅",
+    "japanese_basic": "すみ",
+    "english": "corner"
+  },
+  {
+    "japanese_advance": "調理場",
+    "japanese_basic": "ちょうりば",
+    "english": "cooking place, kitchen (of a restaurant)"
+  },
+  {
+    "japanese_advance": "伝票",
+    "japanese_basic": "でんぴょう",
+    "english": "order slip"
+  },
+  {
+    "japanese_advance": "道具",
+    "japanese_basic": "どうぐ",
+    "english": "tool"
+  },
+  {
+    "japanese_advance": "床",
+    "japanese_basic": "ゆか",
+    "english": "floor"
+  },
+  {
+    "japanese_advance": "予定",
+    "japanese_basic": "よてい",
+    "english": "schedule, plan"
+  },
+  {
+    "japanese_advance": "温度",
+    "japanese_basic": "おんど",
+    "english": "temperature"
+  },
+  {
+    "japanese_advance": "代わり",
+    "japanese_basic": "かわり",
+    "english": "in place of"
+  },
+  {
+    "japanese_advance": "洗剤",
+    "japanese_basic": "せんざい",
+    "english": "detergent, cleanser"
+  },
+  {
+    "japanese_advance": "都合",
+    "japanese_basic": "つごう",
+    "english": "schedule"
+  },
+  {
+    "japanese_advance": "マニュアル",
+    "japanese_basic": "マニュアル",
+    "english": "manual"
+  },
+  {
+    "japanese_advance": "オーブン",
+    "japanese_basic": "オーブン",
+    "english": "oven"
+  },
+  {
+    "japanese_advance": "汚れ",
+    "japanese_basic": "よごれ",
+    "english": "dirtiness"
+  },
+  {
+    "japanese_advance": "ルール",
+    "japanese_basic": "ルール",
+    "english": "rule"
+  },
+  {
+    "japanese_advance": "～様（例：お客様）",
+    "japanese_basic": "～さま（れい：おきゃくさま）",
+    "english": "sir, madam (more respectful than san) (example: customer)"
+  },
+  {
+    "japanese_advance": "押す",
+    "japanese_basic": "おす",
+    "english": "punch"
+  },
+  {
+    "japanese_advance": "タイムカードを押す。",
+    "japanese_basic": "タイムカードをおす。",
+    "english": "punch a time card"
+  },
+  {
+    "japanese_advance": "断る",
+    "japanese_basic": "ことわる",
+    "english": "turn down, deny"
+  },
+  {
+    "japanese_advance": "出す",
+    "japanese_basic": "だす",
+    "english": "take out, come out"
+  },
+  {
+    "japanese_advance": "ごみを出す。",
+    "japanese_basic": "ごみをだす。",
+    "english": "take out the garbage"
+  },
+  {
+    "japanese_advance": "渡す",
+    "japanese_basic": "わたす",
+    "english": "hand over"
+  },
+  {
+    "japanese_advance": "着替える",
+    "japanese_basic": "きがえる",
+    "english": "change clothes"
+  },
+  {
+    "japanese_advance": "つける",
+    "japanese_basic": "つける",
+    "english": "attach, put on"
+  },
+  {
+    "japanese_advance": "アクセサリーをつける。",
+    "japanese_basic": "アクセサリーをつける。",
+    "english": "put on jewelry"
+  },
+  {
+    "japanese_advance": "おしゃべり・する",
+    "japanese_basic": "おしゃべり・する",
+    "english": "talk, chat"
+  },
+  {
+    "japanese_advance": "チェック・する",
+    "japanese_basic": "チェック・する",
+    "english": "check"
+  },
+  {
+    "japanese_advance": "乾く",
+    "japanese_basic": "かわく",
+    "english": "dry"
+  },
+  {
+    "japanese_advance": "しまう",
+    "japanese_basic": "しまう",
+    "english": "put away"
+  },
+  {
+    "japanese_advance": "滑る",
+    "japanese_basic": "すべる",
+    "english": "slide"
+  },
+  {
+    "japanese_advance": "運ぶ",
+    "japanese_basic": "はこぶ",
+    "english": "carry"
+  },
+  {
+    "japanese_advance": "拭く",
+    "japanese_basic": "ふく",
+    "english": "wipe"
+  },
+  {
+    "japanese_advance": "干す",
+    "japanese_basic": "ほす",
+    "english": "hang out to dry"
+  },
+  {
+    "japanese_advance": "片付ける",
+    "japanese_basic": "かたづける",
+    "english": "clean up"
+  },
+  {
+    "japanese_advance": "燃える",
+    "japanese_basic": "もえる",
+    "english": "burn"
+  },
+  {
+    "japanese_advance": "あいさつ・する",
+    "japanese_basic": "あいさつ・する",
+    "english": "greet"
+  },
+  {
+    "japanese_advance": "空く",
+    "japanese_basic": "あく",
+    "english": "become empty, vacant"
+  },
+  {
+    "japanese_advance": "上がる",
+    "japanese_basic": "あがる",
+    "english": "rise"
+  },
+  {
+    "japanese_advance": "代わる",
+    "japanese_basic": "かわる",
+    "english": "replace"
+  },
+  {
+    "japanese_advance": "アルバイトを代わる。",
+    "japanese_basic": "アルバイトをかわる。",
+    "english": "replace someone's shift"
+  },
+  {
+    "japanese_advance": "呼ぶ",
+    "japanese_basic": "よぶ",
+    "english": "call"
+  },
+  {
+    "japanese_advance": "上げる",
+    "japanese_basic": "あげる",
+    "english": "raise"
+  },
+  {
+    "japanese_advance": "下げる",
+    "japanese_basic": "さげる",
+    "english": "lower"
+  },
+  {
+    "japanese_advance": "足りる",
+    "japanese_basic": "たりる",
+    "english": "be enough"
+  },
+  {
+    "japanese_advance": "邪魔（な）",
+    "japanese_basic": "じゃま（な）",
+    "english": "distraction, hindrance"
+  },
+  {
+    "japanese_advance": "丁寧（な）",
+    "japanese_basic": "ていねい（な）",
+    "english": "polite"
+  },
+  {
+    "japanese_advance": "しっかり",
+    "japanese_basic": "しっかり",
+    "english": "properly, adequately"
+  },
+  {
+    "japanese_advance": "絶対に",
+    "japanese_basic": "ぜったいに",
+    "english": "absolutely"
+  },
+  {
+    "japanese_advance": "はっきり",
+    "japanese_basic": "はっきり",
+    "english": "clearly"
+  },
+  {
+    "japanese_advance": "大きな",
+    "japanese_basic": "おおきな",
+    "english": "large"
+  },
+  {
+    "japanese_advance": "お手洗い",
+    "japanese_basic": "おてあらい",
+    "english": "washroom, toilet"
+  },
+  {
+    "japanese_advance": "ガソリン",
+    "japanese_basic": "ガソリン",
+    "english": "gasoline"
+  },
+  {
+    "japanese_advance": "ひも",
+    "japanese_basic": "ひも",
+    "english": "string"
+  },
+  {
+    "japanese_advance": "袋",
+    "japanese_basic": "ふくろ",
+    "english": "bag, pouch"
+  },
+  {
+    "japanese_advance": "モップ",
+    "japanese_basic": "モップ",
+    "english": "mop"
+  },
+  {
+    "japanese_advance": "引き出し",
+    "japanese_basic": "ひきだし",
+    "english": "drawer"
+  },
+  {
+    "japanese_advance": "バター",
+    "japanese_basic": "バター",
+    "english": "butter"
+  },
+  {
+    "japanese_advance": "鍋",
+    "japanese_basic": "なべ",
+    "english": "pan"
+  },
+  {
+    "japanese_advance": "瓶",
+    "japanese_basic": "びん",
+    "english": "bottle, jar"
+  },
+  {
+    "japanese_advance": "ガス",
+    "japanese_basic": "ガス",
+    "english": "gas"
+  },
+  {
+    "japanese_advance": "～袋（例：ごみ袋）",
+    "japanese_basic": "～ぶくろ（れい：ごみぶくろ）",
+    "english": "~ bag (example: garbage bag)"
+  },
+  {
+    "japanese_advance": "かける",
+    "japanese_basic": "かける",
+    "english": "put on"
+  },
+  {
+    "japanese_advance": "いすにかける。",
+    "japanese_basic": "いすにかける。",
+    "english": "sit on a chair"
+  },
+  {
+    "japanese_advance": "決まる",
+    "japanese_basic": "きまる",
+    "english": "decide"
+  },
+  {
+    "japanese_advance": "確かめる",
+    "japanese_basic": "たしかめる",
+    "english": "make sure, confirm"
+  },
+  {
+    "japanese_advance": "注意・する",
+    "japanese_basic": "ちゅうい・する",
+    "english": "pay attention"
+  },
+  {
+    "japanese_advance": "ご注意ください。",
+    "japanese_basic": "ごちゅういください。",
+    "english": "\"Pay attention.\""
+  },
+  {
+    "japanese_advance": "なくなる",
+    "japanese_basic": "なくなる",
+    "english": "become empty"
+  },
+  {
+    "japanese_advance": "ガソリンがなくなった。",
+    "japanese_basic": "ガソリンがなくなった。",
+    "english": "\"I ran out of gasoline.\""
+  },
+  {
+    "japanese_advance": "切れる",
+    "japanese_basic": "きれる",
+    "english": "run out of"
+  },
+  {
+    "japanese_advance": "焦げる",
+    "japanese_basic": "こげる",
+    "english": "get burned"
+  },
+  {
+    "japanese_advance": "破れる",
+    "japanese_basic": "やぶれる",
+    "english": "break"
+  },
+  {
+    "japanese_advance": "そのままにする",
+    "japanese_basic": "そのままにする",
+    "english": "leave as is, unchanged"
+  },
+  {
+    "japanese_advance": "並べる",
+    "japanese_basic": "ならべる",
+    "english": "line up"
+  },
+  {
+    "japanese_advance": "休憩・する",
+    "japanese_basic": "きゅうけい・する",
+    "english": "take a break"
+  },
+  {
+    "japanese_advance": "届く",
+    "japanese_basic": "とどく",
+    "english": "reach"
+  },
+  {
+    "japanese_advance": "少々",
+    "japanese_basic": "しょうしょう",
+    "english": "a little bit"
+  },
+  {
+    "japanese_advance": "お先にどうぞ",
+    "japanese_basic": "おさきにどうぞ",
+    "english": "Please go ahead"
+  },
+  {
+    "japanese_advance": "申し訳ないんですが",
+    "japanese_basic": "もうしわけないんですが",
+    "english": "I am sorry, but …"
+  },
+  {
+    "japanese_advance": "気をつける",
+    "japanese_basic": "きをつける",
+    "english": "be careful"
+  },
+  {
+    "japanese_advance": "最初に",
+    "japanese_basic": "さいしょに",
+    "english": "first of all"
+  },
+  {
+    "japanese_advance": "先に",
+    "japanese_basic": "さきに",
+    "english": "before, in front, in first"
+  }
+],
+    "ISI VOCAB 10": [
+  {
+    "japanese_advance": "王様",
+    "japanese_basic": "おうさま",
+    "english": "king"
+  },
+  {
+    "japanese_advance": "お菓子",
+    "japanese_basic": "おかし",
+    "english": "snack, sweets"
+  },
+  {
+    "japanese_advance": "丸い",
+    "japanese_basic": "まるい",
+    "english": "round"
+  },
+  {
+    "japanese_advance": "あめ",
+    "japanese_basic": "あめ",
+    "english": "candy, sweets"
+  },
+  {
+    "japanese_advance": "クルミ",
+    "japanese_basic": "クルミ",
+    "english": "walnut"
+  },
+  {
+    "japanese_advance": "ゴマ",
+    "japanese_basic": "ゴマ",
+    "english": "sesame"
+  },
+  {
+    "japanese_advance": "誰でも",
+    "japanese_basic": "だれでも",
+    "english": "anyone"
+  },
+  {
+    "japanese_advance": "伸ばす",
+    "japanese_basic": "のばす",
+    "english": "stretch, extend"
+  },
+  {
+    "japanese_advance": "巻く",
+    "japanese_basic": "まく",
+    "english": "wind up, wrap around"
+  },
+  {
+    "japanese_advance": "おばあさん",
+    "japanese_basic": "おばあさん",
+    "english": "an old lady"
+  },
+  {
+    "japanese_advance": "知らないおばあさん",
+    "japanese_basic": "しらないおばあさん",
+    "english": "an old lady one doesn’t know"
+  },
+  {
+    "japanese_advance": "おじいさん",
+    "japanese_basic": "おじいさん",
+    "english": "an old man"
+  },
+  {
+    "japanese_advance": "近所のおじいさん",
+    "japanese_basic": "きんじょのおじいさん",
+    "english": "an old man in the neighbourhood"
+  },
+  {
+    "japanese_advance": "赤ちゃん",
+    "japanese_basic": "あかちゃん",
+    "english": "baby"
+  },
+  {
+    "japanese_advance": "蚊",
+    "japanese_basic": "か",
+    "english": "mosquito"
+  },
+  {
+    "japanese_advance": "係",
+    "japanese_basic": "かかり",
+    "english": "person in charge"
+  },
+  {
+    "japanese_advance": "口紅",
+    "japanese_basic": "くちべに",
+    "english": "lipstick"
+  },
+  {
+    "japanese_advance": "誰か",
+    "japanese_basic": "だれか",
+    "english": "someone"
+  },
+  {
+    "japanese_advance": "泥棒",
+    "japanese_basic": "どろぼう",
+    "english": "thief, burglar"
+  },
+  {
+    "japanese_advance": "～点（例：100点）",
+    "japanese_basic": "～てん（れい：ひゃくてん）",
+    "english": "point(s) (e.g., 100 points)"
+  },
+  {
+    "japanese_advance": "シングル",
+    "japanese_basic": "シングル",
+    "english": "single"
+  },
+  {
+    "japanese_advance": "ツイン",
+    "japanese_basic": "ツイン",
+    "english": "twin"
+  },
+  {
+    "japanese_advance": "フロント",
+    "japanese_basic": "フロント",
+    "english": "front desk"
+  },
+  {
+    "japanese_advance": "ところ",
+    "japanese_basic": "ところ",
+    "english": "place, location"
+  },
+  {
+    "japanese_advance": "駅員さんのところ",
+    "japanese_basic": "えきいんさんのところ",
+    "english": "location of station employee"
+  },
+  {
+    "japanese_advance": "アイスクリーム",
+    "japanese_basic": "アイスクリーム",
+    "english": "ice cream"
+  },
+  {
+    "japanese_advance": "サンプル",
+    "japanese_basic": "サンプル",
+    "english": "sample"
+  },
+  {
+    "japanese_advance": "商品",
+    "japanese_basic": "しょうひん",
+    "english": "product, goods"
+  },
+  {
+    "japanese_advance": "まんじゅう",
+    "japanese_basic": "まんじゅう",
+    "english": "manju (bun with bean-jam filling)"
+  },
+  {
+    "japanese_advance": "ライブ",
+    "japanese_basic": "ライブ",
+    "english": "live (concert, broadcast)"
+  },
+  {
+    "japanese_advance": "ロック",
+    "japanese_basic": "ロック",
+    "english": "rock"
+  },
+  {
+    "japanese_advance": "かむ",
+    "japanese_basic": "かむ",
+    "english": "chew"
+  },
+  {
+    "japanese_advance": "壊す",
+    "japanese_basic": "こわす",
+    "english": "break, destroy"
+  },
+  {
+    "japanese_advance": "刺す",
+    "japanese_basic": "さす",
+    "english": "bite, sting, stick with"
+  },
+  {
+    "japanese_advance": "誘う",
+    "japanese_basic": "さそう",
+    "english": "invite, take out"
+  },
+  {
+    "japanese_advance": "叱る",
+    "japanese_basic": "しかる",
+    "english": "scold"
+  },
+  {
+    "japanese_advance": "頼む",
+    "japanese_basic": "たのむ",
+    "english": "ask, request"
+  },
+  {
+    "japanese_advance": "違う",
+    "japanese_basic": "ちがう",
+    "english": "differ from, be different"
+  },
+  {
+    "japanese_advance": "取る",
+    "japanese_basic": "とる",
+    "english": "take, get"
+  },
+  {
+    "japanese_advance": "100点を取る。",
+    "japanese_basic": "ひゃくてんをとる。",
+    "english": "get 100 points"
+  },
+  {
+    "japanese_advance": "踏む",
+    "japanese_basic": "ふむ",
+    "english": "step on"
+  },
+  {
+    "japanese_advance": "褒める",
+    "japanese_basic": "ほめる",
+    "english": "praise"
+  },
+  {
+    "japanese_advance": "招待・する",
+    "japanese_basic": "しょうたい・する",
+    "english": "invite, ask"
+  },
+  {
+    "japanese_advance": "配る",
+    "japanese_basic": "くばる",
+    "english": "distribute"
+  },
+  {
+    "japanese_advance": "ぶつかる",
+    "japanese_basic": "ぶつかる",
+    "english": "hit, run against"
+  },
+  {
+    "japanese_advance": "撮影・する",
+    "japanese_basic": "さつえい・する",
+    "english": "take a picture, record video"
+  },
+  {
+    "japanese_advance": "発売・する",
+    "japanese_basic": "はつばい・する",
+    "english": "sell"
+  },
+  {
+    "japanese_advance": "注意・する",
+    "japanese_basic": "ちゅうい・する",
+    "english": "advise, admonish"
+  },
+  {
+    "japanese_advance": "係の人に注意される。",
+    "japanese_basic": "かかりのひとにちゅういされる。",
+    "english": "be given notice by the staff"
+  },
+  {
+    "japanese_advance": "うまい",
+    "japanese_basic": "うまい",
+    "english": "taste good, delicious"
+  },
+  {
+    "japanese_advance": "いっぱい",
+    "japanese_basic": "いっぱい",
+    "english": "full"
+  },
+  {
+    "japanese_advance": "あれ？",
+    "japanese_basic": "あれ？",
+    "english": "What?"
+  },
+  {
+    "japanese_advance": "会場",
+    "japanese_basic": "かいじょう",
+    "english": "meeting place, conference hall"
+  },
+  {
+    "japanese_advance": "あっち",
+    "japanese_basic": "あっち",
+    "english": "(over) there (informal)"
+  },
+  {
+    "japanese_advance": "お化け屋敷",
+    "japanese_basic": "おばけやしき",
+    "english": "haunted house"
+  },
+  {
+    "japanese_advance": "向こう",
+    "japanese_basic": "むこう",
+    "english": "over there, the opposite (other) side"
+  },
+  {
+    "japanese_advance": "トラ",
+    "japanese_basic": "トラ",
+    "english": "tiger"
+  },
+  {
+    "japanese_advance": "ミルク",
+    "japanese_basic": "ミルク",
+    "english": "milk"
+  },
+  {
+    "japanese_advance": "屋根",
+    "japanese_basic": "やね",
+    "english": "roof"
+  },
+  {
+    "japanese_advance": "鉛筆",
+    "japanese_basic": "えんぴつ",
+    "english": "pencil"
+  },
+  {
+    "japanese_advance": "月",
+    "japanese_basic": "つき",
+    "english": "moon, month"
+  },
+  {
+    "japanese_advance": "プロ",
+    "japanese_basic": "プロ",
+    "english": "pro, professional"
+  },
+  {
+    "japanese_advance": "モデル",
+    "japanese_basic": "モデル",
+    "english": "model"
+  },
+  {
+    "japanese_advance": "多く",
+    "japanese_basic": "おおく",
+    "english": "many"
+  },
+  {
+    "japanese_advance": "鏡",
+    "japanese_basic": "かがみ",
+    "english": "mirror"
+  },
+  {
+    "japanese_advance": "カタカナ",
+    "japanese_basic": "カタカナ",
+    "english": "Japanese katakana script"
+  },
+  {
+    "japanese_advance": "国際",
+    "japanese_basic": "こくさい",
+    "english": "international"
+  },
+  {
+    "japanese_advance": "柔道",
+    "japanese_basic": "じゅうどう",
+    "english": "judo"
+  },
+  {
+    "japanese_advance": "世界",
+    "japanese_basic": "せかい",
+    "english": "world"
+  },
+  {
+    "japanese_advance": "麦",
+    "japanese_basic": "むぎ",
+    "english": "wheat, barley, flour"
+  },
+  {
+    "japanese_advance": "工場",
+    "japanese_basic": "こうじょう",
+    "english": "factory"
+  },
+  {
+    "japanese_advance": "博物館",
+    "japanese_basic": "はくぶつかん",
+    "english": "museum"
+  },
+  {
+    "japanese_advance": "ヨーロッパ",
+    "japanese_basic": "ヨーロッパ",
+    "english": "Europe"
+  },
+  {
+    "japanese_advance": "おやき",
+    "japanese_basic": "おやき",
+    "english": "oyaki (Japanese dumpling popular in Nagano prefecture)"
+  },
+  {
+    "japanese_advance": "～中（例：世界中）",
+    "japanese_basic": "～じゅう（れい：せかいじゅう）",
+    "english": "all over ~, throughout ~ (example: all over the world)"
+  },
+  {
+    "japanese_advance": "～時代（例：江戸時代）",
+    "japanese_basic": "～じだい（れい：えどじだい）",
+    "english": "~ period (example: Edo period)"
+  },
+  {
+    "japanese_advance": "向かう",
+    "japanese_basic": "むかう",
+    "english": "leave for, face (a certain direction)"
+  },
+  {
+    "japanese_advance": "逃げる",
+    "japanese_basic": "にげる",
+    "english": "run away, escape"
+  },
+  {
+    "japanese_advance": "生きる",
+    "japanese_basic": "いきる",
+    "english": "live, to be alive"
+  },
+  {
+    "japanese_advance": "生まれる",
+    "japanese_basic": "うまれる",
+    "english": "be born"
+  },
+  {
+    "japanese_advance": "行う",
+    "japanese_basic": "おこなう",
+    "english": "perform"
+  },
+  {
+    "japanese_advance": "造る",
+    "japanese_basic": "つくる",
+    "english": "create, build"
+  },
+  {
+    "japanese_advance": "開く",
+    "japanese_basic": "ひらく",
+    "english": "open, hold"
+  },
+  {
+    "japanese_advance": "コンサートが開かれる。",
+    "japanese_basic": "コンサートがひらかれる。",
+    "english": "hold a concert"
+  },
+  {
+    "japanese_advance": "建てる",
+    "japanese_basic": "たてる",
+    "english": "build"
+  },
+  {
+    "japanese_advance": "発見・する",
+    "japanese_basic": "はっけん・する",
+    "english": "find, discover"
+  },
+  {
+    "japanese_advance": "発明・する",
+    "japanese_basic": "はつめい・する",
+    "english": "invent"
+  },
+  {
+    "japanese_advance": "これから",
+    "japanese_basic": "これから",
+    "english": "from now on, after this"
+  },
+  {
+    "japanese_advance": "～によって",
+    "japanese_basic": "～によって",
+    "english": "due to ~"
+  },
+  {
+    "japanese_advance": "乗り場",
+    "japanese_basic": "のりば",
+    "english": "platform, gate, loading zone"
+  },
+  {
+    "japanese_advance": "ロープウエー",
+    "japanese_basic": "ロープウエー",
+    "english": "ropeway"
+  },
+  {
+    "japanese_advance": "遠く",
+    "japanese_basic": "とおく",
+    "english": "far away"
+  },
+  {
+    "japanese_advance": "お待たせ",
+    "japanese_basic": "おまたせ",
+    "english": "\"Sorry to keep you waiting\""
+  },
+  {
+    "japanese_advance": "ちょうど",
+    "japanese_basic": "ちょうど",
+    "english": "exactly, precisely"
+  }
+],
+    "ISI VOCAB 11": [
+  {
+    "japanese_advance": "八百屋",
+    "japanese_basic": "やおや",
+    "english": "vegetable vendor, green grocery"
+  },
+  {
+    "japanese_advance": "おじさん",
+    "japanese_basic": "おじさん",
+    "english": "uncle, mister (polite term used to refer to middle-aged men)"
+  },
+  {
+    "japanese_advance": "苦労",
+    "japanese_basic": "くろう",
+    "english": "trouble, burden"
+  },
+  {
+    "japanese_advance": "親しい",
+    "japanese_basic": "したしい",
+    "english": "familiar, intimate"
+  },
+  {
+    "japanese_advance": "何度も",
+    "japanese_basic": "なんども",
+    "english": "over and over again, many times"
+  },
+  {
+    "japanese_advance": "話しかける",
+    "japanese_basic": "はなしかける",
+    "english": "talk to, speak to"
+  },
+  {
+    "japanese_advance": "彼",
+    "japanese_basic": "かれ",
+    "english": "boyfriend"
+  },
+  {
+    "japanese_advance": "彼女",
+    "japanese_basic": "かのじょ",
+    "english": "girlfriend"
+  },
+  {
+    "japanese_advance": "国の彼（彼女）に会いたいです。",
+    "japanese_basic": "くにのかれ（かのじょ）にあいたいです。",
+    "english": "“I miss my boyfriend (girlfriend) back home.”"
+  },
+  {
+    "japanese_advance": "こと（例：将来のこと）",
+    "japanese_basic": "こと（れい：しょうらいのこと）",
+    "english": "matters about ~, things about ~ (example: things about the future)"
+  },
+  {
+    "japanese_advance": "興味",
+    "japanese_basic": "きょうみ",
+    "english": "interest"
+  },
+  {
+    "japanese_advance": "ボランティア",
+    "japanese_basic": "ボランティア",
+    "english": "volunteer"
+  },
+  {
+    "japanese_advance": "物価",
+    "japanese_basic": "ぶっか",
+    "english": "prices of commodities"
+  },
+  {
+    "japanese_advance": "敬語",
+    "japanese_basic": "けいご",
+    "english": "respectful language"
+  },
+  {
+    "japanese_advance": "文化",
+    "japanese_basic": "ぶんか",
+    "english": "culture"
+  },
+  {
+    "japanese_advance": "違い",
+    "japanese_basic": "ちがい",
+    "english": "difference"
+  },
+  {
+    "japanese_advance": "無理",
+    "japanese_basic": "むり",
+    "english": "overdo, take something too far"
+  },
+  {
+    "japanese_advance": "無理をする。",
+    "japanese_basic": "むりをする。",
+    "english": "overdo something"
+  },
+  {
+    "japanese_advance": "～代（例：食事代）",
+    "japanese_basic": "～だい（れい：しょくじだい）",
+    "english": "~ charges, ~ fees (example: dining charges)"
+  },
+  {
+    "japanese_advance": "持つ",
+    "japanese_basic": "もつ",
+    "english": "have, hold"
+  },
+  {
+    "japanese_advance": "興味を持つ。",
+    "japanese_basic": "きょうみをもつ。",
+    "english": "have an interest"
+  },
+  {
+    "japanese_advance": "節約・する",
+    "japanese_basic": "せつやく・する",
+    "english": "economize, be thrifty"
+  },
+  {
+    "japanese_advance": "外食・する",
+    "japanese_basic": "がいしょく・する",
+    "english": "dine out, eat out"
+  },
+  {
+    "japanese_advance": "ダイエット・する",
+    "japanese_basic": "ダイエット・する",
+    "english": "diet"
+  },
+  {
+    "japanese_advance": "太る",
+    "japanese_basic": "ふとる",
+    "english": "gain weight, get fat"
+  },
+  {
+    "japanese_advance": "折れる",
+    "japanese_basic": "おれる",
+    "english": "break"
+  },
+  {
+    "japanese_advance": "故障・する",
+    "japanese_basic": "こしょう・する",
+    "english": "get out of order, break down"
+  },
+  {
+    "japanese_advance": "学ぶ",
+    "japanese_basic": "まなぶ",
+    "english": "learn, study"
+  },
+  {
+    "japanese_advance": "育てる",
+    "japanese_basic": "そだてる",
+    "english": "raise (a child), bring up"
+  },
+  {
+    "japanese_advance": "研究・する",
+    "japanese_basic": "けんきゅう・する",
+    "english": "research"
+  },
+  {
+    "japanese_advance": "あんまり",
+    "japanese_basic": "あんまり",
+    "english": "not much, not very"
+  },
+  {
+    "japanese_advance": "だいたい",
+    "japanese_basic": "だいたい",
+    "english": "most of the time"
+  },
+  {
+    "japanese_advance": "駅前",
+    "japanese_basic": "えきまえ",
+    "english": "in front of the train station"
+  },
+  {
+    "japanese_advance": "具合",
+    "japanese_basic": "ぐあい",
+    "english": "condition, health"
+  },
+  {
+    "japanese_advance": "区役所",
+    "japanese_basic": "くやくしょ",
+    "english": "ward office"
+  },
+  {
+    "japanese_advance": "今夜",
+    "japanese_basic": "こんや",
+    "english": "tonight"
+  },
+  {
+    "japanese_advance": "出張・する",
+    "japanese_basic": "しゅっちょう・する",
+    "english": "go on a business trip"
+  },
+  {
+    "japanese_advance": "打つ",
+    "japanese_basic": "うつ",
+    "english": "hit"
+  },
+  {
+    "japanese_advance": "回る",
+    "japanese_basic": "まわる",
+    "english": "go around"
+  },
+  {
+    "japanese_advance": "投げる",
+    "japanese_basic": "なげる",
+    "english": "throw"
+  },
+  {
+    "japanese_advance": "あきらめる",
+    "japanese_basic": "あきらめる",
+    "english": "give up"
+  },
+  {
+    "japanese_advance": "機会",
+    "japanese_basic": "きかい",
+    "english": "chance, opportunity"
+  },
+  {
+    "japanese_advance": "地域",
+    "japanese_basic": "ちいき",
+    "english": "area, region"
+  },
+  {
+    "japanese_advance": "チーム",
+    "japanese_basic": "チーム",
+    "english": "team"
+  },
+  {
+    "japanese_advance": "～君",
+    "japanese_basic": "～くん",
+    "english": "(suffix for boy's names that indicates respect and familiarity)"
+  },
+  {
+    "japanese_advance": "シュート・する",
+    "japanese_basic": "シュート・する",
+    "english": "shoot"
+  },
+  {
+    "japanese_advance": "お帰りなさい",
+    "japanese_basic": "おかえりなさい",
+    "english": "\"Welcome home.\""
+  },
+  {
+    "japanese_advance": "よし",
+    "japanese_basic": "よし",
+    "english": "good, come on"
+  }
+],
+    "ISI VOCAB 12": [
+  {
+    "japanese_advance": "インスタント",
+    "japanese_basic": "インスタント",
+    "english": "instant"
+  },
+  {
+    "japanese_advance": "食品",
+    "japanese_basic": "しょくひん",
+    "english": "food"
+  },
+  {
+    "japanese_advance": "冷凍・する",
+    "japanese_basic": "れいとう・する",
+    "english": "freeze"
+  },
+  {
+    "japanese_advance": "残す",
+    "japanese_basic": "のこす",
+    "english": "leave, save"
+  },
+  {
+    "japanese_advance": "残る",
+    "japanese_basic": "のこる",
+    "english": "be left remaining"
+  },
+  {
+    "japanese_advance": "おにぎり",
+    "japanese_basic": "おにぎり",
+    "english": "rice ball"
+  },
+  {
+    "japanese_advance": "元気",
+    "japanese_basic": "げんき",
+    "english": "healthy, lively, spirited"
+  },
+  {
+    "japanese_advance": "元気がない",
+    "japanese_basic": "げんきがない",
+    "english": "feel down, low-spirited"
+  },
+  {
+    "japanese_advance": "胃",
+    "japanese_basic": "い",
+    "english": "stomach"
+  },
+  {
+    "japanese_advance": "痛み",
+    "japanese_basic": "いたみ",
+    "english": "pain"
+  },
+  {
+    "japanese_advance": "疲れ",
+    "japanese_basic": "つかれ",
+    "english": "fatigue, tiredness"
+  },
+  {
+    "japanese_advance": "湿布",
+    "japanese_basic": "しっぷ",
+    "english": "cold (hot) compress"
+  },
+  {
+    "japanese_advance": "うがい",
+    "japanese_basic": "うがい",
+    "english": "gargling"
+  },
+  {
+    "japanese_advance": "ジム",
+    "japanese_basic": "ジム",
+    "english": "gym, gymnasium"
+  },
+  {
+    "japanese_advance": "氷",
+    "japanese_basic": "こおり",
+    "english": "ice"
+  },
+  {
+    "japanese_advance": "ドレッシング",
+    "japanese_basic": "ドレッシング",
+    "english": "dressing"
+  },
+  {
+    "japanese_advance": "～金（例：入会金）",
+    "japanese_basic": "～きん（れい：にゅうかいきん）",
+    "english": "~ fee, ~ charge (example: admission fee)"
+  },
+  {
+    "japanese_advance": "酔う",
+    "japanese_basic": "よう",
+    "english": "get drunk, feel sick (at the stomach)"
+  },
+  {
+    "japanese_advance": "取れる",
+    "japanese_basic": "とれる",
+    "english": "relieve, break free from"
+  },
+  {
+    "japanese_advance": "入会・する",
+    "japanese_basic": "にゅうかい・する",
+    "english": "join, become a member of a group"
+  },
+  {
+    "japanese_advance": "さす",
+    "japanese_basic": "さす",
+    "english": "hold over one's head"
+  },
+  {
+    "japanese_advance": "傘をさす。",
+    "japanese_basic": "かさをさす。",
+    "english": "open an umbrella"
+  },
+  {
+    "japanese_advance": "ガンガン",
+    "japanese_basic": "ガンガン",
+    "english": "pounding, throbbing (state where it feels as if the pain in your head is making a large sound)"
+  },
+  {
+    "japanese_advance": "頭がガンガンする。",
+    "japanese_basic": "あたまがガンガンする。",
+    "english": "\"I have a pounding headache.\""
+  },
+  {
+    "japanese_advance": "パンパン",
+    "japanese_basic": "パンパン",
+    "english": "throbbing (state where if feels as if your muscles are being stretched tightly)"
+  },
+  {
+    "japanese_advance": "足がパンパンだ。",
+    "japanese_basic": "あしがパンパンだ。",
+    "english": "\"My legs are throbbing.\""
+  },
+  {
+    "japanese_advance": "フラフラ",
+    "japanese_basic": "フラフラ",
+    "english": "groggy, dizzy, woozy (state where you cannot gather any power, are weary, or your body is swaying)"
+  },
+  {
+    "japanese_advance": "フラフラする。",
+    "japanese_basic": "フラフラする。",
+    "english": "\"I am groggy.\""
+  },
+  {
+    "japanese_advance": "ムカムカ",
+    "japanese_basic": "ムカムカ",
+    "english": "nauseous, queasy (state where you feel like you are going to vomit due to overeating, overdrinking, or other cause)"
+  },
+  {
+    "japanese_advance": "胃がムカムカする。",
+    "japanese_basic": "いがムカムカする。",
+    "english": "\"I feel sick to my stomach.\""
+  },
+  {
+    "japanese_advance": "肩",
+    "japanese_basic": "かた",
+    "english": "shoulder"
+  },
+  {
+    "japanese_advance": "首",
+    "japanese_basic": "くび",
+    "english": "neck"
+  },
+  {
+    "japanese_advance": "カロリー",
+    "japanese_basic": "カロリー",
+    "english": "calorie"
+  },
+  {
+    "japanese_advance": "ジューサー",
+    "japanese_basic": "ジューサー",
+    "english": "juicer"
+  },
+  {
+    "japanese_advance": "体脂肪計",
+    "japanese_basic": "たいしぼうけい",
+    "english": "body fat scale"
+  },
+  {
+    "japanese_advance": "体脂肪率",
+    "japanese_basic": "たいしぼうりつ",
+    "english": "body fat percentage"
+  },
+  {
+    "japanese_advance": "ネックストレッチ",
+    "japanese_basic": "ネックストレッチ",
+    "english": "neck stretch"
+  },
+  {
+    "japanese_advance": "マッサージ器",
+    "japanese_basic": "マッサージき",
+    "english": "massage machine"
+  },
+  {
+    "japanese_advance": "万歩計",
+    "japanese_basic": "まんぽけい",
+    "english": "pedometer"
+  },
+  {
+    "japanese_advance": "ストレス",
+    "japanese_basic": "ストレス",
+    "english": "stress"
+  },
+  {
+    "japanese_advance": "虫歯",
+    "japanese_basic": "むしば",
+    "english": "(tooth) cavity"
+  },
+  {
+    "japanese_advance": "ビタミンC",
+    "japanese_basic": "ビタミンC",
+    "english": "vitamin C"
+  },
+  {
+    "japanese_advance": "方法",
+    "japanese_basic": "ほうほう",
+    "english": "method, technique, way of doing something"
+  },
+  {
+    "japanese_advance": "健康",
+    "japanese_basic": "けんこう",
+    "english": "health, fitness"
+  },
+  {
+    "japanese_advance": "栄養",
+    "japanese_basic": "えいよう",
+    "english": "nutrition"
+  },
+  {
+    "japanese_advance": "ショウガ",
+    "japanese_basic": "ショウガ",
+    "english": "ginger"
+  },
+  {
+    "japanese_advance": "バランス",
+    "japanese_basic": "バランス",
+    "english": "balance"
+  },
+  {
+    "japanese_advance": "～不足（例：運動不足）",
+    "japanese_basic": "～ぶそく（れい：うんどうぶそく）",
+    "english": "deficiency in ~, not enough ~ (example: not enough exercise)"
+  },
+  {
+    "japanese_advance": "取る",
+    "japanese_basic": "とる",
+    "english": "break free from, relieve"
+  },
+  {
+    "japanese_advance": "疲れを取る。",
+    "japanese_basic": "つかれをとる。",
+    "english": "relieve one's fatigue"
+  },
+  {
+    "japanese_advance": "測る",
+    "japanese_basic": "はかる",
+    "english": "measure"
+  },
+  {
+    "japanese_advance": "計算・する",
+    "japanese_basic": "けいさん・する",
+    "english": "calculate"
+  },
+  {
+    "japanese_advance": "マッサージ・する",
+    "japanese_basic": "マッサージ・する",
+    "english": "massage"
+  },
+  {
+    "japanese_advance": "たまる",
+    "japanese_basic": "たまる",
+    "english": "build up"
+  },
+  {
+    "japanese_advance": "やせる",
+    "japanese_basic": "やせる",
+    "english": "lose weight, become thin"
+  },
+  {
+    "japanese_advance": "こる",
+    "japanese_basic": "こる",
+    "english": "become stiff"
+  },
+  {
+    "japanese_advance": "動かす",
+    "japanese_basic": "うごかす",
+    "english": "move, set in motion"
+  },
+  {
+    "japanese_advance": "眠る",
+    "japanese_basic": "ねむる",
+    "english": "sleep"
+  },
+  {
+    "japanese_advance": "冷える",
+    "japanese_basic": "ひえる",
+    "english": "chill, get cold"
+  },
+  {
+    "japanese_advance": "このごろ",
+    "japanese_basic": "このごろ",
+    "english": "these days, nowadays"
+  },
+  {
+    "japanese_advance": "ふーん",
+    "japanese_basic": "ふーん",
+    "english": "well..."
+  },
+  {
+    "japanese_advance": "グレープフルーツ",
+    "japanese_basic": "グレープフルーツ",
+    "english": "grapefruit"
+  },
+  {
+    "japanese_advance": "二日酔い",
+    "japanese_basic": "ふつかよい",
+    "english": "hangover"
+  },
+  {
+    "japanese_advance": "温める",
+    "japanese_basic": "あたためる",
+    "english": "warm"
+  },
+  {
+    "japanese_advance": "気をつける",
+    "japanese_basic": "きをつける",
+    "english": "be careful"
+  }
+],
+    "ISI VOCAB 13": [
+  {
+    "japanese_advance": "自然",
+    "japanese_basic": "しぜん",
+    "english": "nature"
+  },
+  {
+    "japanese_advance": "釣る",
+    "japanese_basic": "つる",
+    "english": "fish"
+  },
+  {
+    "japanese_advance": "不利（な）",
+    "japanese_basic": "ふり（な）",
+    "english": "disadvantageous"
+  },
+  {
+    "japanese_advance": "手に入れる",
+    "japanese_basic": "てにいれる",
+    "english": "obtain, acquire"
+  },
+  {
+    "japanese_advance": "親",
+    "japanese_basic": "おや",
+    "english": "parent"
+  },
+  {
+    "japanese_advance": "父親",
+    "japanese_basic": "ちちおや",
+    "english": "father"
+  },
+  {
+    "japanese_advance": "母親",
+    "japanese_basic": "ははおや",
+    "english": "mother"
+  },
+  {
+    "japanese_advance": "子ども",
+    "japanese_basic": "こども",
+    "english": "child, kid"
+  },
+  {
+    "japanese_advance": "近所の子ども",
+    "japanese_basic": "きんじょのこども",
+    "english": "neighborhood child"
+  },
+  {
+    "japanese_advance": "家事",
+    "japanese_basic": "かじ",
+    "english": "housework"
+  },
+  {
+    "japanese_advance": "コーチ",
+    "japanese_basic": "コーチ",
+    "english": "coach"
+  },
+  {
+    "japanese_advance": "塾",
+    "japanese_basic": "じゅく",
+    "english": "after-school cram school"
+  },
+  {
+    "japanese_advance": "数学",
+    "japanese_basic": "すうがく",
+    "english": "mathematics, math"
+  },
+  {
+    "japanese_advance": "ゲームセンター",
+    "japanese_basic": "ゲームセンター",
+    "english": "game center"
+  },
+  {
+    "japanese_advance": "ころ",
+    "japanese_basic": "ころ",
+    "english": "when I was ~"
+  },
+  {
+    "japanese_advance": "～キロ",
+    "japanese_basic": "～キロ",
+    "english": "~ kilometers, ~ kilograms"
+  },
+  {
+    "japanese_advance": "～ずつ",
+    "japanese_basic": "～ずつ",
+    "english": "every ~"
+  },
+  {
+    "japanese_advance": "騒ぐ",
+    "japanese_basic": "さわぐ",
+    "english": "be noisy, act up"
+  },
+  {
+    "japanese_advance": "世話・する",
+    "japanese_basic": "せわ・する",
+    "english": "take care of"
+  },
+  {
+    "japanese_advance": "えらい",
+    "japanese_basic": "えらい",
+    "english": "great, excellent, well done"
+  },
+  {
+    "japanese_advance": "この間",
+    "japanese_basic": "このあいだ",
+    "english": "the other day, during this time"
+  },
+  {
+    "japanese_advance": "必ず",
+    "japanese_basic": "かならず",
+    "english": "by all means, certainly"
+  },
+  {
+    "japanese_advance": "やっぱり",
+    "japanese_basic": "やっぱり",
+    "english": "after all"
+  },
+  {
+    "japanese_advance": "夜遅く",
+    "japanese_basic": "よるおそく",
+    "english": "late at night"
+  },
+  {
+    "japanese_advance": "うち",
+    "japanese_basic": "うち",
+    "english": "I, me"
+  },
+  {
+    "japanese_advance": "うちの親",
+    "japanese_basic": "うちのおや",
+    "english": "my parents"
+  },
+  {
+    "japanese_advance": "海外",
+    "japanese_basic": "かいがい",
+    "english": "overseas"
+  },
+  {
+    "japanese_advance": "曲",
+    "japanese_basic": "きょく",
+    "english": "song track"
+  },
+  {
+    "japanese_advance": "教育",
+    "japanese_basic": "きょういく",
+    "english": "education"
+  },
+  {
+    "japanese_advance": "化粧品",
+    "japanese_basic": "けしょうひん",
+    "english": "cosmetics"
+  },
+  {
+    "japanese_advance": "けんか・する",
+    "japanese_basic": "けんか・する",
+    "english": "argue"
+  },
+  {
+    "japanese_advance": "泣く",
+    "japanese_basic": "なく",
+    "english": "cry"
+  },
+  {
+    "japanese_advance": "残す",
+    "japanese_basic": "のこす",
+    "english": "leave, save"
+  },
+  {
+    "japanese_advance": "やる",
+    "japanese_basic": "やる",
+    "english": "do"
+  },
+  {
+    "japanese_advance": "宿題をやる。",
+    "japanese_basic": "しゅくだいをやる。",
+    "english": "do my homework"
+  },
+  {
+    "japanese_advance": "厳しい",
+    "japanese_basic": "きびしい",
+    "english": "strict, severe"
+  },
+  {
+    "japanese_advance": "うれしい",
+    "japanese_basic": "うれしい",
+    "english": "happy, glad"
+  },
+  {
+    "japanese_advance": "熱心（な）",
+    "japanese_basic": "ねっしん（な）",
+    "english": "eager, enthusiastic, devoted"
+  },
+  {
+    "japanese_advance": "何でも",
+    "japanese_basic": "なんでも",
+    "english": "anything"
+  },
+  {
+    "japanese_advance": "僕",
+    "japanese_basic": "ぼく",
+    "english": "I, me (informal, used primarily by young men)"
+  },
+  {
+    "japanese_advance": "祖母",
+    "japanese_basic": "そぼ",
+    "english": "grandmother"
+  },
+  {
+    "japanese_advance": "おもちゃ",
+    "japanese_basic": "おもちゃ",
+    "english": "toy"
+  },
+  {
+    "japanese_advance": "役に立つ",
+    "japanese_basic": "やくにたつ",
+    "english": "be useful"
+  },
+  {
+    "japanese_advance": "ちゃんと",
+    "japanese_basic": "ちゃんと",
+    "english": "properly"
+  },
+  {
+    "japanese_advance": "仕方がない",
+    "japanese_basic": "しかたがない",
+    "english": "no choice, have no alternative"
+  }
+],
+    "ISI VOCAB 14": [
+  {
+    "japanese_advance": "漫画家",
+    "japanese_basic": "まんがか",
+    "english": "cartoonist"
+  },
+  {
+    "japanese_advance": "～部",
+    "japanese_basic": "～ぶ",
+    "english": "~ department, ~ section"
+  },
+  {
+    "japanese_advance": "メジャー（な）",
+    "japanese_basic": "メジャー（な）",
+    "english": "major"
+  },
+  {
+    "japanese_advance": "連載・する",
+    "japanese_basic": "れんさい・する",
+    "english": "appear serially (in a publication)"
+  },
+  {
+    "japanese_advance": "スタート・する",
+    "japanese_basic": "スタート・する",
+    "english": "start"
+  },
+  {
+    "japanese_advance": "ヒット・する",
+    "japanese_basic": "ヒット・する",
+    "english": "be a hit"
+  },
+  {
+    "japanese_advance": "奨学金",
+    "japanese_basic": "しょうがくきん",
+    "english": "scholarship"
+  },
+  {
+    "japanese_advance": "支援・する",
+    "japanese_basic": "しえん・する",
+    "english": "support"
+  },
+  {
+    "japanese_advance": "女の子",
+    "japanese_basic": "おんなのこ",
+    "english": "girl"
+  },
+  {
+    "japanese_advance": "おせち料理",
+    "japanese_basic": "おせちりょうり",
+    "english": "traditional New Year's food (primarily food eaten to celebrate the New Year)"
+  },
+  {
+    "japanese_advance": "行事",
+    "japanese_basic": "ぎょうじ",
+    "english": "event, occasion"
+  },
+  {
+    "japanese_advance": "敬老の日",
+    "japanese_basic": "けいろうのひ",
+    "english": "Respect-for-the-Aged Day (A national holiday held on the 3rd month of September for revering the elderly and wishing them a long life)"
+  },
+  {
+    "japanese_advance": "（お）正月",
+    "japanese_basic": "（お）しょうがつ",
+    "english": "New Year's holidays"
+  },
+  {
+    "japanese_advance": "七五三",
+    "japanese_basic": "しちごさん",
+    "english": "Seven-Five-Three Festival (Festival celebrating the growth of children for boys when they are three and five years old and for girls when they are three and seven years old)"
+  },
+  {
+    "japanese_advance": "新年",
+    "japanese_basic": "しんねん",
+    "english": "New Year's Day"
+  },
+  {
+    "japanese_advance": "成人式",
+    "japanese_basic": "せいじんしき",
+    "english": "Coming-of-Age Ceremony (Event celebrating when a person reaches 20 years old and is therefore considered an adult)"
+  },
+  {
+    "japanese_advance": "節分",
+    "japanese_basic": "せつぶん",
+    "english": "Traditional end of winter (Held the day before the traditional beginning of spring (around February 3). On the evening of this day, beans are thrown around the house to ward off evil)"
+  },
+  {
+    "japanese_advance": "ひなまつり",
+    "japanese_basic": "ひなまつり",
+    "english": "Doll Festival (Festival held on March 3 for celebrating the growth of young girls)"
+  },
+  {
+    "japanese_advance": "（お）赤飯",
+    "japanese_basic": "（お）せきはん",
+    "english": "festive red rice"
+  },
+  {
+    "japanese_advance": "布",
+    "japanese_basic": "ぬの",
+    "english": "fabric"
+  },
+  {
+    "japanese_advance": "年賀状",
+    "japanese_basic": "ねんがじょう",
+    "english": "new year's greeting card"
+  },
+  {
+    "japanese_advance": "はがき",
+    "japanese_basic": "はがき",
+    "english": "postcard"
+  },
+  {
+    "japanese_advance": "ふろしき",
+    "japanese_basic": "ふろしき",
+    "english": "cloth for wrapping things"
+  },
+  {
+    "japanese_advance": "ランドセル",
+    "japanese_basic": "ランドセル",
+    "english": "satchel, school backpack for elementary school"
+  },
+  {
+    "japanese_advance": "ウナギ",
+    "japanese_basic": "ウナギ",
+    "english": "eel"
+  },
+  {
+    "japanese_advance": "大晦日",
+    "japanese_basic": "おおみそか",
+    "english": "new year's eve"
+  },
+  {
+    "japanese_advance": "数",
+    "japanese_basic": "かず",
+    "english": "number"
+  },
+  {
+    "japanese_advance": "（お）金持ち",
+    "japanese_basic": "（お）かねもち",
+    "english": "rich person"
+  },
+  {
+    "japanese_advance": "スイカ",
+    "japanese_basic": "スイカ",
+    "english": "watermelon"
+  },
+  {
+    "japanese_advance": "ブルーベリー",
+    "japanese_basic": "ブルーベリー",
+    "english": "blueberry"
+  },
+  {
+    "japanese_advance": "ミカン",
+    "japanese_basic": "ミカン",
+    "english": "tangerine"
+  },
+  {
+    "japanese_advance": "豆",
+    "japanese_basic": "まめ",
+    "english": "bean"
+  },
+  {
+    "japanese_advance": "ユズ",
+    "japanese_basic": "ユズ",
+    "english": "yuzu (Chinese lemon)"
+  },
+  {
+    "japanese_advance": "冬至",
+    "japanese_basic": "とうじ",
+    "english": "winter solstice"
+  },
+  {
+    "japanese_advance": "年",
+    "japanese_basic": "とし",
+    "english": "age, year"
+  },
+  {
+    "japanese_advance": "土用の丑の日",
+    "japanese_basic": "どようのうしのひ",
+    "english": "Midsummer Day of the Ox"
+  },
+  {
+    "japanese_advance": "招き猫",
+    "japanese_basic": "まねきねこ",
+    "english": "Welcoming cat (Statue of a cat with its front paw beckoning customers that is used as a decoration for storefronts and other locations)"
+  },
+  {
+    "japanese_advance": "遊び",
+    "japanese_basic": "あそび",
+    "english": "game, play"
+  },
+  {
+    "japanese_advance": "お盆",
+    "japanese_basic": "おぼん",
+    "english": "obon festival"
+  },
+  {
+    "japanese_advance": "空手",
+    "japanese_basic": "からて",
+    "english": "karate"
+  },
+  {
+    "japanese_advance": "餃子",
+    "japanese_basic": "ぎょうざ",
+    "english": "dumpling, potstickers"
+  },
+  {
+    "japanese_advance": "ごちそう",
+    "japanese_basic": "ごちそう",
+    "english": "big meal, feast"
+  },
+  {
+    "japanese_advance": "シチュー",
+    "japanese_basic": "シチュー",
+    "english": "stew"
+  },
+  {
+    "japanese_advance": "将棋",
+    "japanese_basic": "しょうぎ",
+    "english": "shogi (Japanese chess)"
+  },
+  {
+    "japanese_advance": "先祖",
+    "japanese_basic": "せんぞ",
+    "english": "ancestor"
+  },
+  {
+    "japanese_advance": "チェス",
+    "japanese_basic": "チェス",
+    "english": "chess"
+  },
+  {
+    "japanese_advance": "テコンドー",
+    "japanese_basic": "テコンドー",
+    "english": "tae kwon do"
+  },
+  {
+    "japanese_advance": "焼き鳥",
+    "japanese_basic": "やきとり",
+    "english": "yakitori (skewered grilled chicken)"
+  },
+  {
+    "japanese_advance": "大勢",
+    "japanese_basic": "おおぜい",
+    "english": "crowd, in large numbers"
+  },
+  {
+    "japanese_advance": "カボチャ",
+    "japanese_basic": "カボチャ",
+    "english": "pumpkin"
+  },
+  {
+    "japanese_advance": "山車",
+    "japanese_basic": "だし",
+    "english": "parade float"
+  },
+  {
+    "japanese_advance": "～型（例：Ａ型）",
+    "japanese_basic": "～がた（れい：Ａがた）",
+    "english": "type ~ (example: type A)"
+  },
+  {
+    "japanese_advance": "～県（例：長崎県）",
+    "japanese_basic": "～けん（れい：ながさきけん）",
+    "english": "~ prefecture (example: Nagasaki prefecture)"
+  },
+  {
+    "japanese_advance": "祈る",
+    "japanese_basic": "いのる",
+    "english": "pray"
+  },
+  {
+    "japanese_advance": "祝う",
+    "japanese_basic": "いわう",
+    "english": "celebrate, mark an occasion of, congratulate on"
+  },
+  {
+    "japanese_advance": "包む",
+    "japanese_basic": "つつむ",
+    "english": "wrap up, roll up"
+  },
+  {
+    "japanese_advance": "お祝い・する",
+    "japanese_basic": "おいわい・する",
+    "english": "celebrate"
+  },
+  {
+    "japanese_advance": "成長・する",
+    "japanese_basic": "せいちょう・する",
+    "english": "grow, develop"
+  },
+  {
+    "japanese_advance": "感謝・する",
+    "japanese_basic": "かんしゃ・する",
+    "english": "thank, express appreciation"
+  },
+  {
+    "japanese_advance": "飾る",
+    "japanese_basic": "かざる",
+    "english": "decorate, put up a decoration"
+  },
+  {
+    "japanese_advance": "長生き・する",
+    "japanese_basic": "ながいき・する",
+    "english": "live a long life"
+  },
+  {
+    "japanese_advance": "夏バテ・する",
+    "japanese_basic": "なつバテ・する",
+    "english": "suffer from the summer heat"
+  },
+  {
+    "japanese_advance": "踊る",
+    "japanese_basic": "おどる",
+    "english": "dance"
+  },
+  {
+    "japanese_advance": "おもちゃ",
+    "japanese_basic": "おもちゃ",
+    "english": "toy"
+  },
+  {
+    "japanese_advance": "彼女",
+    "japanese_basic": "かのじょ",
+    "english": "she"
+  },
+  {
+    "japanese_advance": "彼",
+    "japanese_basic": "かれ",
+    "english": "he"
+  },
+  {
+    "japanese_advance": "Ａ：山田さんは英語が上手だね。Ｂ：彼（彼女）はイギリスに留学したことがあるから。",
+    "japanese_basic": "Ａ：やまださんはえいごがじょうずだね。Ｂ：かれ（かのじょ）はイギリスにりゅうがくしたことがあるから。",
+    "english": "A: Mr. (Ms.) Yamada's English is really good. B: That's because he (she) has studied in the U.K."
+  },
+  {
+    "japanese_advance": "みんな",
+    "japanese_basic": "みんな",
+    "english": "everyone"
+  },
+  {
+    "japanese_advance": "置物",
+    "japanese_basic": "おきもの",
+    "english": "ornament"
+  },
+  {
+    "japanese_advance": "火事",
+    "japanese_basic": "かじ",
+    "english": "fire"
+  },
+  {
+    "japanese_advance": "カメ",
+    "japanese_basic": "カメ",
+    "english": "turtle, tortoise"
+  },
+  {
+    "japanese_advance": "菊",
+    "japanese_basic": "きく",
+    "english": "chrysanthemum"
+  },
+  {
+    "japanese_advance": "くし",
+    "japanese_basic": "くし",
+    "english": "hair comb"
+  },
+  {
+    "japanese_advance": "５円玉",
+    "japanese_basic": "ごえんだま",
+    "english": "five yen coin"
+  },
+  {
+    "japanese_advance": "食器",
+    "japanese_basic": "しょっき",
+    "english": "dishes, tableware"
+  },
+  {
+    "japanese_advance": "シンボル",
+    "japanese_basic": "シンボル",
+    "english": "symbol"
+  },
+  {
+    "japanese_advance": "ストーブ",
+    "japanese_basic": "ストーブ",
+    "english": "stove, space heater"
+  },
+  {
+    "japanese_advance": "（お）葬式",
+    "japanese_basic": "（お）そうしき",
+    "english": "funeral ceremony"
+  },
+  {
+    "japanese_advance": "涙",
+    "japanese_basic": "なみだ",
+    "english": "tears"
+  },
+  {
+    "japanese_advance": "ハンカチ",
+    "japanese_basic": "ハンカチ",
+    "english": "handkerchief"
+  },
+  {
+    "japanese_advance": "（お）見舞",
+    "japanese_basic": "（お）みまい",
+    "english": "visit a sick person"
+  },
+  {
+    "japanese_advance": "ライター",
+    "japanese_basic": "ライター",
+    "english": "lighter"
+  },
+  {
+    "japanese_advance": "～祝い（例：結婚祝い）",
+    "japanese_basic": "～いわい（れい：けっこんいわい）",
+    "english": "in celebration of ~ (example: wedding present)"
+  },
+  {
+    "japanese_advance": "贈る",
+    "japanese_basic": "おくる",
+    "english": "give a gift"
+  },
+  {
+    "japanese_advance": "増える",
+    "japanese_basic": "ふえる",
+    "english": "increase, grow in number"
+  },
+  {
+    "japanese_advance": "発音・する",
+    "japanese_basic": "はつおん・する",
+    "english": "pronounce"
+  },
+  {
+    "japanese_advance": "連想・する",
+    "japanese_basic": "れんそう・する",
+    "english": "make an association of ideas"
+  },
+  {
+    "japanese_advance": "恥ずかしい",
+    "japanese_basic": "はずかしい",
+    "english": "embarrassing"
+  },
+  {
+    "japanese_advance": "嫌（な）",
+    "japanese_basic": "いや（な）",
+    "english": "disagreeable, unpleasant"
+  },
+  {
+    "japanese_advance": "鬼",
+    "japanese_basic": "おに",
+    "english": "demon, devil"
+  },
+  {
+    "japanese_advance": "ハロウィーン",
+    "japanese_basic": "ハロウィーン",
+    "english": "Halloween"
+  },
+  {
+    "japanese_advance": "お化け",
+    "japanese_basic": "おばけ",
+    "english": "ghost"
+  },
+  {
+    "japanese_advance": "いたずら・する",
+    "japanese_basic": "いたずら・する",
+    "english": "trick or treat, do mischief"
+  },
+  {
+    "japanese_advance": "気にする",
+    "japanese_basic": "きにする",
+    "english": "feel uneasy, be worried (about)"
+  }
+],
+    "ISI VOCAB 15": [
+  {
+    "japanese_advance": "自信",
+    "japanese_basic": "じしん",
+    "english": "confidence"
+  },
+  {
+    "japanese_advance": "知り合い",
+    "japanese_basic": "しりあい",
+    "english": "acquaintance"
+  },
+  {
+    "japanese_advance": "大成功",
+    "japanese_basic": "だいせいこう",
+    "english": "great success"
+  },
+  {
+    "japanese_advance": "ポスター",
+    "japanese_basic": "ポスター",
+    "english": "poster"
+  },
+  {
+    "japanese_advance": "積極的（な）",
+    "japanese_basic": "せっきょくてき（な）",
+    "english": "proactive, positive"
+  },
+  {
+    "japanese_advance": "原因",
+    "japanese_basic": "げんいん",
+    "english": "cause"
+  },
+  {
+    "japanese_advance": "食料品",
+    "japanese_basic": "しょくりょうひん",
+    "english": "food items"
+  },
+  {
+    "japanese_advance": "増加・する",
+    "japanese_basic": "ぞうか・する",
+    "english": "increase"
+  },
+  {
+    "japanese_advance": "問題",
+    "japanese_basic": "もんだい",
+    "english": "problem, issue"
+  },
+  {
+    "japanese_advance": "レコード",
+    "japanese_basic": "レコード",
+    "english": "record"
+  },
+  {
+    "japanese_advance": "貿易",
+    "japanese_basic": "ぼうえき",
+    "english": "foreign trade"
+  },
+  {
+    "japanese_advance": "事情",
+    "japanese_basic": "じじょう",
+    "english": "situation, circumstances, conditions"
+  },
+  {
+    "japanese_advance": "温暖（な）",
+    "japanese_basic": "おんだん（な）",
+    "english": "warm"
+  },
+  {
+    "japanese_advance": "英会話",
+    "japanese_basic": "えいかいわ",
+    "english": "English conversation"
+  },
+  {
+    "japanese_advance": "女性",
+    "japanese_basic": "じょせい",
+    "english": "female"
+  },
+  {
+    "japanese_advance": "男性",
+    "japanese_basic": "だんせい",
+    "english": "male"
+  },
+  {
+    "japanese_advance": "地球",
+    "japanese_basic": "ちきゅう",
+    "english": "the Earth"
+  },
+  {
+    "japanese_advance": "直接",
+    "japanese_basic": "ちょくせつ",
+    "english": "direct"
+  },
+  {
+    "japanese_advance": "輸入・する",
+    "japanese_basic": "ゆにゅう・する",
+    "english": "import"
+  },
+  {
+    "japanese_advance": "洋服",
+    "japanese_basic": "ようふく",
+    "english": "(Western-style) clothing"
+  },
+  {
+    "japanese_advance": "理由",
+    "japanese_basic": "りゆう",
+    "english": "reason"
+  },
+  {
+    "japanese_advance": "グラフ",
+    "japanese_basic": "グラフ",
+    "english": "graph"
+  },
+  {
+    "japanese_advance": "～化（例：温暖化）",
+    "japanese_basic": "～か（れい：おんだんか）",
+    "english": "change into ~ (example: global warming)"
+  },
+  {
+    "japanese_advance": "～倍（例：２倍）",
+    "japanese_basic": "～ばい（れい：にばい）",
+    "english": "by ~ times (example: twice as much)"
+  },
+  {
+    "japanese_advance": "下がる",
+    "japanese_basic": "さがる",
+    "english": "fall, drop"
+  },
+  {
+    "japanese_advance": "値段が下がる。",
+    "japanese_basic": "ねだんがさがる。",
+    "english": "the price drops"
+  },
+  {
+    "japanese_advance": "飼う",
+    "japanese_basic": "かう",
+    "english": "raise (a pet or other animal)"
+  },
+  {
+    "japanese_advance": "咲く",
+    "japanese_basic": "さく",
+    "english": "blossom"
+  },
+  {
+    "japanese_advance": "アンケート・する",
+    "japanese_basic": "アンケート・する",
+    "english": "take a survey"
+  },
+  {
+    "japanese_advance": "インタビュー・する",
+    "japanese_basic": "インタビュー・する",
+    "english": "interview"
+  },
+  {
+    "japanese_advance": "発表・する",
+    "japanese_basic": "はっぴょう・する",
+    "english": "announce"
+  },
+  {
+    "japanese_advance": "来日・する",
+    "japanese_basic": "らいにち・する",
+    "english": "visit Japan"
+  },
+  {
+    "japanese_advance": "流行・する",
+    "japanese_basic": "りゅうこう・する",
+    "english": "become fashionable, popular"
+  },
+  {
+    "japanese_advance": "過ごす",
+    "japanese_basic": "すごす",
+    "english": "spend time"
+  },
+  {
+    "japanese_advance": "比べる",
+    "japanese_basic": "くらべる",
+    "english": "compare"
+  },
+  {
+    "japanese_advance": "汚い",
+    "japanese_basic": "きたない",
+    "english": "dirty"
+  },
+  {
+    "japanese_advance": "ほとんど",
+    "japanese_basic": "ほとんど",
+    "english": "hardly"
+  },
+  {
+    "japanese_advance": "クッキー",
+    "japanese_basic": "クッキー",
+    "english": "cookie"
+  },
+  {
+    "japanese_advance": "輸出・する",
+    "japanese_basic": "ゆしゅつ・する",
+    "english": "export"
+  },
+  {
+    "japanese_advance": "インフルエンザ",
+    "japanese_basic": "インフルエンザ",
+    "english": "flu, influenza"
+  },
+  {
+    "japanese_advance": "円高",
+    "japanese_basic": "えんだか",
+    "english": "strong yen, yen appreciation"
+  },
+  {
+    "japanese_advance": "気温",
+    "japanese_basic": "きおん",
+    "english": "air temperature"
+  },
+  {
+    "japanese_advance": "立入禁止",
+    "japanese_basic": "たちいりきんし",
+    "english": "entry prohibited"
+  },
+  {
+    "japanese_advance": "南極",
+    "japanese_basic": "なんきょく",
+    "english": "south pole"
+  },
+  {
+    "japanese_advance": "北極",
+    "japanese_basic": "ほっきょく",
+    "english": "north pole"
+  },
+  {
+    "japanese_advance": "ダウンロード・する",
+    "japanese_basic": "ダウンロード・する",
+    "english": "download"
+  },
+  {
+    "japanese_advance": "進む",
+    "japanese_basic": "すすむ",
+    "english": "move forward, advance"
+  },
+  {
+    "japanese_advance": "研究が進む。",
+    "japanese_basic": "けんきゅうがすすむ。",
+    "english": "\"The research moves forward.\""
+  },
+  {
+    "japanese_advance": "溶ける",
+    "japanese_basic": "とける",
+    "english": "melt"
+  },
+  {
+    "japanese_advance": "減る",
+    "japanese_basic": "へる",
+    "english": "decrease, reduce in number"
+  },
+  {
+    "japanese_advance": "欠席・する",
+    "japanese_basic": "けっせき・する",
+    "english": "be absent, not attend"
+  },
+  {
+    "japanese_advance": "危険（な）",
+    "japanese_basic": "きけん（な）",
+    "english": "dangerous, hazardous"
+  },
+  {
+    "japanese_advance": "大変",
+    "japanese_basic": "たいへん",
+    "english": "very"
+  },
+  {
+    "japanese_advance": "しかし",
+    "japanese_basic": "しかし",
+    "english": "however, but"
+  },
+  {
+    "japanese_advance": "どんどん",
+    "japanese_basic": "どんどん",
+    "english": "more and more"
+  },
+  {
+    "japanese_advance": "～によると",
+    "japanese_basic": "～によると",
+    "english": "according to ~"
+  },
+  {
+    "japanese_advance": "いろんな",
+    "japanese_basic": "いろんな",
+    "english": "various"
+  },
+  {
+    "japanese_advance": "約",
+    "japanese_basic": "やく",
+    "english": "about, approximately"
+  },
+  {
+    "japanese_advance": "（お）礼",
+    "japanese_basic": "（お）れい",
+    "english": "thanks, appreciation"
+  }
+],
     "Kanjis ISI 3 & 4": [
   {
     "japanese_advance": "黒",

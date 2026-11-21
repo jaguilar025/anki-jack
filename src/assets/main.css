@@ -183,6 +183,26 @@
   }
 }
 
+/* Superficies de vidrio para la vista del avatar (inspiradas en el UI de aituber-kit) */
+@utility glass {
+  background: rgb(255 255 255 / 0.58);
+  backdrop-filter: blur(24px) saturate(1.6);
+  -webkit-backdrop-filter: blur(24px) saturate(1.6);
+  border: 1px solid rgb(255 255 255 / 0.72);
+  box-shadow: 0 12px 40px rgb(31 38 60 / 0.18);
+
+  &:where(.dark *) {
+    background: rgb(17 19 28 / 0.58);
+    border-color: rgb(255 255 255 / 0.16);
+  }
+}
+
+@keyframes mic-pulse {
+  0% { box-shadow: 0 0 0 0 rgb(255 90 120 / 0.45); }
+  70% { box-shadow: 0 0 0 14px rgb(255 90 120 / 0); }
+  100% { box-shadow: 0 0 0 0 rgb(255 90 120 / 0); }
+}
+
 @utility scrollbar-hide {
   -ms-overflow-style: none;
   scrollbar-width: none;

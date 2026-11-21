@@ -20,7 +20,12 @@ function base64ToBytes(b64) {
   return bytes
 }
 
-export function useAudio() {
+/**
+ * @param {{ onAudio?: (audio: HTMLAudioElement) => void | Promise<void> }} [options]
+ *   onAudio: se llama con cada audio (VoiceVox/ElevenLabs/OpenAI) justo antes de reproducirlo,
+ *   p. ej. para conectar el lip-sync del avatar. No aplica a la voz del navegador.
+ */
+export function useAudio({ onAudio } = {}) {
   const isVoiceVoxSpeaking = ref(false)
   let currentAudio = null
   const audioUrls = new Set()
@@ -100,6 +105,7 @@ export function useAudio() {
       console.error(errorMsg)
     }
 
+    await onAudio?.(audio)
     await audio.play()
     return audio
   }

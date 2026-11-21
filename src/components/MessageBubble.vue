@@ -1,5 +1,5 @@
 <script setup>
-import { computed, ref } from 'vue'
+import { computed, inject, ref } from 'vue'
 import { Button } from '@/components/ui/button'
 import { Volume2 } from '@lucide/vue'
 import { useAudio } from '@/composables/useAudio'
@@ -10,7 +10,9 @@ import { useAudio } from '@/composables/useAudio'
  *  - message: { role: 'user' | 'assistant', content: String, translation?: String,
  *               japanese: String, style?: String }
  *  - character: { value: String, ... } (se usa character.value como estilo por defecto de voz)
- * Sin emits. Usa useAudio() directamente para reproducir la frase japonesa.
+ * Sin emits. Usa useAudio() directamente para reproducir la frase japonesa,
+ * salvo que un ancestro provea 'avatarSpeak' (vista del avatar): entonces la frase
+ * pasa por el avatar para que mueva la boca y ponga la emoción.
  */
 const props = defineProps({
   message: { type: Object, required: true },
@@ -18,12 +20,16 @@ const props = defineProps({
 })
 
 const { playAudio, isSpeaking } = useAudio()
+/** @type {((text: string, speaker: string, emotion?: string) => Promise<void>) | null} */
+const avatarSpeak = inject('avatarSpeak', null)
 const showTranslation = ref(true)
 
 const isAssistant = computed(() => props.message.role === 'assistant')
 
 async function handleSpeak() {
-  await playAudio(props.message.japanese, props.message.style || props.character.value)
+  const speaker = props.message.style || props.character.value
+  if (avatarSpeak) await avatarSpeak(props.message.japanese, speaker, props.message.emotion)
+  else await playAudio(props.message.japanese, speaker)
 }
 </script>
 
