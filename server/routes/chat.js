@@ -2,6 +2,11 @@ import { Hono } from 'hono'
 import { openai } from '@ai-sdk/openai'
 import { generateText } from 'ai'
 
+// Modelo de la conversación. Razonamiento apagado: respuestas cortas y rápidas, y los
+// tokens de "pensar" se cobran como salida (encarecerían cada respuesta).
+const CHAT_MODEL = 'gpt-6-luna'
+const REASONING_EFFORT = 'none'
+
 const app = new Hono()
 
 app.post('/', async (c) => {
@@ -20,7 +25,8 @@ app.post('/', async (c) => {
     const conversation = messages.filter((m) => m.role !== 'system')
 
     const result = await generateText({
-      model: openai('gpt-4o-mini'),
+      model: openai(CHAT_MODEL),
+      providerOptions: { openai: { reasoningEffort: REASONING_EFFORT } },
       ...(instructions && { instructions }),
       // Al iniciar la conversación solo llega el mensaje de sistema
       ...(conversation.length ? { messages: conversation } : { prompt: 'Comienza la conversación.' }),

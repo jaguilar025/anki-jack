@@ -3,7 +3,6 @@ import { ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
 import { useLocalStorage } from '@vueuse/core'
 import { motion } from 'motion-v'
-import { RotateCcw } from '@lucide/vue'
 import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Checkbox } from '@/components/ui/checkbox'
@@ -13,31 +12,33 @@ import { Input } from '@/components/ui/input'
 import ModeCard from '@/components/ModeCard.vue'
 import CategoryWheel from '@/components/CategoryWheel.vue'
 import ThemeToggle from '@/components/ThemeToggle.vue'
-import DataManagement from '@/components/DataManagement.vue'
-import ClearAudioCache from '@/components/ClearAudioCache.vue'
-import UploadStudyList from '@/components/UploadStudyList.vue'
+import LanguageToggle from '@/components/LanguageToggle.vue'
+import AppMenu from '@/components/AppMenu.vue'
 import { useCategoriesStore } from '@/stores/categories'
+import { useI18n } from 'vue-i18n'
 
 const router = useRouter()
+const { t } = useI18n()
 const categoriesStore = useCategoriesStore()
 
 const selectedCategory = ref('')
 // Configuración personalizada del modo de práctica. Por defecto: mostrar
-// japonés + audio y validar la respuesta en inglés (equivale al antiguo modo 3).
-const showOptions = ref({ audio: true, japanese: true, english: false })
+// kanji + furigana + audio y validar la respuesta en inglés (equivale al antiguo modo 3).
+const showOptions = ref({ audio: true, kanji: true, furigana: true, english: false })
 const answerOption = ref('english')
 const timerSeconds = ref(45)
 // Reproducir el audio de cada tarjeta al cargarla. Se recuerda entre sesiones.
 const autoAudio = useLocalStorage('anki-jack-auto-audio', false)
 
 const showItems = [
-  { key: 'audio', label: 'Audio' },
-  { key: 'japanese', label: 'Japonés' },
-  { key: 'english', label: 'Inglés' },
+  { key: 'audio', label: 'dashboard.practice.items.audio' },
+  { key: 'kanji', label: 'dashboard.practice.items.kanji' },
+  { key: 'furigana', label: 'dashboard.practice.items.furigana' },
+  { key: 'english', label: 'dashboard.practice.items.english' },
 ]
 const answerItems = [
-  { key: 'japanese', label: 'Japonés' },
-  { key: 'english', label: 'Inglés' },
+  { key: 'japanese', label: 'dashboard.practice.items.japanese' },
+  { key: 'english', label: 'dashboard.practice.items.english' },
 ]
 
 const selectedShow = computed(() => Object.keys(showOptions.value).filter((k) => showOptions.value[k]))
@@ -63,15 +64,15 @@ const handleStart = () => {
 
 const handleConsultTable = () => {
   if (!selectedCategory.value) return
-  router.push({ path: '/table', query: { category: selectedCategory.value } })
+  // Las mismas opciones de "Mostrar" deciden qué columnas tiene la tabla
+  router.push({
+    path: '/table',
+    query: { category: selectedCategory.value, show: selectedShow.value.join(',') },
+  })
 }
 
 const handleGoLens = () => router.push('/dict-lens')
 const handleGoDrawLens = () => router.push('/draw-kanji')
-const handleGoStart = () => {
-  window.location.replace('/')
-}
-
 // Cuando se carga una nueva lista de estudio (la store ya la guarda), resetear la selección
 const handleStudyListUploaded = () => {
   selectedCategory.value = ''
@@ -86,17 +87,14 @@ const handleStudyListUploaded = () => {
     class="flex flex-col gap-8"
   >
     <div class="flex justify-between items-center">
+      <!-- Menú principal: preferencias, datos, navegación y "Acerca de" -->
       <motion.div :initial="{ y: -20 }" :animate="{ y: 0 }" :transition="{ duration: 0.5 }">
-        <Button variant="outline" @click="handleGoStart">
-          <RotateCcw class="mr-2 h-[1.2rem] w-[1.2rem]" />
-          START AGAIN
-        </Button>
+        <AppMenu @study-list-uploaded="handleStudyListUploaded" />
       </motion.div>
+      <!-- Accesos rápidos (también están en el menú) -->
       <div class="flex gap-2">
         <ThemeToggle />
-        <ClearAudioCache />
-        <DataManagement />
-        <UploadStudyList @upload="handleStudyListUploaded" />
+        <LanguageToggle />
       </div>
     </div>
 
@@ -106,10 +104,10 @@ const handleStudyListUploaded = () => {
           <CategoryWheel v-model="selectedCategory" :options="categoryOptions" />
 
           <div class="flex flex-col gap-6">
-            <label class="text-sm text-muted-foreground">Modo de práctica</label>
+            <label class="text-sm text-muted-foreground">{{ t('dashboard.practice.title') }}</label>
 
             <div class="space-y-3">
-              <p class="text-sm font-medium">Mostrar:</p>
+              <p class="text-sm font-medium">{{ t('dashboard.practice.show') }}</p>
               <div class="space-y-3 pl-1">
                 <div v-for="item in showItems" :key="item.key" class="flex items-center gap-2">
                   <Checkbox
@@ -117,27 +115,27 @@ const handleStudyListUploaded = () => {
                     :model-value="showOptions[item.key]"
                     @update:model-value="toggleShow(item.key)"
                   />
-                  <Label :for="`show-${item.key}`" class="cursor-pointer">{{ item.label }}</Label>
+                  <Label :for="`show-${item.key}`" class="cursor-pointer">{{ t(item.label) }}</Label>
                   <template v-if="item.key === 'audio' && showOptions.audio">
                     <Checkbox id="show-auto-audio" v-model="autoAudio" class="ml-6" />
-                    <Label for="show-auto-audio" class="cursor-pointer">Audio automático</Label>
+                    <Label for="show-auto-audio" class="cursor-pointer">{{ t('dashboard.practice.autoAudio') }}</Label>
                   </template>
                 </div>
               </div>
             </div>
 
             <div class="space-y-3">
-              <p class="text-sm font-medium">Respuesta:</p>
+              <p class="text-sm font-medium">{{ t('dashboard.practice.answer') }}</p>
               <RadioGroup v-model="answerOption" class="space-y-3 pl-1">
                 <div v-for="item in answerItems" :key="item.key" class="flex items-center gap-2">
                   <RadioGroupItem :id="`answer-${item.key}`" :value="item.key" />
-                  <Label :for="`answer-${item.key}`" class="cursor-pointer">{{ item.label }}</Label>
+                  <Label :for="`answer-${item.key}`" class="cursor-pointer">{{ t(item.label) }}</Label>
                 </div>
               </RadioGroup>
             </div>
 
             <div class="space-y-2">
-              <Label for="timer" class="text-sm font-medium">Temporizador (segundos)</Label>
+              <Label for="timer" class="text-sm font-medium">{{ t('dashboard.practice.timer') }}</Label>
               <Input
                 id="timer"
                 type="number"
@@ -156,7 +154,7 @@ const handleStudyListUploaded = () => {
                 :disabled="!selectedCategory"
                 @click="handleConsultTable"
               >
-                Consult
+                {{ t('dashboard.practice.consult') }}
               </Button>
               <Button
                 class="flex-1"
@@ -164,7 +162,7 @@ const handleStudyListUploaded = () => {
                 :disabled="!selectedCategory || selectedShow.length === 0"
                 @click="handleStart"
               >
-                Study
+                {{ t('dashboard.practice.study') }}
               </Button>
             </div>
           </div>
@@ -176,22 +174,22 @@ const handleStudyListUploaded = () => {
       <CardContent class="p-6">
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
           <ModeCard
-            title="Conversación"
-            description="conversación con un asistente de IA"
+            :title="t('dashboard.modes.chat.title')"
+            :description="t('dashboard.modes.chat.description')"
             icon="💬"
             :is-selected="false"
             @click="router.push('/avatar-chat')"
           />
           <ModeCard
-            title="Kanji Lens"
-            description="Captura kanjis"
+            :title="t('dashboard.modes.capture.title')"
+            :description="t('dashboard.modes.capture.description')"
             icon="📷"
             :is-selected="false"
             @click="handleGoLens"
           />
           <ModeCard
-            title="Kanji Lens"
-            description="Dibuja kanjis"
+            :title="t('dashboard.modes.draw.title')"
+            :description="t('dashboard.modes.draw.description')"
             icon="✏️"
             :is-selected="false"
             @click="handleGoDrawLens"
@@ -201,7 +199,7 @@ const handleStudyListUploaded = () => {
     </Card>
 
     <div class="text-center text-sm text-muted-foreground mb-16">
-      <p>Copyright © All rights reserved | ELNEA 2026</p>
+      <p>{{ t('dashboard.copyright') }}</p>
     </div>
   </motion.div>
 </template>

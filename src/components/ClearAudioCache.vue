@@ -1,5 +1,7 @@
 <script setup>
-// Contrato: sin props ni emits. Borra los audios guardados en el navegador (src/lib/audioCache.js).
+// Diálogo para borrar los audios guardados en el navegador (src/lib/audioCache.js).
+//  - v-model:open: abrirlo desde fuera (p. ej. el menú principal)
+//  - props: showTrigger → mostrar su propio botón (por defecto sí)
 import { ref, watch } from 'vue'
 import { toast } from 'vue-sonner'
 import { VolumeX } from '@lucide/vue'
@@ -14,9 +16,12 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog'
+import { useI18n } from 'vue-i18n'
 import { clearAudioCache, getAudioCacheStats } from '@/lib/audioCache'
 
-const open = ref(false)
+const { t } = useI18n()
+defineProps({ showTrigger: { type: Boolean, default: true } })
+const open = defineModel('open', { type: Boolean, default: false })
 const stats = ref(null)
 const isClearing = ref(false)
 
@@ -36,13 +41,13 @@ const handleClear = async () => {
   isClearing.value = true
   try {
     await clearAudioCache()
-    toast.success('Audios eliminados', {
-      description: 'Los audios se volverán a generar cuando los reproduzcas',
+    toast.success(t('dashboard.audioCache.cleared'), {
+      description: t('dashboard.audioCache.clearedDesc'),
     })
     open.value = false
   } catch (error) {
     console.error('Error clearing audio cache:', error)
-    toast.error('Error al eliminar los audios')
+    toast.error(t('dashboard.audioCache.error'))
   } finally {
     isClearing.value = false
   }
@@ -51,38 +56,37 @@ const handleClear = async () => {
 
 <template>
   <Dialog v-model:open="open">
-    <DialogTrigger as-child>
+    <DialogTrigger v-if="showTrigger" as-child>
       <Button variant="outline">
         <VolumeX class="h-[1.2rem] w-[1.2rem]" />
-        <span class="hidden sm:inline">Borrar datos de audio</span>
-        <span class="sr-only sm:hidden">Borrar datos de audio</span>
+        <span class="hidden sm:inline">{{ t('dashboard.audioCache.button') }}</span>
+        <span class="sr-only sm:hidden">{{ t('dashboard.audioCache.button') }}</span>
       </Button>
     </DialogTrigger>
     <DialogContent>
       <DialogHeader>
-        <DialogTitle>¿Borrar datos de audio?</DialogTitle>
+        <DialogTitle>{{ t('dashboard.audioCache.dialogTitle') }}</DialogTitle>
         <DialogDescription>
-          Se eliminarán todos los audios guardados en este navegador. No afecta a tu progreso ni a
-          tus listas. Los audios se volverán a generar la próxima vez que los reproduzcas.
+          {{ t('dashboard.audioCache.dialogDesc') }}
         </DialogDescription>
       </DialogHeader>
       <p class="text-sm text-muted-foreground">
-        <template v-if="!stats">Calculando…</template>
-        <template v-else-if="stats.count === 0">No hay audios guardados.</template>
+        <template v-if="!stats">{{ t('dashboard.audioCache.calculating') }}</template>
+        <template v-else-if="stats.count === 0">{{ t('dashboard.audioCache.empty') }}</template>
         <template v-else>
-          Audios guardados: <strong>{{ stats.count }}</strong> ({{ formatBytes(stats.bytes) }})
+          {{ t('dashboard.audioCache.saved') }} <strong>{{ stats.count }}</strong> ({{ formatBytes(stats.bytes) }})
         </template>
       </p>
       <DialogFooter>
         <DialogClose as-child>
-          <Button variant="outline">Cancelar</Button>
+          <Button variant="outline">{{ t('common.cancel') }}</Button>
         </DialogClose>
         <Button
           variant="destructive"
           :disabled="isClearing || !stats || stats.count === 0"
           @click="handleClear"
         >
-          {{ isClearing ? 'Borrando…' : 'Borrar audios' }}
+          {{ isClearing ? t('dashboard.audioCache.clearing') : t('dashboard.audioCache.confirm') }}
         </Button>
       </DialogFooter>
     </DialogContent>

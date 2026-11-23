@@ -7,13 +7,13 @@
 // (derecha de la pantalla); roll > 0 = ladear hacia su izquierda.
 
 export const GESTURES = {
-  nod: { label: 'Asentir', duration: 1.0 },
-  shake: { label: 'Negar', duration: 1.2 },
-  tilt: { label: 'Ladear la cabeza', duration: 2.4 },
-  leanBack: { label: 'Sorprenderse', duration: 1.1 },
-  droop: { label: 'Agachar la cabeza', duration: 2.4 },
-  lookAround: { label: 'Mirar alrededor', duration: 3.4 },
-  bow: { label: 'Reverencia', duration: 2.0 },
+  nod: { labelKey: 'avatar.gesture.nod', duration: 1.0 },
+  shake: { labelKey: 'avatar.gesture.shake', duration: 1.2 },
+  tilt: { labelKey: 'avatar.gesture.tilt', duration: 2.4 },
+  leanBack: { labelKey: 'avatar.gesture.leanBack', duration: 1.1 },
+  droop: { labelKey: 'avatar.gesture.droop', duration: 2.4 },
+  lookAround: { labelKey: 'avatar.gesture.lookAround', duration: 3.4 },
+  bow: { labelKey: 'avatar.gesture.bow', duration: 2.0 },
 }
 
 /** Gesto que acompaña a cada emoción de la IA */
@@ -26,13 +26,14 @@ export const EMOTION_GESTURE = {
   relaxed: 'tilt',
 }
 
+/** Claves i18n de cada emoción */
 export const EMOTION_LABELS = {
-  happy: 'Feliz',
-  sad: 'Triste',
-  angry: 'Enojo',
-  surprised: 'Sorpresa',
-  relaxed: 'Relajado',
-  think: 'Pensativo',
+  happy: 'avatar.emotion.happy',
+  sad: 'avatar.emotion.sad',
+  angry: 'avatar.emotion.angry',
+  surprised: 'avatar.emotion.surprised',
+  relaxed: 'avatar.emotion.relaxed',
+  think: 'avatar.emotion.think',
 }
 
 const TAU = Math.PI * 2

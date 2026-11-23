@@ -10,13 +10,15 @@ import { useAudio } from '@/composables/useAudio'
 import { useCategoriesStore } from '@/stores/categories'
 import { useVoiceStore } from '@/stores/voice'
 import { moveFocus, focusFirst } from '@/lib/focusNav'
+import { parseShowParam } from '@/lib/showOptions'
+import { useI18n } from 'vue-i18n'
 
 // Construye la configuración de práctica desde los parámetros de la URL.
 // Admite el formato nuevo (show/answer) y hace fallback al antiguo `mode`.
+// En `show`, el antiguo 'japanese' equivale a 'kanji' + 'furigana'.
 function parseStudyConfig(showParam, answerParam, legacyMode) {
   if (showParam !== null || answerParam !== null) {
-    const valid = ['audio', 'japanese', 'english']
-    const show = showParam?.split(',').filter((s) => valid.includes(s)) ?? []
+    const show = parseShowParam(showParam)
     const answer = answerParam === 'japanese' ? 'japanese' : 'english'
     return { show, answer }
   }
@@ -25,16 +27,17 @@ function parseStudyConfig(showParam, answerParam, legacyMode) {
     case '0':
       return { show: ['audio'], answer: 'japanese' }
     case '1':
-      return { show: ['japanese', 'audio'], answer: 'japanese' }
+      return { show: ['kanji', 'furigana', 'audio'], answer: 'japanese' }
     case '2':
       return { show: ['english'], answer: 'japanese' }
     case '3':
-      return { show: ['japanese', 'audio'], answer: 'english' }
+      return { show: ['kanji', 'furigana', 'audio'], answer: 'english' }
     default:
       return { show: [], answer: 'english' }
   }
 }
 
+const { t } = useI18n()
 const route = useRoute()
 const router = useRouter()
 const categoriesStore = useCategoriesStore()
@@ -273,7 +276,7 @@ const timeRunningOut = computed(() => timeLeftMs.value <= 5000)
 
 <template>
   <div v-if="words.length === 0" class="min-h-screen flex items-center justify-center">
-    <p>Cargando...</p>
+    <p>{{ t('study.loading') }}</p>
   </div>
 
   <div
@@ -283,11 +286,11 @@ const timeRunningOut = computed(() => timeLeftMs.value <= 5000)
     <div class="flex justify-between items-center mb-4">
       <Button variant="ghost" @click="handleBackToDashboard">
         <ArrowLeft class="mr-2 h-4 w-4" />
-        Volver
+        {{ t('common.back') }}
       </Button>
       <span class="text-sm text-muted-foreground">
         <span v-if="reviewRound > 0" class="mr-2 font-medium text-primary">
-          Repaso {{ reviewRound }}
+          {{ t('study.review', { n: reviewRound }) }}
         </span>
         {{ Math.min(currentIndex + 1, total) }} / {{ total }}
       </span>
@@ -316,28 +319,28 @@ const timeRunningOut = computed(() => timeLeftMs.value <= 5000)
           class="text-center space-y-6 p-8 bg-card rounded-lg border border-border"
         >
           <h2 class="text-xl font-bold">
-            {{ reviewRound > 0 ? `Repaso ${reviewRound} terminado` : 'Juego Terminado' }}
+            {{ reviewRound > 0 ? t('study.reviewDone', { n: reviewRound }) : t('study.gameOver') }}
           </h2>
           <div class="space-y-1">
             <p class="text-3xl font-bold text-primary">{{ correctCount }} / {{ total }}</p>
-            <p class="text-lg text-muted-foreground">Calificación: {{ grade.toFixed(1) }} / 10</p>
+            <p class="text-lg text-muted-foreground">{{ t('study.grade', { grade: grade.toFixed(1) }) }}</p>
           </div>
           <p v-if="reviewRound > 0 && failedWords.length === 0" class="text-sm text-primary">
-            ¡Ya no te quedan palabras falladas!
+            {{ t('study.noFailed') }}
           </p>
           <div class="flex flex-col gap-4">
             <Button v-if="failedWords.length > 0" data-nav @click="handleReviewFailed">
-              Repasar fallidas ({{ failedWords.length }})
+              {{ t('study.reviewFailed', { n: failedWords.length }) }}
             </Button>
             <Button
               :variant="failedWords.length > 0 ? 'secondary' : 'default'"
               data-nav
               @click="handleRestart"
             >
-              Reiniciar todo
+              {{ t('study.restartAll') }}
             </Button>
             <Button variant="outline" data-nav @click="handleBackToDashboard">
-              Volver al inicio
+              {{ t('study.backHome') }}
             </Button>
           </div>
         </div>

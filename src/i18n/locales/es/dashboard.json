@@ -1,0 +1,76 @@
+{
+  "practice": {
+    "title": "Modo de práctica",
+    "show": "Mostrar:",
+    "answer": "Respuesta:",
+    "timer": "Temporizador (segundos)",
+    "autoAudio": "Audio automático",
+    "consult": "Consultar",
+    "study": "Estudiar",
+    "items": {
+      "audio": "Audio",
+      "kanji": "Kanji",
+      "furigana": "Furigana",
+      "english": "Inglés",
+      "japanese": "Japonés"
+    }
+  },
+  "modes": {
+    "chat": {
+      "title": "Conversación",
+      "description": "Conversa con un asistente de IA"
+    },
+    "capture": {
+      "title": "Kanji Lens",
+      "description": "Captura kanjis"
+    },
+    "draw": {
+      "title": "Kanji Lens",
+      "description": "Dibuja kanjis"
+    }
+  },
+  "copyright": "Copyright © Todos los derechos reservados · ELNEA 2026",
+  "category": {
+    "search": "Buscar..."
+  },
+  "data": {
+    "export": "Exportar progreso",
+    "import": "Importar progreso",
+    "clear": "Eliminar datos",
+    "exported": "Progreso exportado",
+    "exportedDesc": "Se ha descargado el archivo con tu progreso",
+    "imported": "Progreso importado",
+    "importedDesc": "Se ha cargado tu progreso correctamente",
+    "importError": "Error al importar datos",
+    "importErrorDesc": "Formato incorrecto o archivo dañado",
+    "confirmClear": "¿Seguro que quieres eliminar todo tu progreso y listas personalizadas? Esta acción no se puede deshacer.",
+    "cleared": "Datos eliminados",
+    "clearedDesc": "Se ha eliminado todo tu progreso y listas personalizadas"
+  },
+  "audioCache": {
+    "button": "Borrar datos de audio",
+    "dialogTitle": "¿Borrar datos de audio?",
+    "dialogDesc": "Se eliminarán todos los audios guardados en este navegador. No afecta a tu progreso ni a tus listas. Los audios se volverán a generar la próxima vez que los reproduzcas.",
+    "calculating": "Calculando…",
+    "empty": "No hay audios guardados.",
+    "saved": "Audios guardados:",
+    "clearing": "Borrando…",
+    "confirm": "Borrar audios",
+    "cleared": "Audios eliminados",
+    "clearedDesc": "Los audios se volverán a generar cuando los reproduzcas",
+    "error": "Error al eliminar los audios"
+  },
+  "upload": {
+    "label": "Subir lista de estudio",
+    "invalidFormat": "Formato de archivo inválido",
+    "notArray": "La categoría \"{category}\" no contiene un array de palabras",
+    "badWord": "Una palabra en la categoría \"{category}\" no tiene la estructura correcta",
+    "success": "Lista de estudio cargada",
+    "successDesc": "Se han cargado {count} categorías con éxito",
+    "error": "Error al cargar el archivo"
+  },
+  "voicevox": {
+    "selectCharacter": "Selecciona tu personaje",
+    "selectStyle": "Selecciona un estilo de voz"
+  }
+}

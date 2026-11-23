@@ -1,0 +1,14 @@
+{
+  "back": "Volver",
+  "home": "Inicio",
+  "close": "Cerrar",
+  "cancel": "Cancelar",
+  "save": "Guardar",
+  "delete": "Eliminar",
+  "remove": "Quitar",
+  "loading": "Cargando…",
+  "retry": "Intentar de nuevo",
+  "error": "Ocurrió un error",
+  "language": "Idioma",
+  "toggleTheme": "Cambiar tema"
+}

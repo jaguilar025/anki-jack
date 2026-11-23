@@ -14,7 +14,9 @@ import {
 } from '@/components/ui/select'
 import { motion } from 'motion-v'
 import { useConversation } from '@/composables/useConversation'
+import { useI18n } from 'vue-i18n'
 
+const { t } = useI18n()
 const router = useRouter()
 const chat = useTemplateRef('chat')
 
@@ -56,9 +58,9 @@ onUnmounted(() => {
     <header class="p-4 border-b flex items-center justify-between">
       <Button variant="ghost" @click="goBack">
         <ArrowLeft class="mr-2 h-4 w-4" />
-        Volver
+        {{ t('common.back') }}
       </Button>
-      <h1 class="text-lg font-bold">会話練習 (Práctica de Conversación)</h1>
+      <h1 class="text-lg font-bold">{{ t('study.conversation.title') }}</h1>
       <div class="w-8"></div>
       <!-- Espaciador para centrar -->
     </header>
@@ -69,25 +71,25 @@ onUnmounted(() => {
         :animate="{ opacity: 1, y: 0 }"
         class="w-full max-w-md p-6 bg-card rounded-lg border border-border"
       >
-        <h2 class="text-xl font-bold mb-6 text-center">Selecciona tu nivel</h2>
+        <h2 class="text-xl font-bold mb-6 text-center">{{ t('study.conversation.selectLevel') }}</h2>
 
         <div class="space-y-6">
           <div class="space-y-2">
-            <label class="text-sm text-muted-foreground">Nivel de japonés</label>
+            <label class="text-sm text-muted-foreground">{{ t('study.conversation.levelLabel') }}</label>
             <Select v-model="level">
               <SelectTrigger>
-                <SelectValue placeholder="Selecciona tu nivel" />
+                <SelectValue :placeholder="t('study.conversation.selectLevel')" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="beginner">Principiante</SelectItem>
-                <SelectItem value="intermediate">Intermedio</SelectItem>
-                <SelectItem value="advanced">Avanzado</SelectItem>
+                <SelectItem value="beginner">{{ t('study.conversation.beginner') }}</SelectItem>
+                <SelectItem value="intermediate">{{ t('study.conversation.intermediate') }}</SelectItem>
+                <SelectItem value="advanced">{{ t('study.conversation.advanced') }}</SelectItem>
               </SelectContent>
             </Select>
           </div>
 
           <Button class="w-full" :disabled="!character" @click="startConversation">
-            Iniciar Conversación
+            {{ t('study.conversation.start') }}
           </Button>
         </div>
       </motion.div>

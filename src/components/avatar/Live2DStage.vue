@@ -94,8 +94,10 @@ function fitModel() {
   if (!model || !app) return
   const { width, height } = app.screen
   model.scale.set(1)
-  // Encuadre de medio cuerpo: el modelo un poco más alto que la pantalla
-  const scale = Math.min((width * 0.95) / model.width, (height * 1.6) / model.height)
+  // Encuadre de medio cuerpo: el modelo 1.6 veces el alto de la pantalla (se ve de la
+  // cabeza a la cintura). En pantallas verticales (celular) se limita por el ancho, pero con
+  // margen para recortar los lados: si no, el modelo se encoge y se ve de cuerpo completo.
+  const scale = Math.min((height * 1.6) / model.height, (width * 2.2) / model.width)
   model.scale.set(scale)
   model.x = width / 2
   model.y = height * 0.08
@@ -110,8 +112,8 @@ async function load(blob) {
     if (blob !== props.source || !app) return next.destroy() // cambió mientras cargaba
     model = next
     model.anchor.set(0.5, 0)
-    model.filters = [adjustFilter, tintFilter]
     app.stage.addChild(model)
+    updateFilters()
     fitModel()
 
     // Parámetros de boca que el propio modelo declara para lip-sync
@@ -123,7 +125,7 @@ async function load(blob) {
     status.value = 'ready'
   } catch (error) {
     console.error('[Live2DStage] Error al cargar el modelo:', error)
-    errorMessage.value = 'No se pudo cargar el modelo Live2D (¿zip con .model3.json de Cubism 3/4?)'
+    errorMessage.value = 'avatar.stage.live2dError'
     status.value = 'error'
   }
 }
@@ -144,7 +146,25 @@ function unloadModel() {
 const adjustFilter = new PIXI.filters.ColorMatrixFilter()
 const tintFilter = new PIXI.filters.ColorMatrixFilter()
 
+/**
+ * Los filtros dibujan el modelo en una textura intermedia; en pixi 6 su resolución es 1×
+ * por defecto, lo que lo vuelve borroso en pantallas de alta densidad (celulares). Se usa
+ * la del renderer, y si el ambiente no cambia el color se quitan (menos trabajo).
+ */
+function updateFilters() {
+  if (!model || !app) return
+  const look = props.look
+  const neutral = !look || (look.brightness === 1 && look.saturation === 0 && look.tintAmount === 0)
+  if (neutral) {
+    model.filters = null
+    return
+  }
+  adjustFilter.resolution = tintFilter.resolution = app.renderer.resolution
+  model.filters = [adjustFilter, tintFilter]
+}
+
 function applyLook(look) {
+  updateFilters()
   if (!look) return
   adjustFilter.brightness(look.brightness, false)
   adjustFilter.saturate(look.saturation, true)
@@ -205,7 +225,7 @@ function listModelMotions() {
       items.push({
         id: `motion:${group}:${index}`,
         label: defs.length > 1 ? `${group} ${index + 1}` : group,
-        group: 'Animaciones del modelo',
+        group: 'avatar.motions.modelMotions',
         kind: 'motion',
         name: group,
         index,
@@ -213,7 +233,7 @@ function listModelMotions() {
     })
   }
   for (const e of settings.expressions ?? []) {
-    items.push({ id: `expression:${e.Name}`, label: e.Name, group: 'Expresiones del modelo', kind: 'expression', name: e.Name })
+    items.push({ id: `expression:${e.Name}`, label: e.Name, group: 'avatar.motions.modelExpressions', kind: 'expression', name: e.Name })
   }
   return items
 }
@@ -346,8 +366,8 @@ onBeforeUnmount(() => {
       v-if="status !== 'ready'"
       class="pointer-events-none absolute inset-0 flex items-center justify-center"
     >
-      <p v-if="status === 'loading'" class="text-sm text-muted-foreground">Cargando avatar…</p>
-      <p v-else class="px-6 text-center text-sm text-muted-foreground">{{ errorMessage }}</p>
+      <p v-if="status === 'loading'" class="text-sm text-muted-foreground">{{ $t('avatar.stage.loading') }}</p>
+      <p v-else class="px-6 text-center text-sm text-muted-foreground">{{ $t(errorMessage) }}</p>
     </div>
   </div>
 </template>

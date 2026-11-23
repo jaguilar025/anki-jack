@@ -2,8 +2,11 @@
 // Conversación con avatar 3D a pantalla completa.
 // Arriba a la izquierda: volver, historial (panel flotante) y ajustes (fondo).
 // Abajo: subtítulo con la última respuesta + barra de entrada (texto, micrófono, enviar, detener).
-import { computed, defineAsyncComponent, onUnmounted, provide, ref, shallowRef, watch } from 'vue'
+import { computed, defineAsyncComponent, nextTick, onUnmounted, provide, ref, shallowRef, watch } from 'vue'
 import { useRouter } from 'vue-router'
+import { useI18n } from 'vue-i18n'
+import { toast } from 'vue-sonner'
+import { CHAT_COMMANDS, findChatCommand } from '@/data/chatCommands'
 import { ArrowLeft, MessagesSquare, PersonStanding, Settings, Video, Volume1, Volume2, VolumeX } from '@lucide/vue'
 import { onClickOutside } from '@vueuse/core'
 import { motion, AnimatePresence } from 'motion-v'
@@ -22,11 +25,13 @@ import ChatInputBar from '@/components/avatar/ChatInputBar.vue'
 import ChatLogPanel from '@/components/avatar/ChatLogPanel.vue'
 import AvatarSettingsDialog from '@/components/avatar/AvatarSettingsDialog.vue'
 import YoutubeBackground from '@/components/avatar/YoutubeBackground.vue'
+import LocalVideoBackground from '@/components/avatar/LocalVideoBackground.vue'
 import MotionDrawer from '@/components/avatar/MotionDrawer.vue'
 import { useConversation } from '@/composables/useConversation'
-import { useAvatarSettingsStore } from '@/stores/avatarSettings'
+import { useAvatarSettingsStore, parseYoutubeId } from '@/stores/avatarSettings'
 
 const router = useRouter()
+const { t } = useI18n()
 const stage = ref(null)
 const settings = useAvatarSettingsStore()
 const showLog = ref(false)
@@ -41,6 +46,11 @@ async function playMotion(item) {
   if (!s) return
   if (item.kind === 'gesture') s.playGesture(item.name)
   else if (item.kind === 'emotion') s.setEmotion(item.name)
+  else if (item.kind === 'builtin') {
+    // Igual que escribir el comando (incluye su fondo temporal, si tiene)
+    const command = CHAT_COMMANDS.find((c) => c.id === item.id)
+    if (command) runCommandAction(command)
+  }
   else if (item.kind === 'vrma') {
     const url = await settings.getAnimationUrl(item.id)
     if (url) s.playAnimation?.(url)
@@ -105,7 +115,131 @@ const {
   onAudio: (audio) => stage.value?.attachAudio(audio),
   // Emoción que eligió la IA para la respuesta → cara del avatar
   onEmotion: (emotion, opts) => stage.value?.setEmotion(emotion, opts),
+  onCommand: runChatCommand,
 })
+
+// --- Comandos del chat (src/data/chatCommands.js): se ejecutan en vez de ir a la IA ---
+const FORMAT_LABELS = { vrm: 'VRM', live2d: 'Live2D' }
+
+/**
+ * Video de fondo temporal de un comando (encima del fondo guardado, que no se toca):
+ * YouTube { id, volume, muted, vertical } o local { local: true, src, volume, muted }.
+ * Al quitarlo vuelve a verse el fondo de siempre.
+ */
+const tempVideo = ref(null)
+const localVideo = ref(null)
+
+// Video que se ve de fondo: el temporal del comando o el guardado en Ajustes
+const activeVideo = computed(() => {
+  if (tempVideo.value?.local) return null // lo tapa el video local
+  if (tempVideo.value) return { ...tempVideo.value, temp: true }
+  if (!settings.backgroundVideoId) return null
+  return { id: settings.backgroundVideoId, muted: settings.videoMuted, volume: videoVolume.value, vertical: false }
+})
+let resolveVideoPlaying = null
+let commandRun = 0
+/** Hay un comando en curso (p. ej. el baile): se oculta el subtítulo para no tapar al avatar */
+const commandActive = ref(false)
+
+/** Espera a que el video temporal empiece a sonar (o se rinde a los `ms`) */
+function waitVideoPlaying(ms) {
+  return new Promise((resolve) => {
+    resolveVideoPlaying = resolve
+    setTimeout(resolve, ms)
+  })
+}
+
+function onVideoPlaying() {
+  resolveVideoPlaying?.()
+  resolveVideoPlaying = null
+}
+
+/** Espera a que el <video> pueda reproducirse sin cortes (o se rinde a los `ms`) */
+function waitCanPlay(video, ms) {
+  if (video.readyState >= 4) return Promise.resolve()
+  return new Promise((resolve) => {
+    video.addEventListener('canplaythrough', resolve, { once: true })
+    setTimeout(resolve, ms)
+  })
+}
+
+/**
+ * Video local + animación: el baile sigue el reloj del video (si el video se atasca, el baile
+ * espera) y todo termina cuando acaba lo primero de los dos.
+ */
+async function playWithLocalVideo(command, bg, run) {
+  tempVideo.value = { local: true, src: bg.video, volume: bg.volume ?? 100, muted: bg.muted ?? false }
+  await nextTick()
+  const video = localVideo.value?.videoEl
+  if (!video) return
+  await waitCanPlay(video, 8000)
+  if (run !== commandRun) return
+  video.currentTime = 0
+  // Con sonido requiere que el usuario haya interactuado (el Enter del comando cuenta);
+  // si el navegador lo bloquea, sigue sin sonido
+  await video.play().catch(() => {
+    video.muted = true
+    return video.play()
+  })
+  const offset = bg.offset ?? 0
+  const ended = new Promise((resolve) => video.addEventListener('ended', () => resolve('ended'), { once: true }))
+  const result = await Promise.race([
+    stage.value?.playAnimation?.(command.action.url, { clock: () => video.currentTime + offset }),
+    ended,
+  ])
+  // El video (la música) siempre suena completo: si el baile acabó antes, se espera al video;
+  // si el video acabó antes, se corta el baile
+  if (result === 'ended') stage.value?.stopAnimation?.()
+  else await ended
+}
+
+
+async function runCommandAction(command) {
+  const run = ++commandRun
+  commandActive.value = true
+  try {
+    const bg = command.background
+    if (bg?.video && command.action.type === 'animation') {
+      await playWithLocalVideo(command, bg, run)
+      return
+    }
+    // Fondo temporal de YouTube: el baile arranca cuando el video empieza
+    const id = bg?.youtube && parseYoutubeId(bg.youtube)
+    if (id) {
+      tempVideo.value = {
+        id,
+        volume: bg.volume ?? 100,
+        muted: bg.muted ?? false,
+        vertical: bg.youtube.includes('/shorts/'),
+      }
+      await waitVideoPlaying(5000)
+      if (run !== commandRun) return
+    }
+    if (command.action.type === 'animation') await stage.value?.playAnimation?.(command.action.url)
+  } catch (error) {
+    console.error('[AvatarChatView] Error al reproducir el comando:', error)
+    toast.error(t('avatar.commands.failed'))
+  } finally {
+    // Al terminar (o interrumpirse) vuelve el fondo de antes, salvo que ya corra otro comando
+    if (run === commandRun) {
+      tempVideo.value = null
+      commandActive.value = false
+    }
+  }
+}
+
+/** Devuelve true si el texto era un comando (y lo ejecuta) */
+function runChatCommand(text) {
+  const command = findChatCommand(text)
+  if (!command) return false
+  if (!command.formats.includes(avatarData.value?.format)) {
+    const format = command.formats.map((f) => FORMAT_LABELS[f]).join(' / ')
+    toast.info(t('avatar.commands.needsFormat', { format }))
+    return true
+  }
+  runCommandAction(command)
+  return true
+}
 
 // El botón 🔊 de los mensajes del historial también habla a través del avatar
 provide('avatarSpeak', speak)
@@ -135,15 +269,26 @@ const dockButton =
 </script>
 
 <template>
-  <div class="relative h-dvh w-full overflow-hidden transition-[background] duration-500" :style="settings.backgroundStyle">
+  <div class="relative h-dvh w-full overflow-hidden transition-[background] duration-500" :style="tempVideo ? { background: '#000' } : settings.backgroundStyle">
     <!-- Video de fondo (YouTube) -->
     <YoutubeBackground
-      v-if="settings.backgroundVideoId"
-      :key="settings.backgroundVideoId"
-      :video-id="settings.backgroundVideoId"
-      :muted="settings.videoMuted"
-      :volume="videoVolume"
+      v-if="activeVideo"
+      :key="`${activeVideo.id}${activeVideo.temp ? '-temp' : ''}`"
+      :video-id="activeVideo.id"
+      :muted="activeVideo.muted"
+      :volume="activeVideo.volume"
+      :vertical="activeVideo.vertical"
       @quality="videoQuality = $event"
+      @playing="onVideoPlaying"
+    />
+
+    <!-- Video local temporal de un comando (p. ej. el baile) -->
+    <LocalVideoBackground
+      v-if="tempVideo?.local"
+      ref="localVideo"
+      :src="tempVideo.src"
+      :volume="tempVideo.volume"
+      :muted="tempVideo.muted"
     />
 
     <!-- Avatar a pantalla completa -->
@@ -169,7 +314,7 @@ const dockButton =
     >
       <div class="glass w-64 rounded-2xl p-4 text-center text-sm">
         <template v-if="avatarDownload !== null">
-          <p class="mb-2 font-medium">Descargando avatar…</p>
+          <p class="mb-2 font-medium">{{ t('avatar.view.downloading') }}</p>
           <div class="h-2 overflow-hidden rounded-full bg-foreground/10">
             <div
               class="h-full rounded-full bg-primary transition-[width]"
@@ -186,12 +331,12 @@ const dockButton =
 
     <!-- Menú superior -->
     <nav class="glass absolute left-3 top-3 z-20 flex gap-0.5 rounded-[18px] p-1.5 sm:left-6 sm:top-6">
-      <button type="button" title="Volver" :class="dockButton" @click="goBack">
+      <button type="button" :title="t('avatar.nav.back')" :class="dockButton" @click="goBack">
         <ArrowLeft class="size-5" />
       </button>
       <button
         type="button"
-        title="Historial"
+        :title="t('avatar.nav.history')"
         :class="[dockButton, showLog && 'bg-foreground/15']"
         @click="showLog = !showLog"
       >
@@ -199,13 +344,13 @@ const dockButton =
       </button>
       <button
         type="button"
-        title="Movimientos"
+        :title="t('avatar.nav.motions')"
         :class="[dockButton, showMotions && 'bg-foreground/15']"
         @click="showMotions = !showMotions"
       >
         <PersonStanding class="size-5" />
       </button>
-      <button type="button" title="Ajustes" :class="dockButton" @click="showSettings = true">
+      <button type="button" :title="t('avatar.nav.settings')" :class="dockButton" @click="showSettings = true">
         <Settings class="size-5" />
       </button>
 
@@ -213,7 +358,7 @@ const dockButton =
       <div v-if="settings.backgroundVideoId" ref="videoMenu" class="relative">
         <button
           type="button"
-          title="Video de fondo"
+          :title="t('avatar.nav.video')"
           :class="[dockButton, showVideoPanel && 'bg-foreground/15']"
           @click="showVideoPanel = !showVideoPanel"
         >
@@ -227,7 +372,7 @@ const dockButton =
           <div class="flex items-center gap-2">
             <button
               type="button"
-              :title="settings.videoMuted ? 'Activar sonido' : 'Silenciar'"
+              :title="settings.videoMuted ? t('avatar.view.unmute') : t('avatar.view.mute')"
               class="flex size-9 shrink-0 items-center justify-center rounded-full bg-foreground/10 hover:bg-foreground/20"
               @click="settings.videoMuted = !settings.videoMuted"
             >
@@ -241,7 +386,7 @@ const dockButton =
               min="0"
               max="100"
               step="1"
-              title="Volumen"
+              :title="t('avatar.view.volume')"
               class="flex-1 accent-primary"
               :disabled="settings.videoMuted"
             />
@@ -252,12 +397,12 @@ const dockButton =
 
           <label class="flex cursor-pointer items-center gap-2 text-xs">
             <input v-model="settings.videoDuck" type="checkbox" class="accent-primary" />
-            Bajar el video cuando habla el avatar
+            {{ t('avatar.view.duck') }}
           </label>
 
           <p class="text-xs text-muted-foreground">
-            Calidad: {{ videoQuality || '…' }}
-            <span class="block">YouTube la ajusta sola según el tamaño y tu conexión.</span>
+            {{ t('avatar.view.quality', { quality: videoQuality || '…' }) }}
+            <span class="block">{{ t('avatar.view.qualityNote') }}</span>
           </p>
         </div>
       </div>
@@ -304,7 +449,7 @@ const dockButton =
     <!-- Parte inferior: subtítulo + entrada -->
     <div class="pointer-events-none absolute inset-x-0 bottom-0 z-10 flex flex-col items-center gap-3 px-3 pb-3 sm:pb-6">
       <motion.div
-        v-if="lastAssistant && conversationStarted && !showLog"
+        v-if="lastAssistant && conversationStarted && !showLog && !commandActive"
         :class="showMotions && 'max-sm:hidden'"
         :key="messages.length"
         :initial="{ opacity: 0, y: 10 }"
@@ -324,19 +469,19 @@ const dockButton =
         :animate="{ opacity: 1, y: 0 }"
         class="glass pointer-events-auto w-full max-w-md rounded-3xl p-6"
       >
-        <h2 class="mb-4 text-center text-xl font-bold">Selecciona tu nivel</h2>
+        <h2 class="mb-4 text-center text-xl font-bold">{{ t('avatar.view.selectLevel') }}</h2>
         <div class="flex gap-2">
           <Select v-model="level">
             <SelectTrigger class="flex-1">
-              <SelectValue placeholder="Selecciona tu nivel" />
+              <SelectValue :placeholder="t('avatar.view.selectLevel')" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="beginner">Principiante</SelectItem>
-              <SelectItem value="intermediate">Intermedio</SelectItem>
-              <SelectItem value="advanced">Avanzado</SelectItem>
+              <SelectItem value="beginner">{{ t('avatar.view.beginner') }}</SelectItem>
+              <SelectItem value="intermediate">{{ t('avatar.view.intermediate') }}</SelectItem>
+              <SelectItem value="advanced">{{ t('avatar.view.advanced') }}</SelectItem>
             </SelectContent>
           </Select>
-          <Button :disabled="!character" @click="startConversation">Iniciar</Button>
+          <Button :disabled="!character" @click="startConversation">{{ t('avatar.view.start') }}</Button>
         </div>
       </motion.div>
 

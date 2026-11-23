@@ -1,0 +1,14 @@
+{
+  "back": "戻る",
+  "home": "ホーム",
+  "close": "閉じる",
+  "cancel": "キャンセル",
+  "save": "保存",
+  "delete": "削除",
+  "remove": "外す",
+  "loading": "読み込み中…",
+  "retry": "もう一度試す",
+  "error": "エラーが発生しました",
+  "language": "言語",
+  "toggleTheme": "テーマを切り替え"
+}

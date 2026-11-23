@@ -1,5 +1,6 @@
 <script setup>
 import { ref, watch } from 'vue'
+import { useI18n } from 'vue-i18n'
 import {
   Select,
   SelectContent,
@@ -21,6 +22,7 @@ const props = defineProps({
   playAudio: { type: Function, required: true },
 })
 
+const { t } = useI18n()
 const emit = defineEmits(['set-style'])
 
 const value = ref(props.character?.styles?.[0]?.id.toString() ?? '')
@@ -62,7 +64,7 @@ async function handleValueChange(newValue) {
   >
     <Select :model-value="value" @update:model-value="handleValueChange">
       <SelectTrigger>
-        <SelectValue placeholder="Selecciona un estilo de voz" />
+        <SelectValue :placeholder="t('dashboard.voicevox.selectStyle')" />
       </SelectTrigger>
       <SelectContent>
         <SelectItem

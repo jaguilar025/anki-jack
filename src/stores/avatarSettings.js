@@ -3,6 +3,7 @@ import { defineStore } from 'pinia'
 import { useLocalStorage } from '@vueuse/core'
 import * as library from '@/lib/avatarLibrary'
 import { AMBIENCES, DEFAULT_AMBIENCE } from '@/data/ambiences'
+import { i18n } from '@/i18n'
 
 /**
  * Avatares incluidos. `url`: archivo local (sin descarga). `remoteUrl`: se descarga al elegirlo
@@ -16,7 +17,6 @@ export const AVATAR_PRESETS = [
     format: 'vrm',
     url: '/avatars/avatar.vrm',
     preview: '/avatars/previews/vrm-sample-a.png',
-    credit: 'VRoid / pixiv',
   },
   {
     id: 'vrm-sample-b',
@@ -25,7 +25,6 @@ export const AVATAR_PRESETS = [
     remoteUrl: 'https://dist.ayaka.moe/vrm-models/VRoid-Hub/AvatarSample-B/AvatarSample_B.vrm',
     size: 28_333_772,
     preview: '/avatars/previews/vrm-sample-b.png',
-    credit: 'VRoid / pixiv',
   },
   {
     id: 'live2d-hiyori',
@@ -34,7 +33,6 @@ export const AVATAR_PRESETS = [
     remoteUrl: 'https://dist.ayaka.moe/live2d-models/hiyori_free_zh.zip',
     size: 2_942_769,
     preview: '/avatars/previews/live2d-hiyori.png',
-    credit: 'Live2D Inc.',
   },
   {
     id: 'live2d-hiyori-pro',
@@ -43,20 +41,19 @@ export const AVATAR_PRESETS = [
     remoteUrl: 'https://dist.ayaka.moe/live2d-models/hiyori_pro_zh.zip',
     size: 4_482_221,
     preview: '/avatars/previews/live2d-hiyori.png',
-    credit: 'Live2D Inc.',
   },
 ]
 
 /** Fondos predefinidos de la escena del avatar (valor CSS de `background`). */
 export const BACKGROUND_PRESETS = [
-  { id: 'aurora', label: 'Aurora', css: 'linear-gradient(160deg, #fbd3e9 0%, #d9d7f7 45%, #bde3f7 100%)' },
-  { id: 'sakura', label: 'Sakura', css: 'linear-gradient(180deg, #fff1f5 0%, #ffd6e5 60%, #f7b8cf 100%)' },
-  { id: 'sunset', label: 'Atardecer', css: 'linear-gradient(180deg, #ffcf9f 0%, #ff9a9e 55%, #a18cd1 100%)' },
-  { id: 'mint', label: 'Menta', css: 'linear-gradient(160deg, #e0fff4 0%, #b8f0dc 50%, #9ad8e6 100%)' },
-  { id: 'night', label: 'Noche', css: 'radial-gradient(ellipse at top, #2b2f4a 0%, #14162a 60%, #0b0c16 100%)' },
-  { id: 'studio', label: 'Estudio', css: 'radial-gradient(ellipse at center, #3a3a3f 0%, #1b1b1f 75%)' },
+  { id: 'aurora', labelKey: 'avatar.background.aurora', css: 'linear-gradient(160deg, #fbd3e9 0%, #d9d7f7 45%, #bde3f7 100%)' },
+  { id: 'sakura', labelKey: 'avatar.background.sakura', css: 'linear-gradient(180deg, #fff1f5 0%, #ffd6e5 60%, #f7b8cf 100%)' },
+  { id: 'sunset', labelKey: 'avatar.background.sunset', css: 'linear-gradient(180deg, #ffcf9f 0%, #ff9a9e 55%, #a18cd1 100%)' },
+  { id: 'mint', labelKey: 'avatar.background.mint', css: 'linear-gradient(160deg, #e0fff4 0%, #b8f0dc 50%, #9ad8e6 100%)' },
+  { id: 'night', labelKey: 'avatar.background.night', css: 'radial-gradient(ellipse at top, #2b2f4a 0%, #14162a 60%, #0b0c16 100%)' },
+  { id: 'studio', labelKey: 'avatar.background.studio', css: 'radial-gradient(ellipse at center, #3a3a3f 0%, #1b1b1f 75%)' },
   // Para recortar el avatar en OBS u otros programas (chroma key)
-  { id: 'green', label: 'Pantalla verde', css: '#00ff00' },
+  { id: 'green', labelKey: 'avatar.background.green', css: '#00ff00' },
 ]
 
 /**
@@ -208,8 +205,8 @@ export const useAvatarSettingsStore = defineStore('avatarSettings', () => {
     if (avatar.url) return { format: avatar.format, url: avatar.url }
     let blob = await library.getBlob(avatar.id)
     if (!blob) {
-      if (!avatar.remoteUrl) throw new Error('El archivo del avatar ya no está guardado')
-      if (avatar.id in downloads) throw new Error('Ya se está descargando')
+      if (!avatar.remoteUrl) throw new Error(i18n.global.t('avatar.errors.avatarMissing'))
+      if (avatar.id in downloads) throw new Error(i18n.global.t('avatar.errors.alreadyDownloading'))
       downloads[avatar.id] = 0
       try {
         blob = await library.download(avatar.id, avatar.remoteUrl, (p) => (downloads[avatar.id] = p))
@@ -225,7 +222,7 @@ export const useAvatarSettingsStore = defineStore('avatarSettings', () => {
   async function addCustomAvatar(file) {
     const ext = file.name.split('.').pop().toLowerCase()
     const format = ext === 'vrm' ? 'vrm' : ext === 'zip' ? 'live2d' : null
-    if (!format) throw new Error('Usa un archivo .vrm (3D) o .zip (Live2D)')
+    if (!format) throw new Error(i18n.global.t('avatar.errors.badAvatarFile'))
     const id = `custom-${crypto.randomUUID()}`
     await library.putBlob(id, file)
     stored.value = new Set([...stored.value, id])
@@ -267,7 +264,7 @@ export const useAvatarSettingsStore = defineStore('avatarSettings', () => {
         entries.push({ name: path.split('/').pop(), blob: await zip.file(path).async('blob') })
       }
     }
-    if (!entries.length) throw new Error('No se encontraron archivos .vrma')
+    if (!entries.length) throw new Error(i18n.global.t('avatar.errors.noVrma'))
 
     const added = []
     for (const { name, blob } of entries) {

@@ -1,0 +1,162 @@
+{
+  "nav": {
+    "back": "Volver",
+    "history": "Historial",
+    "motions": "Movimientos",
+    "settings": "Ajustes",
+    "video": "Video de fondo"
+  },
+  "view": {
+    "downloading": "Descargando avatar…",
+    "unmute": "Activar sonido",
+    "mute": "Silenciar",
+    "volume": "Volumen",
+    "duck": "Bajar el video cuando habla el avatar",
+    "quality": "Calidad: {quality}",
+    "qualityNote": "YouTube la ajusta sola según el tamaño y tu conexión.",
+    "selectLevel": "Selecciona tu nivel",
+    "beginner": "Principiante",
+    "intermediate": "Intermedio",
+    "advanced": "Avanzado",
+    "start": "Iniciar"
+  },
+  "log": {
+    "title": "Historial",
+    "empty": "Aún no hay mensajes"
+  },
+  "input": {
+    "generating": "Generando respuesta…",
+    "listening": "Escuchando…",
+    "placeholder": "Escribe un mensaje…",
+    "micStop": "Detener dictado",
+    "micStart": "Hablar (japonés)",
+    "send": "Enviar",
+    "stop": "Detener",
+    "micDenied": "Permite el acceso al micrófono para usar el dictado",
+    "micError": "Error del micrófono: {error}"
+  },
+  "motions": {
+    "title": "Movimientos",
+    "gestures": "Gestos",
+    "emotions": "Emociones",
+    "animations": "Animaciones (.vrma)",
+    "removeAnimation": "Quitar animación",
+    "none": "Aún no hay animaciones. El pack oficial de VRoid trae 7 gratis (3.3 MB).",
+    "add": "Agregar .vrma o .zip",
+    "pack": "Pack de VRoid (Booth)",
+    "noModelMotions": "Este modelo no trae animaciones ni expresiones propias.",
+    "added": "Animación agregada",
+    "addedMany": "{count} animaciones agregadas",
+    "addFailed": "No se pudieron agregar las animaciones",
+    "modelMotions": "Animaciones del modelo",
+    "modelExpressions": "Expresiones del modelo"
+  },
+  "gesture": {
+    "nod": "Asentir",
+    "shake": "Negar",
+    "tilt": "Ladear la cabeza",
+    "leanBack": "Sorprenderse",
+    "droop": "Agachar la cabeza",
+    "lookAround": "Mirar alrededor",
+    "bow": "Reverencia"
+  },
+  "emotion": {
+    "happy": "Feliz",
+    "sad": "Triste",
+    "angry": "Enojo",
+    "surprised": "Sorpresa",
+    "relaxed": "Relajado",
+    "think": "Pensativo"
+  },
+  "ambience": {
+    "day": "Día",
+    "sunset": "Atardecer",
+    "night": "Noche",
+    "studio": "Estudio",
+    "neon": "Neón",
+    "sakura": "Sakura",
+    "title": "Ambiente",
+    "vrmFormat": "VRM (3D) · luces",
+    "live2dFormat": "Live2D · filtro de color",
+    "fine": "Ajuste fino",
+    "custom": "· personalizado",
+    "intensity": "Intensidad",
+    "direction": "Dirección (← →)",
+    "height": "Altura",
+    "keyLight": "Luz principal",
+    "skyGround": "Luz de cielo y suelo",
+    "skyGroundShort": "Cielo / suelo",
+    "rim": "Luz de contorno",
+    "live2dNote": "Live2D es 2D: no tiene luces, se ajusta el color del modelo.",
+    "brightness": "Brillo",
+    "saturation": "Saturación",
+    "tint": "Tinte",
+    "reset": "Restablecer"
+  },
+  "background": {
+    "aurora": "Aurora",
+    "sakura": "Sakura",
+    "sunset": "Atardecer",
+    "mint": "Menta",
+    "night": "Noche",
+    "studio": "Estudio",
+    "green": "Pantalla verde"
+  },
+  "stage": {
+    "loading": "Cargando avatar…",
+    "vrmError": "No se pudo cargar {url}",
+    "vrmHint": "Coloca tu modelo en {path}",
+    "live2dError": "No se pudo cargar el modelo Live2D (¿es un .zip con el archivo .model3.json?)"
+  },
+  "errors": {
+    "vrmInvalid": "El archivo no contiene un modelo VRM",
+    "avatarMissing": "El archivo del avatar ya no está guardado",
+    "alreadyDownloading": "Ya se está descargando",
+    "badAvatarFile": "Usa un archivo .vrm (3D) o .zip (Live2D)",
+    "noVrma": "No se encontraron archivos .vrma"
+  },
+  "settings": {
+    "title": "Ajustes",
+    "description": "Personaliza el avatar y la escena.",
+    "avatar": "Avatar",
+    "downloading": "Descargando",
+    "own": "Propio · {size}",
+    "removeAvatar": "Eliminar avatar",
+    "upload": "Subir propio",
+    "moreModels": "Consigue más modelos:",
+    "hint": {
+      "vroidHub": "Modelos gratis de la comunidad",
+      "vroidStudio": "Crea tu propio avatar (gratis)",
+      "boothMixed": "Modelos gratis y de pago",
+      "nizima": "Tienda oficial de Live2D",
+      "samples": "Muestras gratis de Live2D Inc."
+    },
+    "link": {
+      "samples": "Modelos de ejemplo"
+    },
+    "avatarAdded": "Avatar «{name}» agregado",
+    "avatarSaveFailed": "No se pudo guardar el avatar",
+    "imageFailed": "No se pudo usar esa imagen (¿es muy grande?)",
+    "badYoutube": "Ese link no parece un video de YouTube",
+    "background": "Fondo",
+    "color": "Color",
+    "useVideo": "Usar este video",
+    "youtubeBg": "Video de YouTube de fondo",
+    "youtubeNote": "En bucle; el sonido se controla con el botón de video del menú.",
+    "removeVideo": "Quitar video",
+    "use": "Usar",
+    "useImage": "Usar esta imagen",
+    "yourImage": "Tu imagen",
+    "imagePrompt": "Usa una imagen propia como fondo",
+    "change": "Cambiar",
+    "uploadImage": "Subir",
+    "removeImage": "Quitar imagen",
+    "included": "Incluido"
+  },
+  "commands": {
+    "needsFormat": "Este comando necesita un avatar {format}",
+    "failed": "No se pudo reproducir la animación",
+    "builtin": "Incluidas",
+    "typeHint": "o escribe «{phrase}» en el chat"
+  }
+}

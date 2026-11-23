@@ -3,6 +3,7 @@ import { computed, inject, ref } from 'vue'
 import { Button } from '@/components/ui/button'
 import { Volume2 } from '@lucide/vue'
 import { useAudio } from '@/composables/useAudio'
+import { useI18n } from 'vue-i18n'
 
 /**
  * Burbuja de chat.
@@ -19,7 +20,9 @@ const props = defineProps({
   character: { type: Object, required: true },
 })
 
-const { playAudio, isSpeaking } = useAudio()
+const { t } = useI18n()
+// Sin caché: son frases de conversación, casi nunca se repiten
+const { playAudio, isSpeaking } = useAudio({ cache: false })
 /** @type {((text: string, speaker: string, emotion?: string) => Promise<void>) | null} */
 const avatarSpeak = inject('avatarSpeak', null)
 const showTranslation = ref(true)
@@ -55,6 +58,7 @@ async function handleSpeak() {
             variant="ghost"
             size="icon"
             class="h-6 w-6 rounded-full"
+            :aria-label="t('study.chat.speak')"
             @click="handleSpeak"
           >
             <Volume2 :class="['h-3 w-3', isSpeaking ? 'text-primary animate-pulse' : '']" />
@@ -76,7 +80,7 @@ async function handleSpeak() {
           class="text-xs self-start -mt-1 h-6 px-2"
           @click="showTranslation = !showTranslation"
         >
-          {{ showTranslation ? 'Ocultar traducción' : 'Mostrar traducción' }}
+          {{ showTranslation ? t('study.chat.hideTranslation') : t('study.chat.showTranslation') }}
         </Button>
       </div>
     </div>

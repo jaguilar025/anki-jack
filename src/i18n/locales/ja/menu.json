@@ -1,0 +1,30 @@
+{
+  "open": "メニューを開く",
+  "title": "メニュー",
+  "sections": {
+    "preferences": "設定",
+    "data": "データ",
+    "navigation": "ナビゲーション"
+  },
+  "theme": "テーマ",
+  "themeDark": "ダーク",
+  "themeLight": "ライト",
+  "language": "言語",
+  "home": "スタート画面に戻る",
+  "about": "このアプリについて",
+  "aboutTitle": "このアプリについて",
+  "aboutDesc": "日本語学習のための個人用アプリ：語彙、漢字、アバターとの会話。",
+  "creditsTitle": "クレジットとライセンス",
+  "creditsNote": "アプリで使用している第三者のデータ・モデル・コードとそのライセンス。",
+  "license": "ライセンス",
+  "uses": {
+    "kanjidic": "漢字の意味と読み",
+    "kanjivg": "漢字の筆順",
+    "airi": "3Dアバターの基盤（改変したコードと待機アニメーション）",
+    "wlipsync": "リップシンク",
+    "vroid": "サンプルの3Dアバター",
+    "hiyori": "サンプルのLive2Dアバター",
+    "cubism": "Live2Dモデルのランタイム",
+    "oss": "その他のオープンソースライブラリ（MITなどのライセンス）"
+  }
+}

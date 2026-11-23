@@ -9,7 +9,12 @@
 //            setEmotion(nombre, { intensity, resetAfter }) → happy, sad, angry, surprised, relaxed, think, neutral
 //            (además hace el gesto de esa emoción: asentir, ladear la cabeza…)
 //            playGesture(nombre) → gestos procedurales (ver motion/procedural.js)
-//            playAnimation(url) → reproduce una vez un .vrma y vuelve a la animación en reposo
+//            playAnimation(url, { clock }) → reproduce una vez un .vrma y vuelve a la animación
+//              en reposo. Devuelve una promesa que se resuelve al terminar (true) o si se
+//              interrumpe (false): otra animación, stopAnimation(), cambio de modelo o desmontaje.
+//              clock (opcional): función que devuelve los segundos que debe marcar la animación en
+//              cada frame (p. ej. el tiempo de un <video>): así va siempre sincronizada con él.
+//            stopAnimation() → corta la animación en curso y vuelve a la de reposo
 import { onMounted, onBeforeUnmount, ref, useTemplateRef, watch } from 'vue'
 import {
   AnimationMixer,
@@ -70,6 +75,15 @@ let vrm = null
 let mixer = null
 let idleAction = null
 let oneShot = null // animación .vrma en curso
+let resolveOneShot = null // resuelve la promesa de playAnimation en curso
+let oneShotClock = null // reloj externo que manda sobre el tiempo de la animación
+
+/** Termina la promesa de la animación en curso (true = terminó, false = se interrumpió) */
+function settleOneShot(finished) {
+  resolveOneShot?.(finished)
+  resolveOneShot = null
+  oneShotClock = null
+}
 const clipCache = new Map() // url → AnimationClip (son del modelo actual)
 const procedural = createProceduralMotion()
 let restPose = new Map() // hueso → rotación de reposo
@@ -237,6 +251,11 @@ function render(timestamp) {
   // reposo cada frame para que la pose procedural no se acumule
   if (vrm) resetPoseBones()
   mixer?.update(delta)
+  // Con reloj externo, la animación marca exactamente su tiempo (si el video se atasca, se detiene)
+  if (oneShot && oneShotClock) {
+    oneShot.time = Math.min(Math.max(0, oneShotClock()), oneShot.getClip().duration)
+    mixer.update(0)
+  }
   if (vrm) {
     applyPose(procedural.update(delta, { voice: lipSync?.level() ?? 0, active: pointerInside }))
     updateGaze(delta)
@@ -292,6 +311,7 @@ function frameModel(size) {
 }
 
 function unloadModel() {
+  settleOneShot(false)
   mixer?.stopAllAction()
   mixer = null
   idleAction = null
@@ -335,7 +355,7 @@ async function load(url) {
     status.value = 'ready'
   } catch (error) {
     console.error('[AvatarStage] Error al cargar el avatar:', error)
-    errorMessage.value = `No se pudo cargar ${url}`
+    errorMessage.value = url
     status.value = 'error'
   }
 }
@@ -371,30 +391,43 @@ function createMixer() {
     oneShot.fadeOut(0.5)
     oneShot = null
     idleAction?.reset().fadeIn(0.5).play()
+    settleOneShot(true)
   })
   return m
 }
 
 /** Reproduce un .vrma una vez (crossfade desde/hacia la animación en reposo). */
-async function playAnimation(url) {
-  if (!vrm) return
+async function playAnimation(url, { clock } = {}) {
+  if (!vrm) return false
   const model = vrm
   let clip = clipCache.get(url)
   if (!clip) {
     clip = await loadAnimationClip(url, model)
-    if (!clip || model !== vrm) return
+    if (!clip || model !== vrm) return false
     clipCache.set(url, clip)
   }
   mixer ??= createMixer()
+  settleOneShot(false) // la anterior se interrumpe
   oneShot?.fadeOut(0.3)
   oneShot = mixer.clipAction(clip)
   oneShot.setLoop(LoopOnce, 1)
   oneShot.clampWhenFinished = true
   oneShot.reset().fadeIn(0.3).play()
   idleAction?.fadeOut(0.3)
+  oneShotClock = clock ?? null
+  return new Promise((resolve) => (resolveOneShot = resolve))
 }
 
-defineExpose({ attachAudio, setEmotion, playGesture, playAnimation })
+/** Corta la animación en curso y vuelve suave a la de reposo */
+function stopAnimation() {
+  if (!oneShot) return
+  oneShot.fadeOut(0.5)
+  oneShot = null
+  idleAction?.reset().fadeIn(0.5).play()
+  settleOneShot(false)
+}
+
+defineExpose({ attachAudio, setEmotion, playGesture, playAnimation, stopAnimation })
 
 watch(() => props.modelUrl, (url) => load(url))
 
@@ -424,11 +457,11 @@ onBeforeUnmount(() => {
       class="absolute inset-0 flex items-center justify-center pointer-events-none"
     >
       <p v-if="status === 'loading'" class="text-sm text-muted-foreground">
-        Cargando avatar… {{ progress ? `${progress}%` : '' }}
+        {{ $t('avatar.stage.loading') }} {{ progress ? `${progress}%` : '' }}
       </p>
       <div v-else class="text-center text-sm text-muted-foreground px-6">
-        <p>{{ errorMessage }}</p>
-        <p class="mt-1">Coloca tu modelo en <code>public/avatars/avatar.vrm</code></p>
+        <p>{{ $t('avatar.stage.vrmError', { url: errorMessage }) }}</p>
+        <p class="mt-1">{{ $t('avatar.stage.vrmHint', { path: 'public/avatars/avatar.vrm' }) }}</p>
       </div>
     </div>
   </div>

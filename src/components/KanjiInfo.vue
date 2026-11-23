@@ -2,6 +2,9 @@
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { ArrowLeft } from '@lucide/vue'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 
 /**
  * Ficha de un kanji (resultado de la captura).
@@ -27,11 +30,11 @@ defineEmits(['new-search'])
         <RouterLink to="/main">
           <Button variant="ghost" size="sm">
             <ArrowLeft class="mr-2 h-4 w-4" />
-            Inicio
+            {{ t('common.home') }}
           </Button>
         </RouterLink>
         <Button class="bg-gray-300" size="sm" @click="$emit('new-search')">
-          Nueva Captura
+          {{ t('kanji.info.newCapture') }}
         </Button>
       </div>
 
@@ -40,32 +43,32 @@ defineEmits(['new-search'])
           <div class="flex flex-col items-center gap-4">
             <img
               :src="kanjiResult.gif || '/placeholder.svg'"
-              :alt="`Orden de trazos para ${kanjiResult.kanji}`"
+              :alt="t('kanji.info.strokeOrderAlt', { kanji: kanjiResult.kanji })"
               width="200"
               height="200"
               class="rounded-lg invert"
             />
             <div class="text-gray-400">
-              Strokes: {{ kanjiResult.strokes }}
+              {{ t('kanji.info.strokes', { count: kanjiResult.strokes }) }}
             </div>
           </div>
 
           <div class="flex flex-col gap-1 mt-8">
             <div class="flex flex-row gap-2">
-              <p class="text-gray-500">Meaning:</p>
+              <p class="text-gray-500">{{ t('kanji.info.meaning') }}</p>
               <p class="text-gray-600">{{ kanjiResult.meaning }}</p>
             </div>
             <div class="flex flex-row gap-2">
-              <p class="text-gray-500">Onyomi:</p>
+              <p class="text-gray-500">{{ t('kanji.info.onyomi') }}</p>
               <p class="text-gray-600">{{ kanjiResult.onyomi }}</p>
             </div>
             <div class="flex flex-row gap-2">
-              <p class="text-gray-500">Kunyomi:</p>
+              <p class="text-gray-500">{{ t('kanji.info.kunyomi') }}</p>
               <p class="text-gray-600">{{ kanjiResult.kunyomi }}</p>
             </div>
 
             <div class="my-6">
-              <p class="text-gray-500 mb-2">Vocabulary:</p>
+              <p class="text-gray-500 mb-2">{{ t('kanji.info.vocabulary') }}</p>
               <div class="space-y-2">
                 <div
                   v-for="(word, index) in kanjiResult.vocabulary"

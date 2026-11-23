@@ -1,0 +1,76 @@
+{
+  "practice": {
+    "title": "練習モード",
+    "show": "表示:",
+    "answer": "答え:",
+    "timer": "タイマー(秒)",
+    "autoAudio": "自動再生",
+    "consult": "一覧",
+    "study": "学習",
+    "items": {
+      "audio": "音声",
+      "kanji": "漢字",
+      "furigana": "ふりがな",
+      "english": "英語",
+      "japanese": "日本語"
+    }
+  },
+  "modes": {
+    "chat": {
+      "title": "会話",
+      "description": "AIアシスタントと会話"
+    },
+    "capture": {
+      "title": "Kanji Lens",
+      "description": "漢字を撮影"
+    },
+    "draw": {
+      "title": "Kanji Lens",
+      "description": "漢字を描く"
+    }
+  },
+  "copyright": "Copyright © All rights reserved · ELNEA 2026",
+  "category": {
+    "search": "検索..."
+  },
+  "data": {
+    "export": "進捗をエクスポート",
+    "import": "進捗をインポート",
+    "clear": "データを削除",
+    "exported": "進捗をエクスポートしました",
+    "exportedDesc": "進捗のファイルをダウンロードしました",
+    "imported": "進捗をインポートしました",
+    "importedDesc": "進捗を読み込みました",
+    "importError": "インポートに失敗しました",
+    "importErrorDesc": "形式が正しくないか、ファイルが壊れています",
+    "confirmClear": "進捗とカスタムリストをすべて削除しますか?この操作は元に戻せません。",
+    "cleared": "データを削除しました",
+    "clearedDesc": "進捗とカスタムリストをすべて削除しました"
+  },
+  "audioCache": {
+    "button": "音声データを削除",
+    "dialogTitle": "音声データを削除しますか?",
+    "dialogDesc": "このブラウザに保存されているすべての音声を削除します。進捗やリストには影響しません。音声は次回再生時に再生成されます。",
+    "calculating": "計算中…",
+    "empty": "保存された音声はありません。",
+    "saved": "保存された音声:",
+    "clearing": "削除中…",
+    "confirm": "音声を削除",
+    "cleared": "音声を削除しました",
+    "clearedDesc": "再生時に音声が再生成されます",
+    "error": "音声の削除に失敗しました"
+  },
+  "upload": {
+    "label": "学習リストをアップロード",
+    "invalidFormat": "ファイル形式が正しくありません",
+    "notArray": "カテゴリ「{category}」に単語の配列がありません",
+    "badWord": "カテゴリ「{category}」の単語の構造が正しくありません",
+    "success": "学習リストを読み込みました",
+    "successDesc": "{count}件のカテゴリを読み込みました",
+    "error": "ファイルの読み込みに失敗しました"
+  },
+  "voicevox": {
+    "selectCharacter": "キャラクターを選択",
+    "selectStyle": "音声スタイルを選択"
+  }
+}

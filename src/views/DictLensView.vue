@@ -4,6 +4,9 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { Camera, ArrowLeft, Loader2 } from '@lucide/vue'
 import KanjiInfo from '@/components/KanjiInfo.vue'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 
 const isMobile = ref(null)
 let stream = null
@@ -12,6 +15,7 @@ const capturedImage = ref(null)
 const isProcessing = ref(false)
 /** Datos del kanji: { code, kanji, onyomi, kunyomi, meaning, url, gif, strokes, vocabulary: [{ jp, pron, en }] } */
 const kanjiResult = ref(null)
+/** { key } = clave i18n (se traduce en la plantilla); { text } = mensaje crudo del servidor */
 const error = ref(null)
 
 const videoRef = useTemplateRef('videoRef')
@@ -38,7 +42,7 @@ const checkCameraPermission = async () => {
   try {
     const permissionStatus = await navigator.permissions.query({ name: 'camera' })
     if (permissionStatus.state === 'denied') {
-      error.value = 'El acceso a la cámara está denegado. Habilita los permisos en la configuración.'
+      error.value = { key: 'kanji.lens.errors.cameraDenied' }
       return false
     }
     return true
@@ -54,7 +58,7 @@ const attachStream = async () => {
     videoRef.value.srcObject = stream
     videoRef.value.play().catch((err) => {
       console.error('Error playing video:', err)
-      error.value = 'No se pudo reproducir el video de la cámara'
+      error.value = { key: 'kanji.lens.errors.videoPlay' }
     })
   }
 }
@@ -78,7 +82,7 @@ const startCamera = async () => {
     attachStream()
   } catch (err) {
     console.error('Error accessing camera:', err)
-    error.value = 'No se pudo acceder a la cámara. Asegúrate de que los permisos estén habilitados.'
+    error.value = { key: 'kanji.lens.errors.cameraAccess' }
   }
 }
 
@@ -108,13 +112,14 @@ const processImage = async (imageData) => {
     const result = await response.json()
 
     if (!response.ok) {
-      throw new Error(result.error || 'Error procesando la imagen')
+      throw new Error(result.error || '')
     }
 
     kanjiResult.value = result.kanji
   } catch (err) {
     console.error('Error processing image:', err)
-    error.value = err instanceof Error ? err.message : 'Error procesando la imagen'
+    error.value =
+      err instanceof Error && err.message ? { text: err.message } : { key: 'kanji.lens.errors.process' }
   } finally {
     isProcessing.value = false
   }
@@ -122,7 +127,7 @@ const processImage = async (imageData) => {
 
 const capturePhoto = () => {
   if (!videoRef.value || !canvasRef.value) {
-    error.value = 'No se pudo capturar la imagen. La cámara no está lista.'
+    error.value = { key: 'kanji.lens.errors.captureNotReady' }
     return
   }
 
@@ -131,7 +136,7 @@ const capturePhoto = () => {
   const ctx = canvas.getContext('2d')
 
   if (!ctx) {
-    error.value = 'No se pudo obtener el contexto del lienzo.'
+    error.value = { key: 'kanji.lens.errors.canvasContext' }
     return
   }
 
@@ -139,7 +144,7 @@ const capturePhoto = () => {
   canvas.height = video.videoHeight
 
   if (canvas.width === 0 || canvas.height === 0) {
-    error.value = 'La cámara no está lista para capturar la imagen.'
+    error.value = { key: 'kanji.lens.errors.cameraNotReady' }
     return
   }
 
@@ -177,15 +182,14 @@ const resetCamera = () => {
         <div class="text-red-500 mb-4">
           <Camera class="mx-auto h-16 w-16" />
         </div>
-        <h2 class="text-xl font-bold text-gray-800 mb-4">Aplicación no soportada en PC</h2>
+        <h2 class="text-xl font-bold text-gray-800 mb-4">{{ t('kanji.lens.unsupportedTitle') }}</h2>
         <p class="text-gray-600 mb-6">
-          Esta aplicación requiere una cámara móvil para funcionar correctamente. Por favor, accede
-          desde un dispositivo móvil.
+          {{ t('kanji.lens.unsupportedText') }}
         </p>
         <RouterLink to="/">
           <Button variant="outline" class="w-full">
             <ArrowLeft class="mr-2 h-4 w-4" />
-            Volver al inicio
+            {{ t('kanji.lens.backHome') }}
           </Button>
         </RouterLink>
       </CardContent>
@@ -199,7 +203,7 @@ const resetCamera = () => {
       <RouterLink to="/main">
         <Button variant="ghost" size="sm" class="text-white hover:bg-white/20">
           <ArrowLeft class="mr-2 h-4 w-4" />
-          Inicio
+          {{ t('common.home') }}
         </Button>
       </RouterLink>
     </div>
@@ -232,16 +236,16 @@ const resetCamera = () => {
 
     <div v-if="capturedImage" class="w-full h-full flex items-center justify-center p-4">
       <div class="max-w-md w-full">
-        <img :src="capturedImage" alt="Captured kanji" class="w-full rounded-lg mb-4" />
+        <img :src="capturedImage" :alt="t('kanji.lens.capturedAlt')" class="w-full rounded-lg mb-4" />
 
         <div v-if="isProcessing" class="text-center text-white">
           <Loader2 class="h-8 w-8 animate-spin mx-auto mb-2" />
-          <p>Procesando imagen...</p>
+          <p>{{ t('kanji.lens.processing') }}</p>
         </div>
 
         <div v-if="error" class="text-center">
-          <p class="text-red-400 mb-4">{{ error }}</p>
-          <Button class="bg-white text-black" @click="resetCamera">Intentar de nuevo</Button>
+          <p class="text-red-400 mb-4">{{ error.key ? t(error.key) : error.text }}</p>
+          <Button class="bg-white text-black" @click="resetCamera">{{ t('common.retry') }}</Button>
         </div>
       </div>
     </div>

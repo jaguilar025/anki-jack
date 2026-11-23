@@ -1,0 +1,62 @@
+{
+  "draw": {
+    "title": "漢字を書く",
+    "hint": "正しい筆順で書くと認識しやすくなります。",
+    "candidates": "候補",
+    "view": "{kanji}を見る",
+    "empty": "書き始めると、似た漢字がここに表示されます。",
+    "missing": "は辞書にありません。",
+    "viewInJisho": "Jishoで見る",
+    "errors": {
+      "recognize": "書いた文字を認識できませんでした。接続を確認してもう一度お試しください。",
+      "info": "漢字の情報を読み込めませんでした"
+    }
+  },
+  "canvas": {
+    "undo": "一画戻す",
+    "clear": "消去"
+  },
+  "lens": {
+    "unsupportedTitle": "PCには対応していません",
+    "unsupportedText": "このアプリを使うにはスマートフォンのカメラが必要です。モバイル端末からアクセスしてください。",
+    "backHome": "ホームに戻る",
+    "capturedAlt": "撮影した漢字",
+    "processing": "画像を処理中...",
+    "errors": {
+      "cameraDenied": "カメラへのアクセスが拒否されています。設定で許可してください。",
+      "videoPlay": "カメラの映像を再生できませんでした",
+      "cameraAccess": "カメラにアクセスできません。権限が許可されているか確認してください。",
+      "process": "画像の処理中にエラーが発生しました",
+      "captureNotReady": "撮影できませんでした。カメラの準備ができていません。",
+      "canvasContext": "キャンバスのコンテキストを取得できませんでした。",
+      "cameraNotReady": "カメラの準備ができていないため撮影できません。"
+    }
+  },
+  "info": {
+    "newCapture": "新しく撮影",
+    "strokeOrderAlt": "{kanji}の筆順",
+    "strokes": "画数: {count}",
+    "meaning": "意味:",
+    "onyomi": "音読み:",
+    "kunyomi": "訓読み:",
+    "vocabulary": "語彙:"
+  },
+  "details": {
+    "on": "音",
+    "kun": "訓",
+    "names": "名乗り",
+    "strokes": "画数",
+    "jlpt": "JLPT",
+    "grade": "学年",
+    "frequency": "頻度",
+    "frequencyValue": "2,500字中#{rank}位",
+    "gradePrimary": "小学{grade}年",
+    "gradeSecondary": "中学以上（常用）",
+    "gradeNames": "人名用",
+    "vocabulary": "語彙"
+  },
+  "order": {
+    "missing": "この漢字の筆順データはありません",
+    "repeat": "もう一度 · {count}画"
+  }
+}

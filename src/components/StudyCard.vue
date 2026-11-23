@@ -9,10 +9,11 @@ import { motion, AnimatePresence } from 'motion-v'
 import { Volume2 } from '@lucide/vue'
 import { useAudio } from '@/composables/useAudio'
 import { moveFocus, isNavFocused } from '@/lib/focusNav'
+import { useI18n } from 'vue-i18n'
 
 /**
  * word: { japanese_basic, japanese_advance, spanish?, english? }
- * config: { show: ('audio'|'japanese'|'english')[], answer: 'japanese'|'english', autoPlay?: boolean }
+ * config: { show: ('audio'|'kanji'|'furigana'|'english')[], answer: 'japanese'|'english', autoPlay?: boolean }
  * character: { value } (id del estilo de voz)
  */
 const props = defineProps({
@@ -25,6 +26,7 @@ const props = defineProps({
 
 const emit = defineEmits(['answer', 'see-answer', 'skip', 'next'])
 
+const { t } = useI18n()
 const answer = ref('')
 const showKana = ref(false)
 const inputRef = ref(null)
@@ -33,7 +35,16 @@ const showAnswer = ref(false)
 const { playAudio, isSpeaking } = useAudio()
 
 const showAudio = () => props.config.show.includes('audio')
-const showJapanese = () => props.config.show.includes('japanese')
+const showKanji = () => props.config.show.includes('kanji')
+const showFurigana = () => props.config.show.includes('furigana')
+const showJapanese = () => showKanji() || showFurigana()
+// Kanji y furigana: se muestra el kanji y el switch "Furigana" cambia a kana.
+// Solo uno de los dos: se muestra ese, sin switch.
+const showFuriganaSwitch = () => showKanji() && showFurigana()
+const japaneseText = () => {
+  if (showFuriganaSwitch()) return showKana.value ? props.word.japanese_basic : props.word.japanese_advance
+  return showKanji() ? props.word.japanese_advance : props.word.japanese_basic
+}
 const showEnglish = () => props.config.show.includes('english')
 const answerInJapanese = () => props.config.answer === 'japanese'
 
@@ -201,7 +212,7 @@ async function handlePlayAudio() {
             class="text-sm text-muted-foreground underline-offset-4 transition-colors hover:text-foreground hover:underline"
             @click="emit('skip')"
           >
-            Saltar →
+            {{ t('study.card.skip') }}
           </button>
         </div>
 
@@ -214,20 +225,20 @@ async function handlePlayAudio() {
             size="icon"
             class="h-16 w-16 rounded-full"
             data-nav
-            title="Reproducir audio (Ctrl)"
+            :title="t('study.card.playAudio')"
             @click="handlePlayAudio"
           >
             <Volume2 :class="['h-8 w-8', isSpeaking ? 'text-primary animate-pulse' : '']" />
           </Button>
 
-          <!-- Pista: texto en japonés (con toggle de kana) -->
+          <!-- Pista: texto en japonés (kanji y/o furigana; el switch solo si están los dos) -->
           <div v-if="showJapanese()" class="flex flex-col items-center gap-2">
-            <div class="flex items-center gap-2 mb-2">
+            <div v-if="showFuriganaSwitch()" class="flex items-center gap-2 mb-2">
               <Switch id="show-kana" v-model="showKana" data-nav />
-              <Label for="show-kana">Mostrar kana</Label>
+              <Label for="show-kana">{{ t('study.card.furigana') }}</Label>
             </div>
             <h3 class="japanese-text text-[40px] font-normal">
-              {{ showKana ? word.japanese_basic : word.japanese_advance }}
+              {{ japaneseText() }}
             </h3>
           </div>
 
@@ -242,7 +253,7 @@ async function handlePlayAudio() {
             data-nav
             v-model="answer"
             type="text"
-            placeholder="Escribe tu respuesta..."
+            :placeholder="t('study.card.placeholder')"
             :class="[
               'text-center japanese-text',
               showResult && !isCorrect && !showAnswer ? 'border-red-500 focus-visible:ring-red-500' : '',
@@ -274,7 +285,7 @@ async function handlePlayAudio() {
 
       <CardFooter class="flex justify-center p-6 pt-0">
         <template v-if="showResult && !isCorrect && !showAnswer">
-          <Button type="submit" class="flex-1" data-nav>Comprobar</Button>
+          <Button type="submit" class="flex-1" data-nav>{{ t('study.card.check') }}</Button>
           <Button
             type="button"
             variant="outline"
@@ -282,11 +293,11 @@ async function handlePlayAudio() {
             data-nav
             @click="handleShowAnswer"
           >
-            Ver respuesta
+            {{ t('study.card.showAnswer') }}
           </Button>
         </template>
         <Button v-else type="submit" class="w-full" data-nav>
-          {{ showResult ? 'Siguiente' : 'Comprobar' }}
+          {{ showResult ? t('study.card.next') : t('study.card.check') }}
         </Button>
       </CardFooter>
     </form>

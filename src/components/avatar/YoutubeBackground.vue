@@ -3,16 +3,18 @@
 // Arranca silenciado (el navegador solo permite autoplay así); si el usuario lo quiere con
 // sonido, se activa en su primer clic/tecla en la página. En bucle, sin controles, sin recibir
 // clics y escalado para cubrir todo (como object-fit: cover).
-//  - props: videoId, muted, volume (0-100)
+//  - props: videoId, muted, volume (0-100), vertical (video 9:16, p. ej. un Short)
 //  - emits: quality(texto) → calidad que YouTube eligió (no se puede forzar desde la API)
+//           playing → el video empezó a reproducirse
 import { onBeforeUnmount, onMounted, useTemplateRef, watch } from 'vue'
 
 const props = defineProps({
   videoId: { type: String, required: true },
   muted: { type: Boolean, default: true },
   volume: { type: Number, default: 50 },
+  vertical: { type: Boolean, default: false },
 })
-const emit = defineEmits(['quality'])
+const emit = defineEmits(['quality', 'playing'])
 
 const QUALITY_LABELS = {
   tiny: '144p',
@@ -99,7 +101,10 @@ onMounted(async () => {
         applySound()
       },
       onPlaybackQualityChange: reportQuality,
-      onStateChange: reportQuality,
+      onStateChange: (e) => {
+        reportQuality()
+        if (e.data === window.YT.PlayerState.PLAYING) emit('playing')
+      },
     },
   })
 })
@@ -114,8 +119,13 @@ onBeforeUnmount(() => {
 
 <template>
   <div class="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
-    <!-- 16:9 que siempre cubre el contenedor; lo que sobra se recorta -->
-    <div class="absolute left-1/2 top-1/2 h-[max(100%,56.25vw)] w-[max(100%,177.78vh)] -translate-x-1/2 -translate-y-1/2">
+    <!-- Proporción del video (16:9 o 9:16) que siempre cubre el contenedor; lo que sobra se recorta -->
+    <div
+      :class="[
+        'absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2',
+        vertical ? 'h-[max(100%,177.78vw)] w-[max(100%,56.25vh)]' : 'h-[max(100%,56.25vw)] w-[max(100%,177.78vh)]',
+      ]"
+    >
       <div ref="target" />
     </div>
   </div>

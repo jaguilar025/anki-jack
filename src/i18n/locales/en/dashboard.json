@@ -1,0 +1,76 @@
+{
+  "practice": {
+    "title": "Practice mode",
+    "show": "Show:",
+    "answer": "Answer:",
+    "timer": "Timer (seconds)",
+    "autoAudio": "Auto audio",
+    "consult": "Browse",
+    "study": "Study",
+    "items": {
+      "audio": "Audio",
+      "kanji": "Kanji",
+      "furigana": "Furigana",
+      "english": "English",
+      "japanese": "Japanese"
+    }
+  },
+  "modes": {
+    "chat": {
+      "title": "Conversation",
+      "description": "Chat with an AI assistant"
+    },
+    "capture": {
+      "title": "Kanji Lens",
+      "description": "Capture kanji"
+    },
+    "draw": {
+      "title": "Kanji Lens",
+      "description": "Draw kanji"
+    }
+  },
+  "copyright": "Copyright © All rights reserved · ELNEA 2026",
+  "category": {
+    "search": "Search..."
+  },
+  "data": {
+    "export": "Export progress",
+    "import": "Import progress",
+    "clear": "Delete data",
+    "exported": "Progress exported",
+    "exportedDesc": "The file with your progress has been downloaded",
+    "imported": "Progress imported",
+    "importedDesc": "Your progress was loaded successfully",
+    "importError": "Error importing data",
+    "importErrorDesc": "Invalid format or corrupted file",
+    "confirmClear": "Are you sure you want to delete all your progress and custom lists? This action cannot be undone.",
+    "cleared": "Data deleted",
+    "clearedDesc": "All your progress and custom lists have been deleted"
+  },
+  "audioCache": {
+    "button": "Clear audio data",
+    "dialogTitle": "Clear audio data?",
+    "dialogDesc": "All audio saved in this browser will be deleted. Your progress and lists are not affected. Audio will be generated again the next time you play it.",
+    "calculating": "Calculating…",
+    "empty": "No saved audio.",
+    "saved": "Saved audio:",
+    "clearing": "Clearing…",
+    "confirm": "Clear audio",
+    "cleared": "Audio deleted",
+    "clearedDesc": "Audio will be generated again when you play it",
+    "error": "Error deleting audio"
+  },
+  "upload": {
+    "label": "Upload study list",
+    "invalidFormat": "Invalid file format",
+    "notArray": "Category \"{category}\" does not contain an array of words",
+    "badWord": "A word in category \"{category}\" has an incorrect structure",
+    "success": "Study list loaded",
+    "successDesc": "{count} categories loaded successfully",
+    "error": "Error loading the file"
+  },
+  "voicevox": {
+    "selectCharacter": "Select your character",
+    "selectStyle": "Select a voice style"
+  }
+}
