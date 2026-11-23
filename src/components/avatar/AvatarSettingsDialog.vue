@@ -3,6 +3,7 @@
 import { computed, ref, useTemplateRef } from 'vue'
 import { Check, Download, ExternalLink, ImagePlus, Loader2, Trash2, Upload, UserRound, Video } from '@lucide/vue'
 import { toast } from 'vue-sonner'
+import { useI18n } from 'vue-i18n'
 import {
   Dialog,
   DialogContent,
@@ -17,6 +18,7 @@ import { BACKGROUND_PRESETS, useAvatarSettingsStore } from '@/stores/avatarSetti
 
 const open = defineModel('open', { type: Boolean, default: false })
 
+const { t } = useI18n()
 const settings = useAvatarSettingsStore()
 const fileInput = useTemplateRef('fileInput')
 const avatarInput = useTemplateRef('avatarInput')
@@ -29,17 +31,17 @@ const FORMATS = [
 ]
 const visibleAvatars = computed(() => settings.avatars.filter((a) => a.format === format.value))
 
-/** Sitios para conseguir más modelos */
+/** Sitios para conseguir más modelos (label: texto literal, o labelKey: clave i18n; hintKey: clave i18n) */
 const LINKS = {
   vrm: [
-    { label: 'VRoid Hub', hint: 'Modelos gratis de la comunidad', url: 'https://hub.vroid.com/' },
-    { label: 'VRoid Studio', hint: 'Crea tu propio avatar (gratis)', url: 'https://vroid.com/studio' },
-    { label: 'Booth · VRM', hint: 'Modelos gratis y de pago', url: 'https://booth.pm/ja/search/VRM' },
+    { label: 'VRoid Hub', hintKey: 'avatar.settings.hint.vroidHub', url: 'https://hub.vroid.com/' },
+    { label: 'VRoid Studio', hintKey: 'avatar.settings.hint.vroidStudio', url: 'https://vroid.com/studio' },
+    { label: 'Booth · VRM', hintKey: 'avatar.settings.hint.boothMixed', url: 'https://booth.pm/ja/search/VRM' },
   ],
   live2d: [
-    { label: 'nizima', hint: 'Tienda oficial de Live2D', url: 'https://nizima.com/' },
-    { label: 'Booth · Live2D', hint: 'Modelos gratis y de pago', url: 'https://booth.pm/ja/search/Live2D' },
-    { label: 'Modelos de ejemplo', hint: 'Muestras gratis de Live2D Inc.', url: 'https://www.live2d.com/en/learn/sample/' },
+    { label: 'nizima', hintKey: 'avatar.settings.hint.nizima', url: 'https://nizima.com/' },
+    { label: 'Booth · Live2D', hintKey: 'avatar.settings.hint.boothMixed', url: 'https://booth.pm/ja/search/Live2D' },
+    { labelKey: 'avatar.settings.link.samples', hintKey: 'avatar.settings.hint.samples', url: 'https://www.live2d.com/en/learn/sample/' },
   ],
 }
 
@@ -48,7 +50,7 @@ const youtubeUrl = ref('')
 
 function applyYoutube() {
   if (settings.setYoutube(youtubeUrl.value)) youtubeUrl.value = ''
-  else toast.error('Ese link no parece un video de YouTube')
+  else toast.error(t('avatar.settings.badYoutube'))
 }
 
 const formatSize = (bytes) => (bytes ? `${(bytes / 1024 / 1024).toFixed(1)} MB` : '')
@@ -59,10 +61,10 @@ async function onAvatarFile(event) {
   if (!file) return
   try {
     await settings.addCustomAvatar(file)
-    toast.success(`Avatar «${file.name}» agregado`)
+    toast.success(t('avatar.settings.avatarAdded', { name: file.name }))
   } catch (error) {
     console.error(error)
-    toast.error(error.message || 'No se pudo guardar el avatar')
+    toast.error(error.message || t('avatar.settings.avatarSaveFailed'))
   }
 }
 
@@ -74,7 +76,7 @@ async function onFile(event) {
     await settings.setImage(file)
   } catch (error) {
     console.error(error)
-    toast.error('No se pudo usar esa imagen (¿es muy grande?)')
+    toast.error(t('avatar.settings.imageFailed'))
   }
 }
 </script>
@@ -83,14 +85,14 @@ async function onFile(event) {
   <Dialog v-model:open="open">
     <DialogContent class="max-h-[90dvh] overflow-y-auto sm:max-w-lg">
       <DialogHeader>
-        <DialogTitle>Ajustes</DialogTitle>
-        <DialogDescription>Personaliza el avatar y la escena.</DialogDescription>
+        <DialogTitle>{{ t('avatar.settings.title') }}</DialogTitle>
+        <DialogDescription>{{ t('avatar.settings.description') }}</DialogDescription>
       </DialogHeader>
 
       <!-- Avatar -->
       <section class="space-y-3">
         <div class="flex items-center justify-between">
-          <h3 class="text-sm font-semibold">Avatar</h3>
+          <h3 class="text-sm font-semibold">{{ t('avatar.settings.avatar') }}</h3>
           <div class="flex rounded-lg bg-muted p-0.5 text-xs">
             <button
               v-for="f in FORMATS"
@@ -123,12 +125,12 @@ async function onFile(event) {
               <span class="flex items-center gap-1 px-1.5 pb-1.5 text-[11px] text-muted-foreground">
                 <template v-if="avatar.id in settings.downloads">
                   <Loader2 class="size-3 animate-spin" />
-                  {{ settings.downloads[avatar.id] >= 0 ? `${Math.round(settings.downloads[avatar.id] * 100)}%` : 'Descargando' }}
+                  {{ settings.downloads[avatar.id] >= 0 ? `${Math.round(settings.downloads[avatar.id] * 100)}%` : t('avatar.settings.downloading') }}
                 </template>
                 <template v-else-if="!settings.isAvailable(avatar)">
                   <Download class="size-3" /> {{ formatSize(avatar.size) }}
                 </template>
-                <template v-else>{{ avatar.custom ? `Propio · ${formatSize(avatar.size)}` : avatar.credit }}</template>
+                <template v-else>{{ avatar.custom ? t('avatar.settings.own', { size: formatSize(avatar.size) }) : t('avatar.settings.included') }}</template>
               </span>
               <!-- Barra de descarga -->
               <span
@@ -144,7 +146,7 @@ async function onFile(event) {
             <button
               v-if="avatar.custom"
               type="button"
-              title="Eliminar avatar"
+              :title="t('avatar.settings.removeAvatar')"
               class="absolute left-1.5 top-1.5 hidden rounded-full bg-background/80 p-1 hover:text-destructive group-hover:block"
               @click="settings.removeCustomAvatar(avatar.id)"
             >
@@ -159,7 +161,7 @@ async function onFile(event) {
             @click="avatarInput?.click()"
           >
             <Upload class="size-6" />
-            <span class="text-xs font-medium">Subir propio</span>
+            <span class="text-xs font-medium">{{ t('avatar.settings.upload') }}</span>
             <span class="text-[11px]">{{ format === 'vrm' ? '.vrm' : '.zip (Cubism 3/4)' }}</span>
           </button>
           <input
@@ -172,7 +174,7 @@ async function onFile(event) {
         </div>
 
         <div class="space-y-1">
-          <p class="text-xs text-muted-foreground">Consigue más modelos:</p>
+          <p class="text-xs text-muted-foreground">{{ t('avatar.settings.moreModels') }}</p>
           <div class="flex flex-wrap gap-2">
             <a
               v-for="link in LINKS[format]"
@@ -180,10 +182,10 @@ async function onFile(event) {
               :href="link.url"
               target="_blank"
               rel="noopener noreferrer"
-              :title="link.hint"
+              :title="t(link.hintKey)"
               class="inline-flex items-center gap-1 rounded-full border px-3 py-1 text-xs transition hover:bg-muted"
             >
-              {{ link.label }} <ExternalLink class="size-3" />
+              {{ link.labelKey ? t(link.labelKey) : link.label }} <ExternalLink class="size-3" />
             </a>
           </div>
         </div>
@@ -194,14 +196,14 @@ async function onFile(event) {
 
       <!-- Fondo -->
       <section class="space-y-3 border-t pt-4">
-        <h3 class="text-sm font-semibold">Fondo</h3>
+        <h3 class="text-sm font-semibold">{{ t('avatar.settings.background') }}</h3>
 
         <div class="grid grid-cols-4 gap-2">
           <button
             v-for="preset in BACKGROUND_PRESETS"
             :key="preset.id"
             type="button"
-            :title="preset.label"
+            :title="t(preset.labelKey)"
             class="group flex flex-col items-center gap-1"
             @click="settings.background = preset.id"
           >
@@ -214,11 +216,11 @@ async function onFile(event) {
             >
               <Check v-if="settings.background === preset.id" class="size-5 text-white drop-shadow" />
             </span>
-            <span class="text-xs text-muted-foreground">{{ preset.label }}</span>
+            <span class="text-xs text-muted-foreground">{{ t(preset.labelKey) }}</span>
           </button>
 
           <!-- Color libre -->
-          <label class="group flex cursor-pointer flex-col items-center gap-1" title="Color">
+          <label class="group flex cursor-pointer flex-col items-center gap-1" :title="t('avatar.settings.color')">
             <span
               :class="[
                 'relative flex h-14 w-full items-center justify-center rounded-lg border-2 transition',
@@ -235,7 +237,7 @@ async function onFile(event) {
                 @click="settings.background = 'color'"
               />
             </span>
-            <span class="text-xs text-muted-foreground">Color</span>
+            <span class="text-xs text-muted-foreground">{{ t('avatar.settings.color') }}</span>
           </label>
         </div>
 
@@ -250,20 +252,20 @@ async function onFile(event) {
                 settings.background === 'youtube' ? 'border-primary' : 'border-transparent',
               ]"
               :style="{ backgroundImage: `url(https://i.ytimg.com/vi/${settings.youtubeId}/mqdefault.jpg)` }"
-              title="Usar este video"
+              :title="t('avatar.settings.useVideo')"
               @click="settings.background = 'youtube'"
             >
               <Video class="absolute bottom-1 right-1 size-4 text-white drop-shadow" />
             </button>
             <p class="flex-1 text-sm text-muted-foreground">
-              Video de YouTube de fondo
-              <span class="block text-xs">En bucle; el sonido se controla con el botón de video del menú.</span>
+              {{ t('avatar.settings.youtubeBg') }}
+              <span class="block text-xs">{{ t('avatar.settings.youtubeNote') }}</span>
             </p>
             <Button
               v-if="settings.youtubeId"
               size="icon"
               variant="ghost"
-              title="Quitar video"
+              :title="t('avatar.settings.removeVideo')"
               @click="settings.removeYoutube()"
             >
               <Trash2 class="size-4" />
@@ -271,7 +273,7 @@ async function onFile(event) {
           </div>
           <form class="flex gap-2" @submit.prevent="applyYoutube">
             <Input v-model="youtubeUrl" placeholder="https://www.youtube.com/watch?v=…" class="h-8 flex-1 text-sm" />
-            <Button size="sm" type="submit" :disabled="!youtubeUrl.trim()">Usar</Button>
+            <Button size="sm" type="submit" :disabled="!youtubeUrl.trim()">{{ t('avatar.settings.use') }}</Button>
           </form>
         </div>
 
@@ -285,22 +287,22 @@ async function onFile(event) {
               settings.background === 'image' ? 'border-primary' : 'border-transparent',
             ]"
             :style="{ backgroundImage: `url(${settings.image})` }"
-            title="Usar esta imagen"
+            :title="t('avatar.settings.useImage')"
             @click="settings.background = 'image'"
           />
           <div class="flex-1 text-sm text-muted-foreground">
-            {{ settings.image ? 'Tu imagen' : 'Usa una imagen propia como fondo' }}
+            {{ settings.image ? t('avatar.settings.yourImage') : t('avatar.settings.imagePrompt') }}
           </div>
           <input ref="fileInput" type="file" accept="image/*" class="hidden" @change="onFile" />
           <Button size="sm" variant="outline" @click="fileInput?.click()">
             <ImagePlus class="mr-1 size-4" />
-            {{ settings.image ? 'Cambiar' : 'Subir' }}
+            {{ settings.image ? t('avatar.settings.change') : t('avatar.settings.uploadImage') }}
           </Button>
           <Button
             v-if="settings.image"
             size="icon"
             variant="ghost"
-            title="Quitar imagen"
+            :title="t('avatar.settings.removeImage')"
             @click="settings.removeImage()"
           >
             <Trash2 class="size-4" />

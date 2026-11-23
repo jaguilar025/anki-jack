@@ -1,0 +1,162 @@
+{
+  "nav": {
+    "back": "戻る",
+    "history": "履歴",
+    "motions": "モーション",
+    "settings": "設定",
+    "video": "背景動画"
+  },
+  "view": {
+    "downloading": "アバターをダウンロード中…",
+    "unmute": "ミュート解除",
+    "mute": "ミュート",
+    "volume": "音量",
+    "duck": "アバターが話すときは動画の音量を下げる",
+    "quality": "画質: {quality}",
+    "qualityNote": "サイズや回線状況に応じてYouTubeが自動で調整します。",
+    "selectLevel": "レベルを選択",
+    "beginner": "初級",
+    "intermediate": "中級",
+    "advanced": "上級",
+    "start": "開始"
+  },
+  "log": {
+    "title": "履歴",
+    "empty": "まだメッセージがありません"
+  },
+  "input": {
+    "generating": "返信を生成中…",
+    "listening": "聞き取り中…",
+    "placeholder": "メッセージを入力…",
+    "micStop": "音声入力を停止",
+    "micStart": "話す(日本語)",
+    "send": "送信",
+    "stop": "停止",
+    "micDenied": "音声入力を使うにはマイクへのアクセスを許可してください",
+    "micError": "マイクエラー: {error}"
+  },
+  "motions": {
+    "title": "モーション",
+    "gestures": "ジェスチャー",
+    "emotions": "感情",
+    "animations": "アニメーション(.vrma)",
+    "removeAnimation": "アニメーションを削除",
+    "none": "アニメーションはまだありません。VRoid公式パックには無料で7つ入っています(3.3 MB)。",
+    "add": ".vrma または .zip を追加",
+    "pack": "VRoidパック(Booth)",
+    "noModelMotions": "このモデルには専用のアニメーションや表情がありません。",
+    "added": "アニメーションを追加しました",
+    "addedMany": "{count}件のアニメーションを追加しました",
+    "addFailed": "アニメーションを追加できませんでした",
+    "modelMotions": "モデルのアニメーション",
+    "modelExpressions": "モデルの表情"
+  },
+  "gesture": {
+    "nod": "うなずく",
+    "shake": "首を振る",
+    "tilt": "首をかしげる",
+    "leanBack": "驚く",
+    "droop": "うつむく",
+    "lookAround": "見回す",
+    "bow": "お辞儀"
+  },
+  "emotion": {
+    "happy": "うれしい",
+    "sad": "悲しい",
+    "angry": "怒り",
+    "surprised": "驚き",
+    "relaxed": "リラックス",
+    "think": "考え中"
+  },
+  "ambience": {
+    "day": "昼",
+    "sunset": "夕焼け",
+    "night": "夜",
+    "studio": "スタジオ",
+    "neon": "ネオン",
+    "sakura": "桜",
+    "title": "雰囲気",
+    "vrmFormat": "VRM(3D)· ライト",
+    "live2dFormat": "Live2D · カラーフィルター",
+    "fine": "詳細設定",
+    "custom": "· カスタム",
+    "intensity": "強さ",
+    "direction": "向き(← →)",
+    "height": "高さ",
+    "keyLight": "メインライト",
+    "skyGround": "空と地面のライト",
+    "skyGroundShort": "空 / 地面",
+    "rim": "リムライト",
+    "live2dNote": "Live2Dは2Dのためライトがありません。代わりにモデルの色を調整します。",
+    "brightness": "明るさ",
+    "saturation": "彩度",
+    "tint": "色味",
+    "reset": "リセット"
+  },
+  "background": {
+    "aurora": "オーロラ",
+    "sakura": "桜",
+    "sunset": "夕焼け",
+    "mint": "ミント",
+    "night": "夜",
+    "studio": "スタジオ",
+    "green": "グリーンスクリーン"
+  },
+  "stage": {
+    "loading": "アバターを読み込み中…",
+    "vrmError": "{url} を読み込めませんでした",
+    "vrmHint": "モデルを {path} に置いてください",
+    "live2dError": "Live2Dモデルを読み込めませんでした（.model3.json を含む .zip ですか？）"
+  },
+  "errors": {
+    "vrmInvalid": "このファイルにはVRMモデルが含まれていません",
+    "avatarMissing": "アバターのファイルは保存されていません",
+    "alreadyDownloading": "すでにダウンロード中です",
+    "badAvatarFile": ".vrm(3D)または .zip(Live2D)のファイルを使用してください",
+    "noVrma": ".vrma ファイルが見つかりません"
+  },
+  "settings": {
+    "title": "設定",
+    "description": "アバターとシーンをカスタマイズします。",
+    "avatar": "アバター",
+    "downloading": "ダウンロード中",
+    "own": "自作 · {size}",
+    "removeAvatar": "アバターを削除",
+    "upload": "自分のモデルを追加",
+    "moreModels": "モデルをもっと探す:",
+    "hint": {
+      "vroidHub": "コミュニティの無料モデル",
+      "vroidStudio": "自分のアバターを作成(無料)",
+      "boothMixed": "無料・有料モデル",
+      "nizima": "Live2D公式ストア",
+      "samples": "Live2D Inc.の無料サンプル"
+    },
+    "link": {
+      "samples": "サンプルモデル"
+    },
+    "avatarAdded": "アバター「{name}」を追加しました",
+    "avatarSaveFailed": "アバターを保存できませんでした",
+    "imageFailed": "この画像は使用できません(大きすぎませんか?)",
+    "badYoutube": "YouTube動画のリンクではないようです",
+    "background": "背景",
+    "color": "カラー",
+    "useVideo": "この動画を使う",
+    "youtubeBg": "YouTube動画を背景に",
+    "youtubeNote": "ループ再生。音声はメニューの動画ボタンで調整します。",
+    "removeVideo": "動画を削除",
+    "use": "使う",
+    "useImage": "この画像を使う",
+    "yourImage": "あなたの画像",
+    "imagePrompt": "自分の画像を背景にする",
+    "change": "変更",
+    "uploadImage": "アップロード",
+    "removeImage": "画像を削除",
+    "included": "付属"
+  },
+  "commands": {
+    "needsFormat": "このコマンドには{format}アバターが必要です",
+    "failed": "アニメーションを再生できませんでした",
+    "builtin": "内蔵",
+    "typeHint": "またはチャットで「{phrase}」と入力"
+  }
+}

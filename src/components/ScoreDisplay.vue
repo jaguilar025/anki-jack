@@ -1,5 +1,8 @@
 <script setup>
 import { motion } from 'motion-v'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 
 /**
  * Marcador de puntos y vidas.
@@ -21,7 +24,7 @@ defineProps({
       :animate="{ scale: [1, 1.2, 1] }"
       :transition="{ duration: 0.3 }"
     >
-      Puntos: {{ score }}
+      {{ t('study.score.points', { score }) }}
     </motion.div>
     <div class="flex">
       <motion.div

@@ -26,8 +26,11 @@ const ERROR_MESSAGE = {
  *   Se pasa a useAudio (p. ej. para el lip-sync del avatar).
  * @param {(emotion: string, opts?: { resetAfter?: number }) => void} [options.onEmotion]
  *   Emoción de cada respuesta: se llama al empezar a sonar la frase y con 'neutral' al terminar.
+ * @param {(text: string) => boolean} [options.onCommand]
+ *   Se llama con cada mensaje antes de enviarlo a la IA; si devuelve true, el mensaje era un
+ *   comando (p. ej. "dance go wild") y no se envía ni se agrega al historial.
  */
-export function useConversation({ onAudio, onEmotion } = {}) {
+export function useConversation({ onAudio, onEmotion, onCommand } = {}) {
   /** @type {import('vue').Ref<Array<{role: string, content: string, translation?: string, japanese?: string, style?: string}>>} */
   const messages = ref([])
   const input = ref('')
@@ -71,7 +74,8 @@ export function useConversation({ onAudio, onEmotion } = {}) {
     await onAudio?.(audio)
   }
 
-  const { playAudio, stopAllAudio, isSpeaking } = useAudio({ onAudio: handleAudio })
+  // Sin caché: en una conversación casi nunca se repite la misma frase
+  const { playAudio, stopAllAudio, isSpeaking } = useAudio({ onAudio: handleAudio, cache: false })
 
   /** Reproduce la frase y aplica su emoción mientras suena. */
   const speak = async (text, speaker, emotion) => {
@@ -162,6 +166,9 @@ export function useConversation({ onAudio, onEmotion } = {}) {
 
     const userMessage = input.value.trim()
     input.value = ''
+
+    // Comandos (no van a la IA ni al historial, para no confundir la conversación)
+    if (onCommand?.(userMessage)) return
     isLoading.value = true
 
     // Capturar el historial antes de añadir el mensaje del usuario

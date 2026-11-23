@@ -1,0 +1,44 @@
+{
+  "loading": "Loading…",
+  "review": "Review {n}",
+  "reviewDone": "Review {n} complete",
+  "gameOver": "Game over",
+  "grade": "Grade: {grade} / 10",
+  "noFailed": "You have no missed words left!",
+  "reviewFailed": "Review missed ({n})",
+  "restartAll": "Restart all",
+  "backHome": "Back to home",
+  "card": {
+    "skip": "Skip →",
+    "playAudio": "Play audio (Ctrl)",
+    "furigana": "Furigana",
+    "placeholder": "Type your answer...",
+    "check": "Check",
+    "showAnswer": "Show answer",
+    "next": "Next"
+  },
+  "table": {
+    "audio": "Audio",
+    "translation": "Translation",
+    "listen": "Listen to {word}"
+  },
+  "conversation": {
+    "title": "会話練習 (Conversation Practice)",
+    "selectLevel": "Select your level",
+    "levelLabel": "Japanese level",
+    "start": "Start conversation",
+    "beginner": "Beginner",
+    "intermediate": "Intermediate",
+    "advanced": "Advanced"
+  },
+  "chat": {
+    "placeholder": "Type a message...",
+    "send": "Send",
+    "speak": "Listen to message",
+    "hideTranslation": "Hide translation",
+    "showTranslation": "Show translation"
+  },
+  "score": {
+    "points": "Points: {score}"
+  }
+}

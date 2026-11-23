@@ -1,0 +1,30 @@
+{
+  "open": "Abrir menú",
+  "title": "Menú",
+  "sections": {
+    "preferences": "Preferencias",
+    "data": "Datos",
+    "navigation": "Navegación"
+  },
+  "theme": "Tema",
+  "themeDark": "Oscuro",
+  "themeLight": "Claro",
+  "language": "Idioma",
+  "home": "Volver a la pantalla de inicio",
+  "about": "Acerca de",
+  "aboutTitle": "Acerca de",
+  "aboutDesc": "App personal para estudiar japonés: vocabulario, kanji y conversación con avatar.",
+  "creditsTitle": "Créditos y licencias",
+  "creditsNote": "Datos, modelos y código de terceros usados en la app, con sus licencias.",
+  "license": "Licencia",
+  "uses": {
+    "kanjidic": "Significados y lecturas de los kanji",
+    "kanjivg": "Orden de trazos de los kanji",
+    "airi": "Base del avatar 3D (código adaptado y animación en reposo)",
+    "wlipsync": "Sincronización de labios",
+    "vroid": "Avatares 3D de ejemplo",
+    "hiyori": "Avatar Live2D de ejemplo",
+    "cubism": "Motor de modelos Live2D",
+    "oss": "Y otras librerías de código abierto (licencias MIT y similares)"
+  }
+}

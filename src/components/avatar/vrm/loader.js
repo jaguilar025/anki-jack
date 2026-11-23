@@ -1,6 +1,7 @@
 // Carga de modelos VRM y animaciones VRMA.
 // Adaptado de moeru-ai/airi (MIT), packages/stage-ui-three/src/composables/vrm/{loader,core}.ts
 // commit 32ffe96dc
+import { i18n } from '@/i18n'
 import { VRMLoaderPlugin, VRMUtils } from '@pixiv/three-vrm'
 import {
   VRMAnimationLoaderPlugin,
@@ -29,7 +30,7 @@ function getLoader() {
 export async function loadVrm(url, onProgress) {
   const gltf = await getLoader().loadAsync(url, onProgress)
   const vrm = gltf.userData.vrm
-  if (!vrm) throw new Error('El archivo no contiene un modelo VRM')
+  if (!vrm) throw new Error(i18n.global.t('avatar.errors.vrmInvalid'))
 
   // Mejora el rendimiento
   VRMUtils.removeUnnecessaryVertices(vrm.scene)

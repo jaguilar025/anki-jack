@@ -1,0 +1,62 @@
+{
+  "draw": {
+    "title": "Draw a kanji",
+    "hint": "Write with the correct stroke order: it improves recognition.",
+    "candidates": "Candidates",
+    "view": "View {kanji}",
+    "empty": "Start drawing and similar kanji will appear here.",
+    "missing": "is not in the dictionary.",
+    "viewInJisho": "View on Jisho",
+    "errors": {
+      "recognize": "Could not recognize the drawing. Check your connection and try again.",
+      "info": "Could not load the kanji information"
+    }
+  },
+  "canvas": {
+    "undo": "Undo stroke",
+    "clear": "Clear"
+  },
+  "lens": {
+    "unsupportedTitle": "App not supported on desktop",
+    "unsupportedText": "This app requires a mobile camera to work properly. Please open it on a mobile device.",
+    "backHome": "Back to home",
+    "capturedAlt": "Captured kanji",
+    "processing": "Processing image...",
+    "errors": {
+      "cameraDenied": "Camera access is denied. Enable permissions in your settings.",
+      "videoPlay": "Could not play the camera video",
+      "cameraAccess": "Could not access the camera. Make sure permissions are enabled.",
+      "process": "Error processing the image",
+      "captureNotReady": "Could not capture the image. The camera is not ready.",
+      "canvasContext": "Could not get the canvas context.",
+      "cameraNotReady": "The camera is not ready to capture the image."
+    }
+  },
+  "info": {
+    "newCapture": "New capture",
+    "strokeOrderAlt": "Stroke order of {kanji}",
+    "strokes": "Strokes: {count}",
+    "meaning": "Meaning:",
+    "onyomi": "Onyomi:",
+    "kunyomi": "Kunyomi:",
+    "vocabulary": "Vocabulary:"
+  },
+  "details": {
+    "on": "On",
+    "kun": "Kun",
+    "names": "Names",
+    "strokes": "Strokes",
+    "jlpt": "JLPT",
+    "grade": "Grade",
+    "frequency": "Frequency",
+    "frequencyValue": "#{rank} of 2,500",
+    "gradePrimary": "Elementary, grade {grade}",
+    "gradeSecondary": "Secondary (jōyō)",
+    "gradeNames": "Names (jinmeiyō)",
+    "vocabulary": "Vocabulary"
+  },
+  "order": {
+    "missing": "No stroke data for this kanji",
+    "repeat": "Replay · {count} strokes"
+  }
+}

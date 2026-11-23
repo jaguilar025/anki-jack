@@ -1,0 +1,62 @@
+{
+  "draw": {
+    "title": "Dibuja un kanji",
+    "hint": "Escribe con el orden de trazos correcto: mejora el reconocimiento.",
+    "candidates": "Candidatos",
+    "view": "Ver {kanji}",
+    "empty": "Empieza a dibujar y aquí aparecerán los kanji parecidos.",
+    "missing": "no está en el diccionario.",
+    "viewInJisho": "Verlo en Jisho",
+    "errors": {
+      "recognize": "No se pudo reconocer el dibujo. Revisa tu conexión e inténtalo de nuevo.",
+      "info": "No se pudo cargar la información del kanji"
+    }
+  },
+  "canvas": {
+    "undo": "Deshacer trazo",
+    "clear": "Limpiar"
+  },
+  "lens": {
+    "unsupportedTitle": "Aplicación no soportada en PC",
+    "unsupportedText": "Esta aplicación requiere una cámara móvil para funcionar correctamente. Por favor, accede desde un dispositivo móvil.",
+    "backHome": "Volver al inicio",
+    "capturedAlt": "Kanji capturado",
+    "processing": "Procesando imagen...",
+    "errors": {
+      "cameraDenied": "El acceso a la cámara está denegado. Habilita los permisos en la configuración.",
+      "videoPlay": "No se pudo reproducir el video de la cámara",
+      "cameraAccess": "No se pudo acceder a la cámara. Asegúrate de que los permisos estén habilitados.",
+      "process": "Error procesando la imagen",
+      "captureNotReady": "No se pudo capturar la imagen. La cámara no está lista.",
+      "canvasContext": "No se pudo obtener el contexto del lienzo.",
+      "cameraNotReady": "La cámara no está lista para capturar la imagen."
+    }
+  },
+  "info": {
+    "newCapture": "Nueva captura",
+    "strokeOrderAlt": "Orden de trazos de {kanji}",
+    "strokes": "Trazos: {count}",
+    "meaning": "Significado:",
+    "onyomi": "Onyomi:",
+    "kunyomi": "Kunyomi:",
+    "vocabulary": "Vocabulario:"
+  },
+  "details": {
+    "on": "On",
+    "kun": "Kun",
+    "names": "Nombres",
+    "strokes": "Trazos",
+    "jlpt": "JLPT",
+    "grade": "Grado",
+    "frequency": "Frecuencia",
+    "frequencyValue": "#{rank} de 2.500",
+    "gradePrimary": "Primaria, {grade}.º",
+    "gradeSecondary": "Secundaria (jōyō)",
+    "gradeNames": "Nombres (jinmeiyō)",
+    "vocabulary": "Vocabulario"
+  },
+  "order": {
+    "missing": "Sin datos de trazos para este kanji",
+    "repeat": "Repetir · {count} trazos"
+  }
+}

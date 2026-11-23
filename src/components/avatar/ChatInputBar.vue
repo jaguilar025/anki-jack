@@ -6,6 +6,7 @@
 import { computed, nextTick, useTemplateRef, watch } from 'vue'
 import { Loader2, Mic, Send, Square } from '@lucide/vue'
 import { toast } from 'vue-sonner'
+import { useI18n } from 'vue-i18n'
 import { useSpeechRecognition } from '@/composables/useSpeechRecognition'
 
 const props = defineProps({
@@ -15,6 +16,7 @@ const props = defineProps({
 const text = defineModel({ type: String, default: '' })
 const emit = defineEmits(['send', 'stop'])
 
+const { t } = useI18n()
 const textarea = useTemplateRef('textarea')
 
 const mic = useSpeechRecognition({
@@ -28,16 +30,16 @@ const mic = useSpeechRecognition({
 })
 
 watch(mic.error, (e) => {
-  if (e === 'not-allowed') toast.error('Permite el acceso al micrófono para usar el dictado')
-  else if (e) toast.error(`Error del micrófono: ${e}`)
+  if (e === 'not-allowed') toast.error(t('avatar.input.micDenied'))
+  else if (e) toast.error(t('avatar.input.micError', { error: e }))
 })
 
 const canSend = computed(() => !props.loading && text.value.trim().length > 0)
 
 const placeholder = computed(() => {
-  if (props.loading) return 'Generando respuesta…'
-  if (mic.isListening.value) return 'Escuchando…'
-  return 'Escribe un mensaje…'
+  if (props.loading) return t('avatar.input.generating')
+  if (mic.isListening.value) return t('avatar.input.listening')
+  return t('avatar.input.placeholder')
 })
 
 // Crece con el texto hasta ~5 líneas
@@ -87,7 +89,7 @@ function stop() {
     <button
       v-if="mic.isSupported"
       type="button"
-      :title="mic.isListening.value ? 'Detener dictado' : 'Hablar (japonés)'"
+      :title="mic.isListening.value ? t('avatar.input.micStop') : t('avatar.input.micStart')"
       :disabled="loading || speaking"
       :class="[
         'flex size-10 shrink-0 items-center justify-center rounded-full transition-colors disabled:opacity-40 sm:size-11',
@@ -102,7 +104,7 @@ function stop() {
 
     <button
       type="button"
-      title="Enviar"
+      :title="t('avatar.input.send')"
       :disabled="!canSend"
       class="flex size-10 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-md transition hover:brightness-110 disabled:opacity-40 disabled:shadow-none sm:size-11"
       @click="send"
@@ -113,7 +115,7 @@ function stop() {
 
     <button
       type="button"
-      title="Detener"
+      :title="t('avatar.input.stop')"
       class="flex size-10 shrink-0 items-center justify-center rounded-full bg-foreground/10 transition-colors hover:bg-foreground/20 sm:size-11"
       @click="stop"
     >

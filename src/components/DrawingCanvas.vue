@@ -1,180 +1,164 @@
 <script setup>
 /**
- * DrawingCanvas
+ * DrawingCanvas: lienzo para escribir un kanji a mano. Guarda los TRAZOS (no una imagen),
+ * que es lo que usan los reconocedores de escritura.
  * Props:
- *  - disabled (Boolean, default false): desactiva el dibujo y los botones.
+ *  - disabled (Boolean): desactiva el dibujo y los botones.
  * Emits:
- *  - image-capture(imageData: string): data URL JPEG (calidad 0.8) al pulsar "Confirmar dibujo".
- *    (React: onImageCapture -> padre usa @image-capture="fn")
+ *  - strokes-change(strokes): al terminar, deshacer o borrar un trazo.
+ *    strokes: Array<Array<{ x, y, t }>> con x, y normalizados (0..1) y t en ms desde el primer trazo.
+ * La cuadrícula guía va en un fondo aparte (CSS): no forma parte del dibujo.
  */
-import { onMounted, useTemplateRef } from 'vue'
+import { onBeforeUnmount, onMounted, ref, useTemplateRef } from 'vue'
 import { Button } from '@/components/ui/button'
-import { RotateCcw } from '@lucide/vue'
+import { RotateCcw, Undo2 } from '@lucide/vue'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 
 const props = defineProps({
   disabled: { type: Boolean, default: false },
 })
-const emit = defineEmits(['image-capture'])
+const emit = defineEmits(['strokes-change'])
 
 const canvasRef = useTemplateRef('canvasRef')
-let isDrawing = false
-let context = null
+const strokes = ref([])
+let current = null
+let startTime = 0
+let ctx = null
+let size = 0
+let resizeObserver = null
 
-onMounted(() => {
+// --- Tamaño (nítido en pantallas de alta densidad) ---
+
+function resize() {
   const canvas = canvasRef.value
   if (!canvas) return
+  size = canvas.clientWidth
+  const dpr = window.devicePixelRatio || 1
+  canvas.width = Math.round(size * dpr)
+  canvas.height = Math.round(size * dpr)
+  ctx = canvas.getContext('2d')
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
+  redraw()
+}
 
-  const ctx = canvas.getContext('2d')
-  if (!ctx) return
+// --- Dibujo ---
 
-  // Tamaño del canvas
-  const container = canvas.parentElement
-  if (container) {
-    const size = Math.min(container.clientWidth, container.clientHeight) * 0.9
-    canvas.width = size
-    canvas.height = size
-  }
-
-  // Configurar contexto de dibujo
-  ctx.strokeStyle = '#000000'
-  ctx.lineWidth = 5
+function setStyle() {
+  ctx.strokeStyle = getComputedStyle(canvasRef.value).color
+  ctx.lineWidth = Math.max(4, size / 45)
   ctx.lineCap = 'round'
   ctx.lineJoin = 'round'
-
-  // Fondo blanco
-  ctx.fillStyle = '#ffffff'
-  ctx.fillRect(0, 0, canvas.width, canvas.height)
-
-  drawGrid(ctx, canvas.width, canvas.height)
-
-  context = ctx
-})
-
-function drawGrid(ctx, width, height) {
-  ctx.strokeStyle = '#e5e5e5'
-  ctx.lineWidth = 1
-
-  const gridSize = 20
-  for (let x = 0; x <= width; x += gridSize) {
-    ctx.beginPath()
-    ctx.moveTo(x, 0)
-    ctx.lineTo(x, height)
-    ctx.stroke()
-  }
-
-  for (let y = 0; y <= height; y += gridSize) {
-    ctx.beginPath()
-    ctx.moveTo(0, y)
-    ctx.lineTo(width, y)
-    ctx.stroke()
-  }
-
-  // Líneas centrales (más gruesas)
-  ctx.strokeStyle = '#d1d5db'
-  ctx.lineWidth = 2
-
-  ctx.beginPath()
-  ctx.moveTo(width / 2, 0)
-  ctx.lineTo(width / 2, height)
-  ctx.stroke()
-
-  ctx.beginPath()
-  ctx.moveTo(0, height / 2)
-  ctx.lineTo(width, height / 2)
-  ctx.stroke()
-
-  // Restablecer estilo para dibujar
-  ctx.strokeStyle = '#000000'
-  ctx.lineWidth = 4
 }
 
-function getCoordinates(event) {
-  const canvas = canvasRef.value
-  if (!canvas) return { x: 0, y: 0 }
+function drawStroke(stroke) {
+  if (!stroke.length) return
+  ctx.beginPath()
+  ctx.moveTo(stroke[0].x * size, stroke[0].y * size)
+  // Un toque sin movimiento se dibuja como punto
+  if (stroke.length === 1) ctx.lineTo(stroke[0].x * size + 0.1, stroke[0].y * size)
+  for (const p of stroke.slice(1)) ctx.lineTo(p.x * size, p.y * size)
+  ctx.stroke()
+}
 
-  const rect = canvas.getBoundingClientRect()
-  const scaleX = canvas.width / rect.width
-  const scaleY = canvas.height / rect.height
+function redraw() {
+  if (!ctx) return
+  ctx.clearRect(0, 0, size, size)
+  setStyle()
+  strokes.value.forEach(drawStroke)
+}
 
-  if (event instanceof MouseEvent) {
-    return {
-      x: (event.clientX - rect.left) * scaleX,
-      y: (event.clientY - rect.top) * scaleY,
-    }
-  }
-  const touch = event.touches[0] || event.changedTouches[0]
+function point(event) {
+  const rect = canvasRef.value.getBoundingClientRect()
   return {
-    x: (touch.clientX - rect.left) * scaleX,
-    y: (touch.clientY - rect.top) * scaleY,
+    x: Math.min(1, Math.max(0, (event.clientX - rect.left) / rect.width)),
+    y: Math.min(1, Math.max(0, (event.clientY - rect.top) / rect.height)),
+    t: performance.now() - startTime,
   }
 }
 
-function startDrawing(event) {
-  if (props.disabled || !context) return
-
+function onPointerDown(event) {
+  if (props.disabled || !event.isPrimary) return
   event.preventDefault()
-  isDrawing = true
-
-  const { x, y } = getCoordinates(event)
-  context.beginPath()
-  context.moveTo(x, y)
+  canvasRef.value.setPointerCapture(event.pointerId)
+  if (!strokes.value.length) startTime = performance.now()
+  current = [point(event)]
+  setStyle()
+  drawStroke(current)
 }
 
-function draw(event) {
-  if (!isDrawing || props.disabled || !context) return
-
+function onPointerMove(event) {
+  if (!current) return
   event.preventDefault()
-  const { x, y } = getCoordinates(event)
-  context.lineTo(x, y)
-  context.stroke()
+  // Con lápiz/táctil el navegador agrupa puntos: se usan todos para un trazo suave
+  const events = event.getCoalescedEvents?.() ?? [event]
+  const prev = current[current.length - 1]
+  for (const e of events) current.push(point(e))
+  ctx.beginPath()
+  ctx.moveTo(prev.x * size, prev.y * size)
+  for (const p of current.slice(-events.length)) ctx.lineTo(p.x * size, p.y * size)
+  ctx.stroke()
 }
 
-function stopDrawing() {
-  isDrawing = false
+function onPointerUp() {
+  if (!current) return
+  strokes.value = [...strokes.value, current]
+  current = null
+  emit('strokes-change', strokes.value)
 }
 
-function clearCanvas() {
-  const canvas = canvasRef.value
-  if (!canvas || !context) return
-
-  context.fillStyle = '#ffffff'
-  context.fillRect(0, 0, canvas.width, canvas.height)
-  drawGrid(context, canvas.width, canvas.height)
+function undo() {
+  if (!strokes.value.length) return
+  strokes.value = strokes.value.slice(0, -1)
+  redraw()
+  emit('strokes-change', strokes.value)
 }
 
-function captureDrawing() {
-  const canvas = canvasRef.value
-  if (!canvas) return
-
-  emit('image-capture', canvas.toDataURL('image/jpeg', 0.8))
+function clear() {
+  strokes.value = []
+  redraw()
+  emit('strokes-change', strokes.value)
 }
+
+defineExpose({ clear })
+
+onMounted(() => {
+  resizeObserver = new ResizeObserver(resize)
+  resizeObserver.observe(canvasRef.value)
+})
+onBeforeUnmount(() => resizeObserver?.disconnect())
 </script>
 
 <template>
-  <div class="flex flex-col items-center w-full">
-    <div class="flex items-center justify-center w-full">
-      <canvas
-        ref="canvasRef"
-        class="border-2 border-gray-300 rounded-lg cursor-crosshair touch-none"
-        :style="{ minWidth: '100%', minHeight: '100%' }"
-        @mousedown="startDrawing"
-        @mousemove="draw"
-        @mouseup="stopDrawing"
-        @mouseout="stopDrawing"
-        @touchstart="startDrawing"
-        @touchmove="draw"
-        @touchend="stopDrawing"
-      />
-    </div>
+  <div class="flex w-full flex-col items-center gap-3">
+    <!-- Cuadrícula guía con CSS (cruz central, como un cuaderno de práctica) -->
+    <canvas
+      ref="canvasRef"
+      class="kanji-grid aspect-square w-full max-w-[420px] cursor-crosshair touch-none rounded-lg border-2 border-border bg-white text-black"
+      @pointerdown="onPointerDown"
+      @pointermove="onPointerMove"
+      @pointerup="onPointerUp"
+      @pointercancel="onPointerUp"
+    />
 
-    <div class="flex flex-row justify-between w-full mt-20 mb-2">
-      <Button variant="outline" :disabled="disabled" @click="clearCanvas">
-        <RotateCcw class="mr-2 h-4 w-4" />
-        Limpiar
+    <div class="flex w-full max-w-[420px] justify-between gap-2">
+      <Button variant="outline" :disabled="disabled || !strokes.length" @click="undo">
+        <Undo2 class="mr-2 h-4 w-4" />
+        {{ t('kanji.canvas.undo') }}
       </Button>
-      <Button :disabled="disabled" @click="captureDrawing">
-        Confirmar dibujo
+      <Button variant="outline" :disabled="disabled || !strokes.length" @click="clear">
+        <RotateCcw class="mr-2 h-4 w-4" />
+        {{ t('kanji.canvas.clear') }}
       </Button>
     </div>
   </div>
 </template>
+
+<style scoped>
+.kanji-grid {
+  background-image:
+    linear-gradient(to right, transparent calc(50% - 1px), #d1d5db calc(50% - 1px), #d1d5db calc(50% + 1px), transparent calc(50% + 1px)),
+    linear-gradient(to bottom, transparent calc(50% - 1px), #d1d5db calc(50% - 1px), #d1d5db calc(50% + 1px), transparent calc(50% + 1px));
+}
+</style>

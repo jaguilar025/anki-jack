@@ -14,6 +14,6 @@ const { isDark, toggleDark } = useTheme()
   <Button variant="outline" size="icon" @click="toggleDark()">
     <Sun v-if="isDark" class="h-[1.2rem] w-[1.2rem]" />
     <Moon v-else class="h-[1.2rem] w-[1.2rem]" />
-    <span class="sr-only">Toggle theme</span>
+    <span class="sr-only">{{ $t('common.toggleTheme') }}</span>
   </Button>
 </template>

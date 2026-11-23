@@ -1,0 +1,44 @@
+{
+  "loading": "読み込み中…",
+  "review": "復習 {n}",
+  "reviewDone": "復習 {n} 完了",
+  "gameOver": "終了",
+  "grade": "評価: {grade} / 10",
+  "noFailed": "間違えた単語はもうありません！",
+  "reviewFailed": "間違えた単語を復習 ({n})",
+  "restartAll": "最初からやり直す",
+  "backHome": "ホームに戻る",
+  "card": {
+    "skip": "スキップ →",
+    "playAudio": "音声を再生 (Ctrl)",
+    "furigana": "ふりがな",
+    "placeholder": "答えを入力...",
+    "check": "確認",
+    "showAnswer": "答えを見る",
+    "next": "次へ"
+  },
+  "table": {
+    "audio": "音声",
+    "translation": "翻訳",
+    "listen": "{word} を聞く"
+  },
+  "conversation": {
+    "title": "会話練習",
+    "selectLevel": "レベルを選択",
+    "levelLabel": "日本語レベル",
+    "start": "会話を始める",
+    "beginner": "初級",
+    "intermediate": "中級",
+    "advanced": "上級"
+  },
+  "chat": {
+    "placeholder": "メッセージを入力...",
+    "send": "送信",
+    "speak": "メッセージを聞く",
+    "hideTranslation": "翻訳を隠す",
+    "showTranslation": "翻訳を表示"
+  },
+  "score": {
+    "points": "ポイント: {score}"
+  }
+}

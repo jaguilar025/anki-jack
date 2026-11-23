@@ -2,6 +2,7 @@
 // Historial de la conversación en un panel flotante sobre el avatar.
 import { nextTick, onMounted, useTemplateRef, watch } from 'vue'
 import { X } from '@lucide/vue'
+import { useI18n } from 'vue-i18n'
 import MessageBubble from '@/components/MessageBubble.vue'
 
 const props = defineProps({
@@ -11,6 +12,7 @@ const props = defineProps({
 })
 const emit = defineEmits(['close'])
 
+const { t } = useI18n()
 const list = useTemplateRef('list')
 
 function scrollToBottom(behavior = 'smooth') {
@@ -24,10 +26,10 @@ onMounted(() => scrollToBottom('instant'))
 <template>
   <aside class="glass flex flex-col overflow-hidden rounded-3xl">
     <header class="flex items-center justify-between border-b border-foreground/10 px-4 py-3">
-      <h2 class="font-bold">会話ログ <span class="text-sm font-normal text-muted-foreground">(Historial)</span></h2>
+      <h2 class="font-bold">会話ログ <span class="text-sm font-normal text-muted-foreground">({{ t('avatar.log.title') }})</span></h2>
       <button
         type="button"
-        title="Cerrar"
+        :title="$t('common.close')"
         class="flex size-8 items-center justify-center rounded-full hover:bg-foreground/10"
         @click="emit('close')"
       >
@@ -37,7 +39,7 @@ onMounted(() => scrollToBottom('instant'))
 
     <div ref="list" class="flex-1 space-y-3 overflow-y-auto p-4">
       <p v-if="!messages.length" class="py-8 text-center text-sm text-muted-foreground">
-        Aún no hay mensajes
+        {{ t('avatar.log.empty') }}
       </p>
       <MessageBubble
         v-for="(message, index) in messages"

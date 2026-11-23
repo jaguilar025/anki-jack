@@ -11,12 +11,14 @@ import { motion } from 'motion-v'
 import MessageBubble from '@/components/MessageBubble.vue'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
+import { useI18n } from 'vue-i18n'
 
 defineProps({
   messages: { type: Array, required: true },
   isLoading: { type: Boolean, default: false },
   character: { type: Object, required: true },
 })
+const { t } = useI18n()
 const input = defineModel({ type: String, default: '' })
 const emit = defineEmits(['send'])
 
@@ -59,8 +61,8 @@ defineExpose({ messagesEnd, scrollToBottom })
 
     <div class="p-4 border-t bg-background">
       <form class="max-w-3xl mx-auto flex gap-2" @submit.prevent="emit('send')">
-        <Input v-model="input" placeholder="Escribe un mensaje..." class="flex-1" :disabled="isLoading" />
-        <Button type="submit" size="icon" :disabled="isLoading || !input.trim()">
+        <Input v-model="input" :placeholder="t('study.chat.placeholder')" class="flex-1" :disabled="isLoading" />
+        <Button type="submit" size="icon" :aria-label="t('study.chat.send')" :disabled="isLoading || !input.trim()">
           <Send class="h-4 w-4" />
         </Button>
       </form>

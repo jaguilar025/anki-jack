@@ -7,8 +7,10 @@
 import { computed, ref, useTemplateRef } from 'vue'
 import { ExternalLink, Trash2, Upload, X } from '@lucide/vue'
 import { toast } from 'vue-sonner'
+import { useI18n } from 'vue-i18n'
 import { GESTURES, EMOTION_LABELS } from './motion/procedural'
 import { useAvatarSettingsStore } from '@/stores/avatarSettings'
+import { CHAT_COMMANDS } from '@/data/chatCommands'
 
 const props = defineProps({
   format: { type: String, default: 'vrm' },
@@ -16,7 +18,13 @@ const props = defineProps({
 })
 const emit = defineEmits(['play', 'close'])
 
+const { t } = useI18n()
 const settings = useAvatarSettingsStore()
+
+// Animaciones incluidas en la app (las de los comandos del chat compatibles con este avatar)
+const builtinAnimations = computed(() =>
+  CHAT_COMMANDS.filter((c) => c.action.type === 'animation' && c.formats.includes(props.format)),
+)
 const fileInput = useTemplateRef('fileInput')
 const lastPlayed = ref(null)
 
@@ -26,17 +34,17 @@ const VROID_PACK_URL = 'https://booth.pm/ja/items/5512385'
 const sections = computed(() => {
   const list = [
     {
-      title: 'Gestos',
-      items: Object.entries(GESTURES).map(([name, g]) => ({ id: `gesture:${name}`, label: g.label, kind: 'gesture', name })),
+      title: t('avatar.motions.gestures'),
+      items: Object.entries(GESTURES).map(([name, g]) => ({ id: `gesture:${name}`, label: t(g.labelKey), kind: 'gesture', name })),
     },
     {
-      title: 'Emociones',
-      items: Object.entries(EMOTION_LABELS).map(([name, label]) => ({ id: `emotion:${name}`, label, kind: 'emotion', name })),
+      title: t('avatar.motions.emotions'),
+      items: Object.entries(EMOTION_LABELS).map(([name, labelKey]) => ({ id: `emotion:${name}`, label: t(labelKey), kind: 'emotion', name })),
     },
   ]
   if (props.format === 'live2d') {
     const groups = Map.groupBy(props.modelMotions, (m) => m.group)
-    for (const [title, items] of groups) list.push({ title, items })
+    for (const [title, items] of groups) list.push({ title: t(title), items })
   }
   return list
 })
@@ -53,10 +61,10 @@ async function onFile(event) {
   if (!file) return
   try {
     const n = await settings.addAnimations(file)
-    toast.success(n === 1 ? 'Animación agregada' : `${n} animaciones agregadas`)
+    toast.success(n === 1 ? t('avatar.motions.added') : t('avatar.motions.addedMany', { count: n }))
   } catch (error) {
     console.error(error)
-    toast.error(error.message || 'No se pudieron agregar las animaciones')
+    toast.error(error.message || t('avatar.motions.addFailed'))
   }
 }
 
@@ -70,12 +78,12 @@ const chip = (id) => [
   <aside class="glass flex flex-col overflow-hidden rounded-3xl">
     <header class="flex items-center justify-between border-b border-foreground/10 px-4 py-3">
       <h2 class="font-bold">
-        Movimientos
+        {{ t('avatar.motions.title') }}
         <span class="text-xs font-normal text-muted-foreground">· {{ format === 'vrm' ? 'VRM (3D)' : 'Live2D' }}</span>
       </h2>
       <button
         type="button"
-        title="Cerrar"
+        :title="$t('common.close')"
         class="flex size-8 items-center justify-center rounded-full hover:bg-foreground/10"
         @click="emit('close')"
       >
@@ -93,9 +101,24 @@ const chip = (id) => [
         </div>
       </section>
 
+      <!-- Animaciones incluidas (también se lanzan escribiendo su comando en el chat) -->
+      <section v-if="builtinAnimations.length" class="space-y-2">
+        <h3 class="text-xs font-semibold text-muted-foreground">{{ t('avatar.commands.builtin') }}</h3>
+        <div v-for="cmd in builtinAnimations" :key="cmd.id" class="flex flex-wrap items-center gap-2">
+          <button
+            type="button"
+            :class="chip(cmd.id)"
+            @click="play({ id: cmd.id, label: cmd.label, kind: 'builtin', url: cmd.action.url })"
+          >
+            {{ cmd.label }}
+          </button>
+          <span class="text-[11px] text-muted-foreground">{{ t('avatar.commands.typeHint', { phrase: cmd.phrases[0] }) }}</span>
+        </div>
+      </section>
+
       <!-- VRM: animaciones .vrma -->
       <section v-if="format === 'vrm'" class="space-y-2">
-        <h3 class="text-xs font-semibold text-muted-foreground">Animaciones (.vrma)</h3>
+        <h3 class="text-xs font-semibold text-muted-foreground">{{ t('avatar.motions.animations') }}</h3>
         <div v-if="settings.customAnimations.length" class="flex flex-wrap gap-1.5">
           <span v-for="anim in settings.customAnimations" :key="anim.id" class="group relative">
             <button
@@ -107,7 +130,7 @@ const chip = (id) => [
             </button>
             <button
               type="button"
-              title="Quitar animación"
+              :title="t('avatar.motions.removeAnimation')"
               class="absolute -right-1 -top-1 hidden rounded-full bg-background p-0.5 shadow group-hover:block hover:text-destructive"
               @click="settings.removeAnimation(anim.id)"
             >
@@ -116,7 +139,7 @@ const chip = (id) => [
           </span>
         </div>
         <p v-else class="text-xs text-muted-foreground">
-          Aún no hay animaciones. El pack oficial de VRoid trae 7 gratis (3.3 MB).
+          {{ t('avatar.motions.none') }}
         </p>
         <div class="flex flex-wrap items-center gap-2">
           <button
@@ -124,7 +147,7 @@ const chip = (id) => [
             class="inline-flex items-center gap-1 rounded-full bg-foreground/10 px-3 py-1.5 text-xs hover:bg-foreground/20"
             @click="fileInput?.click()"
           >
-            <Upload class="size-3.5" /> Agregar .vrma o .zip
+            <Upload class="size-3.5" /> {{ t('avatar.motions.add') }}
           </button>
           <a
             :href="VROID_PACK_URL"
@@ -132,14 +155,14 @@ const chip = (id) => [
             rel="noopener noreferrer"
             class="inline-flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground"
           >
-            Pack de VRoid (Booth) <ExternalLink class="size-3" />
+            {{ t('avatar.motions.pack') }} <ExternalLink class="size-3" />
           </a>
         </div>
         <input ref="fileInput" type="file" accept=".vrma,.zip" class="hidden" @change="onFile" />
       </section>
 
       <p v-if="format === 'live2d' && !modelMotions.length" class="text-xs text-muted-foreground">
-        Este modelo no trae animaciones ni expresiones propias.
+        {{ t('avatar.motions.noModelMotions') }}
       </p>
     </div>
   </aside>

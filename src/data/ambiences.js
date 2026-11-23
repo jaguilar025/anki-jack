@@ -1,4 +1,5 @@
 // Ambientes de la escena del avatar. Cada uno define:
+//  - labelKey: clave i18n del nombre
 //  - vrm: luces 3D (three.js)
 //      key:  luz principal { color, intensity, azimuth (° horizontal, 0 = de frente), elevation (° altura) }
 //      sky/ground/hemi: luz de cielo (desde arriba) y suelo (rebote desde abajo) + intensidad
@@ -10,7 +11,7 @@
 export const AMBIENCES = [
   {
     id: 'day',
-    label: 'Día',
+    labelKey: 'avatar.ambience.day',
     swatch: 'linear-gradient(160deg, #fff6e0, #cfe8ff)',
     vrm: {
       key: { color: '#fff6e8', intensity: 3.0, azimuth: 25, elevation: 35 },
@@ -21,7 +22,7 @@ export const AMBIENCES = [
   },
   {
     id: 'sunset',
-    label: 'Atardecer',
+    labelKey: 'avatar.ambience.sunset',
     swatch: 'linear-gradient(160deg, #ffcf9f, #ff9a9e 60%, #a18cd1)',
     vrm: {
       key: { color: '#ffb070', intensity: 2.6, azimuth: -55, elevation: 12 },
@@ -32,7 +33,7 @@ export const AMBIENCES = [
   },
   {
     id: 'night',
-    label: 'Noche',
+    labelKey: 'avatar.ambience.night',
     swatch: 'linear-gradient(160deg, #3a4a7a, #101020)',
     vrm: {
       key: { color: '#9fb4ff', intensity: 1.2, azimuth: 40, elevation: 55 },
@@ -43,7 +44,7 @@ export const AMBIENCES = [
   },
   {
     id: 'studio',
-    label: 'Estudio',
+    labelKey: 'avatar.ambience.studio',
     swatch: 'linear-gradient(160deg, #ffffff, #9a9a9a)',
     vrm: {
       key: { color: '#ffffff', intensity: 3.2, azimuth: 35, elevation: 25 },
@@ -54,7 +55,7 @@ export const AMBIENCES = [
   },
   {
     id: 'neon',
-    label: 'Neón',
+    labelKey: 'avatar.ambience.neon',
     swatch: 'linear-gradient(160deg, #ff6ad5, #4a2a7a 55%, #3ef2ff)',
     vrm: {
       key: { color: '#ff6ad5', intensity: 1.6, azimuth: -60, elevation: 10 },
@@ -65,7 +66,7 @@ export const AMBIENCES = [
   },
   {
     id: 'sakura',
-    label: 'Sakura',
+    labelKey: 'avatar.ambience.sakura',
     swatch: 'linear-gradient(160deg, #fff1f5, #ffc4da)',
     vrm: {
       key: { color: '#ffe4ef', intensity: 2.8, azimuth: 20, elevation: 40 },

@@ -44,3 +44,7 @@ playwright-report/
 # Certificados locales mkcert y variables de entorno
 certs/
 .env
+
+# Animaciones de terceros: su licencia prohíbe redistribuirlas (solo uso local)
+#public/avatars/animations/go-wild.vrma
+#public/avatars/videos/

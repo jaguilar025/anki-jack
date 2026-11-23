@@ -21,11 +21,13 @@ function base64ToBytes(b64) {
 }
 
 /**
- * @param {{ onAudio?: (audio: HTMLAudioElement) => void | Promise<void> }} [options]
+ * @param {{ onAudio?: (audio: HTMLAudioElement) => void | Promise<void>, cache?: boolean }} [options]
  *   onAudio: se llama con cada audio (VoiceVox/ElevenLabs/OpenAI) justo antes de reproducirlo,
  *   p. ej. para conectar el lip-sync del avatar. No aplica a la voz del navegador.
+ *   cache: guardar en el navegador los audios de OpenAI TTS para no regenerarlos (por defecto sí).
+ *   Desactívalo con frases que casi nunca se repiten, como las de una conversación.
  */
-export function useAudio({ onAudio } = {}) {
+export function useAudio({ onAudio, cache = true } = {}) {
   const isVoiceVoxSpeaking = ref(false)
   let currentAudio = null
   const audioUrls = new Set()
@@ -152,12 +154,12 @@ export function useAudio({ onAudio } = {}) {
   }
 
   // Respaldo con voz japonesa generada en el servidor (OpenAI TTS).
-  // Primero busca el audio en el caché del navegador; si no está, lo genera y lo guarda.
+  // Con `cache`, primero busca el audio en el caché del navegador; si no está, lo genera y lo guarda.
   const playOpenAIAudio = async (text) => {
     stopAllAudio()
     const key = { provider: 'openai', voice: OPENAI_TTS_VOICE, style: OPENAI_TTS_STYLE, text }
 
-    let data = await getCachedAudio(key)
+    let data = cache ? await getCachedAudio(key) : null
     if (!data) {
       const response = await axios.post(
         '/api/openai-tts',
@@ -165,7 +167,7 @@ export function useAudio({ onAudio } = {}) {
         { responseType: 'arraybuffer' },
       )
       data = response.data
-      await putCachedAudio(key, data)
+      if (cache) await putCachedAudio(key, data)
     }
     return await playBytes(new Uint8Array(data), 'audio/mpeg', 'Error playing OpenAI audio')
   }

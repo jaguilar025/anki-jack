@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { Characters } from '@/data/voicevox-characters'
 import {
   Select,
@@ -18,6 +19,7 @@ const props = defineProps({
   playAudio: { type: Function, required: true },
 })
 
+const { t } = useI18n()
 const emit = defineEmits(['set-character'])
 
 const selected = ref(Characters[0].name)
@@ -39,7 +41,7 @@ async function handleValueChange(name) {
   <div class="flex items-center justify-end mb-2 w-full max-w-[446px]">
     <Select :model-value="selected" @update:model-value="handleValueChange">
       <SelectTrigger>
-        <SelectValue placeholder="Selecciona tu personaje" />
+        <SelectValue :placeholder="t('dashboard.voicevox.selectCharacter')" />
       </SelectTrigger>
       <SelectContent>
         <SelectItem v-for="char in Characters" :key="char.speaker_uuid" :value="char.name">
