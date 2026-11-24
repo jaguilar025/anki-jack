@@ -1,7 +1,7 @@
 <script setup>
-// Barra de entrada flotante tipo "cápsula": texto + micrófono + enviar + detener.
+// Barra de entrada flotante tipo "cápsula": texto + micrófono + enviar (+ detener, oculto).
 //  - v-model: texto del mensaje
-//  - props: loading (esperando respuesta), speaking (el avatar está hablando)
+//  - props: loading (esperando respuesta), speaking (el avatar está hablando), showStop (botón ■)
 //  - emits: send, stop (corta el audio y el micrófono)
 import { computed, nextTick, useTemplateRef, watch } from 'vue'
 import { Loader2, Mic, Send, Square } from '@lucide/vue'
@@ -12,6 +12,8 @@ import { useSpeechRecognition } from '@/composables/useSpeechRecognition'
 const props = defineProps({
   loading: { type: Boolean, default: false },
   speaking: { type: Boolean, default: false },
+  /** Botón ■ (corta la voz y el micrófono). Oculto: estorbaba junto a enviar. */
+  showStop: { type: Boolean, default: false },
 })
 const text = defineModel({ type: String, default: '' })
 const emit = defineEmits(['send', 'stop'])
@@ -114,6 +116,7 @@ function stop() {
     </button>
 
     <button
+      v-if="showStop"
       type="button"
       :title="t('avatar.input.stop')"
       class="flex size-10 shrink-0 items-center justify-center rounded-full bg-foreground/10 transition-colors hover:bg-foreground/20 sm:size-11"

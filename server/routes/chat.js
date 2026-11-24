@@ -32,12 +32,7 @@ app.post('/', async (c) => {
       ...(conversation.length ? { messages: conversation } : { prompt: 'Comienza la conversación.' }),
     })
 
-    // Si la respuesta no contiene traducción (salto de línea), añadir una nota
-    const content = result.text.includes('\n')
-      ? result.text
-      : `${result.text}\nTraducción no disponible.`
-
-    return c.json({ message: { role: 'assistant', content } })
+    return c.json({ message: { role: 'assistant', content: result.text } })
   } catch (error) {
     console.error('Error en la API de chat:', error)
     return c.json({ error: 'Error al procesar la solicitud' }, 500)

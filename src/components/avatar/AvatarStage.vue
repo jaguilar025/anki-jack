@@ -3,7 +3,8 @@
 // y reacciones al hacer clic en zonas del cuerpo.
 //  - props: modelUrl (.vrm), idleAnimationUrl (.vrma), reactions (reacción por defecto al clic),
 //           lighting (luces del ambiente; ver src/data/ambiences.js)
-//  - emits: interact(zona) → 'head' | 'leftHand' | 'rightUpperArm' | …
+//  - emits: interact(zona) → 'head' | 'leftHand' | 'rightUpperArm' | … (con pausa por zona)
+//           tap(zona) → en cada toque, sin pausa
 //  - expose: attachAudio(audioElement) → conecta el audio que va a sonar para mover la boca.
 //            Llamarlo ANTES de audio.play().
 //            setEmotion(nombre, { intensity, resetAfter }) → happy, sad, angry, surprised, relaxed, think, neutral
@@ -55,7 +56,7 @@ const props = defineProps({
   /** { key: { color, intensity, azimuth, elevation }, sky, ground, hemi, rim: { color, intensity } } */
   lighting: { type: Object, default: null },
 })
-const emit = defineEmits(['interact'])
+const emit = defineEmits(['interact', 'tap'])
 
 const INTERACTION_COOLDOWN_MS = 450
 // Distancia (desde la cámara) del punto al que mira el avatar: cerca de la cámara,
@@ -221,6 +222,8 @@ function onPointerUp(event) {
   const target = hitTest()
   if (!target) return
 
+  // Cada toque se avisa (p. ej. para contar toques rápidos); la reacción tiene una pausa por zona
+  emit('tap', target)
   const now = Date.now()
   if (now - (lastInteractionAt.get(target) ?? 0) < INTERACTION_COOLDOWN_MS) return
   lastInteractionAt.set(target, now)

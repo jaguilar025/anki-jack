@@ -24,12 +24,7 @@
   },
   "conversation": {
     "title": "会話練習 (Conversation Practice)",
-    "selectLevel": "Select your level",
-    "levelLabel": "Japanese level",
-    "start": "Start conversation",
-    "beginner": "Beginner",
-    "intermediate": "Intermediate",
-    "advanced": "Advanced"
+    "start": "Start conversation"
   },
   "chat": {
     "placeholder": "Type a message...",

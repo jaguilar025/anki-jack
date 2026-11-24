@@ -2,7 +2,8 @@
 // Visor Live2D (Cubism 4) con la misma interfaz que AvatarStage (VRM):
 //  - props: source (Blob del .zip del modelo), look (filtro de color del ambiente;
 //           ver src/data/ambiences.js — Live2D es 2D y no tiene luces)
-//  - emits: interact(zona) → nombre de la HitArea del modelo en minúsculas (p. ej. 'body')
+//  - emits: interact(zona) → nombre de la HitArea en minúsculas (p. ej. 'body'), con pausa por zona;
+//           tap(zona) → en cada toque, sin pausa
 //  - expose: attachAudio(audioElement), setEmotion(nombre, { resetAfter }), playGesture(nombre),
 //            modelMotions (animaciones y expresiones que trae el modelo), playModelMotion(item)
 // Usa pixi-live2d-display + Live2D Cubism Core (public/live2d/, licencia de Live2D Inc.:
@@ -20,7 +21,7 @@ const props = defineProps({
   /** { brightness, saturation, tint, tintAmount } */
   look: { type: Object, default: null },
 })
-const emit = defineEmits(['interact'])
+const emit = defineEmits(['interact', 'tap'])
 
 const INTERACTION_COOLDOWN_MS = 450
 // Palabras con las que se buscan expresiones del modelo para cada emoción
@@ -310,6 +311,8 @@ function onClick(event) {
   const area = model.hitTest(x, y)[0]
   if (!area) return
   const target = area.toLowerCase()
+  // Cada toque se avisa (p. ej. para contar toques rápidos); la reacción tiene una pausa por zona
+  emit('tap', target)
   const now = Date.now()
   if (now - (lastInteractionAt.get(target) ?? 0) < INTERACTION_COOLDOWN_MS) return
   lastInteractionAt.set(target, now)

@@ -1,0 +1,13 @@
+{
+  "chooseLesson": "Choose a lesson",
+  "start": "Start",
+  "prev": "Previous",
+  "next": "Next",
+  "changeLesson": "Change lesson",
+  "confirmChange": "Changing the lesson restarts the conversation. Continue?",
+  "topicsHint": "Tap a point to practice it; “?” to have it explained",
+  "explain": "Explain “{grammar}”",
+  "focus": "Practice “{grammar}”",
+  "focused": "Focus: “{grammar}”",
+  "wholeLesson": "Whole lesson"
+}

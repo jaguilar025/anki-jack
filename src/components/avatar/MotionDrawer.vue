@@ -10,7 +10,6 @@ import { toast } from 'vue-sonner'
 import { useI18n } from 'vue-i18n'
 import { GESTURES, EMOTION_LABELS } from './motion/procedural'
 import { useAvatarSettingsStore } from '@/stores/avatarSettings'
-import { CHAT_COMMANDS } from '@/data/chatCommands'
 
 const props = defineProps({
   format: { type: String, default: 'vrm' },
@@ -21,10 +20,6 @@ const emit = defineEmits(['play', 'close'])
 const { t } = useI18n()
 const settings = useAvatarSettingsStore()
 
-// Animaciones incluidas en la app (las de los comandos del chat compatibles con este avatar)
-const builtinAnimations = computed(() =>
-  CHAT_COMMANDS.filter((c) => c.action.type === 'animation' && c.formats.includes(props.format)),
-)
 const fileInput = useTemplateRef('fileInput')
 const lastPlayed = ref(null)
 
@@ -69,13 +64,14 @@ async function onFile(event) {
 }
 
 const chip = (id) => [
-  'rounded-full border px-3 py-1.5 text-xs transition hover:bg-foreground/10 active:scale-95',
-  lastPlayed.value === id ? 'border-primary bg-primary/15' : 'border-foreground/15',
+  'rounded-full border px-3 py-1.5 text-xs backdrop-blur-sm transition hover:bg-background/70 active:scale-95',
+  lastPlayed.value === id ? 'border-primary bg-primary/30' : 'border-foreground/15 bg-background/50',
 ]
 </script>
 
 <template>
-  <aside class="glass flex flex-col overflow-hidden rounded-3xl">
+  <!-- Casi transparente para que se vea al avatar moverse detrás -->
+  <aside class="flex flex-col overflow-hidden rounded-3xl border border-foreground/10 bg-background/10 backdrop-blur-[2px]">
     <header class="flex items-center justify-between border-b border-foreground/10 px-4 py-3">
       <h2 class="font-bold">
         {{ t('avatar.motions.title') }}
@@ -98,21 +94,6 @@ const chip = (id) => [
           <button v-for="item in section.items" :key="item.id" type="button" :class="chip(item.id)" @click="play(item)">
             {{ item.label }}
           </button>
-        </div>
-      </section>
-
-      <!-- Animaciones incluidas (también se lanzan escribiendo su comando en el chat) -->
-      <section v-if="builtinAnimations.length" class="space-y-2">
-        <h3 class="text-xs font-semibold text-muted-foreground">{{ t('avatar.commands.builtin') }}</h3>
-        <div v-for="cmd in builtinAnimations" :key="cmd.id" class="flex flex-wrap items-center gap-2">
-          <button
-            type="button"
-            :class="chip(cmd.id)"
-            @click="play({ id: cmd.id, label: cmd.label, kind: 'builtin', url: cmd.action.url })"
-          >
-            {{ cmd.label }}
-          </button>
-          <span class="text-[11px] text-muted-foreground">{{ t('avatar.commands.typeHint', { phrase: cmd.phrases[0] }) }}</span>
         </div>
       </section>
 

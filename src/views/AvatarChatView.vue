@@ -6,18 +6,32 @@ import { computed, defineAsyncComponent, nextTick, onUnmounted, provide, ref, sh
 import { useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import { toast } from 'vue-sonner'
-import { CHAT_COMMANDS, findChatCommand } from '@/data/chatCommands'
-import { ArrowLeft, MessagesSquare, PersonStanding, Settings, Video, Volume1, Volume2, VolumeX } from '@lucide/vue'
-import { onClickOutside } from '@vueuse/core'
+import { findChatCommand } from '@/data/chatCommands'
+import {
+  ArrowLeft,
+  ChevronDown,
+  ChevronUp,
+  MessagesSquare,
+  PersonStanding,
+  Settings,
+  Video,
+  Volume1,
+  Volume2,
+  VolumeX,
+} from '@lucide/vue'
+import { onClickOutside, useLocalStorage } from '@vueuse/core'
 import { motion, AnimatePresence } from 'motion-v'
 import { Button } from '@/components/ui/button'
 import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select'
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from '@/components/ui/dialog'
+import LessonCarousel from '@/components/conversation/LessonCarousel.vue'
+import GrammarTopics from '@/components/conversation/GrammarTopics.vue'
 import AvatarStage from '@/components/avatar/AvatarStage.vue'
 // Live2D (pixi + Cubism) solo se descarga si eliges un avatar Live2D
 const Live2DStage = defineAsyncComponent(() => import('@/components/avatar/Live2DStage.vue'))
@@ -46,11 +60,6 @@ async function playMotion(item) {
   if (!s) return
   if (item.kind === 'gesture') s.playGesture(item.name)
   else if (item.kind === 'emotion') s.setEmotion(item.name)
-  else if (item.kind === 'builtin') {
-    // Igual que escribir el comando (incluye su fondo temporal, si tiene)
-    const command = CHAT_COMMANDS.find((c) => c.id === item.id)
-    if (command) runCommandAction(command)
-  }
   else if (item.kind === 'vrma') {
     const url = await settings.getAnimationUrl(item.id)
     if (url) s.playAnimation?.(url)
@@ -95,19 +104,40 @@ watch(
 // Ajustes muestra la configuración de ambiente del tipo de avatar que se ve ahora
 watch(avatarData, (data) => (settings.loadedFormat = data?.format ?? null))
 
+// --- Cambio de lección durante la conversación (reinicia el chat) ---
+const showLessonPicker = ref(false)
+const pendingLesson = ref(1)
+
+function openLessonPicker() {
+  pendingLesson.value = lesson.value
+  showLessonPicker.value = true
+}
+
+function confirmLessonChange() {
+  showLessonPicker.value = false
+  if (pendingLesson.value === lesson.value) return
+  lesson.value = pendingLesson.value
+  restartConversation()
+}
+
 // Progreso de la descarga del avatar elegido (null si no está descargando)
 const avatarDownload = computed(() => settings.downloads[settings.selectedAvatar.id] ?? null)
 
 const {
   messages,
   input,
-  level,
+  lesson,
+  lessonData,
+  focus,
   isLoading,
   isSpeaking,
   conversationStarted,
   character,
   startConversation,
+  restartConversation,
   sendMessage,
+  toggleFocus,
+  explainGrammar,
   stopAllAudio,
   speak,
 } = useConversation({
@@ -241,6 +271,26 @@ function runChatCommand(text) {
   return true
 }
 
+// --- Easter egg: más de 10 toques rápidos (menos de 1 s entre uno y otro) → "やめてください！" ---
+const TAPS_TO_COMPLAIN = 10
+const TAP_RESET_MS = 1000
+let tapCount = 0
+let tapTimer = null
+
+function onAvatarTap() {
+  clearTimeout(tapTimer)
+  tapCount++
+  tapTimer = setTimeout(() => (tapCount = 0), TAP_RESET_MS)
+  if (tapCount <= TAPS_TO_COMPLAIN) return
+  tapCount = 0
+  clearTimeout(tapTimer)
+  if (isSpeaking.value) return
+  // Con el estilo de voz enojado del personaje si tiene uno (怒り, おこ, ツンギレ…)
+  const styles = character.value.styles ?? []
+  const angry = styles.find((s) => /怒|おこ|ツンギレ|不機嫌|ツンツン/.test(s.name))
+  speak('やめてください！', String(angry?.id ?? character.value.value), 'angry')
+}
+
 // El botón 🔊 de los mensajes del historial también habla a través del avatar
 provide('avatarSpeak', speak)
 
@@ -253,6 +303,8 @@ const videoVolume = computed(() =>
 const lastAssistant = computed(() =>
   [...messages.value].reverse().find((m) => m.role === 'assistant'),
 )
+// Contraído: máximo 2 líneas con scroll (para que una respuesta larga no tape al avatar en móvil)
+const subtitleCollapsed = useLocalStorage('avatar-subtitle-collapsed', false)
 
 const goBack = () => {
   stopAllAudio()
@@ -298,12 +350,14 @@ const dockButton =
         ref="stage"
         :model-url="avatarData.url"
         :lighting="settings.vrmLighting"
+        @tap="onAvatarTap"
       />
       <Live2DStage
         v-else-if="avatarData?.format === 'live2d'"
         ref="stage"
         :source="avatarData.blob"
         :look="settings.live2dLook"
+        @tap="onAvatarTap"
       />
     </div>
 
@@ -434,7 +488,7 @@ const dockButton =
         :initial="{ opacity: 0, x: 24 }"
         :animate="{ opacity: 1, x: 0 }"
         :exit="{ opacity: 0, x: 24 }"
-        class="absolute inset-x-3 bottom-28 z-20 max-h-[42dvh] sm:inset-x-auto sm:bottom-28 sm:right-6 sm:top-24 sm:max-h-none sm:w-80"
+        class="absolute inset-x-3 bottom-36 z-20 max-h-[21dvh] sm:inset-x-auto sm:bottom-28 sm:right-6 sm:top-24 sm:max-h-none sm:w-80"
       >
         <MotionDrawer
           class="h-full max-h-[inherit]"
@@ -454,47 +508,75 @@ const dockButton =
         :key="messages.length"
         :initial="{ opacity: 0, y: 10 }"
         :animate="{ opacity: 1, y: 0 }"
-        class="pointer-events-auto w-full max-w-xl rounded-lg bg-background/80 px-4 py-3 text-center shadow backdrop-blur"
+        class="pointer-events-auto relative w-full max-w-xl rounded-lg bg-background/80 py-3 pl-8 pr-8 text-center shadow backdrop-blur"
       >
-        <p class="text-base">{{ lastAssistant.japanese || lastAssistant.content }}</p>
-        <p v-if="lastAssistant.translation" class="mt-1 text-sm text-muted-foreground">
-          {{ lastAssistant.translation }}
-        </p>
+        <div :class="['overflow-y-auto', subtitleCollapsed ? 'max-h-12' : 'max-h-[45dvh]']">
+          <p class="text-base leading-6">{{ lastAssistant.japanese || lastAssistant.content }}</p>
+          <p v-if="lastAssistant.translation" class="mt-1 text-sm text-muted-foreground">
+            {{ lastAssistant.translation }}
+          </p>
+        </div>
+        <button
+          type="button"
+          :title="subtitleCollapsed ? t('avatar.subtitle.expand') : t('avatar.subtitle.collapse')"
+          class="absolute right-1.5 top-1.5 flex size-7 items-center justify-center rounded-full text-muted-foreground hover:bg-foreground/10 hover:text-foreground"
+          @click="subtitleCollapsed = !subtitleCollapsed"
+        >
+          <ChevronUp v-if="subtitleCollapsed" class="size-4" />
+          <ChevronDown v-else class="size-4" />
+        </button>
       </motion.div>
 
-      <!-- Antes de empezar: elegir nivel -->
+      <!-- Antes de empezar: elegir lección (初中級 1–15) -->
       <motion.div
         v-if="!conversationStarted"
         :initial="{ opacity: 0, y: 20 }"
         :animate="{ opacity: 1, y: 0 }"
-        class="glass pointer-events-auto w-full max-w-md rounded-3xl p-6"
+        class="glass pointer-events-auto w-full max-w-md space-y-4 rounded-3xl p-5"
       >
-        <h2 class="mb-4 text-center text-xl font-bold">{{ t('avatar.view.selectLevel') }}</h2>
-        <div class="flex gap-2">
-          <Select v-model="level">
-            <SelectTrigger class="flex-1">
-              <SelectValue :placeholder="t('avatar.view.selectLevel')" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="beginner">{{ t('avatar.view.beginner') }}</SelectItem>
-              <SelectItem value="intermediate">{{ t('avatar.view.intermediate') }}</SelectItem>
-              <SelectItem value="advanced">{{ t('avatar.view.advanced') }}</SelectItem>
-            </SelectContent>
-          </Select>
-          <Button :disabled="!character" @click="startConversation">{{ t('avatar.view.start') }}</Button>
-        </div>
+        <h2 class="text-center text-lg font-bold">{{ t('conversation.chooseLesson') }}</h2>
+        <LessonCarousel v-model="lesson" />
+        <p class="japanese-text text-center text-xs text-muted-foreground">{{ lessonData.goal }}</p>
+        <Button class="w-full" :disabled="!character" @click="startConversation">{{ t('conversation.start') }}</Button>
       </motion.div>
 
-      <ChatInputBar
-        v-else
-        v-model="input"
-        class="pointer-events-auto w-full max-w-[680px]"
-        :loading="isLoading"
-        :speaking="isSpeaking"
-        @send="sendMessage"
-        @stop="stopAllAudio"
-      />
+      <!-- Conversación: gramática de la lección + entrada -->
+      <div v-else class="pointer-events-auto w-full max-w-[680px]">
+        <GrammarTopics
+          :lesson="lessonData"
+          :focus="focus"
+          :disabled="isLoading"
+          @toggle="toggleFocus"
+          @explain="explainGrammar"
+          @change-lesson="openLessonPicker"
+        />
+        <ChatInputBar
+          v-model="input"
+          class="mt-2"
+          :loading="isLoading"
+          :speaking="isSpeaking"
+          @send="sendMessage"
+          @stop="stopAllAudio"
+        />
+      </div>
     </div>
+
+    <!-- Cambiar de lección (reinicia la conversación) -->
+    <Dialog v-model:open="showLessonPicker">
+      <DialogContent class="sm:max-w-md">
+        <DialogHeader>
+          <DialogTitle>{{ t('conversation.changeLesson') }}</DialogTitle>
+          <DialogDescription>{{ t('conversation.confirmChange') }}</DialogDescription>
+        </DialogHeader>
+        <LessonCarousel v-model="pendingLesson" />
+        <DialogFooter>
+          <Button variant="outline" @click="showLessonPicker = false">{{ t('common.cancel') }}</Button>
+          <Button :disabled="pendingLesson === lesson" @click="confirmLessonChange">
+            {{ t('conversation.changeLesson') }}
+          </Button>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
 
     <AvatarSettingsDialog v-model:open="showSettings" />
   </div>

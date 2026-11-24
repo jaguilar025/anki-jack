@@ -39,6 +39,20 @@ export const CREDITS = [
     useKey: 'menu.uses.vroid',
   },
   {
+    name: '初音ミク (Hatsune Miku) VRM',
+    author: 'あかりみち@Akarimichi · Character © Crypton Future Media, INC. www.piapro.net',
+    license: 'Non-commercial, redistribution prohibited',
+    url: 'https://hub.vroid.com/users/25108587',
+    useKey: 'menu.uses.vroid',
+  },
+  {
+    name: '止丸式初音ミク',
+    author: '止丸 (@tomaru_o) · Character © Crypton Future Media, INC. www.piapro.net',
+    license: 'Piapro Character License · Non-commercial',
+    url: 'https://piapro.jp/license/pcl/summary',
+    useKey: 'menu.uses.vroid',
+  },
+  {
     name: 'Hiyori Momose',
     author: 'Live2D Inc.',
     license: 'Free Material License',
