@@ -14,10 +14,6 @@
     "duck": "アバターが話すときは動画の音量を下げる",
     "quality": "画質: {quality}",
     "qualityNote": "サイズや回線状況に応じてYouTubeが自動で調整します。",
-    "selectLevel": "レベルを選択",
-    "beginner": "初級",
-    "intermediate": "中級",
-    "advanced": "上級",
     "start": "開始"
   },
   "log": {
@@ -100,7 +96,10 @@
     "mint": "ミント",
     "night": "夜",
     "studio": "スタジオ",
-    "green": "グリーンスクリーン"
+    "green": "グリーンスクリーン",
+    "bridge": "橋",
+    "room": "部屋",
+    "sakuraPark": "桜並木"
   },
   "stage": {
     "loading": "アバターを読み込み中…",
@@ -155,8 +154,10 @@
   },
   "commands": {
     "needsFormat": "このコマンドには{format}アバターが必要です",
-    "failed": "アニメーションを再生できませんでした",
-    "builtin": "内蔵",
-    "typeHint": "またはチャットで「{phrase}」と入力"
+    "failed": "アニメーションを再生できませんでした"
+  },
+  "subtitle": {
+    "collapse": "折りたたむ",
+    "expand": "広げる"
   }
 }

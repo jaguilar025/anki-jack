@@ -1,0 +1,13 @@
+{
+  "chooseLesson": "課を選ぶ",
+  "start": "開始",
+  "prev": "前へ",
+  "next": "次へ",
+  "changeLesson": "課を変更",
+  "confirmChange": "課を変更すると会話がリセットされます。続けますか？",
+  "topicsHint": "項目をタップして練習、「?」で説明",
+  "explain": "「{grammar}」を説明",
+  "focus": "「{grammar}」を練習",
+  "focused": "練習中：「{grammar}」",
+  "wholeLesson": "課全体"
+}

@@ -27,6 +27,24 @@ export const AVATAR_PRESETS = [
     preview: '/avatars/previews/vrm-sample-b.png',
   },
   {
+    // Modelo de あかりみち@Akarimichi: uso personal; prohibido redistribuirlo o comercializarlo.
+    // Por eso el .vrm y su vista previa están en .gitignore (solo existen en tu equipo).
+    id: 'vrm-hatsune-miku',
+    name: '初音ミク',
+    format: 'vrm',
+    url: '/avatars/hatsune-miku.vrm',
+    preview: '/avatars/previews/vrm-hatsune-miku.png',
+  },
+  {
+    // 止丸式初音ミク (止丸): uso no comercial. Su readme permite redistribuir con créditos, pero los
+    // metadatos del VRM lo prohíben: por precaución el .vrm y su vista previa están en .gitignore.
+    id: 'vrm-miku-2',
+    name: '初音ミク 2',
+    format: 'vrm',
+    url: '/avatars/miku-2.vrm',
+    preview: '/avatars/previews/vrm-miku-2.png',
+  },
+  {
     id: 'live2d-hiyori',
     name: 'Hiyori',
     format: 'live2d',
@@ -52,6 +70,10 @@ export const BACKGROUND_PRESETS = [
   { id: 'mint', labelKey: 'avatar.background.mint', css: 'linear-gradient(160deg, #e0fff4 0%, #b8f0dc 50%, #9ad8e6 100%)' },
   { id: 'night', labelKey: 'avatar.background.night', css: 'radial-gradient(ellipse at top, #2b2f4a 0%, #14162a 60%, #0b0c16 100%)' },
   { id: 'studio', labelKey: 'avatar.background.studio', css: 'radial-gradient(ellipse at center, #3a3a3f 0%, #1b1b1f 75%)' },
+  // Ilustraciones (public/backgrounds/)
+  { id: 'bridge', labelKey: 'avatar.background.bridge', css: "url('/backgrounds/bridge.webp') center / cover no-repeat" },
+  { id: 'room', labelKey: 'avatar.background.room', css: "url('/backgrounds/room.webp') center / cover no-repeat" },
+  { id: 'sakuraPark', labelKey: 'avatar.background.sakuraPark', css: "url('/backgrounds/sakura-park.webp') center / cover no-repeat" },
   // Para recortar el avatar en OBS u otros programas (chroma key)
   { id: 'green', labelKey: 'avatar.background.green', css: '#00ff00' },
 ]

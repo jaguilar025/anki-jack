@@ -24,12 +24,7 @@
   },
   "conversation": {
     "title": "会話練習",
-    "selectLevel": "レベルを選択",
-    "levelLabel": "日本語レベル",
-    "start": "会話を始める",
-    "beginner": "初級",
-    "intermediate": "中級",
-    "advanced": "上級"
+    "start": "会話を始める"
   },
   "chat": {
     "placeholder": "メッセージを入力...",

@@ -14,10 +14,6 @@
     "duck": "Lower the video volume while the avatar speaks",
     "quality": "Quality: {quality}",
     "qualityNote": "YouTube adjusts it automatically based on size and your connection.",
-    "selectLevel": "Select your level",
-    "beginner": "Beginner",
-    "intermediate": "Intermediate",
-    "advanced": "Advanced",
     "start": "Start"
   },
   "log": {
@@ -100,7 +96,10 @@
     "mint": "Mint",
     "night": "Night",
     "studio": "Studio",
-    "green": "Green screen"
+    "green": "Green screen",
+    "bridge": "Bridge",
+    "room": "Room",
+    "sakuraPark": "Sakura park"
   },
   "stage": {
     "loading": "Loading avatar…",
@@ -155,8 +154,10 @@
   },
   "commands": {
     "needsFormat": "This command needs a {format} avatar",
-    "failed": "Could not play the animation",
-    "builtin": "Built-in",
-    "typeHint": "or type “{phrase}” in the chat"
+    "failed": "Could not play the animation"
+  },
+  "subtitle": {
+    "collapse": "Collapse",
+    "expand": "Expand"
   }
 }

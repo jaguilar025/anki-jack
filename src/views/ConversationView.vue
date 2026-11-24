@@ -5,13 +5,7 @@ import { useRouter } from 'vue-router'
 import { Button } from '@/components/ui/button'
 import { ArrowLeft } from '@lucide/vue'
 import ChatInterface from '@/components/ChatInterface.vue'
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select'
+import LessonCarousel from '@/components/conversation/LessonCarousel.vue'
 import { motion } from 'motion-v'
 import { useConversation } from '@/composables/useConversation'
 import { useI18n } from 'vue-i18n'
@@ -23,7 +17,8 @@ const chat = useTemplateRef('chat')
 const {
   messages,
   input,
-  level,
+  lesson,
+  lessonData,
   isLoading,
   conversationStarted,
   character,
@@ -71,21 +66,12 @@ onUnmounted(() => {
         :animate="{ opacity: 1, y: 0 }"
         class="w-full max-w-md p-6 bg-card rounded-lg border border-border"
       >
-        <h2 class="text-xl font-bold mb-6 text-center">{{ t('study.conversation.selectLevel') }}</h2>
+        <h2 class="text-xl font-bold mb-6 text-center">{{ t('conversation.chooseLesson') }}</h2>
 
         <div class="space-y-6">
           <div class="space-y-2">
-            <label class="text-sm text-muted-foreground">{{ t('study.conversation.levelLabel') }}</label>
-            <Select v-model="level">
-              <SelectTrigger>
-                <SelectValue :placeholder="t('study.conversation.selectLevel')" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="beginner">{{ t('study.conversation.beginner') }}</SelectItem>
-                <SelectItem value="intermediate">{{ t('study.conversation.intermediate') }}</SelectItem>
-                <SelectItem value="advanced">{{ t('study.conversation.advanced') }}</SelectItem>
-              </SelectContent>
-            </Select>
+            <LessonCarousel v-model="lesson" />
+            <p class="japanese-text text-center text-xs text-muted-foreground">{{ lessonData.goal }}</p>
           </div>
 
           <Button class="w-full" :disabled="!character" @click="startConversation">
